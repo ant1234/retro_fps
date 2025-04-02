@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://xm4428d37rbp"]
+
+[ext_resource type="PackedScene" uid="uid://dswujixuj3rbw" path="res://effects/muzzle_flash/assets/muzzleflash3.glb" id="1_ig6ek"]
+
+[node name="muzzleflash3" instance=ExtResource("1_ig6ek")]

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dqpmjpshie776"]
+
+[ext_resource type="Texture2D" uid="uid://x1d1kmhildml" path="res://environment/assets/desert_sand_big_d.jpg" id="1_68dgk"]
+
+[resource]
+albedo_texture = ExtResource("1_68dgk")
+uv1_scale = Vector3(0.08, 0.08, 0.08)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
