@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cr774sksons2f"]
+[gd_scene load_steps=12 format=3 uid="uid://cr774sksons2f"]
 
 [ext_resource type="PackedScene" uid="uid://dovc0methr37k" path="res://environment/rock_boulder.tscn" id="1_icxn4"]
 [ext_resource type="PackedScene" uid="uid://dmr124nsouefn" path="res://characters/player/player.tscn" id="1_udsn1"]
 [ext_resource type="PackedScene" uid="uid://btrct7bmnno5j" path="res://environment/rock_cliff.tscn" id="2_jw0dc"]
 [ext_resource type="PackedScene" uid="uid://vn1bwbqig364" path="res://environment/rock_pillar.tscn" id="3_2ngro"]
 [ext_resource type="PackedScene" uid="uid://d2x8tg0dnc24d" path="res://environment/sand.tscn" id="4_6vxsd"]
+[ext_resource type="Script" path="res://characters/health_manager.gd" id="6_720uw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l5qe5"]
 
@@ -15,10 +16,12 @@ sky_material = SubResource("ProceduralSkyMaterial_l5qe5")
 background_mode = 2
 sky = SubResource("Sky_p8rse")
 
-[node name="World" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_b10t3"]
+radius = 2.369
 
-[node name="Player" parent="." instance=ExtResource("1_udsn1")]
-transform = Transform3D(-0.769316, -0.023569, -0.638434, -0.0507095, 0.99842, 0.0242461, 0.636853, 0.051028, -0.769296, -0.0921167, 0.407353, -44.0221)
+[sub_resource type="SphereMesh" id="SphereMesh_qag7j"]
+
+[node name="World" type="Node3D"]
 
 [node name="Enviroment" type="Node3D" parent="."]
 
@@ -54,3 +57,21 @@ environment = SubResource("Environment_qvdrf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.859906, 0.510453, 0, -0.510453, 0.859906, 0, 42.5007, 0)
+
+[node name="Player" parent="." instance=ExtResource("1_udsn1")]
+transform = Transform3D(-0.769316, -0.023569, -0.638434, -0.0507095, 0.99842, 0.0242461, 0.636853, 0.051028, -0.769296, -0.0921167, 0.407353, -44.0221)
+
+[node name="TestTarget" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.84442, 5.21036, -46.6381)
+visible = false
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("6_720uw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158251, -0.925113, 2.74224)
+shape = SubResource("SphereShape3D_b10t3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -202.331, -85.39, 139.26)
+mesh = SubResource("SphereMesh_qag7j")

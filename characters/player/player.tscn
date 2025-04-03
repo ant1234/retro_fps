@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dmr124nsouefn"]
+[gd_scene load_steps=32 format=3 uid="uid://dmr124nsouefn"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_2l7n6"]
 [ext_resource type="Script" path="res://characters/player/weapon_manager.gd" id="2_2lhyc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c6y0mhfr6tpnx" path="res://weapons/assets/machete.glb" id="3_oscan"]
 [ext_resource type="Script" path="res://weapons/weapon.gd" id="4_l073q"]
 [ext_resource type="PackedScene" uid="uid://bgf4yjohrhy74" path="res://weapons/assets/rocketlauncher.glb" id="5_nb7ky"]
+[ext_resource type="PackedScene" uid="uid://dgy5rrfrs1dw1" path="res://weapons/bullet_emitters/area_damage_emitter.tscn" id="6_heaad"]
 [ext_resource type="PackedScene" uid="uid://pbfjlmyncwxu" path="res://weapons/assets/shotgun.glb" id="6_sssri"]
 [ext_resource type="PackedScene" uid="uid://c172vfhrxprec" path="res://effects/muzzle_flash/muzzle_flash.tscn" id="6_tlpcn"]
 [ext_resource type="PackedScene" uid="uid://cdk2csx214cgn" path="res://effects/muzzle_flash/assets/muzzleflash1.glb" id="7_m60va"]
@@ -75,6 +76,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Quaternion(-0.041663, -0.0142023, 0.0266661, 0.998675), Quaternion(-0.0629342, 0.0733905, -0.240155, 0.965908), Quaternion(-0.274385, 0.160286, -0.292222, 0.902013), Quaternion(-0.452227, 0.30755, -0.262996, 0.794819)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"actually_attack"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gvcyt"]
@@ -245,7 +260,11 @@ script = ExtResource("2_2lhyc")
 
 [node name="Machete" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.820332, 1.89805, 0.618443)
-visible = false
+script = ExtResource("4_l073q")
+damage = 15
+ammo = -1
+attack_rate = 0.1
+animation_controller_attack = true
 
 [node name="Graphics" type="Node3D" parent="Camera3D/WeaponManager/Weapons/Machete"]
 transform = Transform3D(0.998175, -0.0520782, -0.030589, 0.054445, 0.995108, 0.0824582, 0.026145, -0.0839732, 0.996126, 0.0544804, 0.307876, 0.605866)
@@ -257,6 +276,17 @@ rotation_edit_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_gvcyt")
 }
+
+[node name="BulletEmitter" parent="Camera3D/WeaponManager/Weapons/Machete" instance=ExtResource("7_v708d")]
+
+[node name="AreaDamageEmitter" parent="Camera3D/WeaponManager/Weapons/Machete/BulletEmitter" instance=ExtResource("6_heaad")]
+offset_by_radius = true
+
+[node name="HitScanBulletEmitter" parent="Camera3D/WeaponManager/Weapons/Machete/BulletEmitter" instance=ExtResource("8_xoe56")]
+only_hit_environment = true
+
+[node name="RayCast3D" parent="Camera3D/WeaponManager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter" index="0"]
+target_position = Vector3(0, 0, -2)
 
 [node name="MachineGun" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0.8275, 1.94151, 0.0598526)
@@ -299,6 +329,7 @@ libraries = {
 
 [node name="ShotGun" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.830633, 2.00185, 0.340708)
+visible = false
 script = ExtResource("4_l073q")
 attack_rate = 0.8
 
@@ -333,3 +364,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="HealthManager" parent="." instance=ExtResource("3_if7g2")]
 max_health = 98
+
+[editable path="Camera3D/WeaponManager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter"]

@@ -6,6 +6,9 @@ var cur_slot = 0
 var cur_weapon = null
 
 func _ready() -> void:
+	for weapon in weapons:
+		if weapon.has_method("set_bodies_to_exclude"):
+			weapon.set_bodies_to_exclude([get_parent().get_parent()])
 	disable_all_weapon()
 	for _i in range(weapons.size()):
 		weapons_unlocked.append(true)

@@ -14,6 +14,8 @@ class_name Weapon
 @export var attack_rate = 0.2
 var last_attack_time = -9999.9
 
+@export var animation_controller_attack = false
+
 signal fired
 signal out_of_ammo
 
@@ -21,7 +23,7 @@ func _ready() -> void:
 	bullet_emitter.set_damage(damage)
 	
 func set_bodies_to_exclude(bodies: Array):
-	bullet_emitter.set_bodies_to_exlude(bodies)
+	bullet_emitter.set_bodies_to_exclude(bodies)
 	
 func attack(input_just_pressed: bool, input_held: bool):
 	if !automatic and !input_just_pressed:
@@ -42,13 +44,18 @@ func attack(input_just_pressed: bool, input_held: bool):
 	if ammo > 0:
 		ammo -= 1 
 		
-	bullet_emitter.global_transform = fire_point.global_transform
-	bullet_emitter.fire()
+	if !animation_controller_attack:
+		actually_attack()
+		
 	last_attack_time = cur_time
 	animation_player.stop()
 	animation_player.play("attack")
 	if has_node("Graphics/MuzzleFlash"):
 		$Graphics/MuzzleFlash.flash()
+	
+func actually_attack():
+	bullet_emitter.global_transform = fire_point.global_transform
+	bullet_emitter.fire()
 		
 func set_active(a: bool):
 	visible = a

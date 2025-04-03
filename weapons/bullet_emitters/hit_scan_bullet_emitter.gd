@@ -1,5 +1,7 @@
 extends BulletEmitter
 
+@export var only_hit_environment = false
+
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 var hit_effect = preload("res://effects/bullet_hit_effect.tscn")
 
@@ -13,7 +15,10 @@ func fire():
 	ray_cast_3d.force_raycast_update()
 	
 	if ray_cast_3d.is_colliding():
-		if ray_cast_3d.get_collider().has_method("hurt"):
+		var can_hurt = ray_cast_3d.get_collider().has_method("hurt")
+		if can_hurt and only_hit_environment:
+			pass
+		elif can_hurt:
 			var damage_data = DamageData.new()
 			damage_data.amount = damage
 			damage_data.hit_pos = ray_cast_3d.get_collision_point()
