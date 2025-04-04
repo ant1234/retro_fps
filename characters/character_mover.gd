@@ -11,6 +11,8 @@ var character_body : CharacterBody3D
 var move_drag = 0.0
 var move_dir : Vector3
 
+signal moved(velocity: Vector3, grounded: bool)
+
 func _ready() -> void:
 	character_body = get_parent()
 	move_drag = float(move_accel) / max_speed
@@ -37,3 +39,4 @@ func _physics_process(delta: float) -> void:
 	character_body.velocity += move_accel * move_dir - flat_velo * drag
 	
 	character_body.move_and_slide()
+	moved.emit(character_body.velocity, character_body.is_on_floor())

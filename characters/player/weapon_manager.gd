@@ -4,6 +4,7 @@ extends Node3D
 var weapons_unlocked = []
 var cur_slot = 0 
 var cur_weapon = null
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	for weapon in weapons:
@@ -50,4 +51,13 @@ func switch_to_weapon_slot(slot_ind: int) -> bool:
 	else:
 		cur_weapon.show()
 	return true
+	
+func update_animation(velocity: Vector3, grounded: bool):
+	if cur_weapon is Weapon and !cur_weapon.is_idle():
+		animation_player.play("RESET")
+	elif !grounded or velocity.length() < 0.5:
+		animation_player.play("RESET", 0.3)
+	else:
+		animation_player.play("moving", 0.3)
+	
 	

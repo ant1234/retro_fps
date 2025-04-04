@@ -62,3 +62,6 @@ func set_active(a: bool):
 	visible = a
 	if !a:
 		animation_player.play("RESET")
+		
+func is_idle() -> bool:
+	return !animation_player.is_playing()
