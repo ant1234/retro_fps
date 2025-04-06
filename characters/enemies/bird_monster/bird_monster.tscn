@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmjn4e75mnrrd"]
+
+[ext_resource type="PackedScene" uid="uid://baunwjraq3t4g" path="res://characters/enemies/monster.tscn" id="1_shqe5"]
+[ext_resource type="PackedScene" uid="uid://bss8p6k3la8qe" path="res://characters/enemies/bird_monster/birdmonster.glb" id="2_7ujxh"]
+[ext_resource type="PackedScene" uid="uid://eftf58vt34n8" path="res://characters/hit_box.tscn" id="3_blisn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mt63c"]
+size = Vector3(0.337524, 0.880697, 0.377747)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uspc3"]
+size = Vector3(0.337524, 0.18217, 0.515335)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wrvew"]
+radius = 0.0880033
+height = 0.516642
+
+[node name="BirdMonster" instance=ExtResource("1_shqe5")]
+
+[node name="birdmonster" parent="Graphics" index="0" instance=ExtResource("2_7ujxh")]
+
+[node name="Skeleton3D" parent="Graphics/birdmonster/Armature" index="0"]
+bones/1/rotation = Quaternion(0.0792659, 1.18834e-07, 4.81987e-09, 0.996854)
+bones/2/rotation = Quaternion(0.0414058, 0.112766, 0.928579, -0.351155)
+bones/3/rotation = Quaternion(0.139228, -0.0523063, -0.305468, 0.940515)
+bones/4/rotation = Quaternion(-0.0414061, 0.112766, 0.928579, 0.351155)
+bones/5/rotation = Quaternion(0.139228, 0.0523063, 0.305469, 0.940515)
+bones/6/rotation = Quaternion(0.328428, 0.154728, 0.931432, -0.0250929)
+bones/6/scale = Vector3(0.999975, 1, 1)
+bones/7/rotation = Quaternion(-0.281262, 0.00232481, 0.0141665, 0.959524)
+bones/8/rotation = Quaternion(-0.328428, 0.154728, 0.931432, 0.0250929)
+bones/8/scale = Vector3(0.999975, 1, 1)
+bones/9/rotation = Quaternion(-0.281262, -0.00232482, -0.0141665, 0.959524)
+
+[node name="Body" type="BoneAttachment3D" parent="Graphics/birdmonster/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 9.22955e-09, 2.37684e-07, 2.84484e-08, 0.987434, -0.158033, -2.36156e-07, 0.158033, 0.987434, 0, 1.13977, 0)
+bone_name = "body"
+bone_idx = 1
+
+[node name="HitBox" parent="Graphics/birdmonster/Armature/Skeleton3D/Body" index="0" instance=ExtResource("3_blisn")]
+
+[node name="CollisionShape3D" parent="Graphics/birdmonster/Armature/Skeleton3D/Body/HitBox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.971255, -0.238042, 0, 0.238042, 0.971255, -0.0076294, 0.0158099, 0.0303516)
+shape = SubResource("BoxShape3D_mt63c")
+
+[node name="HitBoxHead" parent="Graphics/birdmonster/Armature/Skeleton3D/Body" index="1" instance=ExtResource("3_blisn")]
+weak_spot = true
+
+[node name="CollisionShape3D" parent="Graphics/birdmonster/Armature/Skeleton3D/Body/HitBoxHead" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.971255, -0.238042, 0, 0.238042, 0.971255, -0.0109185, 0.383607, 0.208871)
+shape = SubResource("BoxShape3D_uspc3")
+
+[node name="UpperArmL" type="BoneAttachment3D" parent="Graphics/birdmonster/Armature/Skeleton3D" index="2"]
+transform = Transform3D(-0.749951, 0.661489, -0.00229935, -0.659403, -0.747301, 0.0820352, 0.0525471, 0.0630386, 0.996627, 0.176714, 1.50661, 0.058711)
+bone_name = "upper_arm.l"
+bone_idx = 2
+
+[node name="HitBox" parent="Graphics/birdmonster/Armature/Skeleton3D/UpperArmL" index="0" instance=ExtResource("3_blisn")]
+
+[node name="CollisionShape3D" parent="Graphics/birdmonster/Armature/Skeleton3D/UpperArmL/HitBox" index="0"]
+transform = Transform3D(0.838642, 0.544683, 0, -0.544683, 0.838642, 0, 0, 0, 1, -0.115143, -0.147386, 0)
+shape = SubResource("CapsuleShape3D_wrvew")
+
+[node name="UpperArmR" type="BoneAttachment3D" parent="Graphics/birdmonster/Armature/Skeleton3D" index="3"]
+transform = Transform3D(-0.749951, -0.661489, 0.00229926, 0.659403, -0.747301, 0.0820353, -0.0525472, 0.0630387, 0.996627, -0.176714, 1.50661, 0.058711)
+bone_name = "upper_arm.r"
+bone_idx = 4
+
+[node name="HitBox" parent="Graphics/birdmonster/Armature/Skeleton3D/UpperArmR" index="0" instance=ExtResource("3_blisn")]
+
+[node name="CollisionShape3D" parent="Graphics/birdmonster/Armature/Skeleton3D/UpperArmR/HitBox" index="0"]
+transform = Transform3D(0.694947, -0.719061, 0, 0.719061, 0.694947, 0, 0, 0, 1, 0.0667272, -0.117157, -0.00894094)
+shape = SubResource("CapsuleShape3D_wrvew")
+
+[editable path="Graphics/birdmonster"]
+[editable path="Graphics/birdmonster/Armature/Skeleton3D/Body/HitBox"]
+[editable path="Graphics/birdmonster/Armature/Skeleton3D/Body/HitBoxHead"]
+[editable path="Graphics/birdmonster/Armature/Skeleton3D/UpperArmL/HitBox"]
+[editable path="Graphics/birdmonster/Armature/Skeleton3D/UpperArmR/HitBox"]

@@ -239,6 +239,21 @@ _data = {
 "attack": SubResource("Animation_l6dee")
 }
 
+[sub_resource type="Animation" id="Animation_t1a4g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapons:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_xv14a"]
 resource_name = "moving"
 length = 0.5
@@ -254,21 +269,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(-0.135, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_t1a4g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapons:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vsdb2"]
@@ -349,6 +349,7 @@ texture = ExtResource("8_8bfok")
 
 [node name="MachineGun" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0.8275, 1.94151, 0.0598526)
+visible = false
 script = ExtResource("4_l073q")
 attack_rate = 0.1
 
@@ -388,8 +389,8 @@ texture = ExtResource("12_reela")
 
 [node name="RocketLauncher" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
 transform = Transform3D(-0.49984, 0, -0.0126523, 0, 0.5, 0, 0.0126523, 0, -0.49984, 0.969611, 1.79894, -0.0396485)
-visible = false
 script = ExtResource("4_l073q")
+damage = 40
 attack_rate = 0.5
 
 [node name="Graphics" type="Node3D" parent="Camera3D/WeaponManager/Weapons/RocketLauncher"]
@@ -426,6 +427,7 @@ texture = ExtResource("12_1iq3e")
 
 [node name="ShotGun" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.830633, 2.00185, 0.340708)
+visible = false
 script = ExtResource("4_l073q")
 attack_rate = 0.8
 

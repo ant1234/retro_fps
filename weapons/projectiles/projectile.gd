@@ -1,7 +1,7 @@
 class_name Projectile
 extends Node3D
 
-@onready var collision_raycast: RayCast3D = $Graphics/CollisionRaycast
+@onready var collision_raycast: RayCast3D = $CollisionRaycast
 
 @export var speed = 30
 @export var show_after_time := 0.1
@@ -27,6 +27,7 @@ func set_bodies_to_exclude(bte: Array):
 		
 func _physics_process(delta: float) -> void:
 	process_movement(delta)
+	check_collisions()
 	
 func process_movement(delta):
 	last_pos = global_position

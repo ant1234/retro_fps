@@ -7,7 +7,7 @@ script = ExtResource("1_ck76t")
 
 [node name="Graphics" type="Node3D" parent="."]
 
-[node name="CollisionRaycast" type="RayCast3D" parent="Graphics"]
+[node name="CollisionRaycast" type="RayCast3D" parent="."]
 enabled = false
 collision_mask = 5
 collide_with_areas = true

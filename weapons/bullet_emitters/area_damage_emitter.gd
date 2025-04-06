@@ -6,7 +6,7 @@ extends BulletEmitter
 @export var offset_by_radius = false
 
 func fire():
-	
+	print("fires inside the rocket script?")
 	var query_params := PhysicsShapeQueryParameters3D.new()
 	query_params.shape = SphereShape3D.new()
 	query_params.shape.radius = attack_radius
@@ -29,6 +29,8 @@ func fire():
 		super()
 		
 func has_los(collider: Node3D) -> bool:
+	print("has los?")
+
 	los_raycast.enabled = true
 	los_raycast.target_position = los_raycast.to_local(collider.global_position + Vector3.UP)
 	los_raycast.force_raycast_update()
