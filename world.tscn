@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cr774sksons2f"]
+[gd_scene load_steps=13 format=3 uid="uid://cr774sksons2f"]
 
 [ext_resource type="PackedScene" uid="uid://dovc0methr37k" path="res://environment/rock_boulder.tscn" id="1_icxn4"]
 [ext_resource type="PackedScene" uid="uid://dmr124nsouefn" path="res://characters/player/player.tscn" id="1_udsn1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://vn1bwbqig364" path="res://environment/rock_pillar.tscn" id="3_2ngro"]
 [ext_resource type="PackedScene" uid="uid://d2x8tg0dnc24d" path="res://environment/sand.tscn" id="4_6vxsd"]
 [ext_resource type="Script" path="res://characters/health_manager.gd" id="6_720uw"]
+[ext_resource type="PackedScene" uid="uid://bmjn4e75mnrrd" path="res://characters/enemies/bird_monster/bird_monster.tscn" id="7_3bt0s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l5qe5"]
 
@@ -75,3 +76,6 @@ shape = SubResource("SphereShape3D_b10t3")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestTarget"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -202.331, -85.39, 139.26)
 mesh = SubResource("SphereMesh_qag7j")
+
+[node name="BirdMonster" parent="." instance=ExtResource("7_3bt0s")]
+transform = Transform3D(-0.987394, 0, -0.158279, 0, 1, 0, 0.158279, 0, -0.987394, 4.02308, 0.242086, -37.8777)

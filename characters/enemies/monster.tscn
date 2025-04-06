@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://baunwjraq3t4g"]
+[gd_scene load_steps=4 format=3 uid="uid://baunwjraq3t4g"]
 
 [ext_resource type="PackedScene" uid="uid://bih2mq0xv62mg" path="res://characters/health_manager.tscn" id="1_lkcat"]
+[ext_resource type="Script" path="res://characters/enemies/monster.gd" id="1_t5oy3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_owrno"]
+height = 1.99015
 
 [node name="Monster" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 3
+script = ExtResource("1_t5oy3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989289, 0)
