@@ -1,15 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://baunwjraq3t4g"]
+[gd_scene load_steps=7 format=3 uid="uid://baunwjraq3t4g"]
 
 [ext_resource type="PackedScene" uid="uid://bih2mq0xv62mg" path="res://characters/health_manager.tscn" id="1_lkcat"]
 [ext_resource type="Script" path="res://characters/enemies/monster.gd" id="1_t5oy3"]
+[ext_resource type="PackedScene" uid="uid://beos0b87148d4" path="res://characters/enemies/ai_character_mover.tscn" id="2_k8fmq"]
+[ext_resource type="PackedScene" uid="uid://dqsdlpbseqxg0" path="res://characters/vision_manager.tscn" id="3_3oktt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_owrno"]
 height = 1.99015
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sahc0"]
+radius = 15.0
 
 [node name="Monster" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_t5oy3")
+
+[node name="AICharacterMover" parent="." instance=ExtResource("2_k8fmq")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989289, 0)
@@ -18,3 +25,14 @@ shape = SubResource("CapsuleShape3D_owrno")
 [node name="Graphics" type="Node3D" parent="."]
 
 [node name="HealthManager" parent="." instance=ExtResource("1_lkcat")]
+
+[node name="VisionManager" parent="." instance=ExtResource("3_3oktt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71643, 0)
+
+[node name="NearByMonsterAlertArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NearByMonsterAlertArea"]
+shape = SubResource("SphereShape3D_sahc0")
