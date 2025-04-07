@@ -6,6 +6,12 @@ class_name Monster extends CharacterBody3D
 @onready var near_by_monster_alert_area: Area3D = $NearByMonsterAlertArea
 @onready var ai_character_mover: Node3D = $AICharacterMover
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var attack_emitter: BulletEmitter = $AttackEmitter
+
+@export var attack_range = 2.0
+@export var damage = 15
+
+@export var attack_speed_modifier = 1.0
 
 enum STATES {IDLE, ATTACK, DEAD}
 var cur_state = STATES.IDLE
@@ -16,6 +22,9 @@ func _ready() -> void:
 		hitbox.on_hurt.connect(health_manager.hurt)
 		
 	health_manager.died.connect(set_state.bind(STATES.DEAD))
+	hitboxes.append(self)
+	attack_emitter.set_bodies_to_exclude(hitboxes)
+	attack_emitter.set_damage(damage)
 	set_state(STATES.IDLE)
 
 func hurt(damage_data: DamageData):
@@ -54,11 +63,27 @@ func _process(delta: float) -> void:
 			process_attack_state(delta)
 			
 func process_idle_state(delta):
-	if vision_manager.can_see_player():
+	if vision_manager.can_see_target(player):
 		alert()
 	
 func process_attack_state(delta):
-	ai_character_mover.set_facing_dir(player.global_position - global_position)
-	ai_character_mover.move_to_point(player.global_position)
-	animation_player.play("walk", -1, 2.0)
+	var attacking = animation_player.current_animation == "attack"
+	var vec_to_player = player.global_position - global_position
+	
+	if vec_to_player.length() <= attack_range:
+		ai_character_mover.stop_moving()
+		if !attacking and vision_manager.is_facing_target(player):
+			start_attack()
+		elif !attacking:
+			ai_character_mover.set_facing_dir(vec_to_player)
+	elif !attacking:		
+		ai_character_mover.set_facing_dir(ai_character_mover.move_dir)
+		ai_character_mover.move_to_point(player.global_position)
+		animation_player.play("walk", -1, 2.0)
+	
+func start_attack():
+	animation_player.play("attack", -1, attack_speed_modifier)
+		
+func do_attack(): # called from animation
+	attack_emitter.fire()
 		

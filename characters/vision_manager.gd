@@ -7,8 +7,8 @@ class_name VisionManager extends Node3D
 
 @onready var los_ray_cast_3d: RayCast3D = $LOSRayCast3D
 
-func can_see_player():
-	var target_pos = player.global_position + Vector3.UP * 1.5
+func can_see_target(target: Node3D):
+	var target_pos = target.global_position + Vector3.UP * 1.5
 	var dir_to_target = global_position.direction_to(target_pos)
 	var dist_to_target = global_position.distance_to(target_pos)
 	var fwd = -global_transform.basis.z
@@ -29,3 +29,7 @@ func can_see_player():
 	los_ray_cast_3d.enabled = false
 	
 	return has_los
+
+func is_facing_target(target: Node3D):
+	var pos = to_local(target.global_position)
+	return pos.z < 0.0 and abs(pos.x) < 0.5

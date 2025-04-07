@@ -1,11 +1,13 @@
 extends BulletEmitter
 
 const PROJECTILES = [
-	preload("res://weapons/projectiles/rocket.tscn")
+	preload("res://weapons/projectiles/rocket.tscn"),
+	preload("res://weapons/projectiles/fireball.tscn")
 ]
 
 enum PROJECTILE_TYPE {
 	ROCKET,
+	FIREBALL
 }
 @export var projectile_type : PROJECTILE_TYPE
 

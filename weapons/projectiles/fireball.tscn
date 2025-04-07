@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://belecngjup6u0"]
+
+[ext_resource type="PackedScene" uid="uid://br60hpqqos8m4" path="res://weapons/projectiles/projectile.tscn" id="1_i6fwn"]
+[ext_resource type="Texture2D" uid="uid://denfodslygf5" path="res://weapons/projectiles/assets/fire_spritesheet.png" id="2_b6gi4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys560"]
+atlas = ExtResource("2_b6gi4")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtea8"]
+atlas = ExtResource("2_b6gi4")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krino"]
+atlas = ExtResource("2_b6gi4")
+region = Rect2(0, 42, 42, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wugaf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys560")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtea8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krino")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtea8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66rnx"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="Gradient" id="Gradient_nrrfb"]
+offsets = PackedFloat32Array(0.581818, 0.981818)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.0156863)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2pvtl"]
+gradient = SubResource("Gradient_nrrfb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bgrjx"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.4
+angle_min = 1.07288e-05
+angle_max = 811.5
+angular_velocity_min = -10.0
+angular_velocity_max = 9.99998
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.4
+scale_max = 0.7
+color = Color(0.27451, 0.27451, 0.27451, 0.372549)
+color_ramp = SubResource("GradientTexture1D_2pvtl")
+
+[sub_resource type="SphereMesh" id="SphereMesh_3oj13"]
+radial_segments = 7
+rings = 3
+
+[node name="Fireball" instance=ExtResource("1_i6fwn")]
+delete_on_hit_after_time = 2.0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Graphics" index="0"]
+pixel_size = 0.03
+billboard = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_wugaf")
+autoplay = "default"
+frame_progress = 0.0211048
+
+[node name="ExplosionSmokeParticles" type="GPUParticles3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00726604, 0.00912023, -0.00379753)
+material_override = SubResource("StandardMaterial3D_66rnx")
+emitting = false
+amount = 5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_bgrjx")
+draw_pass_1 = SubResource("SphereMesh_3oj13")
+
+[connection signal="hit_something" from="." to="ExplosionSmokeParticles" method="restart"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://baunwjraq3t4g"]
+[gd_scene load_steps=8 format=3 uid="uid://baunwjraq3t4g"]
 
 [ext_resource type="PackedScene" uid="uid://bih2mq0xv62mg" path="res://characters/health_manager.tscn" id="1_lkcat"]
 [ext_resource type="Script" path="res://characters/enemies/monster.gd" id="1_t5oy3"]
 [ext_resource type="PackedScene" uid="uid://beos0b87148d4" path="res://characters/enemies/ai_character_mover.tscn" id="2_k8fmq"]
 [ext_resource type="PackedScene" uid="uid://dqsdlpbseqxg0" path="res://characters/vision_manager.tscn" id="3_3oktt"]
+[ext_resource type="PackedScene" uid="uid://bcg51se7tsgyl" path="res://weapons/bullet_emitters/bullet_emitter.tscn" id="5_xut86"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_owrno"]
 height = 1.99015
@@ -36,3 +37,6 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NearByMonsterAlertArea"]
 shape = SubResource("SphereShape3D_sahc0")
+
+[node name="AttackEmitter" parent="." instance=ExtResource("5_xut86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14081, -0.985655)

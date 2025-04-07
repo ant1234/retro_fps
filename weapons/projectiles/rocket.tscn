@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cxdhrgpf6lgu2"]
+[gd_scene load_steps=27 format=3 uid="uid://cxdhrgpf6lgu2"]
 
 [ext_resource type="PackedScene" uid="uid://br60hpqqos8m4" path="res://weapons/projectiles/projectile.tscn" id="1_5ypuv"]
 [ext_resource type="Script" path="res://weapons/projectiles/rocket.gd" id="2_iiall"]
@@ -48,12 +48,12 @@ _data = {
 transparency = 1
 vertex_color_use_as_albedo = true
 
-[sub_resource type="Gradient" id="Gradient_awuoc"]
+[sub_resource type="Gradient" id="Gradient_nrrfb"]
 offsets = PackedFloat32Array(0.581818, 0.981818)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.0156863)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_2pvtl"]
-gradient = SubResource("Gradient_awuoc")
+gradient = SubResource("Gradient_nrrfb")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uhqm4"]
 particle_flag_rotate_y = true
@@ -130,6 +130,13 @@ scale_max = 0.1
 
 [sub_resource type="QuadMesh" id="QuadMesh_paynh"]
 
+[sub_resource type="Gradient" id="Gradient_awuoc"]
+offsets = PackedFloat32Array(0.581818, 0.981818)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.0156863)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cll0r"]
+gradient = SubResource("Gradient_awuoc")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xjeyh"]
 particle_flag_rotate_y = true
 emission_shape = 1
@@ -142,7 +149,7 @@ gravity = Vector3(0, 0.1, 0)
 scale_min = 3.0
 scale_max = 4.0
 color = Color(0.27451, 0.27451, 0.27451, 0.372549)
-color_ramp = SubResource("GradientTexture1D_2pvtl")
+color_ramp = SubResource("GradientTexture1D_cll0r")
 
 [node name="Rocket" instance=ExtResource("1_5ypuv")]
 script = ExtResource("2_iiall")

@@ -15,7 +15,11 @@ func fire():
 	if offset_by_radius:
 		tr.origin = to_global(Vector3.FORWARD * attack_radius)
 	query_params.transform = tr 
-	query_params.exclude = bodies_to_exclude
+	
+	var exclude : Array[RID]
+	for body in bodies_to_exclude:
+		exclude.append(body.get_rid())
+	query_params.exclude = exclude
 	
 	var intersect_results : Array[Dictionary] = get_world_3d().direct_space_state.intersect_shape(query_params)
 	for intersect_data in intersect_results:

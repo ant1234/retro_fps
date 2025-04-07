@@ -13,6 +13,8 @@ var damage = 1
 
 var last_pos : Vector3
 
+signal hit_something
+
 func _ready():
 	hide()
 	await get_tree().create_timer(show_after_time).timeout
@@ -49,6 +51,7 @@ func check_collisions():
 		
 func on_hit(hit_collider: Node3D, hit_pos: Vector3, hit_normal: Vector3):
 	global_position = hit_pos
+	hit_something.emit()
 	if hit_collider.has_method("hurt"):
 		damage_target(hit_collider, hit_pos, hit_normal)
 	destroy()
