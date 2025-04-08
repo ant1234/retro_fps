@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://clnhtq25g7rp4"]
+
+[ext_resource type="Texture2D" uid="uid://becusannt58aj" path="res://pickups/assets/rocket_texture.png" id="1_02oc4"]
+
+[resource]
+resource_name = "RocketMaterial"
+albedo_texture = ExtResource("1_02oc4")
+texture_filter = 2

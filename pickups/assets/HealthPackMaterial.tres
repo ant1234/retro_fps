@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ctcoliepqfs57"]
+
+[ext_resource type="Texture2D" uid="uid://b1umq6x64ixlj" path="res://pickups/assets/healthpack_texture.png" id="1_1aoog"]
+
+[resource]
+resource_name = "HealthPackMaterial"
+albedo_texture = ExtResource("1_1aoog")
+texture_filter = 2

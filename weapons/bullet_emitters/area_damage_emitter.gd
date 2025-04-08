@@ -9,7 +9,7 @@ func fire():
 	var query_params := PhysicsShapeQueryParameters3D.new()
 	query_params.shape = SphereShape3D.new()
 	query_params.shape.radius = attack_radius
-	query_params.collision_mask = 2
+	query_params.collision_mask = 2 + 8
 	
 	var tr = global_transform
 	if offset_by_radius:

@@ -22,6 +22,7 @@ func _ready() -> void:
 		hitbox.on_hurt.connect(health_manager.hurt)
 		
 	health_manager.died.connect(set_state.bind(STATES.DEAD))
+	health_manager.gibbed.connect(queue_free)
 	hitboxes.append(self)
 	attack_emitter.set_bodies_to_exclude(hitboxes)
 	attack_emitter.set_damage(damage)
@@ -62,11 +63,11 @@ func _process(delta: float) -> void:
 		STATES.ATTACK:
 			process_attack_state(delta)
 			
-func process_idle_state(delta):
+func process_idle_state(_delta):
 	if vision_manager.can_see_target(player):
 		alert()
 	
-func process_attack_state(delta):
+func process_attack_state(_delta):
 	var attacking = animation_player.current_animation == "attack"
 	var vec_to_player = player.global_position - global_position
 	

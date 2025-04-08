@@ -3,4 +3,9 @@
 [ext_resource type="Script" path="res://characters/health_manager.gd" id="1_6mymp"]
 
 [node name="HealthManager" type="Node3D"]
+transform = Transform3D(0.999758, 0, 0, 0, 0.999758, 0, 0, 0, 0.999758, 0, 0, 0)
 script = ExtResource("1_6mymp")
+gib_spawn_amount = 25
+
+[node name="BloodRaycast" type="RayCast3D" parent="."]
+enabled = false

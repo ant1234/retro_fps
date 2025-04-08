@@ -505,6 +505,7 @@ enabled = false
 [node name="CharacterMover" parent="." instance=ExtResource("2_vmsa5")]
 
 [node name="HealthManager" parent="." instance=ExtResource("3_if7g2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16972, 0)
 max_health = 98
 
 [connection signal="moved" from="CharacterMover" to="Camera3D/WeaponManager" method="update_animation"]

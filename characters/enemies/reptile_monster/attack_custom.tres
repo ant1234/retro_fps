@@ -80,17 +80,3 @@ tracks/10/path = NodePath("Armature/Skeleton3D:lowerleg.r")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = PackedFloat32Array(0, 1, -0.189951, -0.00372252, 0.0376172, 0.981066)
-tracks/11/type = "method"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../..")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"do_attack"
-}]
-}
