@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5victy50h20v"]
+
+[ext_resource type="PackedScene" uid="uid://ccpm3mygm2obc" path="res://pickups/pickup.tscn" id="1_xiowx"]
+[ext_resource type="PackedScene" uid="uid://bgf4yjohrhy74" path="res://weapons/assets/rocketlauncher.glb" id="2_rukin"]
+
+[node name="RocketLauncherPickup" instance=ExtResource("1_xiowx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.238798)
+pickup_type = 1
+weapon_type = 2
+pickup_amnt = 10
+
+[node name="rocketlauncher" parent="Graphics" index="0" instance=ExtResource("2_rukin")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

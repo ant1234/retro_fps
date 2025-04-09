@@ -41,9 +41,9 @@ bones/2/rotation = Quaternion(0.034091, 0.141423, 0.90731, -0.394494)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(0.125918, -0.0713783, -0.146448, 0.978572)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.251412, 0.423755, 0.865098, -0.0939689)
+bones/4/rotation = Quaternion(-0.251412, 0.423755, 0.865098, -0.0939688)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.000968693, 0.00290092, 0.389404, 0.921062)
+bones/5/rotation = Quaternion(0.000968692, 0.00290092, 0.389404, 0.921062)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.328428, 0.154728, 0.931432, -0.0250929)
 bones/6/scale = Vector3(0.999975, 1, 1)
@@ -82,7 +82,7 @@ transform = Transform3D(0.997289, 0.0685713, 0.0266803, -0.0682466, 0.997585, -0
 shape = SubResource("CapsuleShape3D_wrvew")
 
 [node name="LowerArmL" type="BoneAttachment3D" parent="Graphics/birdmonster/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.941956, 0.334811, -0.0248925, -0.335459, -0.941598, 0.0293201, -0.013622, 0.0359689, 0.99926, 0.495263, 1.08815, 0.102183)
+transform = Transform3D(-0.941956, 0.334811, -0.0248925, -0.335459, -0.941598, 0.0293203, -0.013622, 0.0359688, 0.99926, 0.495263, 1.08815, 0.102183)
 bone_name = "lower_arm.l"
 bone_idx = 3
 
@@ -105,7 +105,7 @@ transform = Transform3D(0.929294, 0.356153, 0.0978051, -0.338057, 0.713566, 0.61
 shape = SubResource("CapsuleShape3D_x0xvl")
 
 [node name="LowerArmR" type="BoneAttachment3D" parent="Graphics/birdmonster/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.747165, 0.518291, -0.416076, -0.660936, -0.64539, 0.38293, -0.0700627, 0.561111, 0.82477, -0.189071, 1.079, 0.352268)
+transform = Transform3D(-0.747165, 0.518291, -0.416076, -0.660936, -0.64539, 0.38293, -0.0700628, 0.561111, 0.82477, -0.189071, 1.079, 0.352268)
 bone_name = "lower_arm.r"
 bone_idx = 5
 
@@ -128,7 +128,7 @@ transform = Transform3D(0.947111, -0.29578, -0.124468, 0.307528, 0.725778, 0.615
 shape = SubResource("CapsuleShape3D_x0xvl")
 
 [node name="UpperArmR" type="BoneAttachment3D" parent="Graphics/birdmonster/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.894879, -0.175058, -0.410544, 0.00480755, -0.923592, 0.383346, -0.446283, 0.341075, 0.827345, -0.113449, 1.47797, 0.20493)
+transform = Transform3D(-0.894879, -0.175058, -0.410544, 0.00480761, -0.923592, 0.383346, -0.446283, 0.341075, 0.827345, -0.113449, 1.47797, 0.20493)
 bone_name = "upper_arm.r"
 bone_idx = 4
 

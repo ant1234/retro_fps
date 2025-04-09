@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cr774sksons2f"]
+[gd_scene load_steps=22 format=3 uid="uid://cr774sksons2f"]
 
 [ext_resource type="PackedScene" uid="uid://dovc0methr37k" path="res://environment/rock_boulder.tscn" id="1_icxn4"]
 [ext_resource type="PackedScene" uid="uid://dmr124nsouefn" path="res://characters/player/player.tscn" id="1_udsn1"]
@@ -8,10 +8,13 @@
 [ext_resource type="Script" path="res://characters/health_manager.gd" id="6_720uw"]
 [ext_resource type="PackedScene" uid="uid://bmjn4e75mnrrd" path="res://characters/enemies/bird_monster/bird_monster.tscn" id="7_3bt0s"]
 [ext_resource type="PackedScene" uid="uid://b8r6odxwtmy0r" path="res://characters/enemies/reptile_monster/reptile_monster.tscn" id="8_4e18j"]
-[ext_resource type="PackedScene" uid="uid://5rj7u1ent5kv" path="res://pickups/assets/health_pack.glb" id="9_qx047"]
-[ext_resource type="PackedScene" uid="uid://do2mbg3vdqall" path="res://pickups/assets/mg_ammo.glb" id="10_wus7b"]
-[ext_resource type="PackedScene" uid="uid://b4no13reh7swh" path="res://pickups/assets/rocket.glb" id="11_w20rj"]
-[ext_resource type="PackedScene" uid="uid://dhm51tboao050" path="res://pickups/assets/sg_ammo.glb" id="12_ychub"]
+[ext_resource type="PackedScene" uid="uid://b2nskjbpdrwmj" path="res://pickups/health_pickup.tscn" id="9_dagfk"]
+[ext_resource type="PackedScene" uid="uid://b6tc3pmbmyvgl" path="res://pickups/machine_gun_pickup.tscn" id="10_o53sc"]
+[ext_resource type="PackedScene" uid="uid://bmx63y544ngt3" path="res://pickups/machine_gun_ammo_pickup.tscn" id="11_rqwe0"]
+[ext_resource type="PackedScene" uid="uid://bx5pe18p1dhde" path="res://pickups/rocket_launcher_ammo_pickup.tscn" id="12_bxy8o"]
+[ext_resource type="PackedScene" uid="uid://b5victy50h20v" path="res://pickups/rocket_launcher_pickup.tscn" id="13_p4lbr"]
+[ext_resource type="PackedScene" uid="uid://bxcgtn35072w" path="res://pickups/shotgun_ammo_pickup.tscn" id="14_5jgut"]
+[ext_resource type="PackedScene" uid="uid://b5g5bp0frrqif" path="res://pickups/shotgun_pickup.tscn" id="15_5cnxw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_3a2pe"]
 vertices = PackedVector3Array(24, 0.595484, -26.814, 29.5, 0.345484, -26.814, 29.5, 0.345484, -51.064, -9.5, 0.345484, -25.314, 23.75, 0.845484, -25.064, 19.6304, 0.845484, -26.6183, 9.43478, 0.345484, -26.1618, -0.76087, 0.845484, -25.7053, 0.619565, 1.09548, -25.2379, 9.29348, 0.345484, -25.1727, 13.6304, 0.345484, -25.1401, 19.413, 1.09548, -25.0966, -9.5, 0.345484, -51.064, 0.501266, 1.09548, -44.0854, 6.51218, 0.345484, -39.5503, 20.0064, 1.09548, -44.0425, 9.51134, 0.345484, -44.0694, 19.9887, 0.345484, -32.077, -1.00148, 0.345484, -32.0808, 20.0229, 1.09548, -36.5851, 21.5184, 0.345484, -33.5687, 0.512424, 1.09548, -38.0806, -4.01936, 0.345484, -47.0567, 3.481, 0.845484, -45.5771, -4.01348, 0.845484, -42.5546, 13.9775, 0.345484, -38.0817, -5.47762, 0.345484, -38.0745, 9.49575, 0.345484, -47.0578, 15.5111, 0.345484, -45.5392, 15.482, 0.845484, -41.0481, -5.47907, 0.345484, -45.543, 18.4931, 0.845484, -35.0433, 15.4837, 0.345484, -32.0599, 0.522978, 0.845484, -35.0752, 2.01327, 0.345484, -33.5615, 24.75, 29.8455, -22.814, 24.75, 29.0955, -21.314, 29.25, 28.3455, -21.314, 29.25, 28.5955, -23.814, 28.5, 28.5955, -26.064, 25, 29.0955, -26.064, 24.8333, 29.8455, -23.8973, 27, 29.3455, -21.314, 27.48, 29.5955, -23.056, 25.25, 0.595484, -25.564, 24.75, 0.595484, -23.564, 25, 0.595484, -21.314, 29.5, 0.345484, -21.314, 29.25, 0.345484, -25.564, -9.5, 0.345484, -4.814, -4, 0.595484, -4.814, -3.25, 0.595484, -8.314, 4, 0.845484, -5.814, 3.75, 0.845484, -3.064, 14.25, 0.595484, -2.814, 9, 0.345484, -2.939, 14.75, 0.595484, -4.064, 3.5, 0.595484, -7.814, -0.75, 0.595484, -8.814, 2, 0.595484, -8.564, 23.5, 0.845484, -21.564, 19.125, 0.345484, -12.814, 5.01074, 0.345484, -18.5688, 0.510495, 1.09548, -20.0885, 20.0109, 1.09548, -18.5589, 14.0208, 0.345484, -18.5529, 1.98124, 0.345484, -14.0573, -1.01912, 0.845484, -17.0869, 0.501387, 0.345484, -12.5755, -0.993938, 0.845484, -15.5721, 15.5152, 0.845484, -23.0852, 29.25, 0.345484, -5.814, 29.5, 0.345484, -19.814, 26.75, 0.345484, -19.564, 25.25, 0.595484, -6.064, 24, 0.595484, -20.064, 20, 1.09548, -5.064, -2.5, 4.84548, -5.814, -2.5, 4.84548, -2.314, -1.75, 4.84548, -2.064, 2.25, 4.59548, -2.564, 2.5, 4.84548, -4.564, 2.25, 5.34548, -7.314, -2.25, 5.09548, -7.314, -0.25, 1.09548, -2.064, 2.25, 0.845484, -2.814, 2.5, 0.845484, -3.564, 2.25, 0.845484, -6.814, 1.75, 0.845484, -7.064, -2.5, 0.845484, -5.564, -2.25, 0.845484, -2.564, -1.75, 0.595484, -7.064, 0.510013, 1.09548, -5.07801, -3.5, 0.845484, -1.564, -0.5, 0.345484, 5.936, -0.5, 1.09548, -0.813999, -3, 0.845484, -1.064, -1.5, 0.845484, 3.136, -9.5, 0.345484, 5.936, -5.4949, 0.345484, 0.948898, 14.5, 0.345484, 1.686, 14, 0.345484, 5.936, 14, 0.345484, 6.686, 15.75, 0.845484, -2.814, 29.25, 0.345484, 6.686, 29.25, 0.345484, -4.314, 27.5, 0.595484, -4.814, 21.625, 1.09548, -3.814, 19.9752, 1.09548, 0.930744, 24.4803, 0.345484, 0.913704, 24.5105, 0.345484, 3.91147, 20.0055, 0.845484, 3.92851, 16.25, 29.5955, 12.686, 16.25, 28.8455, 20.436, 27.25, 29.3455, 19.436, 17.75, 28.8455, -3.064, 16.5, 29.8455, 6.436, 16.7955, 29.8455, 6.95873, 36.5, 28.0955, 20.686, 39, 28.3455, 8.436, 32.5, 28.5955, -3.064, 26.6, 29.0955, -3.064, 25.981, 29.8455, 8.42293, 9.75, 0.345484, 5.936, 10, 0.345484, 6.686, 12.25, 0.345484, 6.686, 12.75, 0.345484, 2.436, 3, 0.845484, -1.314, 4.92857, 0.345484, 0.757431, 0.475, 1.09548, 0.910999)
@@ -97,14 +100,26 @@ transform = Transform3D(-0.987394, 0, -0.158279, 0, 1, 0, 0.158279, 0, -0.987394
 [node name="ReptileMonster" parent="." instance=ExtResource("8_4e18j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8361, 0, -25.9791)
 
-[node name="health_pack" parent="." instance=ExtResource("9_qx047")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.57719, 0.332928, 0.802952)
+[node name="Pickups" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78823, 0, -10.7005)
 
-[node name="mg_ammo" parent="." instance=ExtResource("10_wus7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7166, 0.0430861, 0.365602)
+[node name="HealthPickup" parent="Pickups" instance=ExtResource("9_dagfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.63827)
 
-[node name="rocket" parent="." instance=ExtResource("11_w20rj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.57719, 0.0641508, 3.86162)
+[node name="MachineGunPickup" parent="Pickups" instance=ExtResource("10_o53sc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.56194, 0, 0)
 
-[node name="sg_ammo" parent="." instance=ExtResource("12_ychub")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.20618, 0, 0)
+[node name="MachineGunAmmoPickup" parent="Pickups" instance=ExtResource("11_rqwe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.02265)
+
+[node name="RocketLauncherAmmoPickup" parent="Pickups" instance=ExtResource("12_bxy8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5613)
+
+[node name="RocketLauncherPickup" parent="Pickups" instance=ExtResource("13_p4lbr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.99133, 0, -0.238798)
+
+[node name="ShotgunAmmoPickup" parent="Pickups" instance=ExtResource("14_5jgut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.49587, 0, 11.7948)
+
+[node name="ShotgunPickup" parent="Pickups" instance=ExtResource("15_5cnxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1656, 0, 4.70205)

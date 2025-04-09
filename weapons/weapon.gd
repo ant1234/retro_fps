@@ -9,7 +9,7 @@ class_name Weapon
 @export var automatic = false
 
 @export var damage = 5
-@export var ammo = 30
+@export var ammo = 0
 
 @export var attack_rate = 0.2
 var last_attack_time = -9999.9
@@ -19,6 +19,7 @@ var last_attack_time = -9999.9
 
 signal fired
 signal out_of_ammo
+signal ammo_updated(add_ammo: int)
 
 func _ready() -> void:
 	bullet_emitter.set_damage(damage)
@@ -36,6 +37,8 @@ func attack(input_just_pressed: bool, input_held: bool):
 	if ammo == 0:
 		if input_just_pressed:
 			out_of_ammo.emit()
+			if has_node("OutOfAmmo"):
+				$OutOfAmmo.play()
 		return
 		
 	var cur_time = Time.get_ticks_msec() / 1000.0
@@ -52,6 +55,8 @@ func attack(input_just_pressed: bool, input_held: bool):
 	animation_player.stop()
 	animation_player.play("attack")
 	fired.emit()
+	$AttackSounds.play()
+	ammo_updated.emit(ammo)
 	if has_node("Graphics/MuzzleFlash"):
 		$Graphics/MuzzleFlash.flash()
 	
@@ -64,6 +69,13 @@ func set_active(a: bool):
 	visible = a
 	if !a:
 		animation_player.play("RESET")
+	else:
+		$EquipSound.play()
+		ammo_updated.emit(ammo)
 		
 func is_idle() -> bool:
 	return !animation_player.is_playing()
+	
+func add_ammo(amnt: int):
+	ammo += amnt
+	ammo_updated.emit(ammo)

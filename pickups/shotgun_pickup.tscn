@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5g5bp0frrqif"]
+
+[ext_resource type="PackedScene" uid="uid://ccpm3mygm2obc" path="res://pickups/pickup.tscn" id="1_f15aw"]
+[ext_resource type="PackedScene" uid="uid://pbfjlmyncwxu" path="res://weapons/assets/shotgun.glb" id="2_ru72c"]
+
+[node name="ShotgunPickup" instance=ExtResource("1_f15aw")]
+pickup_type = 1
+weapon_type = 1
+
+[node name="shotgun" parent="Graphics" index="0" instance=ExtResource("2_ru72c")]
+transform = Transform3D(0.606162, 0, 0, 0, 0.606162, 0, 0, 0, 0.525955, 0, 0, 0.298983)

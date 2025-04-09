@@ -28,20 +28,23 @@ attack_speed_modifier = 0.5
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Graphics/reptilemonster/Armature" index="0"]
+bones/0/position = Vector3(2.84689e-18, 0.948998, -0.0952437)
+bones/0/rotation = Quaternion(0.103264, 0, 0, 0.994654)
 bones/1/rotation = Quaternion(-0.0508511, -1.19055e-07, 6.06192e-09, 0.998706)
 bones/2/rotation = Quaternion(-0.0159527, 0.0119727, 0.940191, -0.340064)
+bones/3/rotation = Quaternion(0.341651, -0.0318196, -0.072225, 0.936507)
 bones/4/rotation = Quaternion(0.015953, 0.0119728, 0.940191, 0.340064)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/rotation = Quaternion(0.341651, 0.0318196, 0.072225, 0.936507)
-bones/6/rotation = Quaternion(0.109395, 0.216951, 0.969592, -0.0292533)
+bones/6/rotation = Quaternion(0.109396, 0.21695, 0.969592, -0.0292543)
 bones/6/scale = Vector3(0.999999, 1, 0.999998)
-bones/7/rotation = Quaternion(-0.189951, 0.00372251, -0.0376172, 0.981066)
-bones/8/rotation = Quaternion(-0.109396, 0.216951, 0.969592, 0.0292538)
+bones/7/rotation = Quaternion(-0.189951, 0.00372252, -0.0376172, 0.981066)
+bones/8/rotation = Quaternion(-0.109396, 0.21695, 0.969592, 0.0292543)
 bones/8/scale = Vector3(0.999999, 1, 0.999998)
-bones/9/rotation = Quaternion(-0.189951, -0.00372251, 0.0376172, 0.981066)
+bones/9/rotation = Quaternion(-0.189951, -0.00372252, 0.0376172, 0.981066)
 
 [node name="Body" type="BoneAttachment3D" parent="Graphics/reptilemonster/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 4.44089e-15, -2.38419e-07, -2.50239e-08, 0.994477, -0.104958, 2.37102e-07, 0.104958, 0.994477, 2.84689e-18, 1.20205, -0.042127)
+transform = Transform3D(1, 6.21725e-15, -2.38419e-07, -2.50237e-08, 0.994477, -0.104957, 2.37102e-07, 0.104957, 0.994477, 2.84689e-18, 1.20205, -0.0421273)
 bone_name = "body"
 bone_idx = 1
 
@@ -59,7 +62,7 @@ transform = Transform3D(1, 5.6118e-08, -1.50855e-09, -5.49299e-08, 0.972623, -0.
 shape = SubResource("BoxShape3D_o33u3")
 
 [node name="UpperArmL" type="BoneAttachment3D" parent="Graphics/reptilemonster/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.768204, 0.639068, -0.0381404, -0.634004, -0.767684, -0.0932755, -0.0888891, -0.0474735, 0.99491, 0.218738, 1.59086, 0.0117653)
+transform = Transform3D(-0.768204, 0.639068, -0.0381404, -0.634004, -0.767684, -0.0932746, -0.0888885, -0.0474728, 0.99491, 0.218738, 1.59086, 0.0117646)
 bone_name = "upper_arm.l"
 bone_idx = 2
 
@@ -70,7 +73,7 @@ transform = Transform3D(0.994739, -0.0715755, 0.0732786, 0.0764883, 0.994844, -0
 shape = SubResource("CapsuleShape3D_4lh7p")
 
 [node name="UpperArmR" type="BoneAttachment3D" parent="Graphics/reptilemonster/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.768204, -0.639068, 0.0381405, 0.634004, -0.767684, -0.0932755, 0.0888892, -0.0474734, 0.99491, -0.218738, 1.59086, 0.0117653)
+transform = Transform3D(-0.768204, -0.639068, 0.0381405, 0.634004, -0.767684, -0.0932746, 0.0888887, -0.0474727, 0.99491, -0.218738, 1.59086, 0.0117646)
 bone_name = "upper_arm.r"
 bone_idx = 4
 
@@ -81,7 +84,7 @@ transform = Transform3D(0.993822, 0.0857337, 0.0704791, -0.0812724, 0.994642, -0
 shape = SubResource("CapsuleShape3D_4lh7p")
 
 [node name="LowerArmR" type="BoneAttachment3D" parent="Graphics/reptilemonster/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.859371, -0.371409, 0.351477, 0.506519, -0.712558, 0.485489, 0.0701326, 0.595245, 0.800478, -0.43137, 1.33543, -0.00403017)
+transform = Transform3D(-0.859372, -0.371409, 0.351477, 0.506519, -0.712557, 0.48549, 0.0701322, 0.595246, 0.800477, -0.43137, 1.33543, -0.00403058)
 bone_name = "lower_arm.r"
 bone_idx = 5
 
@@ -92,7 +95,7 @@ transform = Transform3D(0.993822, 0.0857336, 0.0704791, -0.0812722, 0.994642, -0
 shape = SubResource("CapsuleShape3D_4lh7p")
 
 [node name="LowerArmL" type="BoneAttachment3D" parent="Graphics/reptilemonster/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.859371, 0.371408, -0.351477, -0.506519, -0.712557, 0.485489, -0.0701326, 0.595246, 0.800477, 0.43137, 1.33543, -0.00403018)
+transform = Transform3D(-0.859371, 0.371409, -0.351477, -0.506519, -0.712557, 0.48549, -0.070132, 0.595246, 0.800477, 0.43137, 1.33543, -0.00403059)
 bone_name = "lower_arm.l"
 bone_idx = 3
 
@@ -103,7 +106,7 @@ transform = Transform3D(0.993822, 0.0857336, 0.0704791, -0.0812722, 0.994642, -0
 shape = SubResource("CapsuleShape3D_4lh7p")
 
 [node name="UpperLegL" type="BoneAttachment3D" parent="Graphics/reptilemonster/Armature/Skeleton3D" index="6"]
-transform = Transform3D(-0.974353, 0.104194, 0.199444, -0.055249, -0.969979, 0.236829, 0.218133, 0.219736, 0.950858, 0.123436, 0.961497, 1.56462e-07)
+transform = Transform3D(-0.974352, 0.104196, 0.199445, -0.0552509, -0.969979, 0.236828, 0.218135, 0.219735, 0.950858, 0.123436, 0.961497, 9.68575e-08)
 bone_name = "upper_leg.l"
 bone_idx = 6
 
@@ -114,7 +117,7 @@ transform = Transform3D(0.993813, -0.0931136, 0.0605449, 0.101996, 0.980895, -0.
 shape = SubResource("CapsuleShape3D_4lh7p")
 
 [node name="UpperLegR" type="BoneAttachment3D" parent="Graphics/reptilemonster/Armature/Skeleton3D" index="7"]
-transform = Transform3D(-0.974352, -0.104196, -0.199445, 0.0552499, -0.969979, 0.236829, -0.218135, 0.219736, 0.950857, -0.123436, 0.961497, 1.56462e-07)
+transform = Transform3D(-0.974352, -0.104196, -0.199445, 0.0552509, -0.969979, 0.236828, -0.218135, 0.219735, 0.950858, -0.123436, 0.961497, 9.68575e-08)
 bone_name = "upper_leg.r"
 bone_idx = 8
 
@@ -125,7 +128,7 @@ transform = Transform3D(0.9964, -0.0401032, 0.0746896, 0.0444227, 0.99738, -0.05
 shape = SubResource("CapsuleShape3D_4lh7p")
 
 [node name="LowerLegR" type="BoneAttachment3D" parent="Graphics/reptilemonster/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.978012, 0.048548, -0.202812, -0.0195284, -0.989572, -0.142709, -0.207625, -0.135609, 0.968761, -0.175064, 0.48088, 0.108878)
+transform = Transform3D(-0.978012, 0.0485472, -0.202812, -0.0195274, -0.989572, -0.14271, -0.207625, -0.135611, 0.968761, -0.175064, 0.48088, 0.108877)
 bone_name = "lowerleg.r"
 bone_idx = 9
 
@@ -136,7 +139,7 @@ transform = Transform3D(0.991433, -0.0225687, -0.128652, 0.00510929, 0.990906, -
 shape = SubResource("CapsuleShape3D_4lh7p")
 
 [node name="LowerLegL" type="BoneAttachment3D" parent="Graphics/reptilemonster/Armature/Skeleton3D" index="9"]
-transform = Transform3D(-0.978013, -0.0485487, 0.20281, 0.0195293, -0.989572, -0.142709, 0.207623, -0.13561, 0.968762, 0.175063, 0.48088, 0.108878)
+transform = Transform3D(-0.978012, -0.0485472, 0.202812, 0.0195274, -0.989572, -0.14271, 0.207625, -0.135611, 0.968761, 0.175064, 0.48088, 0.108877)
 bone_name = "lowerleg.l"
 bone_idx = 7
 
@@ -145,6 +148,21 @@ bone_idx = 7
 [node name="CollisionShape3D" parent="Graphics/reptilemonster/Armature/Skeleton3D/LowerLegL/HitBox" index="0"]
 transform = Transform3D(0.991873, -0.00528297, -0.127121, 0.00304644, 0.999837, -0.0177832, 0.127193, 0.0172513, 0.99173, 0.0257349, 0.221073, -0.0333784)
 shape = SubResource("CapsuleShape3D_4lh7p")
+
+[node name="HurtSound2" parent="HealthManager/HurtSound" index="0"]
+pitch_scale = 0.7
+
+[node name="HurtSound3" parent="HealthManager/HurtSound" index="1"]
+pitch_scale = 0.75
+
+[node name="HurtSound4" parent="HealthManager/HurtSound" index="2"]
+pitch_scale = 0.8
+
+[node name="AlertSound" parent="." index="6"]
+pitch_scale = 0.7
+
+[node name="AttackSound" parent="." index="7"]
+pitch_scale = 0.7
 
 [node name="ProjectileEmitter" parent="AttackEmitter" index="0" instance=ExtResource("4_c8m4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.390228)

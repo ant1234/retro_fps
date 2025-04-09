@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxcgtn35072w"]
+
+[ext_resource type="PackedScene" uid="uid://ccpm3mygm2obc" path="res://pickups/pickup.tscn" id="1_6h4gx"]
+[ext_resource type="PackedScene" uid="uid://dhm51tboao050" path="res://pickups/assets/sg_ammo.glb" id="2_fuf14"]
+
+[node name="ShotgunAmmoPickup" instance=ExtResource("1_6h4gx")]
+pickup_type = 2
+weapon_type = 1
+pickup_amnt = 10
+
+[node name="sg_ammo" parent="Graphics" index="0" instance=ExtResource("2_fuf14")]
+transform = Transform3D(1.58276, 0, 0, 0, 1.58276, 0, 0, 0, 1.58276, 0, 0, 0)

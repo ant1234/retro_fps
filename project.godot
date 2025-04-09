@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1600
 window/size/viewport_height=1200
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [filesystem]
 
@@ -28,6 +30,10 @@ import/blender/enabled=false
 
 player=""
 navigation_mesh_source_group=""
+
+[gui]
+
+theme/custom="res://ui/main_theme.tres"
 
 [importer_defaults]
 
@@ -109,6 +115,7 @@ attack={
 3d_physics/layer_2="Characters"
 3d_physics/layer_3="Hitboxes"
 3d_physics/layer_4="Gibs"
+3d_physics/layer_5="Pickups"
 
 [rendering]
 

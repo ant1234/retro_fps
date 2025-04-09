@@ -3,6 +3,7 @@ extends Projectile
 
 func on_hit(hit_collider: Node3D, hit_pos: Vector3, hit_normal: Vector3):
 	super(hit_collider, hit_pos, hit_normal)
+	$ExplosionSound.play()
 	$TrailSmokeParticles.emitting = false
 	area_damage_emitter.damage = damage
 	area_damage_emitter.fire()

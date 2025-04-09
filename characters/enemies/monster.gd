@@ -33,6 +33,7 @@ func hurt(damage_data: DamageData):
 	
 func alert():
 	if cur_state == STATES.IDLE:
+		$AlertSound.play()
 		set_state(STATES.ATTACK)
 		alert_nearby_monsters()
 		
@@ -83,6 +84,7 @@ func process_attack_state(_delta):
 		animation_player.play("walk", -1, 2.0)
 	
 func start_attack():
+	$AttackSound.play()
 	animation_player.play("attack", -1, attack_speed_modifier)
 		
 func do_attack(): # called from animation

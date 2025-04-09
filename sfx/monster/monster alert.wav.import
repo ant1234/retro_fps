@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxixinu6a32ie"
+path="res://.godot/imported/monster alert.wav-49b044b6a6dcacffa27206f53cefc37c.sample"
+
+[deps]
+
+source_file="res://sfx/monster/monster alert.wav"
+dest_files=["res://.godot/imported/monster alert.wav-49b044b6a6dcacffa27206f53cefc37c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

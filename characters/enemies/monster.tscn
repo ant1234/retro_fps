@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://baunwjraq3t4g"]
+[gd_scene load_steps=13 format=3 uid="uid://baunwjraq3t4g"]
 
 [ext_resource type="PackedScene" uid="uid://bih2mq0xv62mg" path="res://characters/health_manager.tscn" id="1_lkcat"]
 [ext_resource type="Script" path="res://characters/enemies/monster.gd" id="1_t5oy3"]
 [ext_resource type="PackedScene" uid="uid://beos0b87148d4" path="res://characters/enemies/ai_character_mover.tscn" id="2_k8fmq"]
 [ext_resource type="PackedScene" uid="uid://dqsdlpbseqxg0" path="res://characters/vision_manager.tscn" id="3_3oktt"]
+[ext_resource type="AudioStream" uid="uid://eqoa0bjosnu7" path="res://sfx/monster/monster hurt.wav" id="4_mj7rq"]
+[ext_resource type="Script" path="res://sfx/play_random_sound.gd" id="5_dyaj0"]
+[ext_resource type="AudioStream" uid="uid://kgjv24f03lp1" path="res://sfx/monster/monster die.wav" id="5_ldf67"]
 [ext_resource type="PackedScene" uid="uid://bcg51se7tsgyl" path="res://weapons/bullet_emitters/bullet_emitter.tscn" id="5_xut86"]
+[ext_resource type="AudioStream" uid="uid://bxixinu6a32ie" path="res://sfx/monster/monster alert.wav" id="8_c2ydo"]
+[ext_resource type="AudioStream" uid="uid://cbflkwaryxpx2" path="res://sfx/monster/monster attack.wav" id="9_kwrs8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_owrno"]
 height = 1.99015
@@ -27,7 +32,28 @@ shape = SubResource("CapsuleShape3D_owrno")
 
 [node name="HealthManager" parent="." instance=ExtResource("1_lkcat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18232, 0)
-max_health = 10
+max_health = 50
+
+[node name="DieSound" type="AudioStreamPlayer3D" parent="HealthManager"]
+stream = ExtResource("5_ldf67")
+bus = &"Sfx"
+
+[node name="HurtSound" type="Node3D" parent="HealthManager"]
+script = ExtResource("5_dyaj0")
+
+[node name="HurtSound2" type="AudioStreamPlayer3D" parent="HealthManager/HurtSound"]
+stream = ExtResource("4_mj7rq")
+pitch_scale = 0.95
+bus = &"Sfx"
+
+[node name="HurtSound3" type="AudioStreamPlayer3D" parent="HealthManager/HurtSound"]
+stream = ExtResource("4_mj7rq")
+pitch_scale = 1.05
+bus = &"Sfx"
+
+[node name="HurtSound4" type="AudioStreamPlayer3D" parent="HealthManager/HurtSound"]
+stream = ExtResource("4_mj7rq")
+bus = &"Sfx"
 
 [node name="VisionManager" parent="." instance=ExtResource("3_3oktt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71643, 0)
@@ -39,6 +65,14 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NearByMonsterAlertArea"]
 shape = SubResource("SphereShape3D_sahc0")
+
+[node name="AlertSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_c2ydo")
+bus = &"Sfx"
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_kwrs8")
+bus = &"Sfx"
 
 [node name="AttackEmitter" parent="." instance=ExtResource("5_xut86")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14081, -0.985655)

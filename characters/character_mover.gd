@@ -24,6 +24,8 @@ func set_move_dir(new_move_dir: Vector3):
 	
 func jump():
 	if character_body.is_on_floor():
+		if has_node("JumpSound"):
+			$JumpSound.play()
 		character_body.velocity.y = jump_force
 		
 func _physics_process(delta: float) -> void:

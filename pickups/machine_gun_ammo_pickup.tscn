@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmx63y544ngt3"]
+
+[ext_resource type="PackedScene" uid="uid://ccpm3mygm2obc" path="res://pickups/pickup.tscn" id="1_ik5sc"]
+[ext_resource type="PackedScene" uid="uid://do2mbg3vdqall" path="res://pickups/assets/mg_ammo.glb" id="2_pbvbu"]
+
+[node name="MachineGunAmmoPickup" instance=ExtResource("1_ik5sc")]
+pickup_type = 2
+pickup_amnt = 40
+
+[node name="mg_ammo" parent="Graphics" index="0" instance=ExtResource("2_pbvbu")]
