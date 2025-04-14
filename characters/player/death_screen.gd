@@ -1,5 +1,5 @@
 extends Control
-@onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
+@onready var animation_player: AnimationPlayer = $"AnimationPlayer"
 @onready var restart_button: Button = $Panel/RestartButton
 
 func _ready():

@@ -7,40 +7,80 @@ class_name CharacterMover extends Node3D
 @export var move_accel = 4.0
 @export var stop_drag = 0.9
 
+# Water movement 
+@export var swim_up_speed := 10.0
+var cam_aligned_wish_dir := Vector3.ZERO
+var camera_3d = null
+
 var character_body : CharacterBody3D
 var move_drag = 0.0
 var move_dir : Vector3
+var in_water := false
 
 signal moved(velocity: Vector3, grounded: bool)
 
 func _ready() -> void:
 	character_body = get_parent()
 	move_drag = float(move_accel) / max_speed
+	if has_node("../Camera3D"):
+		camera_3d = get_node("../Camera3D") as Camera3D
 	
 func set_move_dir(new_move_dir: Vector3):
 	move_dir = new_move_dir
 	move_dir.y = 0.0
 	move_dir = move_dir.normalized()
 	
+func get_move_speed() -> float:
+	return max_speed / 2.0 if in_water else max_speed
+	
 func jump():
 	if character_body.is_on_floor():
 		if has_node("JumpSound"):
 			$JumpSound.play()
 		character_body.velocity.y = jump_force
-		
+
+func _is_in_water() -> bool:
+	# Determine if currently overlapping any water areas
+	for area in get_tree().get_nodes_in_group("water_area"):
+		if area.overlaps_body(character_body):
+			return true
+	return false
+
 func _physics_process(delta: float) -> void:
-	if character_body.velocity.y > 0.0 and character_body.is_on_ceiling():
-		character_body.velocity.y = 0.0
-	if not character_body.is_on_floor():
-		character_body.velocity.y -= gravity * delta
-		
-	var drag = move_drag
-	if move_dir.is_zero_approx():
-		drag = stop_drag
-		
-	var flat_velo = character_body.velocity
-	flat_velo.y = 0.0
-	character_body.velocity += move_accel * move_dir - flat_velo * drag
-	
+	in_water = _is_in_water()
+
+	var input_dir = Input.get_vector("move_forwards", "move_left", "move_backwards", "move_right")
+	if camera_3d != null:
+		cam_aligned_wish_dir = camera_3d.global_transform.basis * Vector3(input_dir.x, 0., input_dir.y)
+	else:
+		cam_aligned_wish_dir = Vector3(input_dir.x, 0., input_dir.y)
+
+	if in_water:
+		# Apply water resistance and swim force
+		character_body.velocity += cam_aligned_wish_dir * get_move_speed() * delta
+
+		if Input.is_action_pressed("jump"):
+			character_body.velocity.y += swim_up_speed * delta
+		else:
+			# Apply slow sinking/gravity
+			character_body.velocity.y -= gravity * 0.1 * delta
+
+		# Gentle drag to reduce momentum
+		character_body.velocity.x = lerp(character_body.velocity.x, 0.0, 1.5 * delta)
+		character_body.velocity.z = lerp(character_body.velocity.z, 0.0, 1.5 * delta)
+
+	else:
+		if character_body.velocity.y > 0.0 and character_body.is_on_ceiling():
+			character_body.velocity.y = 0.0
+		if not character_body.is_on_floor():
+			character_body.velocity.y -= gravity * delta
+
+		var drag = move_drag if not move_dir.is_zero_approx() else stop_drag
+
+		var flat_velo = character_body.velocity
+		flat_velo.y = 0.0
+		character_body.velocity += move_accel * move_dir - flat_velo * drag
+
+	# Move character once per frame
 	character_body.move_and_slide()
 	moved.emit(character_body.velocity, character_body.is_on_floor())

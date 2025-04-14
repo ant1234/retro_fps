@@ -71,14 +71,14 @@ func process_idle_state(_delta):
 func process_attack_state(_delta):
 	var attacking = animation_player.current_animation == "attack"
 	var vec_to_player = player.global_position - global_position
-	
 	if vec_to_player.length() <= attack_range:
 		ai_character_mover.stop_moving()
 		if !attacking and vision_manager.is_facing_target(player):
 			start_attack()
 		elif !attacking:
 			ai_character_mover.set_facing_dir(vec_to_player)
-	elif !attacking:		
+	elif !attacking:
+				
 		ai_character_mover.set_facing_dir(ai_character_mover.move_dir)
 		ai_character_mover.move_to_point(player.global_position)
 		animation_player.play("walk", -1, 2.0)
