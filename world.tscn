@@ -112,7 +112,7 @@ visible = false
 navigation_mesh = SubResource("NavigationMesh_3a2pe")
 
 [node name="Player" parent="." instance=ExtResource("1_udsn1")]
-transform = Transform3D(-0.769316, -0.023569, -0.638434, -0.0507095, 0.99842, 0.0242461, 0.636853, 0.051028, -0.769296, -0.547362, 0.407353, 0.689644)
+transform = Transform3D(-0.122898, -0.0303317, 0.991957, -0.0507095, 0.99842, 0.0242461, -0.991123, -0.0473217, -0.124242, -12.4891, -3.65239, -10.0108)
 
 [node name="TestTarget" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.84442, 5.21036, -46.6381)

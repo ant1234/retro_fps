@@ -25,11 +25,13 @@ func _ready() -> void:
 	if has_node("../Camera3D"):
 		camera_3d = get_node("../Camera3D") as Camera3D
 	
+
 func set_move_dir(new_move_dir: Vector3):
 	move_dir = new_move_dir
 	move_dir.y = 0.0
 	move_dir = move_dir.normalized()
-	
+
+
 func get_move_speed() -> float:
 	return max_speed / 2.0 if in_water else max_speed
 	
@@ -49,15 +51,10 @@ func _is_in_water() -> bool:
 func _physics_process(delta: float) -> void:
 	in_water = _is_in_water()
 
-	var input_dir = Input.get_vector("move_forwards", "move_left", "move_backwards", "move_right")
-	if camera_3d != null:
-		cam_aligned_wish_dir = camera_3d.global_transform.basis * Vector3(input_dir.x, 0., input_dir.y)
-	else:
-		cam_aligned_wish_dir = Vector3(input_dir.x, 0., input_dir.y)
-
+	# Handle water and land movement
 	if in_water:
-		# Apply water resistance and swim force
-		character_body.velocity += cam_aligned_wish_dir * get_move_speed() * delta
+		# Apply water resistance and swim force (no camera alignment adjustment)
+		character_body.velocity += move_dir * get_move_speed() * delta
 
 		if Input.is_action_pressed("jump"):
 			character_body.velocity.y += swim_up_speed * delta
@@ -76,7 +73,6 @@ func _physics_process(delta: float) -> void:
 			character_body.velocity.y -= gravity * delta
 
 		var drag = move_drag if not move_dir.is_zero_approx() else stop_drag
-
 		var flat_velo = character_body.velocity
 		flat_velo.y = 0.0
 		character_body.velocity += move_accel * move_dir - flat_velo * drag
