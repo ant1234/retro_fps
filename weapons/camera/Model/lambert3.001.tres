@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cdr2hnvym3pjv"]
+
+[resource]
+resource_name = "lambert3.001"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.745276, 0.775385, 0.963183, 0.172727)
+roughness = 0.0709682

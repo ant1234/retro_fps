@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://DIGITAL_CAMERA/Camera3D/CameraRoll.gd" type="Script" id=1]
+[ext_resource path="res://DIGITAL_CAMERA/UI/Icons/shadedLight24.png" type="Texture2D" id=2]
+[ext_resource path="res://DIGITAL_CAMERA/UI/Icons/shadedLight25.png" type="Texture2D" id=3]
+[ext_resource path="res://DIGITAL_CAMERA/UI/Icons/shadedLight33.png" type="Texture2D" id=4]
+[ext_resource path="res://DIGITAL_CAMERA/UI/Icons/shadedLight46.png" type="Texture2D" id=5]
+[ext_resource path="res://DIGITAL_CAMERA/UI/Fonts/spacefontSmall.tres" type="FontFile" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="CameraRoll" type="Control"]
+process_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.384314, 0.415686, 0.439216, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GalContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scroller" type="ScrollContainer" parent="GalContainer"]
+offset_right = 1280.0
+offset_bottom = 630.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Gallery" type="GridContainer" parent="GalContainer/Scroller"]
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme_override_constants/v_separation = 6
+theme_override_constants/h_separation = 6
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="GalContainer"]
+offset_left = 594.0
+offset_top = 634.0
+offset_right = 686.0
+offset_bottom = 720.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource( 5 )
+flat = true
+
+[node name="PhotoBrowser" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PhotoBrowser"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="PhotoBrowser/VBoxContainer"]
+offset_right = 1280.0
+offset_bottom = 630.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SinglePhoto" type="HBoxContainer" parent="PhotoBrowser/VBoxContainer"]
+offset_top = 634.0
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_horizontal = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Button" parent="PhotoBrowser/VBoxContainer/SinglePhoto"]
+offset_right = 590.0
+offset_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 2 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GalleryButton" type="Button" parent="PhotoBrowser/VBoxContainer/SinglePhoto"]
+offset_left = 594.0
+offset_right = 1184.0
+offset_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource( 6 )
+theme_override_styles/hover = SubResource( 1 )
+theme_override_styles/pressed = SubResource( 2 )
+theme_override_styles/focus = SubResource( 3 )
+theme_override_styles/disabled = SubResource( 4 )
+theme_override_styles/normal = SubResource( 5 )
+text = "Gallery"
+icon = ExtResource( 4 )
+align = 0
+
+[node name="right" type="Button" parent="PhotoBrowser/VBoxContainer/SinglePhoto"]
+offset_left = 1188.0
+offset_right = 1280.0
+offset_bottom = 86.0
+icon = ExtResource( 3 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="item_rect_changed" from="GalContainer/Scroller" to="." method="_on_Scroller_item_rect_changed"]
+[connection signal="pressed" from="GalContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="button_down" from="PhotoBrowser/VBoxContainer/SinglePhoto/Left" to="." method="_on_Left_button_down"]
+[connection signal="pressed" from="PhotoBrowser/VBoxContainer/SinglePhoto/GalleryButton" to="." method="_on_GalleryButton_pressed"]
+[connection signal="button_down" from="PhotoBrowser/VBoxContainer/SinglePhoto/right" to="." method="_on_right_button_down"]

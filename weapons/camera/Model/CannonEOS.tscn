@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://DIGITAL_CAMERA/Camera3D/Model/CannonEOS.glb" type="PackedScene" id=1]
+[ext_resource path="res://DIGITAL_CAMERA/Camera3D/Model/CannonEOS.gd" type="Script" id=9]
+
+[node name="ViewFinder" type="Node3D"]
+script = ExtResource( 9 )
+__meta__ = {
+"_editor_description_": "\"Camera3D CANON EOS 400D\" 
+(https://skfb.ly/6VsDZ) by santy is licensed under Creative Commons Attribution 
+(http://creativecommons.org/licenses/by/4.0/)."
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+enabled = true
+target_position = Vector3( 0, 0, 100 )
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.246644 )
+
+[node name="CannonEOS" parent="." instance=ExtResource( 1 )]
+transform = Transform3D( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="Screen" parent="CannonEOS/CameraEOS" index="1"]
+transform = Transform3D( 2.0215, 7.10543e-15, -1.69407e-21, 0, 1.25616, 1.42109e-14, 0, 0, 1.96882, 0, -0.692774, -7.10543e-15 )
+
+[editable path="CannonEOS"]

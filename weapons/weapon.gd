@@ -13,6 +13,7 @@ class_name Weapon
 
 @export var attack_rate = 0.2
 var last_attack_time = -9999.9
+var CameraInUse = false
 
 @export var animation_controller_attack = false
 @export var silent_weapon = false
@@ -23,6 +24,17 @@ signal ammo_updated(add_ammo: int)
 
 func _ready() -> void:
 	bullet_emitter.set_damage(damage)
+	
+# camera functionality
+func _input(event):
+
+	if Input.is_action_just_pressed("raise_camera"):
+		animation_player.play("raise_camera")
+		CameraInUse = true
+		
+	if Input.is_action_just_released("raise_camera"):
+		animation_player.play_backwards("raise_camera")
+		CameraInUse = false
 	
 func set_bodies_to_exclude(bodies: Array):
 	bullet_emitter.set_bodies_to_exclude(bodies)
@@ -79,3 +91,5 @@ func is_idle() -> bool:
 func add_ammo(amnt: int):
 	ammo += amnt
 	ammo_updated.emit(ammo)
+	
+	

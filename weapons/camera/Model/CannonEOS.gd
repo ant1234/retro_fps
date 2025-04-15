@@ -1,0 +1,5 @@
+extends Node3D
+
+#"Camera CANON EOS 400D" 
+#(https://skfb.ly/6VsDZ) by santy is licensed under Creative Commons Attribution 
+#(http://creativecommons.org/licenses/by/4.0/).

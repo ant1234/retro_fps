@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dohxs1cb5f4xt"]
+
+[ext_resource type="Texture2D" uid="uid://baupvcfvki0fr" path="res://weapons/camera/Model/CannonEOS_Cilindro_low-bajo_Cilindro_material_BaseCo.png" id="1_1fmt8"]
+[ext_resource type="Texture2D" uid="uid://6gggdic74nqi" path="res://weapons/camera/Model/CannonEOS_Cilindro_low-bajo_Cilindro_material_Metall-Cilindro_low-bajo_Cilindro_material_Roughn.png" id="2_fxqmq"]
+[ext_resource type="Texture2D" uid="uid://x0yeq4vxsxqq" path="res://weapons/camera/Model/CannonEOS_Cilindro_low-bajo_Cilindro_material_Normal.png" id="3_5xxui"]
+
+[resource]
+resource_name = "Cilindro_material.001"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_1fmt8")
+metallic = 1.0
+metallic_texture = ExtResource("2_fxqmq")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_fxqmq")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_5xxui")

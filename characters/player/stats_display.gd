@@ -10,7 +10,8 @@ func _ready():
 	for weapon in weapon_manager.weapons:
 		weapon.ammo_updated.connect(update_ammo_display)
 	update_health_display(health_manager.cur_health, health_manager.max_health)
-	update_ammo_display(weapon_manager.cur_weapon.ammo)
+	if weapon_manager.cur_weapon:
+		update_ammo_display(weapon_manager.cur_weapon.ammo)
 	
 func update_health_display(cur_health: int, max_health: int):
 	health_display.max_value = max_health

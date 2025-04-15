@@ -19,7 +19,7 @@ func _ready() -> void:
 	disable_all_weapon()
 	for _i in range(weapons.size()):
 		weapons_unlocked.append(false)
-	weapons_unlocked[0] = true
+	weapons_unlocked[4] = true
 	switch_to_weapon_slot(0)
 		
 func attack(input_just_pressed: bool, input_held: bool):

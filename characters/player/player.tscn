@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://dmr124nsouefn"]
+[gd_scene load_steps=76 format=3 uid="uid://dmr124nsouefn"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_2l7n6"]
 [ext_resource type="Script" path="res://characters/player/weapon_manager.gd" id="2_2lhyc"]
@@ -36,6 +36,7 @@
 [ext_resource type="Script" path="res://characters/player/pickup_info.gd" id="26_jpj4k"]
 [ext_resource type="Theme" uid="uid://bgdafs1btsgid" path="res://ui/main_theme.tres" id="26_wbiwr"]
 [ext_resource type="Script" path="res://characters/player/stats_display.gd" id="27_liqhf"]
+[ext_resource type="PackedScene" uid="uid://cxvpdsbecsqul" path="res://weapons/camera/Model/CannonEOS.glb" id="27_y2gym"]
 [ext_resource type="AudioStream" uid="uid://clbt1guq1afek" path="res://sfx/player/player_jump.wav" id="28_jwtjk"]
 [ext_resource type="Script" path="res://sfx/play_random_sound.gd" id="29_avm42"]
 [ext_resource type="Script" path="res://characters/player/step_tracker.gd" id="29_efo8v"]
@@ -54,75 +55,61 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("CannonEOS:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.0544804, 0.307876, 0.605866)]
+"values": [Vector3(0.953099, 1.22283, -0.360716)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:quaternion")
+tracks/1/path = NodePath("CannonEOS:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Quaternion(-0.041663, -0.0142023, 0.0266661, 0.998675)]
+"values": [Vector3(0.451159, 3.13729, -0.0204675)]
 }
 
 [sub_resource type="Animation" id="Animation_4agc6"]
-resource_name = "attack"
-length = 0.156
+resource_name = "raise_camera"
+length = 0.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("CannonEOS:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0423718, 0.083266, 0.155191),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.0544804, 0.307876, 0.605866), Vector3(0.232937, 0.607365, 0.551793), Vector3(0.232937, 0.645191, 0.0523496), Vector3(-0.152804, 0.36435, -0.40308)]
+"values": [Vector3(0.953099, 1.22283, -0.360716), Vector3(0.0100001, 1.749, 0.475)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:quaternion")
+tracks/1/path = NodePath("CannonEOS:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0423718, 0.083266, 0.155191),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Quaternion(-0.041663, -0.0142023, 0.0266661, 0.998675), Quaternion(-0.0629342, 0.0733905, -0.240155, 0.965908), Quaternion(-0.274385, 0.160286, -0.292222, 0.902013), Quaternion(-0.452227, 0.30755, -0.262996, 0.794819)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.15),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"actually_attack"
-}]
+"values": [Vector3(0.451159, 3.13729, -0.0204675), Vector3(-0.101691, 3.13275, 0.025792)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gvcyt"]
 _data = {
 "RESET": SubResource("Animation_mo4st"),
-"attack": SubResource("Animation_4agc6")
+"raise_camera": SubResource("Animation_4agc6")
 }
 
 [sub_resource type="GDScript" id="GDScript_ta1lj"]
@@ -425,6 +412,7 @@ shape = SubResource("CapsuleShape3D_k3bin")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_ojf0a")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -442,6 +430,7 @@ script = ExtResource("2_2lhyc")
 
 [node name="Machete" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.820332, 1.89805, 0.618443)
+visible = false
 script = ExtResource("4_l073q")
 damage = 15
 ammo = -1
@@ -710,6 +699,41 @@ bus = &"Sfx"
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Camera3D/WeaponManager/Weapons/ShotGun/AttackSounds"]
 stream = ExtResource("16_wa5fd")
 pitch_scale = 0.95
+bus = &"Sfx"
+
+[node name="DigitalCamera" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
+script = ExtResource("4_l073q")
+
+[node name="Graphics" type="Node3D" parent="Camera3D/WeaponManager/Weapons/DigitalCamera"]
+transform = Transform3D(0.998174, -0.0520781, -0.0305889, 0.0544449, 0.995106, 0.0824581, 0.026145, -0.083973, 0.996125, 0.0544804, 0.307876, 0.605866)
+
+[node name="CannonEOS" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics" instance=ExtResource("27_y2gym")]
+transform = Transform3D(-0.999821, -0.0185913, 0.00387, -0.0184183, 0.899754, -0.436011, 0.00462394, -0.436002, -0.899938, 0.953099, 1.22283, -0.360716)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_gvcyt")
+}
+
+[node name="BulletEmitter" parent="Camera3D/WeaponManager/Weapons/DigitalCamera" instance=ExtResource("7_v708d")]
+
+[node name="Crosshairs" type="TextureRect" parent="Camera3D/WeaponManager/Weapons/DigitalCamera"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_1iq3e")
+
+[node name="EquipSound" type="AudioStreamPlayer" parent="Camera3D/WeaponManager/Weapons/DigitalCamera"]
+stream = ExtResource("26_it8sj")
+pitch_scale = 0.7
 bus = &"Sfx"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/WeaponManager"]
