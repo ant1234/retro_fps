@@ -4,14 +4,14 @@ extends Control
 # (http://creativecommons.org/licenses/by/4.0/).
 
 var FileName = "photo"
-@onready var Hlpr = get_node("/root/Helper")
+@onready var Hlpr: Node = $"../../../Helper"
 
 func _ready():
 	CreatePhotoDir()
 
 func SavePhoto():
 	var image: Image = get_viewport().get_texture().get_image()
-	image.flip_y()
+	#image.flip_y()
 	
 	var photo_path = "res://photos/" + FileName + str(Hlpr.PhotosTaken) + ".png"
 	var err = image.save_png(photo_path)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dmr124nsouefn"]
+[gd_scene load_steps=85 format=3 uid="uid://dmr124nsouefn"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_2l7n6"]
 [ext_resource type="Script" path="res://characters/player/weapon_manager.gd" id="2_2lhyc"]
@@ -37,9 +37,12 @@
 [ext_resource type="Theme" uid="uid://bgdafs1btsgid" path="res://ui/main_theme.tres" id="26_wbiwr"]
 [ext_resource type="PackedScene" uid="uid://dxc2nhcfl7u8h" path="res://weapons/camera/cannon_eos.tscn" id="27_j1q72"]
 [ext_resource type="Script" path="res://characters/player/stats_display.gd" id="27_liqhf"]
+[ext_resource type="Script" path="res://helper.gd" id="28_0blur"]
+[ext_resource type="Shader" path="res://weapons/camera/Model/CameraScreen.gdshader" id="28_5y2i6"]
 [ext_resource type="AudioStream" uid="uid://clbt1guq1afek" path="res://sfx/player/player_jump.wav" id="28_jwtjk"]
 [ext_resource type="Script" path="res://sfx/play_random_sound.gd" id="29_avm42"]
 [ext_resource type="Script" path="res://characters/player/step_tracker.gd" id="29_efo8v"]
+[ext_resource type="PackedScene" uid="uid://crg5iru2enuy1" path="res://weapons/camera/CameraOverlay.tscn" id="29_h4pvy"]
 [ext_resource type="AudioStream" uid="uid://ba3dmvrho7u8t" path="res://sfx/player/player_hurt.wav" id="29_wyuwp"]
 [ext_resource type="AudioStream" uid="uid://dbygicikuh1nf" path="res://sfx/steps/step_1.wav" id="30_ldcuo"]
 [ext_resource type="AudioStream" uid="uid://5bb6lw0roh3c" path="res://sfx/player/player_die.wav" id="30_trfwd"]
@@ -208,33 +211,17 @@ _data = {
 "attack": SubResource("Animation_l6dee")
 }
 
-[sub_resource type="Animation" id="Animation_gop63"]
-resource_name = "raise_camera"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ViewFinder:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.953, 1.223, -0.361), Vector3(0.01, 1.749, 0.475)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ViewFinder:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.451043, -3.12124, 0.0256703), Vector3(-0.0767945, -3.11367, 0.0523599)]
-}
+[sub_resource type="FogMaterial" id="FogMaterial_edak8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g3rbj"]
+viewport_path = NodePath("Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u7s6q"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("FogMaterial_edak8")
+shader = ExtResource("28_5y2i6")
+shader_parameter/screen_texture = SubResource("ViewportTexture_g3rbj")
 
 [sub_resource type="Animation" id="Animation_4ptvy"]
 length = 0.001
@@ -261,6 +248,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.450853, -3.13115, 0.00630942)]
+}
+
+[sub_resource type="Animation" id="Animation_gop63"]
+resource_name = "raise_camera"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ViewFinder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.953, 1.223, -0.361), Vector3(0.01, 1.749, 0.475)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ViewFinder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.451043, -3.12124, 0.0256703), Vector3(-0.0767945, -3.11367, 0.0523599)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u0nks"]
@@ -474,6 +489,7 @@ only_hit_environment = true
 target_position = Vector3(0, 0, -2)
 
 [node name="Crosshairs" type="TextureRect" parent="Camera3D/WeaponManager/Weapons/Machete"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -721,7 +737,27 @@ script = ExtResource("4_l073q")
 transform = Transform3D(0.998174, -0.0520781, -0.0305889, 0.0544449, 0.995106, 0.0824581, 0.026145, -0.083973, 0.996125, 0.0544804, 0.307876, 0.605866)
 
 [node name="ViewFinder" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics" instance=ExtResource("27_j1q72")]
-transform = Transform3D(-0.999954, 0.00175733, -0.00940243, 0.00567891, 0.900058, -0.435734, 0.007697, -0.435767, -0.900027, 0.953, 1.223, -0.361)
+transform = Transform3D(-0.999954, 0.001759, -0.009399, 0.00567892, 0.900057, -0.435734, 0.00769319, -0.435767, -0.900027, 0.953, 1.223, -0.361)
+
+[node name="cilindro_low1" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS" index="0"]
+layers = 2
+
+[node name="Screen" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS" index="1"]
+layers = 4
+surface_material_override/0 = SubResource("ShaderMaterial_u7s6q")
+
+[node name="CameraViewport" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS" index="2"]
+use_taa = true
+
+[node name="ViewportCamera" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport" index="0"]
+cull_mask = 1048569
+
+[node name="CameraOverlay" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport" index="1" instance=ExtResource("29_h4pvy")]
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Helper" type="Node" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder"]
+script = ExtResource("28_0blur")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics"]
 libraries = {
@@ -729,20 +765,6 @@ libraries = {
 }
 
 [node name="BulletEmitter" parent="Camera3D/WeaponManager/Weapons/DigitalCamera" instance=ExtResource("7_v708d")]
-
-[node name="Crosshairs" type="TextureRect" parent="Camera3D/WeaponManager/Weapons/DigitalCamera"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -36.0
-offset_right = 36.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_1iq3e")
 
 [node name="EquipSound" type="AudioStreamPlayer" parent="Camera3D/WeaponManager/Weapons/DigitalCamera"]
 stream = ExtResource("26_it8sj")
@@ -1008,3 +1030,4 @@ libraries = {
 [connection signal="moved" from="CharacterMover" to="Camera3D/WeaponManager" method="update_animation"]
 
 [editable path="Camera3D/WeaponManager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter"]
+[editable path="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder"]

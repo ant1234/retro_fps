@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://crg5iru2enuy1"]
 
-[ext_resource type="Texture2D" uid="uid://dmgcmv3m54wgu" path="res://DIGITAL_CAMERA/UI/Icons/crosshair026.png" id="1"]
-[ext_resource type="Script" path="res://DIGITAL_CAMERA/Camera3D/Camera.gd" id="2"]
-[ext_resource type="FontFile" path="res://DIGITAL_CAMERA/UI/Fonts/spacefontSmall.tres" id="3"]
-[ext_resource type="FontFile" uid="uid://cq7tygdjgkrpe" path="res://DIGITAL_CAMERA/UI/Fonts/Fonts/Kenney Pixel.ttf" id="4"]
+[ext_resource type="Texture2D" uid="uid://doijmc5vhtx50" path="res://weapons/crosshairs/crosshair026.png" id="1"]
+[ext_resource type="Script" path="res://weapons/camera/Camera.gd" id="2"]
+[ext_resource type="FontFile" path="res://ui/Fonts/spacefontSmall.tres" id="3"]
+[ext_resource type="FontFile" uid="uid://cq7tygdjgkrpe" path="res://ui/Fonts/Fonts/Kenney Pixel.ttf" id="4"]
 
 [sub_resource type="Animation" id="3"]
 length = 0.001

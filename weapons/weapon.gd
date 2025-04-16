@@ -35,6 +35,13 @@ func _input(event):
 	if Input.is_action_just_released("raise_camera"):
 		animation_player.play_backwards("raise_camera")
 		CameraInUse = false
+		
+	if Input.is_action_just_pressed("attack") && CameraInUse:
+		TakePhoto()
+	
+func TakePhoto():
+	var AnPl = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/CameraOverlay/AnimationPlayer"
+	AnPl.play("flash")
 	
 func set_bodies_to_exclude(bodies: Array):
 	bullet_emitter.set_bodies_to_exclude(bodies)
@@ -77,8 +84,9 @@ func actually_attack():
 	bullet_emitter.fire()
 		
 func set_active(a: bool):
-	$Crosshairs.visible = a
-	visible = a
+	if $Crosshairs:
+		$Crosshairs.visible = a
+		visible = a
 	if !a:
 		animation_player.play("RESET")
 	else:
