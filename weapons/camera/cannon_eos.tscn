@@ -1,5 +1,11 @@
-[gd_scene format=3 uid="uid://dxc2nhcfl7u8h"]
+[gd_scene load_steps=2 format=3 uid="uid://dxc2nhcfl7u8h"]
 
-[node name="CannonEOS" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://cxvpdsbecsqul" path="res://weapons/camera/Model/CannonEOS.glb" id="1_q1jd6"]
 
-[node name="CannonEOS" type="Node3D" parent="."]
+[node name="ViewFinder" instance=ExtResource("1_q1jd6")]
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="0"]
+target_position = Vector3(0, 0, 100)
+collision_mask = 31
+
+[node name="Marker3D" type="Marker3D" parent="." index="1"]
