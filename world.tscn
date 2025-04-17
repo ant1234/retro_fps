@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cr774sksons2f"]
+[gd_scene load_steps=24 format=3 uid="uid://cr774sksons2f"]
 
 [ext_resource type="PackedScene" uid="uid://dovc0methr37k" path="res://environment/rock_boulder.tscn" id="1_icxn4"]
 [ext_resource type="PackedScene" uid="uid://dmr124nsouefn" path="res://characters/player/player.tscn" id="1_udsn1"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bxcgtn35072w" path="res://pickups/shotgun_ammo_pickup.tscn" id="14_5jgut"]
 [ext_resource type="PackedScene" uid="uid://b5g5bp0frrqif" path="res://pickups/shotgun_pickup.tscn" id="15_5cnxw"]
 [ext_resource type="PackedScene" uid="uid://ca0wevg1lb4rx" path="res://utils/WaterMaker3D/WaterMaker3D.tscn" id="15_ilq23"]
+[ext_resource type="PackedScene" uid="uid://dri4ei1vkbmh6" path="res://weapons/camera/CameraRoll.tscn" id="15_ylxip"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l5qe5"]
 
@@ -140,3 +141,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.46, -2.24875, -13.1222)
 size = Vector3(8.99701, 4.43024, 9.72803)
 material = SubResource("StandardMaterial3D_qs43p")
 water_texture_move_speed = Vector3(0.02, 0.002, 0.002)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CameraRoll" parent="CanvasLayer" instance=ExtResource("15_ylxip")]

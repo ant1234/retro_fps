@@ -13,7 +13,7 @@ func SavePhoto():
 	var image: Image = get_viewport().get_texture().get_image()
 	#image.flip_y()
 	
-	var photo_path = "res://photos/" + FileName + str(Hlpr.PhotosTaken) + ".png"
+	var photo_path = "user://photos/" + FileName + str(Hlpr.PhotosTaken) + ".png"
 	var err = image.save_png(photo_path)
 	
 	if err == OK:
@@ -24,10 +24,10 @@ func SavePhoto():
 	Hlpr.PhotosTaken += 1
 
 func CreatePhotoDir():
-	var dir = DirAccess.open("res://")
+	var dir = DirAccess.open("user://")
 	if dir:
-		if not dir.dir_exists("res://photos"):
-			dir.make_dir("res://photos")
+		if not dir.dir_exists("user://photos"):
+			dir.make_dir("user://photos")
 
 func ChangeExposure(ex: float):
 	var ExposureValue = $VBoxContainer/HBoxContainer/Exposure2

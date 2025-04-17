@@ -1,22 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://bipjfocy2b1o0"]
 
-[ext_resource path="res://DIGITAL_CAMERA/Camera3D/GalleryTexture/GalleryTexture.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://weapons/camera/GalleryTexture/GalleryTexture.gd" id="1"]
 
 [node name="GalleryTexture" type="TextureRect"]
+custom_minimum_size = Vector2(250, 250)
+anchors_preset = -1
 anchor_right = 0.195
 anchor_bottom = 0.347
 offset_right = 0.400009
 offset_bottom = 0.160004
-custom_minimum_size = Vector2( 250, 250 )
-pivot_offset = Vector2( 125, 125 )
-expand = true
-stretch_mode = 7
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Tween" type="Tween" parent="."]
+pivot_offset = Vector2(125, 125)
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("1")
 
 [connection signal="gui_input" from="." to="." method="_on_GalleryTexture_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_GalleryTexture_mouse_entered"]

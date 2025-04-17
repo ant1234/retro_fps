@@ -737,7 +737,7 @@ script = ExtResource("4_l073q")
 transform = Transform3D(0.998174, -0.0520781, -0.0305889, 0.0544449, 0.995106, 0.0824581, 0.026145, -0.083973, 0.996125, 0.0544804, 0.307876, 0.605866)
 
 [node name="ViewFinder" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics" instance=ExtResource("27_j1q72")]
-transform = Transform3D(-0.999954, 0.001759, -0.009399, 0.00567892, 0.900057, -0.435734, 0.00769319, -0.435767, -0.900027, 0.953, 1.223, -0.361)
+transform = Transform3D(-0.999954, 0.001759, -0.009399, 0.00567892, 0.900057, -0.435734, 0.00769319, -0.435766, -0.900027, 0.953, 1.223, -0.361)
 
 [node name="cilindro_low1" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS" index="0"]
 layers = 2

@@ -1,6 +1,6 @@
 extends Node
 
-var PhotoPath = "res://photos"
+var PhotoPath = "user://photos"
 var PhotosTaken = 0
 
 func _ready():
