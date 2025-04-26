@@ -60,6 +60,7 @@ func load_external_tex(path: String, scale: Vector2) -> Texture2D:
 		print("Image load failed:", err)
 		return null
 
+	# This is important if the original photo is very large and you want thumbnails
 	img.resize(scale.x, scale.y, Image.INTERPOLATE_LANCZOS)
 
 	var imgtex = ImageTexture.create_from_image(img)

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://rvgf4ji7r101"]
+
+[ext_resource type="Texture2D" uid="uid://5qh8m3ktxpep" path="res://fish/Tuna/Tuna_file2.png" id="1_r6qok"]
+
+[resource]
+resource_name = "Tuna"
+cull_mode = 2
+albedo_texture = ExtResource("1_r6qok")
+roughness = 0.552786
