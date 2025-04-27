@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0xdsx7f4lkrm"]
+
+[ext_resource type="Script" path="res://fish/flocking_manager.gd" id="1_nhe5t"]
+[ext_resource type="PackedScene" uid="uid://b2tk3uwpqbgp8" path="res://fish/tuna.tscn" id="2_27vlm"]
+
+[node name="FlockingManager" type="Node3D"]
+script = ExtResource("1_nhe5t")
+fish_prefab = ExtResource("2_27vlm")
+fish_number = 50

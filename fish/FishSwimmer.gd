@@ -33,6 +33,6 @@ func _physics_process(delta):
 
 func _turn_around_random():
 	# Pick a random angle between 120° and 240° (to roughly reverse)
-	var random_degrees = randf_range(120.0, 240.0)
+	var random_degrees = randf_range(120.0, 240.0) 
 	rotate_y(deg_to_rad(random_degrees))
 			 

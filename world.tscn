@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cr774sksons2f"]
+[gd_scene load_steps=29 format=3 uid="uid://cr774sksons2f"]
 
 [ext_resource type="PackedScene" uid="uid://dovc0methr37k" path="res://environment/rock_boulder.tscn" id="1_icxn4"]
 [ext_resource type="PackedScene" uid="uid://dmr124nsouefn" path="res://characters/player/player.tscn" id="1_udsn1"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d2x8tg0dnc24d" path="res://environment/sand.tscn" id="4_6vxsd"]
 [ext_resource type="PackedScene" uid="uid://bmjn4e75mnrrd" path="res://characters/enemies/bird_monster/bird_monster.tscn" id="6_vnm2c"]
 [ext_resource type="PackedScene" uid="uid://b8r6odxwtmy0r" path="res://characters/enemies/reptile_monster/reptile_monster.tscn" id="8_4e18j"]
-[ext_resource type="PackedScene" uid="uid://b2tk3uwpqbgp8" path="res://fish/tuna.tscn" id="8_ua0dv"]
+[ext_resource type="PackedScene" uid="uid://b0xdsx7f4lkrm" path="res://fish/flocking_manager.tscn" id="8_ontqe"]
 [ext_resource type="PackedScene" uid="uid://b2nskjbpdrwmj" path="res://pickups/health_pickup.tscn" id="9_dagfk"]
 [ext_resource type="PackedScene" uid="uid://b6tc3pmbmyvgl" path="res://pickups/machine_gun_pickup.tscn" id="10_o53sc"]
 [ext_resource type="PackedScene" uid="uid://bmx63y544ngt3" path="res://pickups/machine_gun_ammo_pickup.tscn" id="11_rqwe0"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b5g5bp0frrqif" path="res://pickups/shotgun_pickup.tscn" id="15_5cnxw"]
 [ext_resource type="PackedScene" uid="uid://ca0wevg1lb4rx" path="res://utils/WaterMaker3D/WaterMaker3D.tscn" id="15_ilq23"]
 [ext_resource type="PackedScene" uid="uid://dri4ei1vkbmh6" path="res://weapons/camera/CameraRoll.tscn" id="15_ylxip"]
+[ext_resource type="Shader" path="res://utils/WaterMaker3D/FogFade.gdshader" id="17_6lj6w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l5qe5"]
 
@@ -63,6 +64,20 @@ refraction_texture = SubResource("NoiseTexture2D_iiw0a")
 uv1_scale = Vector3(0.04, 0.04, 0.04)
 uv1_triplanar = true
 uv1_world_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_68hyx"]
+resource_local_to_scene = true
+size = Vector3(39.529, 47.2921, 73.384)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8w07g"]
+resource_local_to_scene = true
+shader = ExtResource("17_6lj6w")
+shader_parameter/density = 1.0
+shader_parameter/albedo = Color(0, 0.0431373, 0.156863, 1)
+shader_parameter/emission = Color(0, 0.0431373, 0.156863, 1)
+shader_parameter/height_falloff = 0.0
+shader_parameter/edge_fade = 0.1
+shader_parameter/fade_plane = Vector4(0, 1, 0, -999)
 
 [node name="World" type="Node3D"]
 
@@ -229,9 +244,14 @@ transform = Transform3D(-0.878684, 0, 0.477404, 0, 1, 0, -0.477404, 0, -0.878684
 transform = Transform3D(-0.999921, 0, -0.0125836, 0, 1, 0, 0.0125836, 0, -0.999921, 8.08685, -0.177008, -25.9791)
 
 [node name="Fish" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1323, -17.8429, 22.0968)
 
-[node name="Tuna" parent="Fish" instance=ExtResource("8_ua0dv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3272, -4.75099, -3.43203)
+[node name="FlockingManager" parent="Fish" instance=ExtResource("8_ontqe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.94947)
+fish_number = 120
+swim_limits = Vector3(3, 3, 3)
+neighbourhood_distance = 6.0
+rotation_speed = 2.0
 
 [node name="Pickups" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78823, 0, -10.7005)
@@ -263,6 +283,15 @@ size = Vector3(39.529, 47.2921, 73.384)
 material = SubResource("StandardMaterial3D_qs43p")
 water_texture_move_speed = Vector3(0.02, 0.002, 0.002)
 
+[node name="CollisionShape3D" parent="WaterMaker3D/SwimmableArea3D" index="0"]
+shape = SubResource("BoxShape3D_68hyx")
+
+[node name="FogVolume" parent="WaterMaker3D" index="2"]
+size = Vector3(39.529, 47.2921, 73.384)
+material = SubResource("ShaderMaterial_8w07g")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CameraRoll" parent="CanvasLayer" instance=ExtResource("15_ylxip")]
+
+[editable path="WaterMaker3D"]

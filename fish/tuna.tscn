@@ -4,19 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://ch5sscyd8qahs" path="res://fish/Tuna/Tuna.glb" id="1_spsqs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lkoil"]
-size = Vector3(1.17165, 1.38196, 3.59896)
+size = Vector3(0.565792, 0.585208, 1.79079)
 
 [node name="Tuna" type="CharacterBody3D"]
 script = ExtResource("1_13oyj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0228314, 0.610414, 0.0331941)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00246975, 0.394461, -0.0520059)
 shape = SubResource("BoxShape3D_lkoil")
 
 [node name="Graphics" type="Node3D" parent="."]
 
 [node name="Tuna" parent="Graphics" instance=ExtResource("1_spsqs")]
-transform = Transform3D(-0.1, 0, 8.74228e-09, 0, 0.1, 0, -8.74228e-09, 0, -0.1, 0, 0, 0)
+transform = Transform3D(-0.05, 0, 4.37114e-09, 0, 0.05, 0, -4.37114e-09, 0, -0.05, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Graphics/Tuna/Armature" index="0"]
 bones/0/position = Vector3(0, 5.32121, 14.2718)
