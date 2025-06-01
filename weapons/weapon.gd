@@ -41,7 +41,49 @@ func _input(event):
 	
 func TakePhoto():
 	var AnPl = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/CameraOverlay/AnimationPlayer"
-	AnPl.play("flash")
+	if AnPl: AnPl.play("flash")
+	
+	await get_tree().process_frame  # Wait 1 frame to ensure viewport is ready
+	
+	var viewport_camera: Camera3D = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/ViewportCamera"
+	if not is_instance_valid(viewport_camera):
+		print("❌ Viewport camera not valid")
+		return
+	
+	var camera_vp = viewport_camera.get_viewport()
+	var screen_size = camera_vp.get_visible_rect().size
+	
+	var from = viewport_camera.project_ray_origin(screen_size / 2)
+	var to = from + viewport_camera.project_ray_normal(screen_size / 2) * 100.0
+	
+	# ✅ Create raycast parameters
+	var query = PhysicsRayQueryParameters3D.new()
+	query.from = from
+	query.to = to
+	query.collide_with_areas = true
+	query.collide_with_bodies = true
+	
+	var space_state = get_world_3d().direct_space_state
+	var result = space_state.intersect_ray(query)
+	
+	if result:
+		var collider = result.get("collider")
+		if collider:
+			var subject_node = collider.get_node_or_null("PhotoSubject")
+			if subject_node:
+				print("📸 Subject captured!")
+				print("  Name: ", subject_node.subject_name)
+				print("  Desc: ", subject_node.description)
+				print("  Rareness: ", subject_node.rareness)
+			else:
+				print("❌ Hit something, but it's not a subject: ", collider.name)
+	else:
+		print("🌌 Nothing in camera view.")
+	
+	var overlay_script: Node = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/CameraOverlay"
+	if overlay_script.has_method("SavePhoto"):
+		overlay_script.SavePhoto()
+
 	
 func set_bodies_to_exclude(bodies: Array):
 	bullet_emitter.set_bodies_to_exclude(bodies)
