@@ -16,10 +16,8 @@ func SavePhoto():
 	var photo_path = "user://photos/" + FileName + str(Hlpr.PhotosTaken) + ".png"
 	var err = image.save_png(photo_path)
 	
-	if err == OK:
-		print("Photo saved to:", photo_path)
-	else:
-		print("Failed to save photo:", err)
+	if err != OK:
+		print("Failed to save photo:", err)		
 	
 	Hlpr.PhotosTaken += 1
 

@@ -23,8 +23,6 @@ signal health_changed(cur_health, max_health)
 
 func _ready():
 	health_changed.emit(cur_health, max_health)
-	if verbose:
-		print("Starting health: %s/%s" % [cur_health, max_health])
 		
 var damage_taken_this_frame = 0
 var last_frame_damaged = -1

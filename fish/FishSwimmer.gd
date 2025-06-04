@@ -29,7 +29,9 @@ func _physics_process(delta):
 			time_since_last_turn = 0.0
 	
 	if rotate_to_direction and velocity.length() > 0.1:
-		look_at(global_transform.origin + velocity.normalized(), Vector3.UP)
+		var dir = velocity.normalized()
+		if abs(dir.dot(Vector3.UP)) < 0.99:
+			look_at(global_transform.origin + dir, Vector3.UP)
 
 func _turn_around_random():
 	# Pick a random angle between 120° and 240° (to roughly reverse)

@@ -35,8 +35,6 @@ func spawn_fish():
 		add_child(fish)
 		all_fish.append(fish)
 		
-		print("Spawned fish at ", fish.position)
-
 func create_swim_limits_box():
 	var box = MeshInstance3D.new()
 	var mesh = BoxMesh.new()

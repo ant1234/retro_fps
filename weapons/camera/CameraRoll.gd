@@ -22,7 +22,6 @@ var NumPhoto = 0
 	#MakeGallery()
 func _ready():
 	CameraRoll.hide()
-	print("Photos taken (helper): ", Hlpr.PhotosTaken)
 	MakeGallery()
 
 func _input(_event):
@@ -31,22 +30,17 @@ func _input(_event):
 		
 func LoadPhoto(Photo: TextureRect, num: int, ImageScale):
 	var photo_path = "user://photos/photo" + str(num) + ".png"
-	print("Trying to load:", photo_path)
 	
 	if FileAccess.file_exists(photo_path):
-		print("File exists!")
 		var texture = load_external_tex(photo_path, ImageScale)
 		if texture:
 			Photo.texture = texture
-			print("Texture assigned!")
 		else:
 			print("Texture is null!")
 	else:
 		print("File does NOT exist!")
 
 func load_external_tex(path: String, scale: Vector2) -> Texture2D:
-	print("Loading image from:", path)
-
 	var tex_file = FileAccess.open(path, FileAccess.READ)
 	if not tex_file:
 		print("Failed to open file")

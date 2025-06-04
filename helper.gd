@@ -21,5 +21,3 @@ func GetPhotos():
 		dir.list_dir_end()
 	else:
 		print("An error occurred while trying to access:", PhotoPath)
-
-	print("Photos taken:", PhotosTaken)
