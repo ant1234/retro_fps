@@ -16,6 +16,7 @@ var NumPhoto = 0
 @onready var GalContainer = $GalContainer
 @onready var GalleryTexture = preload("res://weapons/camera/GalleryTexture/GalleryTexture.tscn")
 @onready var PhotoBrowser = $PhotoBrowser
+@onready var MetadataLabel: Label = $PhotoBrowser/MetadataLabel
 
 #func _ready():
 	#CameraRoll.hide()

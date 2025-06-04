@@ -60,7 +60,6 @@ icon = ExtResource("5")
 flat = true
 
 [node name="PhotoBrowser" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -110,6 +109,13 @@ icon = ExtResource("4")
 layout_mode = 2
 icon = ExtResource("3")
 flat = true
+
+[node name="MetadataLabel" type="Label" parent="PhotoBrowser"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 42.0
+offset_right = 497.0
+offset_bottom = 250.0
 
 [node name="Helper" type="Node" parent="."]
 script = ExtResource("7_md6ey")
