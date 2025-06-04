@@ -11,14 +11,25 @@ func _ready():
 
 func SavePhoto():
 	var image: Image = get_viewport().get_texture().get_image()
-	#image.flip_y()
-	
-	var photo_path = "user://photos/" + FileName + str(Hlpr.PhotosTaken) + ".png"
-	var err = image.save_png(photo_path)
-	
+	var photo_index = Hlpr.PhotosTaken
+	var photo_base_path = "user://photos/photo" + str(photo_index)
+
+	# Save the image
+	var err = image.save_png(photo_base_path + ".png")
 	if err != OK:
-		print("Failed to save photo:", err)		
-	
+		print("❌ Failed to save photo image:", err)
+		return
+
+	# Save metadata as JSON if a subject was captured
+	var subject_info = Hlpr.LastPhotoMetadata
+	if subject_info:
+		var json_string = JSON.stringify(subject_info, "\t")
+		var file = FileAccess.open(photo_base_path + ".json", FileAccess.WRITE)
+		file.store_string(json_string)
+		file.close()
+	else:
+		print("ℹ️ No metadata available for this photo.")
+
 	Hlpr.PhotosTaken += 1
 
 func CreatePhotoDir():

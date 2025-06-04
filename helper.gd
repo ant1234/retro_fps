@@ -2,6 +2,7 @@ extends Node
 
 var PhotoPath = "user://photos"
 var PhotosTaken = 0
+var LastPhotoMetadata: Dictionary = {}
 
 func _ready():
 	GetPhotos()
