@@ -5,6 +5,7 @@ class_name Weapon
 @onready var animation_player: AnimationPlayer = $Graphics/AnimationPlayer
 @onready var bullet_emitter: BulletEmitter = $BulletEmitter
 @onready var fire_point: Node3D = %FirePoint
+@onready var Hlpr: Node = $"../Helper"
 
 @export var automatic = false
 
@@ -90,11 +91,15 @@ func TakePhoto():
 					print("  Name: ", subject_node.subject_name)
 					print("  Desc: ", subject_node.description)
 					print("  Rareness: ", subject_node.rareness)
-					subject_node.set_meta("_printed", true)
 
-					# reset the flag after a short delay (optional)
-					await get_tree().create_timer(0.5).timeout
-					subject_node.set_meta("_printed", false)
+					# Save metadata into helper
+					Hlpr.LastPhotoMetadata = {
+						"subject_name": subject_node.subject_name,
+						"description": subject_node.description,
+						"rareness": subject_node.rareness
+					}
+
+					subject_node.set_meta("_printed", true)
 			else:
 				print("❌ Hit something, but it's not a subject: ", collider.name)
 	else:
