@@ -41,6 +41,27 @@ func LoadPhoto(Photo: TextureRect, num: int, ImageScale):
 	else:
 		print("File does NOT exist!")
 
+	# Now load metadata JSON
+	var json_path = "user://photos/photo" + str(num) + ".json"
+	if FileAccess.file_exists(json_path):
+		var file = FileAccess.open(json_path, FileAccess.READ)
+		var json_string = file.get_as_text()
+		file.close()
+
+		var result = JSON.parse_string(json_string)
+		if result.error == OK:
+			var data = result.result
+			MetadataLabel.text = "Name: %s\nDescription: %s\nRareness: %s" % [
+				data.get("subject_name", "Unknown"),
+				data.get("description", "No description"),
+				data.get("rareness", "Unknown")
+			]
+		else:
+			MetadataLabel.text = "Failed to parse metadata."
+	else:
+		MetadataLabel.text = "No metadata available."
+
+
 func load_external_tex(path: String, scale: Vector2) -> Texture2D:
 	var tex_file = FileAccess.open(path, FileAccess.READ)
 	if not tex_file:
@@ -125,6 +146,7 @@ func GoToPhotoBrowser(PhotoNumber: int = 0):
 func GoToGallery():
 	PhotoBrowser.hide()
 	GalContainer.show()
+	MetadataLabel.text = ""
 
 func _on_Scroller_item_rect_changed():
 	var GalleryColumns = round(Scroller.size.x / 250)
