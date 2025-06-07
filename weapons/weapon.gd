@@ -149,15 +149,18 @@ func actually_attack():
 	bullet_emitter.fire()
 
 func set_active(a: bool):
-	if $Crosshairs:
-		$Crosshairs.visible = a
-		visible = a
+	var crosshairs = get_node_or_null("Crosshairs")
+	if crosshairs:
+		crosshairs.visible = a
+
+	visible = a
+
 	if not a:
 		play_animation_safe("RESET")
 	else:
 		$EquipSound.play()
 		ammo_updated.emit(ammo)
-
+		
 func is_idle() -> bool:
 	return not animation_player.is_playing()
 

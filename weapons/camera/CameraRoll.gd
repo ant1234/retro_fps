@@ -148,5 +148,6 @@ func GoToGallery():
 	MetadataLabel.text = ""
 
 func _on_Scroller_item_rect_changed():
-	var GalleryColumns = round(Scroller.size.x / 250)
+	await get_tree().process_frame
+	var GalleryColumns = max(1, round(Scroller.size.x / 250))
 	Gallery.set_columns(GalleryColumns)
