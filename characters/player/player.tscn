@@ -753,8 +753,6 @@ use_taa = true
 cull_mask = 1048569
 
 [node name="CameraOverlay" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport" index="1" instance=ExtResource("29_h4pvy")]
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Helper" type="Node" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder"]
 script = ExtResource("28_0blur")
