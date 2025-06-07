@@ -7,6 +7,8 @@ class_name Weapon
 @onready var fire_point: Node3D = %FirePoint
 
 @export var automatic = false
+var did_capture := false
+var _taking_photo := false
 
 @export var damage = 5
 @export var ammo = 0
@@ -46,67 +48,24 @@ func play_animation_backwards_safe(anim_name: String):
 	if animation_player.has_animation(anim_name):
 		animation_player.play_backwards(anim_name)
 
-
 func TakePhoto():
+	#if _taking_photo:
+		#return
+	#_taking_photo = true
+ 
+	# Flash animation
 	var AnPl = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/CameraOverlay/AnimationPlayer"
 	if AnPl:
 		AnPl.play("flash")
 
-	await get_tree().process_frame  # Wait 1 frame to ensure viewport is ready
-
-	var viewport_camera: Camera3D = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/ViewportCamera"
-	if not is_instance_valid(viewport_camera):
-		print("Viewport camera not valid")
-		return
-
-	var camera_vp = viewport_camera.get_viewport()
-	var screen_size = camera_vp.get_visible_rect().size
-
-	var from = viewport_camera.project_ray_origin(screen_size / 2)
-	var to = from + viewport_camera.project_ray_normal(screen_size / 2) * 100.0
-
-	var query = PhysicsRayQueryParameters3D.new()
-	query.from = from
-	query.to = to
-	query.collide_with_areas = true
-	query.collide_with_bodies = true
-
-	var space_state = get_world_3d().direct_space_state
-	var result = space_state.intersect_ray(query)
-
-	if result:
-		var collider = result.get("collider")
-		if collider:
-			var subject_node = collider.get_node_or_null("PhotoSubject")
-			
-			# fallback: search up the parent hierarchy
-			if not subject_node:
-				subject_node = collider.find_child("PhotoSubject", true, false)
-
-			# only print once per TakePhoto call
-			if subject_node and subject_node.has_method("get_instance_id"):
-				if not subject_node.has_meta("_printed"):
-					print("📸 Subject captured!")
-					print("  Name: ", subject_node.subject_name)
-					print("  Desc: ", subject_node.description)
-					print("  Rareness: ", subject_node.rareness)
-
-					# Save metadata into helper
-					Helper.LastPhotoMetadata = {
-						"subject_name": subject_node.subject_name,
-						"description": subject_node.description,
-						"rareness": subject_node.rareness
-					}
-
-					subject_node.set_meta("_printed", true)
-			else:
-				print("❌ Hit something, but it's not a subject: ", collider.name)
-	else:
-		print("🌌 Nothing in camera view.")
-
-	var overlay_script: Node = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/CameraOverlay"
-	if overlay_script.has_method("SavePhoto"):
-		overlay_script.SavePhoto()
+	#await get_tree().process_frame  # Ensure viewport is rendered
+#
+	#var overlay_script: Node = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/CameraOverlay"
+	#if overlay_script.has_method("SavePhoto"):
+		#overlay_script.SavePhoto()
+#
+	#await get_tree().create_timer(0.1).timeout
+	#_taking_photo = false
 
 func set_bodies_to_exclude(bodies: Array):
 	bullet_emitter.set_bodies_to_exclude(bodies)

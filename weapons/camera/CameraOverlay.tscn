@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://doijmc5vhtx50" path="res://weapons/crosshairs/crosshair026.png" id="1"]
 [ext_resource type="Script" path="res://weapons/camera/Camera.gd" id="2"]
-[ext_resource type="FontFile" path="res://ui/Fonts/spacefontSmall.tres" id="3"]
+[ext_resource type="FontFile" uid="uid://dvifa3e03bght" path="res://ui/Fonts/spacefontSmall.tres" id="3"]
 [ext_resource type="FontFile" uid="uid://cq7tygdjgkrpe" path="res://ui/Fonts/Fonts/Kenney Pixel.ttf" id="4"]
 
 [sub_resource type="Animation" id="3"]
