@@ -4,14 +4,13 @@ extends Control
 # (http://creativecommons.org/licenses/by/4.0/).
 
 var FileName = "photo"
-@onready var Hlpr: Node = $"../../../Helper"
 
 func _ready():
 	CreatePhotoDir()
 
 func SavePhoto():
 	var image: Image = get_viewport().get_texture().get_image()
-	var photo_index = Hlpr.PhotosTaken
+	var photo_index = Helper.PhotosTaken
 	var photo_base_path = "user://photos/photo" + str(photo_index)
 
 	# Save the image
@@ -21,7 +20,7 @@ func SavePhoto():
 		return
 
 	# Save metadata as JSON if a subject was captured
-	var subject_info = Hlpr.LastPhotoMetadata
+	var subject_info = Helper.LastPhotoMetadata
 	if subject_info:
 		var json_string = JSON.stringify(subject_info, "\t")
 		var file = FileAccess.open(photo_base_path + ".json", FileAccess.WRITE)
@@ -30,7 +29,7 @@ func SavePhoto():
 	else:
 		print("ℹ️ No metadata available for this photo.")
 
-	Hlpr.PhotosTaken += 1
+	Helper.PhotosTaken += 1
 
 func CreatePhotoDir():
 	var dir = DirAccess.open("user://")

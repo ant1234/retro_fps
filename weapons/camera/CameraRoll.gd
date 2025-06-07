@@ -9,7 +9,6 @@ var NumPhoto = 0
 @onready var CameraRoll = $"."
 @onready var SinglePhoto = $PhotoBrowser
 @onready var LB = $PhotoBrowser/VBoxContainer/SinglePhoto/Left
-@onready var Hlpr: Node = $Helper
 
 @onready var Scroller = $GalContainer/Scroller
 @onready var Gallery = $GalContainer/Scroller/Gallery
@@ -84,7 +83,7 @@ func load_external_tex(path: String, scale: Vector2) -> Texture2D:
 	return imgtex
 
 func MakeGallery():
-	var Photos = Hlpr.PhotosTaken
+	var Photos = Helper.PhotosTaken
 	var GalleryCount = Gallery.get_child_count()
 
 	if Photos != GalleryCount:
@@ -116,13 +115,13 @@ func ShowHideMenu():
 
 func CountUp():
 	NumPhoto += 1
-	if NumPhoto > Hlpr.PhotosTaken:
+	if NumPhoto > Helper.PhotosTaken:
 		NumPhoto = 1
 
 func CountDown():
 	NumPhoto -= 1
 	if NumPhoto == 0:
-		NumPhoto = Hlpr.PhotosTaken
+		NumPhoto = Helper.PhotosTaken
 
 func _on_Left_button_down():
 	CountDown()

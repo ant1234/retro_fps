@@ -5,7 +5,6 @@ class_name Weapon
 @onready var animation_player: AnimationPlayer = $Graphics/AnimationPlayer
 @onready var bullet_emitter: BulletEmitter = $BulletEmitter
 @onready var fire_point: Node3D = %FirePoint
-@onready var Hlpr: Node = $"../Helper"
 
 @export var automatic = false
 
@@ -93,7 +92,7 @@ func TakePhoto():
 					print("  Rareness: ", subject_node.rareness)
 
 					# Save metadata into helper
-					Hlpr.LastPhotoMetadata = {
+					Helper.LastPhotoMetadata = {
 						"subject_name": subject_node.subject_name,
 						"description": subject_node.description,
 						"rareness": subject_node.rareness
