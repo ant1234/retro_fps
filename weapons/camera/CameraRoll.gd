@@ -47,9 +47,8 @@ func LoadPhoto(Photo: TextureRect, num: int, ImageScale):
 		var json_string = file.get_as_text()
 		file.close()
 
-		var result = JSON.parse_string(json_string)
-		if result.error == OK:
-			var data = result.result
+		var data = JSON.parse_string(json_string)
+		if typeof(data) == TYPE_DICTIONARY:
 			MetadataLabel.text = "Name: %s\nDescription: %s\nRareness: %s" % [
 				data.get("subject_name", "Unknown"),
 				data.get("description", "No description"),
