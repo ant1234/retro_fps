@@ -14,7 +14,7 @@ func _ready():
 	scale = BaseScale  # Ensure base scale on init
 
 func _on_GalleryTexture_gui_input(event: InputEvent):
-	if event.is_action_pressed("left_click"):
+	if event.is_action_pressed("ui_text_caret_left"):
 		emit_signal("ClickedOn", Number)
 
 func _on_GalleryTexture_mouse_entered():
