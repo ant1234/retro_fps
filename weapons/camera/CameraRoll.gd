@@ -30,30 +30,42 @@ func _input(_event):
 		
 func LoadPhoto(Photo: TextureRect, num: int, ImageScale):
 	var photo_path = "user://photos/photo" + str(num) + ".png"
-	
+
 	if FileAccess.file_exists(photo_path):
 		var texture = load_external_tex(photo_path, ImageScale)
 		if texture:
 			Photo.texture = texture
 
-	# Now load metadata JSON
-	var json_path = "user://photos/photo" + str(num) + ".json"
+	# Load metadata JSON
+	var json_path = "user://photo_json/photo" + str(num) + ".json"
 	if FileAccess.file_exists(json_path):
-		var file = FileAccess.open(json_path, FileAccess.READ)
-		var json_string = file.get_as_text()
-		file.close()
+		var file := FileAccess.open(json_path, FileAccess.READ)
+		if file:
+			var json_string := file.get_as_text()
+			file.close()
 
-		var data = JSON.parse_string(json_string)
-		if typeof(data) == TYPE_DICTIONARY:
-			MetadataLabel.text = "Name: %s\nDescription: %s\nRareness: %s" % [
-				data.get("subject_name", "Unknown"),
-				data.get("description", "No description"),
-				data.get("rareness", "Unknown")
-			]
+			if json_string.strip_edges() != "":
+				print("Parsing JSON from:", json_path)
+				var result = JSON.parse_string(json_string)
+				
+				print(result)
+				
+				if result != null and typeof(result) == TYPE_DICTIONARY:
+					var data = result
+					MetadataLabel.text = "Name: %s\nDescription: %s\nRareness: %s" % [
+						data.get("subject_name", "Unknown"),
+						data.get("description", "No description"),
+						data.get("rareness", "Unknown")
+					]
+					return
+				else:
+					print("JSON parse failed")
+			else:
+				print("Metadata file is empty.")
 		else:
-			MetadataLabel.text = "Failed to parse metadata."
-	else:
-		MetadataLabel.text = "No metadata available."
+			print("Failed to open metadata file.")
+
+	MetadataLabel.text = "No metadata available."
 
 
 func load_external_tex(path: String, scale: Vector2) -> Texture2D:

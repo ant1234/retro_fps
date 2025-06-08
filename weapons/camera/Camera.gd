@@ -63,10 +63,13 @@ func SavePhoto():
 
 	# Save metadata if found
 	if Helper.LastPhotoMetadata:
-		var json_string = JSON.stringify(Helper.LastPhotoMetadata, "\t")
-		var file = FileAccess.open(photo_base_path + ".json", FileAccess.WRITE)
-		file.store_string(json_string)
-		file.close()
+		var json_base_path = "user://photo_json/photo" + str(photo_index)
+		var file = FileAccess.open(json_base_path + ".json", FileAccess.WRITE)
+
+		if file:
+			var json_string = JSON.stringify(Helper.LastPhotoMetadata)
+			file.store_string(json_string)
+			file.close()
 
 	Helper.PhotosTaken += 1
 
@@ -75,6 +78,8 @@ func CreatePhotoDir():
 	if dir:
 		if not dir.dir_exists("user://photos"):
 			dir.make_dir("user://photos")
+		if not dir.dir_exists("user://photo_json"):
+			dir.make_dir("user://photo_json")
 
 func ChangeExposure(ex: float):
 	var ExposureValue = $VBoxContainer/HBoxContainer/Exposure2
