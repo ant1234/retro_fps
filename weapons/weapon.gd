@@ -49,23 +49,10 @@ func play_animation_backwards_safe(anim_name: String):
 		animation_player.play_backwards(anim_name)
 
 func TakePhoto():
-	#if _taking_photo:
-		#return
-	#_taking_photo = true
- 
 	# Flash animation
 	var AnPl = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/CameraOverlay/AnimationPlayer"
 	if AnPl:
 		AnPl.play("flash")
-
-	#await get_tree().process_frame  # Ensure viewport is rendered
-#
-	#var overlay_script: Node = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/CameraOverlay"
-	#if overlay_script.has_method("SavePhoto"):
-		#overlay_script.SavePhoto()
-#
-	#await get_tree().create_timer(0.1).timeout
-	#_taking_photo = false
 
 func set_bodies_to_exclude(bodies: Array):
 	bullet_emitter.set_bodies_to_exclude(bodies)

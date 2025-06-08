@@ -35,10 +35,6 @@ func LoadPhoto(Photo: TextureRect, num: int, ImageScale):
 		var texture = load_external_tex(photo_path, ImageScale)
 		if texture:
 			Photo.texture = texture
-		else:
-			print("Texture is null!")
-	else:
-		print("File does NOT exist!")
 
 	# Now load metadata JSON
 	var json_path = "user://photos/photo" + str(num) + ".json"
@@ -63,7 +59,6 @@ func LoadPhoto(Photo: TextureRect, num: int, ImageScale):
 func load_external_tex(path: String, scale: Vector2) -> Texture2D:
 	var tex_file = FileAccess.open(path, FileAccess.READ)
 	if not tex_file:
-		print("Failed to open file")
 		return null
 
 	var buffer = tex_file.get_buffer(tex_file.get_length())
@@ -71,7 +66,6 @@ func load_external_tex(path: String, scale: Vector2) -> Texture2D:
 	var err = img.load_png_from_buffer(buffer)
 
 	if err != OK:
-		print("Image load failed:", err)
 		return null
 
 	# This is important if the original photo is very large and you want thumbnails

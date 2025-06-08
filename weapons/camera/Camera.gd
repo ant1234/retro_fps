@@ -9,7 +9,6 @@ func _ready():
 	CreatePhotoDir()
 
 func SavePhoto():
-	print("🖼️ SavePhoto called")
 
 	var camera_viewport: Viewport = $".."
 	var overlay := camera_viewport.get_node("CameraOverlay")
@@ -30,7 +29,6 @@ func SavePhoto():
 	var photo_base_path = "user://photos/photo" + str(photo_index)
 	var err = image.save_png(photo_base_path + ".png")
 	if err != OK:
-		print("❌ Failed to save photo image:", err)
 		return
 
 	# Detect subject (fish)
@@ -56,19 +54,12 @@ func SavePhoto():
 			if not subject_node:
 				subject_node = collider.find_child("PhotoSubject", true, false)
 			if subject_node:
-				print("📸 Subject captured!")
 				Helper.LastPhotoMetadata = {
 					"subject_name": subject_node.subject_name,
 					"description": subject_node.description,
 					"rareness": subject_node.rareness
 				}
 				subject_node.set_meta("_printed", true)
-			else:
-				print("❌ Hit something, not a subject: ", collider.name)
-		else:
-			print("🌌 Nothing in camera view.")
-	else:
-		print("❌ Viewport camera not valid")
 
 	# Save metadata if found
 	if Helper.LastPhotoMetadata:
@@ -76,11 +67,8 @@ func SavePhoto():
 		var file = FileAccess.open(photo_base_path + ".json", FileAccess.WRITE)
 		file.store_string(json_string)
 		file.close()
-	else:
-		print("ℹ️ No metadata available for this photo.")
 
 	Helper.PhotosTaken += 1
-
 
 func CreatePhotoDir():
 	var dir = DirAccess.open("user://")
