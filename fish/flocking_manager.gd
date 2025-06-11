@@ -98,8 +98,8 @@ func apply_flocking_rules(fish: Node3D, delta: float):
 
 		fish.swim_speed = clamp(avg_speed, fish_min_speed, fish_max_speed)
 
-	var relative_pos = fish.position
-	if abs(relative_pos.x) > swim_limits.x or abs(relative_pos.y) > swim_limits.y or abs(relative_pos.z) > swim_limits.z:
+	var relative_pos = fish.position - Vector3(0, depth_level, 0)
+	if abs(relative_pos.x) > swim_limits.x or relative_pos.y > swim_limits.y or abs(relative_pos.z) > swim_limits.z:
 		var to_center = (-fish.position).normalized()
 		var current_forward = -fish.transform.basis.z
 		var target_rotation = current_forward.slerp(to_center, rotation_speed * delta)
@@ -112,3 +112,10 @@ func apply_flocking_rules(fish: Node3D, delta: float):
 func move_forward(fish: Node3D, delta: float):
 	var forward = -fish.transform.basis.z
 	fish.position += forward * fish.swim_speed * delta
+
+	# Clamp Y so fish never go above depth_level (i.e. too close to surface)
+	if fish.position.y > depth_level:
+		fish.position.y = depth_level
+		
+	if fish.position.y < depth_level - swim_limits.y:
+		fish.position.y = depth_level - swim_limits.y
