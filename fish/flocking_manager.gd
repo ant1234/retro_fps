@@ -7,6 +7,7 @@ extends Node3D
 @export var fish_max_speed: float = 4.0
 @export var neighbourhood_distance: float = 5.0
 @export var rotation_speed: float = 1.0
+@export var depth_level: float = 0.0 # Y-offset for vertical swim center
 
 var all_fish: Array = []
 
@@ -25,7 +26,7 @@ func spawn_fish():
 		
 		var random_pos = Vector3(
 			randf_range(-swim_limits.x, swim_limits.x),
-			randf_range(-swim_limits.y, swim_limits.y),
+			randf_range(-swim_limits.y, swim_limits.y) + depth_level,
 			randf_range(-swim_limits.z, swim_limits.z)
 		)
 		fish.position = random_pos # Local position inside FlockingManager
@@ -50,7 +51,7 @@ func create_swim_limits_box():
 	box.material_override = material
 	box.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	
-	box.position = Vector3.ZERO # Box centered at FlockingManager
+	box.position = Vector3(0, depth_level, 0)
 	add_child(box)
 
 func apply_flocking_rules(fish: Node3D, delta: float):
