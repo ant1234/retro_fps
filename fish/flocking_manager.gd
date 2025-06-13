@@ -16,6 +16,7 @@ extends Node3D
 @export var spawn_check_interval: float = 1.0  # seconds
 
 var spawn_timer := 0.0
+var frame_counter := 0
 var all_fish: Array = []
 
 func _ready():
@@ -30,17 +31,27 @@ func _physics_process(delta):
 
 	var fish_to_remove := []
 
-	for fish in all_fish:
-		var distance_to_player = fish.global_position.distance_to(player.global_position)
-		if distance_to_player > despawn_radius:
-			fish_to_remove.append(fish)
-		else:
+	for i in all_fish.size():
+		var fish = all_fish[i]
+
+		if player:
+			var distance_to_player = fish.global_position.distance_to(player.global_position)
+			if distance_to_player > despawn_radius:
+				fish_to_remove.append(fish)
+				continue
+
+		# Only update flocking rules every few frames, staggered by index
+		if (frame_counter + i) % flocking_update_rate == 0:
 			apply_flocking_rules(fish, delta)
-			move_forward(fish, delta)
+
+		move_forward(fish, delta)
 
 	for fish in fish_to_remove:
 		all_fish.erase(fish)
 		fish.queue_free()
+
+	frame_counter += 1
+
 		
 func spawn_fish_at_position(position: Vector3):
 	var fish = fish_prefab.instantiate()
