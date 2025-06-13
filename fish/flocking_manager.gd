@@ -8,7 +8,14 @@ extends Node3D
 @export var neighbourhood_distance: float = 5.0
 @export var rotation_speed: float = 1.0
 @export var depth_level: float = 0.0 # Y-offset for vertical swim center
+@export var flocking_update_rate := 4  # Higher = fewer updates per fish per second
+@export var player: Node3D
+@export var spawn_radius: float = 60.0
+@export var despawn_radius: float = 80.0
+@export var max_fish: int = 100
+@export var spawn_check_interval: float = 1.0  # seconds
 
+var spawn_timer := 0.0
 var all_fish: Array = []
 
 func _ready():
@@ -16,9 +23,48 @@ func _ready():
 	create_swim_limits_box()
 
 func _physics_process(delta):
+	spawn_timer += delta
+	if spawn_timer >= spawn_check_interval:
+		spawn_timer = 0.0
+		check_proximity_spawn()
+
+	var fish_to_remove := []
+
 	for fish in all_fish:
-		apply_flocking_rules(fish, delta)
-		move_forward(fish, delta)
+		var distance_to_player = fish.global_position.distance_to(player.global_position)
+		if distance_to_player > despawn_radius:
+			fish_to_remove.append(fish)
+		else:
+			apply_flocking_rules(fish, delta)
+			move_forward(fish, delta)
+
+	for fish in fish_to_remove:
+		all_fish.erase(fish)
+		fish.queue_free()
+		
+func spawn_fish_at_position(position: Vector3):
+	var fish = fish_prefab.instantiate()
+	fish.position = position
+	fish.rotate_y(randf_range(0, TAU))
+	fish.swim_speed = randf_range(fish_min_speed, fish_max_speed)
+
+	add_child(fish)
+	all_fish.append(fish)
+	
+func check_proximity_spawn():
+	if all_fish.size() >= max_fish:
+		return
+
+	var spawn_count = min(5, max_fish - all_fish.size())
+	for i in range(spawn_count):
+		var offset = Vector3(
+			randf_range(-spawn_radius, spawn_radius),
+			randf_range(-swim_limits.y, swim_limits.y),
+			randf_range(-spawn_radius, spawn_radius)
+		)
+		var pos = player.global_position + offset
+		spawn_fish_at_position(pos)
+
 
 func spawn_fish():
 	for i in range(fish_number):
