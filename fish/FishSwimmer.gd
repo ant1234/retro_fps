@@ -13,15 +13,15 @@ var time_since_last_turn: float = 999.0  # ready to turn immediately
 func _ready():
 	if animation_player and animation_player.has_animation(animation_name):
 		animation_player.play(animation_name)
-		animation_player.get_animation(animation_name).loop = true 
+		animation_player.get_animation(animation_name).loop = true
+	# Initialize velocity based on current transform basis
+	velocity = global_transform.basis.z * swim_speed
 
 func _physics_process(delta):
 	time_since_last_turn += delta
 	
-	var forward_dir = -global_transform.basis.z
-	velocity = forward_dir * swim_speed
-
-	move_and_slide()
+	# Move the fish using velocity vector
+	move_and_slide()  # No args in Godot 4; velocity is a property
 	
 	if turn_around_on_collision and is_on_wall():
 		if time_since_last_turn >= turn_cooldown:
@@ -34,7 +34,7 @@ func _physics_process(delta):
 			look_at(global_transform.origin + dir, Vector3.UP)
 
 func _turn_around_random():
-	# Pick a random angle between 120° and 240° (to roughly reverse)
-	var random_degrees = randf_range(120.0, 240.0) 
+	var random_degrees = randf_range(120.0, 240.0)
 	rotate_y(deg_to_rad(random_degrees))
-			 
+	# Update velocity direction after turning
+	velocity = global_transform.basis.z * swim_speed

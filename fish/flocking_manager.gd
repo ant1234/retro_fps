@@ -116,7 +116,7 @@ func apply_flocking_rules(fish: Node3D, delta: float):
 	var v_avoid = Vector3.ZERO
 	var avg_speed = 0.0
 	var group_size = 0
-	var avg_velocity = Vector3.ZERO  # This will store the average velocity of the group
+	var avg_velocity = Vector3.ZERO
 
 	for other_fish in all_fish:
 		if other_fish == fish:
@@ -125,54 +125,70 @@ func apply_flocking_rules(fish: Node3D, delta: float):
 		if distance < neighbourhood_distance:
 			v_center += other_fish.position
 			avg_speed += other_fish.swim_speed
-			avg_velocity += -other_fish.transform.basis.z * other_fish.swim_speed  # Add to velocity sum
+			avg_velocity += other_fish.velocity  # Use velocity directly now
 			group_size += 1
-			
+
 			if distance < neighbourhood_distance / 2:
 				v_avoid += (fish.position - other_fish.position)
 
 	if group_size > 0:
 		v_center /= group_size
 		avg_speed /= group_size
-		avg_velocity /= group_size  # Calculate the average velocity of the group
+		avg_velocity /= group_size
 
 		var direction_to_center = (v_center - fish.position).normalized()
 		var avoid_direction = v_avoid.normalized()
 		var new_dir = direction_to_center + avoid_direction
 		new_dir = new_dir.normalized()
 
-		# Now we incorporate the velocity matching (align fish direction with the average velocity)
 		var velocity_match = avg_velocity.normalized()
-		new_dir = (new_dir + velocity_match).normalized()  # Blend the two directions
+		new_dir = (new_dir + velocity_match).normalized()
 
-		var current_forward = -fish.transform.basis.z
-		var target_rotation = current_forward.slerp(new_dir, rotation_speed * delta)
+		# Smoothly slerp fish.velocity direction toward new_dir
+		var current_velocity = fish.velocity.normalized()
+		var angle_diff = current_velocity.angle_to(new_dir)
+		var max_turn = rotation_speed * delta
+		var turn_ratio = 1.0 if angle_diff == 0 else clamp(max_turn / angle_diff, 0, 1)
+		var updated_dir = current_velocity.slerp(new_dir, turn_ratio)
 
-		var basis = fish.transform.basis
-		basis.z = -target_rotation
-		basis = basis.orthonormalized()
-		fish.transform.basis = basis
+		fish.velocity = updated_dir * fish.swim_speed
 
+		# Clamp swim speed
 		fish.swim_speed = clamp(avg_speed, fish_min_speed, fish_max_speed)
+		fish.velocity = fish.velocity.normalized() * fish.swim_speed
 
 	var relative_pos = fish.position - Vector3(0, depth_level, 0)
 	if abs(relative_pos.x) > swim_limits.x or relative_pos.y > swim_limits.y or abs(relative_pos.z) > swim_limits.z:
-		var to_center = (-fish.position).normalized()
-		var current_forward = -fish.transform.basis.z
-		var target_rotation = current_forward.slerp(to_center, rotation_speed * delta)
-
-		var basis = fish.transform.basis
-		basis.z = -target_rotation
-		basis = basis.orthonormalized()
-		fish.transform.basis = basis
+		var to_center = (-relative_pos).normalized()
+		var current_velocity = fish.velocity.normalized()
+		var angle_diff = current_velocity.angle_to(to_center)
+		var max_turn = rotation_speed * delta
+		var turn_ratio = 1.0 if angle_diff == 0 else clamp(max_turn / angle_diff, 0, 1)
+		var new_velocity_dir = current_velocity.slerp(to_center, turn_ratio)
+		fish.velocity = new_velocity_dir * fish.swim_speed
 
 func move_forward(fish: Node3D, delta: float):
-	var forward = -fish.transform.basis.z
-	fish.position += forward * fish.swim_speed * delta
+	var new_pos = fish.position + fish.velocity * delta
+	var relative_y = new_pos.y - depth_level
 
-	# Clamp Y so fish never go above depth_level (i.e. too close to surface)
-	if fish.position.y > depth_level:
-		fish.position.y = depth_level
-		
-	if fish.position.y < depth_level - swim_limits.y:
-		fish.position.y = depth_level - swim_limits.y
+	var hit_top = relative_y > swim_limits.y
+	var hit_bottom = relative_y < -swim_limits.y
+
+	if hit_top or hit_bottom:
+		# Reflect velocity's Y component to bounce inside Y boundary
+		fish.velocity.y = -fish.velocity.y
+
+		# Nudge position inside boundary a bit to avoid sticking
+		var bounce_offset = 0.1
+		if hit_top:
+			new_pos.y = depth_level + swim_limits.y - bounce_offset
+		else:
+			new_pos.y = depth_level - swim_limits.y + bounce_offset
+
+		# Update rotation to match new velocity direction
+		var forward = fish.velocity.normalized()
+		var right = Vector3.UP.cross(forward).normalized()
+		var up = forward.cross(right).normalized()
+		fish.transform.basis = Basis(right, up, forward)
+
+	fish.position = new_pos
