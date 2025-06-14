@@ -30,11 +30,15 @@ func _physics_process(delta):
 	
 	if rotate_to_direction and velocity.length() > 0.1:
 		var dir = velocity.normalized()
-		if abs(dir.dot(Vector3.UP)) < 0.99:
+		if dir.length() > 0.001 and abs(dir.dot(Vector3.UP)) < 0.99:
 			look_at(global_transform.origin + dir, Vector3.UP)
 
 func _turn_around_random():
 	var random_degrees = randf_range(120.0, 240.0)
 	rotate_y(deg_to_rad(random_degrees))
+
+	# Re-orthonormalize to prevent degenerate basis errors
+	global_transform.basis = global_transform.basis.orthonormalized()
+
 	# Update velocity direction after turning
 	velocity = global_transform.basis.z * swim_speed
