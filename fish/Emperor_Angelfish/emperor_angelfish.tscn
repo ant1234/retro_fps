@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnw4k4fngvarx"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_4f5x8"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_p81ov"]
+[ext_resource type="PackedScene" uid="uid://ct81t52grenj8" path="res://fish/Emperor_Angelfish/emperor_angelfish.glb" id="3_qea3r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(2, 2, 1)
+
+[node name="Emperor_Angelfish" type="CharacterBody3D"]
+script = ExtResource("1_4f5x8")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Sketchfab_Scene/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.102856, 0.303044, 0)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_p81ov")
+subject_name = "Emperor Angelfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Sketchfab_Scene" parent="Graphics" instance=ExtResource("3_qea3r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Sketchfab_Scene/Sketchfab_model/EmperorAngelfish_FBX_fbx/Object_2/RootNode/EmperorAngelfish/Object_5" index="0"]
+bones/2/position = Vector3(55.6101, 21.4618, 7.25424)
+bones/2/rotation = Quaternion(0.00345104, 0.998986, 0.0105045, 0.0436466)
+bones/3/rotation = Quaternion(-0.00427512, -0.00927028, 0.418754, 0.908042)
+bones/5/rotation = Quaternion(-0.00763684, 0.0196833, 0.000150352, 0.999777)
+bones/6/rotation = Quaternion(-0.00369281, 0.0433739, 0.000160323, 0.999052)
+bones/7/rotation = Quaternion(-0.000476725, 0.0826513, 3.95372e-05, 0.996578)
+bones/8/rotation = Quaternion(-0.00430555, 0.0388892, 0.126865, 0.991148)
+bones/9/rotation = Quaternion(0.000528594, 0.0074186, -0.126982, 0.991877)
+bones/10/rotation = Quaternion(0, -0.0141431, -2.06795e-24, 0.9999)
+bones/11/rotation = Quaternion(3.50371e-18, 0.0186885, -1.80052e-18, 0.999825)
+bones/13/rotation = Quaternion(-0.00586023, 0.0189975, 0.29471, 0.95538)
+bones/16/rotation = Quaternion(-0.00700286, 0.0186066, 0.352173, 0.935724)
+bones/19/rotation = Quaternion(-0.0487957, -0.0711114, -0.563685, 0.821475)
+bones/22/rotation = Quaternion(-0.0489278, -0.0710205, -0.565212, 0.820426)
+bones/23/rotation = Quaternion(0.00544761, -0.125954, 0.0428658, 0.991095)
+bones/25/rotation = Quaternion(-0.010019, 0.0171716, 0.503856, 0.863559)
+bones/30/rotation = Quaternion(-0.0415199, -0.0755907, -0.479635, 0.873219)
+bones/32/rotation = Quaternion(-0.0109874, 0.0165687, 0.552556, 0.833239)
+bones/34/rotation = Quaternion(-0.00892264, 0.017766, 0.448718, 0.893452)
+bones/38/rotation = Quaternion(-0.0100367, 0.0171613, 0.504746, 0.863039)
+bones/40/rotation = Quaternion(0.0562449, -0.680871, -0.0565395, 0.728049)
+bones/41/rotation = Quaternion(-0.00580021, 0.151057, -0.060398, 0.986661)
+bones/42/rotation = Quaternion(0.95843, 0.216152, 0.185556, -0.0160998)
+bones/44/rotation = Quaternion(3.20601e-18, -3.71425e-18, -0.0732447, 0.997314)
+bones/45/rotation = Quaternion(-0.0355107, 0.119156, -0.259734, 0.957642)
+bones/46/rotation = Quaternion(0.00643475, -0.0434944, 0.0294253, 0.9986)
+bones/47/rotation = Quaternion(-0.0118351, 0.0798764, 0.197362, 0.976999)
+bones/48/rotation = Quaternion(0.000773157, 0.09102, -0.0115119, 0.995782)
+bones/49/rotation = Quaternion(-0.00999889, 0.00499287, -0.179102, 0.983767)
+bones/51/rotation = Quaternion(0.0176154, -0.0599235, -0.259424, 0.963742)
+bones/52/rotation = Quaternion(-0.00645285, 0.043492, 0.0298379, 0.998587)
+bones/53/rotation = Quaternion(0.000105539, 0.00200473, 0.206287, 0.97849)
+bones/54/rotation = Quaternion(-1.77196e-05, 0.0339081, -0.000472821, 0.999425)
+bones/55/rotation = Quaternion(0.027748, 0.0596964, -0.174799, 0.982401)
+bones/58/rotation = Quaternion(-0.264708, -0.404015, -0.257918, 0.836768)
+bones/60/rotation = Quaternion(-0.134052, -0.504713, -0.546528, 0.654677)
+bones/62/rotation = Quaternion(-0.217344, -0.517217, -0.427503, 0.708865)
+bones/64/rotation = Quaternion(-0.255992, -0.474041, -0.31, 0.78336)
+bones/67/rotation = Quaternion(0.236879, 0.342313, -0.314876, 0.852973)
+bones/69/rotation = Quaternion(0.236248, 0.39272, -0.375177, 0.80573)
+bones/71/rotation = Quaternion(0.156801, 0.371904, -0.548962, 0.731944)
+bones/73/rotation = Quaternion(0.0831349, 0.318384, -0.635339, 0.698616)
+
+[editable path="Graphics/Sketchfab_Scene"]

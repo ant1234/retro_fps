@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cr774sksons2f"]
+[gd_scene load_steps=33 format=3 uid="uid://cr774sksons2f"]
 
 [ext_resource type="PackedScene" uid="uid://dovc0methr37k" path="res://environment/rock_boulder.tscn" id="1_icxn4"]
 [ext_resource type="PackedScene" uid="uid://dmr124nsouefn" path="res://characters/player/player.tscn" id="1_udsn1"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bmx63y544ngt3" path="res://pickups/machine_gun_ammo_pickup.tscn" id="11_rqwe0"]
 [ext_resource type="PackedScene" uid="uid://63l52ay75iqk" path="res://fish/Porbeagle_Shark/porbeagle_shark.tscn" id="11_w0vny"]
 [ext_resource type="PackedScene" uid="uid://bx5pe18p1dhde" path="res://pickups/rocket_launcher_ammo_pickup.tscn" id="12_bxy8o"]
+[ext_resource type="PackedScene" uid="uid://cnw4k4fngvarx" path="res://fish/Emperor_Angelfish/emperor_angelfish.tscn" id="12_oxec3"]
 [ext_resource type="PackedScene" uid="uid://b5victy50h20v" path="res://pickups/rocket_launcher_pickup.tscn" id="13_p4lbr"]
 [ext_resource type="PackedScene" uid="uid://bxcgtn35072w" path="res://pickups/shotgun_ammo_pickup.tscn" id="14_5jgut"]
 [ext_resource type="PackedScene" uid="uid://b5g5bp0frrqif" path="res://pickups/shotgun_pickup.tscn" id="15_5cnxw"]
@@ -253,33 +254,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1323, -17.8429, 22.0968)
 
 [node name="FlockingManager" parent="Fish/Tuna" node_paths=PackedStringArray("player") instance=ExtResource("8_ontqe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.94947)
-fish_number = 120
+fish_number = 20
 swim_limits = Vector3(20, 10, 20)
 neighbourhood_distance = 50.0
 rotation_speed = 2.0
 depth_level = -30.0
 player = NodePath("../../../Player")
-max_fish = 10
+max_fish = 20
 
 [node name="Hammer_Head_Shark" type="Node3D" parent="Fish"]
 
 [node name="FlockingManager" type="Node3D" parent="Fish/Hammer_Head_Shark" node_paths=PackedStringArray("player")]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("10_atvss")
+fish_number = 5
 swim_limits = Vector3(20, 10, 20)
 depth_level = -35.0
 player = NodePath("../../../Player")
-max_fish = 10
+max_fish = 5
 
 [node name="Porbeagle_Shark" type="Node3D" parent="Fish"]
 
 [node name="FlockingManager" type="Node3D" parent="Fish/Porbeagle_Shark" node_paths=PackedStringArray("player")]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("11_w0vny")
+fish_number = 5
 swim_limits = Vector3(20, 10, 20)
 depth_level = -45.0
 player = NodePath("../../../Player")
-max_fish = 10
+max_fish = 5
+
+[node name="Emperor_Angelfish" type="Node3D" parent="Fish"]
+
+[node name="FlockingManager" type="Node3D" parent="Fish/Emperor_Angelfish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("12_oxec3")
+fish_number = 100
+fish_min_speed = 0.5
+fish_max_speed = 1.0
+depth_level = -25.0
+player = NodePath("../../../Player")
 
 [node name="Pickups" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78823, 0, -10.7005)
