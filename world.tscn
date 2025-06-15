@@ -243,17 +243,19 @@ transform = Transform3D(-0.878684, 0, 0.477404, 0, 1, 0, -0.477404, 0, -0.878684
 [node name="ReptileMonster" parent="." instance=ExtResource("8_4e18j")]
 transform = Transform3D(-0.999921, 0, -0.0125836, 0, 1, 0, 0.0125836, 0, -0.999921, 8.08685, -0.177008, -25.9791)
 
-[node name="Fish" type="Node3D" parent="."]
+[node name="Fish" type="Node" parent="."]
+
+[node name="Tuna" type="Node3D" parent="Fish"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1323, -17.8429, 22.0968)
 
-[node name="FlockingManager" parent="Fish" node_paths=PackedStringArray("player") instance=ExtResource("8_ontqe")]
+[node name="FlockingManager" parent="Fish/Tuna" node_paths=PackedStringArray("player") instance=ExtResource("8_ontqe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.94947)
 fish_number = 120
 swim_limits = Vector3(20, 10, 20)
 neighbourhood_distance = 50.0
 rotation_speed = 2.0
 depth_level = -30.0
-player = NodePath("../../Player")
+player = NodePath("../../../Player")
 max_fish = 10
 
 [node name="Pickups" type="Node3D" parent="."]

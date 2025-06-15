@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://goe7yw0gyl28"]
+
+[ext_resource type="Texture2D" uid="uid://db636510qkcrc" path="res://fish/Striped_Bass/Striped Bass_file1.png" id="1_3c27j"]
+
+[resource]
+resource_name = "Stripedbass"
+cull_mode = 2
+albedo_texture = ExtResource("1_3c27j")
+roughness = 0.552786

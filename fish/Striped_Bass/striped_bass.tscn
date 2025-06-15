@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxnrpit30b5x0"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_6mqos"]
+[ext_resource type="PackedScene" uid="uid://b8sfbk1l6fg4o" path="res://fish/Striped_Bass/Striped Bass.glb" id="1_ai5rg"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_m16u7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_amiua"]
+size = Vector3(9.33258, 15.8751, 37.1183)
+
+[node name="Striped_Bass" type="CharacterBody3D"]
+script = ExtResource("1_6mqos")
+animation_player_path = NodePath("Graphics/Striped Bass/AnimationPlayer")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_m16u7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112946, 7.14304, 0.175745)
+shape = SubResource("BoxShape3D_amiua")
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Striped Bass" parent="Graphics" instance=ExtResource("1_ai5rg")]
+
+[node name="Skeleton3D" parent="Graphics/Striped Bass/Armature" index="0"]
+bones/4/rotation = Quaternion(-6.46192e-08, -0.0436194, 2.82134e-09, 0.999048)
+bones/5/rotation = Quaternion(7.97147e-08, -0.0871557, -6.97414e-09, 0.996195)
+bones/6/rotation = Quaternion(-7.17629e-16, -0.0871557, 6.34642e-16, 0.996195)
+bones/7/rotation = Quaternion(6.77245e-18, -0.0871557, 3.00303e-16, 0.996195)
+bones/12/rotation = Quaternion(0, 0, 0.0436194, 0.999048)
+bones/18/rotation = Quaternion(0, 0, -0.147809, 0.989016)
+bones/20/rotation = Quaternion(6.69094e-24, 4.49021e-16, 0.147809, 0.989016)
+
+[editable path="Graphics/Striped Bass"]
