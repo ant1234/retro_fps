@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bo1ipjguwjdrw"]
+
+[ext_resource type="Texture2D" uid="uid://uc544a046dts" path="res://fish/Hammer_Head_Shark/hammerhead-shark/source/Tubarão Martelo_diffuse.png" id="1_2rim8"]
+[ext_resource type="Texture2D" uid="uid://jbbr5e3g5d68" path="res://fish/Hammer_Head_Shark/hammerhead-shark/source/Tubarão Martelo_roughness.png" id="2_ovrix"]
+
+[resource]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_2rim8")
+metallic = 0.16
+metallic_texture = ExtResource("2_ovrix")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_ovrix")
+roughness_texture_channel = 1

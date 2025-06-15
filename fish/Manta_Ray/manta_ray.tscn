@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw3n3butvgb24"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_pd5yr"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_ya1fi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(1.15088, 1, 1.00269)
+
+[node name="Manta_Ray" type="CharacterBody3D"]
+script = ExtResource("1_pd5yr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0754395, 0, -0.00134277)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_ya1fi")
+
+[node name="Graphics" type="Node3D" parent="."]

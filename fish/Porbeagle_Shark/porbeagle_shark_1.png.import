@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b24e8umh40ab"
-path.s3tc="res://.godot/imported/uploads_files_2372056_carp_with_armature_Fish_bake.png-c1cf02d4e4741292ca8ca2859f15b2bc.s3tc.ctex"
+uid="uid://dmmebq8838qjw"
+path.s3tc="res://.godot/imported/porbeagle_shark_1.png-337c65591ea40eb56d83e2df8458fb43.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "682bdfca92ae264aa2d0ef1f10d42a5d"
+"md5": "05c63acaf490c7eca691084e166435fb"
 }
 
 [deps]
 
-source_file="res://fish/Carp_Fish/uploads_files_2372056_carp_with_armature_Fish_bake.png"
-dest_files=["res://.godot/imported/uploads_files_2372056_carp_with_armature_Fish_bake.png-c1cf02d4e4741292ca8ca2859f15b2bc.s3tc.ctex"]
+source_file="res://fish/Porbeagle_Shark/porbeagle_shark_1.png"
+dest_files=["res://.godot/imported/porbeagle_shark_1.png-337c65591ea40eb56d83e2df8458fb43.s3tc.ctex"]
 
 [params]
 

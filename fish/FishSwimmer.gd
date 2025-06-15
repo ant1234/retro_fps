@@ -51,8 +51,6 @@ func _physics_process(delta):
 					push_warning("⚠️ Skipped basis assignment: determinant is zero.")
 			else:
 				push_warning("⚠️ Skipped look_at: target too close.")
-		else:
-			print("⚠️ Skipping look_at: vertical or zero direction: ", dir)
 
 	if abs(global_transform.basis.determinant()) < 0.001:
 		global_transform.basis = Basis()  # Identity fallback

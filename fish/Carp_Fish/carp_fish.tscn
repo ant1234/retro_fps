@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj361lbq13pag"]
-
-[ext_resource type="PackedScene" uid="uid://c6gwghaucmkwi" path="res://fish/Carp_Fish/uploads_files_2372056_carp_with_armature.glb" id="1_5u0en"]
-
-[node name="Carp_Fish" type="Node3D"]
-
-[node name="uploads_files_2372056_carp_with_armature" parent="." instance=ExtResource("1_5u0en")]
