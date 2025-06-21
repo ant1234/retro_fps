@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvk75rs1av2sw"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_w8xkw"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_y3hwa"]
+[ext_resource type="PackedScene" uid="uid://ld37jccht34r" path="res://fish/Clown_Coris/Clown Coris.fbx" id="3_33hfe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbac0"]
+size = Vector3(0.419739, 1.30545, 1.31357)
+
+[node name="Clown_Coris" type="CharacterBody3D"]
+transform = Transform3D(-0.999999, 0, -0.00102985, 0, 1, 0, 0.00102985, 0, -0.999999, 0, 0, 0)
+script = ExtResource("1_w8xkw")
+animation_name = "Take 001"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999997, 0, -0.00230384, 0, 1, 0, 0.00230384, 0, 0.999997, 0.000548487, 0.0311811, 0.159092)
+shape = SubResource("BoxShape3D_tbac0")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_y3hwa")
+subject_name = "Clown Coris"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Clown Coris" parent="Graphics" instance=ExtResource("3_33hfe")]
+transform = Transform3D(0.00558497, 0, 1.99999, 0, 2, 0, -1.99999, 0, 0.00558497, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Clown Coris/Clown_Coris2" index="0"]
+bones/1/rotation = Quaternion(0.00345104, 0.998986, 0.0105045, 0.0436466)
+bones/2/rotation = Quaternion(-0.00427512, -0.00927027, 0.418754, 0.908042)
+bones/3/rotation = Quaternion(-0.00763684, 0.0196833, 0.000150352, 0.999777)
+bones/4/rotation = Quaternion(-0.00369281, 0.0433739, 0.000160323, 0.999052)
+bones/5/rotation = Quaternion(-0.000476725, 0.0826513, 3.95372e-05, 0.996579)
+bones/6/rotation = Quaternion(-0.00430555, 0.0388892, 0.126865, 0.991148)
+bones/7/rotation = Quaternion(0.000528595, 0.0074186, -0.126982, 0.991877)
+bones/8/rotation = Quaternion(-6.92764e-24, -0.0141431, 8.27181e-25, 0.9999)
+bones/9/rotation = Quaternion(2.99853e-24, 0.0186885, -2.48154e-24, 0.999825)
+bones/11/rotation = Quaternion(-0.00586023, 0.0189975, 0.29471, 0.95538)
+bones/13/rotation = Quaternion(-0.00700286, 0.0186066, 0.352173, 0.935724)
+bones/15/rotation = Quaternion(-0.0487957, -0.0711114, -0.563685, 0.821475)
+bones/16/rotation = Quaternion(-0.0489278, -0.0710205, -0.565212, 0.820426)
+bones/17/rotation = Quaternion(-0.010019, 0.0171716, 0.503856, 0.863559)
+bones/20/rotation = Quaternion(-0.0415199, -0.0755906, -0.479635, 0.873219)
+bones/21/rotation = Quaternion(-0.0109874, 0.0165687, 0.552556, 0.833238)
+bones/22/rotation = Quaternion(-0.00892264, 0.017766, 0.448719, 0.893452)
+bones/24/rotation = Quaternion(-0.0100367, 0.0171613, 0.504746, 0.863039)
+bones/25/rotation = Quaternion(0.0562449, -0.680871, -0.0565395, 0.728049)
+bones/29/rotation = Quaternion(-0.217344, -0.517217, -0.427503, 0.708865)
+bones/30/rotation = Quaternion(-0.255992, -0.474041, -0.31, 0.78336)
+bones/33/rotation = Quaternion(0.236879, 0.342313, -0.314876, 0.852973)
+bones/35/rotation = Quaternion(0.236248, 0.39272, -0.375177, 0.80573)
+
+[node name="AnimationPlayer" parent="Graphics/Clown Coris" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Clown Coris"]

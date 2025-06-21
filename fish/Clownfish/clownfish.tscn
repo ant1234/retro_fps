@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://clal71lyp2kab"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_miu32"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_350ft"]
+[ext_resource type="PackedScene" uid="uid://dk5i5a7r5fs8d" path="res://fish/Clownfish/clownfish.fbx" id="3_ifadm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbac0"]
+size = Vector3(0.352249, 0.337847, 0.690565)
+
+[node name="Clownfish" type="CharacterBody3D"]
+transform = Transform3D(-0.999999, 0, -0.00102985, 0, 1, 0, 0.00102985, 0, -0.999999, 0, 0, 0)
+script = ExtResource("1_miu32")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/clownfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.99993, 0, 0.0117801, 0, 1, 0, -0.0117801, 0, -0.99993, 5.64236e-05, 0.0749728, 0.0587576)
+shape = SubResource("BoxShape3D_tbac0")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_350ft")
+subject_name = "Clownfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="clownfish" parent="Graphics" instance=ExtResource("3_ifadm")]
+transform = Transform3D(-0.0999853, 0, -0.00171383, 0, 0.1, 0, 0.00171383, 0, -0.0999853, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/clownfish" index="0"]
+bones/1/rotation = Quaternion(0.0278302, 0.0260967, -0.72893, 0.683524)
+bones/2/rotation = Quaternion(1.64013e-05, 0.000469363, -0.0349191, 0.99939)
+bones/3/rotation = Quaternion(0.000743675, -0.106617, 0.00693527, 0.994276)
+bones/4/rotation = Quaternion(0.00139195, -0.0785129, 0.0176714, 0.996756)
+bones/5/rotation = Quaternion(0.00710005, -0.224686, 0.0247178, 0.974092)
+bones/6/rotation = Quaternion(-0.0042209, -0.259362, -0.0361007, 0.965096)
+bones/7/rotation = Quaternion(0.00271069, -0.0225501, -0.00180242, 0.99974)
+bones/8/rotation = Quaternion(0.0438416, -0.0578666, 0.602292, 0.794967)
+bones/9/rotation = Quaternion(-8.30883e-05, -0.0069562, 0.109699, 0.993941)
+bones/11/rotation = Quaternion(-0.000412914, 0.000879399, 0.408736, 0.912652)
+
+[node name="AnimationPlayer" parent="Graphics/clownfish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/clownfish"]

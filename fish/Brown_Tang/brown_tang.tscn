@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://b07kkbfj8fsgk"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_vvcyw"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_b7vmo"]
+[ext_resource type="PackedScene" uid="uid://brccnj110vvko" path="res://fish/Brown_Tang/Brown_tang.fbx" id="3_wocs4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbac0"]
+size = Vector3(0.37561, 1.42882, 1.40879)
+
+[node name="Brown_Tang" type="CharacterBody3D"]
+transform = Transform3D(-0.999999, 0, -0.00102985, 0, 1, 0, 0.00102985, 0, -0.999999, 0, 0, 0)
+script = ExtResource("1_vvcyw")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Brown_tang/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.999979, 0, 0.00644027, 0, 1, 0, -0.00644027, 0, -0.999979, -0.0218588, -0.0920341, 0.105847)
+shape = SubResource("BoxShape3D_tbac0")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_b7vmo")
+subject_name = "Brown Tang"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Brown_tang" parent="Graphics" instance=ExtResource("3_wocs4")]
+transform = Transform3D(-0.054552, 0, 1.99926, 0, 2, 0, -1.99926, 0, -0.054552, 0.066501, -0.163968, 6.84861e-05)
+
+[node name="Skeleton3D" parent="Graphics/Brown_tang/Brown_tang2" index="0"]
+bones/1/position = Vector3(0.374292, 0.261042, 0.0514904)
+bones/1/rotation = Quaternion(0.0875875, 0.994675, 0.0292722, 0.0457454)
+bones/2/rotation = Quaternion(-0.002674, -0.00579839, 0.418768, 0.908071)
+bones/4/rotation = Quaternion(-9.31331e-05, 0.0296691, 8.92134e-07, 0.99956)
+bones/5/rotation = Quaternion(0.00648943, 0.0480478, -0.00031294, 0.998824)
+bones/6/rotation = Quaternion(0.00940878, 0.0790467, -0.000745895, 0.996826)
+bones/7/rotation = Quaternion(0.00213316, 0.0454915, 0.126505, 0.99092)
+bones/8/rotation = Quaternion(0.00886271, 0.0345111, -0.127066, 0.991254)
+bones/9/rotation = Quaternion(1.65436e-23, -0.153227, 2.06795e-23, 0.988191)
+bones/10/rotation = Quaternion(-4.1359e-24, -0.195041, 4.1359e-24, 0.980795)
+bones/12/rotation = Quaternion(0.00910604, -0.0295196, 0.294628, 0.955113)
+bones/15/rotation = Quaternion(0.0108815, -0.0289123, 0.352075, 0.935462)
+bones/18/rotation = Quaternion(-0.0459019, -0.0668942, -0.563928, 0.821829)
+bones/21/rotation = Quaternion(-0.0460262, -0.0668088, -0.565455, 0.820779)
+bones/22/rotation = Quaternion(0.00559789, -0.129428, 0.0428464, 0.990647)
+bones/24/rotation = Quaternion(0.0155683, -0.0266825, 0.503715, 0.863317)
+bones/29/rotation = Quaternion(-0.0390576, -0.0711078, -0.479842, 0.873596)
+bones/31/rotation = Quaternion(0.017073, -0.0257456, 0.552402, 0.833005)
+bones/33/rotation = Quaternion(0.0138646, -0.0276061, 0.448593, 0.893202)
+bones/37/rotation = Quaternion(0.0155958, -0.0266664, 0.504605, 0.862797)
+bones/39/rotation = Quaternion(0.0559844, -0.68421, -0.0567974, 0.724912)
+bones/41/rotation = Quaternion(-0.220892, -0.272755, -0.294387, 0.888903)
+bones/43/rotation = Quaternion(-0.124886, -0.490264, -0.550376, 0.664177)
+bones/45/rotation = Quaternion(-0.146893, -0.398418, -0.456531, 0.781835)
+bones/47/rotation = Quaternion(-0.183669, -0.297247, -0.356856, 0.866351)
+bones/50/rotation = Quaternion(0.167265, 0.166214, -0.354936, 0.904664)
+bones/52/rotation = Quaternion(0.138398, 0.188036, -0.420554, 0.876712)
+bones/54/rotation = Quaternion(0.108898, 0.292172, -0.565376, 0.763627)
+bones/56/rotation = Quaternion(0.124897, 0.377672, -0.623794, 0.67279)
+
+[editable path="Graphics/Brown_tang"]

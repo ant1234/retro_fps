@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1scv8tb06nka"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_nj3cm"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_2iiir"]
+[ext_resource type="PackedScene" uid="uid://81vae2tgx5mf" path="res://fish/Auriga_Butterflyfish/Auriga Butterflyfish.fbx" id="3_6utu1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.56074, 1.08601, 2.27292)
+
+[node name="Auriga_Butterflyfish" type="CharacterBody3D"]
+script = ExtResource("1_nj3cm")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Auriga Butterflyfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999914, 0, 0.0131072, 0, 1, 0, -0.0131072, 0, 0.999914, -0.00954077, 0.200543, 0.243911)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_2iiir")
+subject_name = "Striped Sweetlips"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Auriga Butterflyfish" parent="Graphics" instance=ExtResource("3_6utu1")]
+transform = Transform3D(-0.199998, 0, 0.00097039, 0, 0.2, 0, -0.00097039, 0, -0.199998, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Auriga Butterflyfish" index="0"]
+bones/0/rotation = Quaternion(0.501826, -0.498176, -0.501817, 0.498168)
+bones/2/rotation = Quaternion(2.36621e-10, -1.28731e-12, -0.00544259, 0.999985)
+bones/4/rotation = Quaternion(0.000212208, -0.00329718, 0.0642273, 0.99793)
+bones/5/rotation = Quaternion(0.000153267, 0.00688013, -0.0222707, 0.999728)
+bones/6/rotation = Quaternion(-0.0162065, 0.0942073, -0.0196486, 0.995227)
+
+[editable path="Graphics/Auriga Butterflyfish"]

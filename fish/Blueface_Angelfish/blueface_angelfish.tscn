@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://br654jaylbui6"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_chinh"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_ljfoh"]
+[ext_resource type="PackedScene" uid="uid://cjcnrby4sqkyk" path="res://fish/Blueface_Angelfish/Blueface Angelfish.fbx" id="3_ys18m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.505834, 1.04182, 1.87258)
+
+[node name="Blueface_Angelfish" type="CharacterBody3D"]
+transform = Transform3D(-0.999999, 0, -0.00102985, 0, 1, 0, 0.00102985, 0, -0.999999, 0, 0, 0)
+script = ExtResource("1_chinh")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Blueface Angelfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, -0.000660478, 0.000306837, -0.000659855, 0.999998, 0.00202304, -0.000308201, 0.00202283, -0.999998, -0.0412384, 0.0882031, -0.0976623)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_ljfoh")
+subject_name = "Blueface Angelfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Blueface Angelfish" parent="Graphics" instance=ExtResource("3_ys18m")]
+transform = Transform3D(-0.199933, 0, -0.00518653, 0, 0.2, 0, 0.00518653, 0, -0.199933, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Blueface Angelfish" index="0"]
+bones/1/position = Vector3(1.14888, 7.62939e-08, 4.92661e-16)
+bones/1/rotation = Quaternion(-3.01509e-16, 3.3777e-16, -0.736358, 0.676592)
+bones/2/position = Vector3(0.640014, 6.10352e-07, 2.74182e-08)
+bones/2/rotation = Quaternion(7.01137e-18, 9.79778e-18, -0.00544259, 0.999985)
+bones/3/position = Vector3(0.817728, 1.52588e-07, 3.45708e-08)
+bones/3/rotation = Quaternion(3.53441e-16, 3.33169e-17, -0.0568797, 0.998381)
+bones/4/position = Vector3(0.429314, 1.04904e-07, 1.90735e-08)
+bones/4/rotation = Quaternion(0.000212226, -0.00329717, 0.0642273, 0.99793)
+bones/5/position = Vector3(0.286223, 7.24792e-07, 1.07288e-08)
+bones/5/rotation = Quaternion(0.000153237, 0.00688013, -0.0222707, 0.999728)
+bones/6/position = Vector3(0.253799, -1.71661e-07, 9.90927e-09)
+bones/6/rotation = Quaternion(2.71051e-20, -2.58494e-26, 6.93889e-18, 1)
+
+[editable path="Graphics/Blueface Angelfish"]

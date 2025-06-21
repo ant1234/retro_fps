@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqwe8yv7yr750"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_e87k7"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_lxx0q"]
+[ext_resource type="PackedScene" uid="uid://b3kjdvdmtaw0u" path="res://fish/Blue-striped_Angelfish/Blue-striped Angelfish.fbx" id="3_wqbtj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.824945, 1.61391, 2.82172)
+
+[node name="Blue-striped Angelfish" type="CharacterBody3D"]
+script = ExtResource("1_e87k7")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Blue-striped Angelfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, -0.000660478, 0.000306837, -0.000659855, 0.999998, 0.00202304, -0.000308201, 0.00202283, -0.999998, -0.0167748, 0.145236, 0.0258846)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_lxx0q")
+subject_name = "Blue-striped Angelfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Blue-striped Angelfish" parent="Graphics" instance=ExtResource("3_wqbtj")]
+transform = Transform3D(-0.299972, 0, -0.00409964, 0, 0.3, 0, 0.00409964, 0, -0.299972, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Blue-striped Angelfish" index="0"]
+bones/0/rotation = Quaternion(0.501826, -0.498176, -0.501817, 0.498168)
+bones/2/rotation = Quaternion(-0.000146142, -0.0268511, -0.00544063, 0.999625)
+bones/4/rotation = Quaternion(0.00373662, -0.0580575, 0.0641189, 0.996245)
+bones/5/rotation = Quaternion(-0.00336953, -0.151258, -0.0220149, 0.988243)
+bones/6/rotation = Quaternion(-0.0162065, 0.0942073, -0.0196486, 0.995227)
+
+[editable path="Graphics/Blue-striped Angelfish"]

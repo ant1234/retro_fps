@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0vpv1xsxdv42"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_el86r"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_r1xvc"]
+[ext_resource type="PackedScene" uid="uid://brh62073rimd4" path="res://fish/Blue_Tang/blue_tang.fbx" id="3_tnvss"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbac0"]
+size = Vector3(0.37561, 0.643585, 1.3294)
+
+[node name="Blue_Tang" type="CharacterBody3D"]
+transform = Transform3D(-0.999999, 0, -0.00102985, 0, 1, 0, 0.00102985, 0, -0.999999, 0, 0, 0)
+script = ExtResource("1_el86r")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/blue_tang/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0205689, 0.119736, 0.101566)
+shape = SubResource("BoxShape3D_tbac0")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_r1xvc")
+subject_name = "Blue Tang"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="blue_tang" parent="Graphics" instance=ExtResource("3_tnvss")]
+transform = Transform3D(-0.199512, 0, -0.0139652, 0, 0.2, 0, 0.0139652, 0, -0.199512, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/blue_tang" index="0"]
+bones/1/rotation = Quaternion(-0.0123794, -0.0117156, -0.703365, 0.710625)
+bones/2/rotation = Quaternion(0.00287812, 0.0552301, -3.06085e-06, 0.99847)
+bones/3/rotation = Quaternion(0.00955289, 0.0778732, -0.0214094, 0.996688)
+bones/4/rotation = Quaternion(-0.0150849, 0.0838121, 0.0774158, 0.993355)
+bones/5/rotation = Quaternion(-0.00816018, 0.0591006, -0.00136565, 0.998218)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.000141451, -0.0100028, -0.0023285, 0.999947)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(0.409037, 0.161509, 7.07805e-08)
+bones/7/rotation = Quaternion(-0.0885302, 0.0912914, 0.402673, 0.906467)
+bones/9/position = Vector3(0.261331, -0.515236, 1.49012e-08)
+bones/9/rotation = Quaternion(0.0492737, 0.0651773, -0.254905, 0.963508)
+bones/9/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(0.0339974, -0.0421592, 0.667667, 0.742487)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(-1.58077e-05, 0.000322704, 0.243221, 0.969971)
+bones/12/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(-4.88944e-09, -2.59024e-09, 0.463781, 0.88595)
+bones/14/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(-0.276142, 0.624075, 0.66823, 0.296217)
+bones/16/scale = Vector3(0.926024, 1.0081, 1.00407)
+bones/17/rotation = Quaternion(0.0298716, -0.0655428, 0.109254, 0.991401)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(0.440047, 0.584513, 0.671596, -0.116889)
+bones/19/rotation = Quaternion(-0.0979911, -0.11128, -0.0765947, 0.985976)
+bones/19/scale = Vector3(1, 1, 1)
+
+[editable path="Graphics/blue_tang"]

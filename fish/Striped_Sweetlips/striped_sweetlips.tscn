@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1khyhso4tn3c"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_ulwwj"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_llvpq"]
+[ext_resource type="PackedScene" uid="uid://bh1rqnb5i7b4v" path="res://fish/Striped_Sweetlips/uploads_files_4191384_Striped_sweetlips.fbx" id="3_883ra"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(1.24931, 1.20916, 0.263924)
+
+[node name="Striped_Sweetlips" type="CharacterBody3D"]
+script = ExtResource("1_ulwwj")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/uploads_files_4191384_Striped_sweetlips/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.00710338, 0, -0.999975, 0, 1, 0, 0.999975, 0, -0.00710338, 0.0412156, 0.0926031, 0.133407)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_llvpq")
+subject_name = "Striped Sweetlips"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="uploads_files_4191384_Striped_sweetlips" parent="Graphics" instance=ExtResource("3_883ra")]
+transform = Transform3D(-0.178727, 0, 1.992, 0, 2, 0, -1.992, 0, -0.178727, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/uploads_files_4191384_Striped_sweetlips/Striped_sweetlips2" index="0"]
+bones/1/position = Vector3(0.274032, 0.379526, 0.0529256)
+bones/1/rotation = Quaternion(0.0740762, 0.99573, -0.0375334, 0.0403178)
+bones/2/rotation = Quaternion(-0.0150869, -0.0327159, 0.418496, 0.907504)
+bones/4/rotation = Quaternion(0.00852323, -0.0477632, 0.000412819, 0.998822)
+bones/5/rotation = Quaternion(0.000459537, -0.0201099, 1.51211e-05, 0.999798)
+bones/6/rotation = Quaternion(-0.00610806, 0.0115285, 7.65011e-05, 0.999915)
+bones/7/rotation = Quaternion(-0.0179328, 0.0573692, 0.127377, 0.990032)
+bones/8/rotation = Quaternion(0.0168633, 0.209874, -0.122023, 0.969938)
+bones/9/rotation = Quaternion(-2.31611e-23, 0.257024, 9.92617e-24, 0.966405)
+bones/10/rotation = Quaternion(1.48893e-23, 0.267057, -7.85822e-24, 0.963681)
+bones/12/rotation = Quaternion(-0.0095362, 0.0309141, 0.294614, 0.955069)
+bones/15/rotation = Quaternion(-0.0113956, 0.030278, 0.352058, 0.935419)
+bones/18/rotation = Quaternion(0.0380391, 0.0552152, -0.566049, 0.821641)
+bones/19/rotation = Quaternion(-0.00165262, 0.03821, 0.0431789, 0.998335)
+bones/21/rotation = Quaternion(-0.0163037, 0.0279429, 0.503692, 0.863277)
+bones/24/rotation = Quaternion(-0.0178795, 0.0269618, 0.552376, 0.832967)
+bones/26/rotation = Quaternion(-0.0145196, 0.0289102, 0.448572, 0.893161)
+bones/30/rotation = Quaternion(-0.0163325, 0.0279261, 0.504582, 0.862758)
+bones/32/rotation = Quaternion(0.0546621, -0.700716, -0.0580711, 0.708969)
+bones/34/rotation = Quaternion(-0.251261, -0.362754, -0.27033, 0.855686)
+bones/36/rotation = Quaternion(-0.0873649, -0.429746, -0.563617, 0.700016)
+bones/38/rotation = Quaternion(-0.11633, -0.345756, -0.465258, 0.806508)
+bones/40/rotation = Quaternion(-0.188947, -0.309923, -0.354134, 0.861879)
+bones/43/rotation = Quaternion(0.204196, 0.258336, -0.335958, 0.882439)
+bones/45/rotation = Quaternion(0.144617, 0.200872, -0.418482, 0.873847)
+bones/47/rotation = Quaternion(0.0763772, 0.237511, -0.573156, 0.780543)
+bones/49/rotation = Quaternion(0.0815769, 0.316068, -0.635623, 0.699592)
+
+[editable path="Graphics/uploads_files_4191384_Striped_sweetlips"]

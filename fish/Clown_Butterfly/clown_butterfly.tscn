@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://ikoj65n14v1u"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_s450v"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_i5ivv"]
+[ext_resource type="PackedScene" uid="uid://bldtu14cdo4yy" path="res://fish/Clown_Butterfly/Clown_Butterfly.fbx" id="3_4sopi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbac0"]
+size = Vector3(0.419739, 1.49035, 1.44201)
+
+[node name="Clown_Butterfly" type="CharacterBody3D"]
+transform = Transform3D(-0.999999, 0, -0.00102985, 0, 1, 0, 0.00102985, 0, -0.999999, 0, 0, 0)
+script = ExtResource("1_s450v")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Clown_Butterfly/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999997, 0, -0.00230384, 0, 1, 0, 0.00230384, 0, 0.999997, 0.000335492, -0.0612695, 0.251544)
+shape = SubResource("BoxShape3D_tbac0")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_i5ivv")
+subject_name = "Clown Butterfly"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Clown_Butterfly" parent="Graphics" instance=ExtResource("3_4sopi")]
+transform = Transform3D(-0.00226888, 0, 2, 0, 2, 0, -2, 0, -0.00226888, -0.000196911, -0.128715, 0.191203)
+
+[node name="Skeleton3D" parent="Graphics/Clown_Butterfly/Clown_Butterfly2" index="0"]
+bones/1/position = Vector3(0.159247, -0.617732, 0.0242095)
+bones/1/rotation = Quaternion(0.0396324, 0.997994, 0.0227472, 0.0438079)
+bones/2/rotation = Quaternion(-0.00634331, -0.0137553, 0.418723, 0.907988)
+bones/4/rotation = Quaternion(-0.00614481, 0.00558751, 2.77879e-05, 0.999966)
+bones/5/rotation = Quaternion(-0.0042953, 0.0322762, 0.000133887, 0.99947)
+bones/6/rotation = Quaternion(-0.00350336, 0.0822346, 0.000286523, 0.996607)
+bones/7/rotation = Quaternion(-0.0136041, 0.0785806, 0.126864, 0.988709)
+bones/8/rotation = Quaternion(0.00164389, 0.0417342, -0.126725, 0.991058)
+bones/9/rotation = Quaternion(-7.44463e-24, -0.0529681, -1.03398e-24, 0.998596)
+bones/10/rotation = Quaternion(1.57164e-23, -0.0664374, -3.72231e-24, 0.997791)
+bones/12/rotation = Quaternion(-0.0436773, 0.141591, 0.291515, 0.94502)
+bones/15/rotation = Quaternion(-0.0521935, 0.138678, 0.348354, 0.925577)
+bones/18/rotation = Quaternion(0.08182, 0.119239, -0.559846, 0.81588)
+bones/21/rotation = Quaternion(0.0820415, 0.119086, -0.561362, 0.814838)
+bones/22/rotation = Quaternion(-0.00554905, 0.128299, 0.0428528, 0.990794)
+bones/24/rotation = Quaternion(-0.0746736, 0.127983, 0.498393, 0.854195)
+bones/29/rotation = Quaternion(0.06962, 0.126749, -0.476369, 0.867272)
+bones/31/rotation = Quaternion(-0.0818911, 0.123489, 0.546565, 0.824203)
+bones/33/rotation = Quaternion(-0.066502, 0.132413, 0.443853, 0.883764)
+bones/37/rotation = Quaternion(-0.0748055, 0.127906, 0.499273, 0.853681)
+bones/39/rotation = Quaternion(0.0551842, -0.694287, -0.0575753, 0.715266)
+bones/41/rotation = Quaternion(-0.239282, -0.326764, -0.280427, 0.870247)
+bones/43/rotation = Quaternion(-0.101156, -0.452195, -0.559176, 0.687466)
+bones/45/rotation = Quaternion(-0.117894, -0.348464, -0.464864, 0.805341)
+bones/47/rotation = Quaternion(-0.180973, -0.290779, -0.358207, 0.868553)
+bones/50/rotation = Quaternion(0.189497, 0.221351, -0.344083, 0.892581)
+bones/52/rotation = Quaternion(0.135227, 0.181496, -0.421567, 0.878097)
+bones/54/rotation = Quaternion(0.0780232, 0.240314, -0.572858, 0.779741)
+bones/56/rotation = Quaternion(0.0974794, 0.338829, -0.631754, 0.690348)
+
+[node name="AnimationPlayer" parent="Graphics/Clown_Butterfly" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Clown_Butterfly"]

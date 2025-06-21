@@ -1,0 +1,44 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bh1rqnb5i7b4v"
+path="res://.godot/imported/uploads_files_4191384_Striped_sweetlips.fbx-eba3c0ee685de25cfb0295218ed28463.scn"
+
+[deps]
+
+source_file="res://fish/Striped_Sweetlips/uploads_files_4191384_Striped_sweetlips.fbx"
+dest_files=["res://.godot/imported/uploads_files_4191384_Striped_sweetlips.fbx-eba3c0ee685de25cfb0295218ed28463.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"Striped_sweetlips1": {
+"use_external/enabled": true,
+"use_external/path": "res://fish/Striped_Sweetlips/Striped_sweetlips1.tres"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

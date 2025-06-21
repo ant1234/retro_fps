@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4mpyfqoiwdy7"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_rwbc3"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_fvywh"]
+[ext_resource type="PackedScene" uid="uid://bf33mek252uu2" path="res://fish/Pumpkinseed_Sunfish/model_38_-_pumpkinseed_sunfish.glb" id="3_g2yhh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(3.98404, 2.16137, 1.87669)
+
+[node name="Pumpkinseed_Sunfish" type="CharacterBody3D"]
+script = ExtResource("1_rwbc3")
+animation_name = "Take 01"
+animation_player_path = NodePath("Graphics/Sketchfab_Scene/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.0200176, 0, -0.9998, 0, 1, 0, 0.9998, 0, 0.0200176, -0.0232062, 0.222208, -0.208579)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_fvywh")
+subject_name = "Pumpkinseed Sunfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Sketchfab_Scene" parent="Graphics" instance=ExtResource("3_g2yhh")]
+transform = Transform3D(-0.179609, 0, 0.0118541, 0, 0.18, 0, -0.0118541, 0, -0.179609, -0.130837, 1.49477, 2.57819)
+
+[node name="Skeleton3D" parent="Graphics/Sketchfab_Scene/Sketchfab_model/Root/Armature" index="0"]
+bones/2/rotation = Quaternion(-0.360388, -0.00380002, 0.932791, 0.00275369)
+bones/3/rotation = Quaternion(-0.00950537, 0.765528, 0.0179586, 0.643082)
+bones/4/rotation = Quaternion(0.871685, 0.285314, -0.384812, -0.10335)
+bones/5/rotation = Quaternion(0.221891, -0.710779, 0.0886643, 0.661587)
+bones/6/rotation = Quaternion(0.886179, -0.205029, -0.344554, 0.232232)
+bones/7/rotation = Quaternion(0.238407, 0.506946, -0.0847802, 0.824003)
+bones/8/rotation = Quaternion(0.0889513, -0.24527, -0.0438051, 0.964371)
+bones/9/position = Vector3(-0.25884, 1.75855, -0.314966)
+bones/9/rotation = Quaternion(-0.0167305, -0.226068, 0.0888384, 0.969908)
+bones/10/rotation = Quaternion(-0.0661347, 0.733841, 0.0805455, 0.671279)
+bones/11/rotation = Quaternion(0.0296081, -0.202936, -0.00690345, 0.97872)
+bones/12/rotation = Quaternion(-0.0641737, -0.494769, -0.0337245, 0.865995)
+
+[editable path="Graphics/Sketchfab_Scene"]
