@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpny7xiwyhtbd"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_k5q06"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_b4d07"]
+[ext_resource type="PackedScene" uid="uid://be5cuv8mod6ep" path="res://fish/Coral_Grouper/coralgrouper.fbx" id="3_1ilqv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ysqgo"]
+size = Vector3(0.372498, 0.630737, 1.61414)
+
+[node name="Coral_Grouper" type="CharacterBody3D"]
+transform = Transform3D(0.0153731, -0.00257758, -0.999878, -0.00227648, 0.999994, -0.00261287, 0.999879, 0.00231636, 0.0153672, 0, 0, 0)
+script = ExtResource("1_k5q06")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/coralgrouper/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 3.65544e-08, -3.79048e-07, 0, 1, -8.03993e-10, 0, 9.69812e-08, 1, -0.0525819, 0.0228882, 0.153705)
+shape = SubResource("BoxShape3D_ysqgo")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_b4d07")
+subject_name = "Coral Grouper"
+
+[node name="Graphics" type="Node3D" parent="."]
+transform = Transform3D(0.997966, 0, 0.0637485, 0, 1, 0, -0.0637485, 0, 0.997966, 0, 0, 0)
+
+[node name="coralgrouper" parent="Graphics" instance=ExtResource("3_1ilqv")]
+transform = Transform3D(-0.199583, 0.000125764, 0.0129108, 6.24694e-05, 0.199998, -0.000982488, -0.0129112, -0.000976406, -0.199581, 0, 0, 0)
+
+[node name="Bone01" parent="Graphics/coralgrouper" index="0"]
+transform = Transform3D(-4.57286e-07, 1.32074e-05, -2.54, -2.53983, -0.0297058, 3.02792e-07, -0.0297058, 2.53983, 1.32118e-05, 0.345237, 1.81147, 0.777581)
+
+[node name="Skeleton3D" parent="Graphics/coralgrouper/Bone01" index="0"]
+bones/0/rotation = Quaternion(-0.00828167, -0.00821302, -0.709995, 0.70411)
+bones/2/rotation = Quaternion(-0.00121106, 0.0110935, -0.0570617, 0.998308)
+bones/3/rotation = Quaternion(-0.00158726, 0.0160724, 0.0823152, 0.996476)
+bones/4/rotation = Quaternion(0.000841212, 0.00992562, -0.0844446, 0.996378)
+bones/5/rotation = Quaternion(-0.00271658, 0.110879, 0.024342, 0.993532)
+bones/6/rotation = Quaternion(-0.0261242, 0.234671, -0.0201184, 0.971515)
+bones/7/rotation = Quaternion(0.00177493, -0.00207659, 0.649732, 0.760159)
+
+[node name="AnimationPlayer" parent="Graphics/coralgrouper" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/coralgrouper"]

@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4unhsmnexrtr"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_ur8h5"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_xdo41"]
+[ext_resource type="PackedScene" uid="uid://ddfb6f18yhsto" path="res://fish/Convict_Tang/Convict Tang.fbx" id="3_xt18p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbac0"]
+size = Vector3(0.299368, 0.652359, 0.649761)
+
+[node name="Convict_Tang" type="CharacterBody3D"]
+transform = Transform3D(-0.999827, 0, 0.0185866, 0, 1, 0, -0.0185866, 0, -0.999827, 0, 0, 0)
+script = ExtResource("1_ur8h5")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Convict Tang/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.999755, 0, -0.0221121, 0, 1, 0, 0.0221121, 0, -0.999755, 0.0100008, 0.0231384, 0.033529)
+shape = SubResource("BoxShape3D_tbac0")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_xdo41")
+subject_name = "Convict Tang"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Convict Tang" parent="Graphics" instance=ExtResource("3_xt18p")]
+transform = Transform3D(-0.0206458, 0, 0.999787, 0, 1, 0, -0.999787, 0, -0.0206458, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Convict Tang/Convict_Tang3" index="0"]
+bones/1/position = Vector3(0.348207, 0.207185, 0.0583366)
+bones/1/rotation = Quaternion(0.0841226, 0.995247, -0.0270793, 0.0409147)
+bones/2/rotation = Quaternion(-0.00566219, -0.012278, 0.418736, 0.908007)
+bones/4/rotation = Quaternion(0.00167082, 0.0110316, -3.06334e-05, 0.999938)
+bones/5/rotation = Quaternion(-0.000786402, 0.0156924, 8.47802e-06, 0.999877)
+bones/6/rotation = Quaternion(-0.000603984, 0.0138346, 1.26923e-05, 0.999904)
+bones/7/rotation = Quaternion(0.000429255, 0.0150448, 0.126948, 0.991795)
+bones/8/rotation = Quaternion(-0.000195644, -0.0355025, -0.126756, 0.991298)
+bones/9/rotation = Quaternion(1.46825e-23, -0.0639606, 2.48154e-24, 0.997952)
+bones/10/rotation = Quaternion(5.16988e-26, 0.022606, -8.27181e-25, 0.999745)
+bones/12/rotation = Quaternion(0.0444384, -0.144059, 0.2914, 0.944647)
+bones/15/rotation = Quaternion(0.0531031, -0.141095, 0.348217, 0.925212)
+bones/18/rotation = Quaternion(-0.0664987, -0.0969105, -0.561872, 0.818832)
+bones/21/rotation = Quaternion(-0.0666788, -0.0967867, -0.563393, 0.817786)
+bones/22/rotation = Quaternion(0.00176099, -0.0407156, 0.0431746, 0.998236)
+bones/24/rotation = Quaternion(0.0759749, -0.130213, 0.498196, 0.853858)
+bones/29/rotation = Quaternion(-0.0565832, -0.103015, -0.478092, 0.87041)
+bones/31/rotation = Quaternion(0.0833182, -0.125641, 0.546349, 0.823878)
+bones/33/rotation = Quaternion(0.0676609, -0.134721, 0.443678, 0.883415)
+bones/37/rotation = Quaternion(0.0761091, -0.130135, 0.499076, 0.853344)
+bones/39/rotation = Quaternion(0.0560008, -0.684001, -0.0567813, 0.725109)
+bones/42/rotation = Quaternion(-0.271661, -0.425781, -0.251021, 0.825772)
+bones/44/rotation = Quaternion(-0.0823686, -0.421599, -0.565087, 0.704376)
+bones/46/rotation = Quaternion(-0.203602, -0.49435, -0.434216, 0.724997)
+bones/48/rotation = Quaternion(-0.26444, -0.495201, -0.302958, 0.770106)
+bones/51/rotation = Quaternion(0.229686, 0.323607, -0.319904, 0.86034)
+bones/53/rotation = Quaternion(0.235703, 0.391561, -0.375515, 0.806295)
+bones/55/rotation = Quaternion(0.1698, 0.393257, -0.543384, 0.721976)
+bones/57/rotation = Quaternion(0.0758234, 0.307835, -0.636876, 0.702764)
+
+[node name="AnimationPlayer" parent="Graphics/Convict Tang" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Convict Tang"]

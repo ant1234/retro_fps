@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cr774sksons2f"]
+[gd_scene load_steps=49 format=3 uid="uid://cr774sksons2f"]
 
 [ext_resource type="PackedScene" uid="uid://dovc0methr37k" path="res://environment/rock_boulder.tscn" id="1_icxn4"]
 [ext_resource type="PackedScene" uid="uid://dmr124nsouefn" path="res://characters/player/player.tscn" id="1_udsn1"]
@@ -34,6 +34,10 @@
 [ext_resource type="PackedScene" uid="uid://ikoj65n14v1u" path="res://fish/Clown_Butterfly/clown_butterfly.tscn" id="22_j2df8"]
 [ext_resource type="PackedScene" uid="uid://bvk75rs1av2sw" path="res://fish/Clown_Coris/clown_coris.tscn" id="23_063i1"]
 [ext_resource type="PackedScene" uid="uid://clal71lyp2kab" path="res://fish/Clownfish/clownfish.tscn" id="24_vice3"]
+[ext_resource type="PackedScene" uid="uid://brkpgta1xk45s" path="res://fish/Clownfish1/clownfish1.tscn" id="25_7vl4d"]
+[ext_resource type="PackedScene" uid="uid://b4unhsmnexrtr" path="res://fish/Convict_Tang/convict_tang.tscn" id="26_kmw47"]
+[ext_resource type="PackedScene" uid="uid://bpny7xiwyhtbd" path="res://fish/Coral_Grouper/coral_grouper.tscn" id="27_m24j2"]
+[ext_resource type="PackedScene" uid="uid://b5jq4sasrelp5" path="res://fish/Discus1/Discus1.tscn" id="28_ugx6t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l5qe5"]
 
@@ -417,10 +421,52 @@ max_fish = 0
 [node name="Clownfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("24_vice3")
+fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
 player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Clownfish1" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("25_7vl4d")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Convict_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("26_kmw47")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Coral_Grouper" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("27_m24j2")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 1.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Discus1" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("28_ugx6t")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
 
 [node name="Pickups" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78823, 0, -10.7005)

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://brkpgta1xk45s"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_s1323"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_orlrc"]
+[ext_resource type="PackedScene" uid="uid://btgso2vfbqbl8" path="res://fish/Clownfish1/clownfish1.fbx" id="3_542g1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbac0"]
+size = Vector3(0.299368, 0.352029, 0.655796)
+
+[node name="Clownfish1" type="CharacterBody3D"]
+transform = Transform3D(-0.999827, 0, 0.0185866, 0, 1, 0, -0.0185866, 0, -0.999827, 0, 0, 0)
+script = ExtResource("1_s1323")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/clownfish1/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999859, 0, 0.0167376, 0, 1, 0, -0.0167376, 0, 0.999859, 0.00956306, 0.0820638, 0.0293263)
+shape = SubResource("BoxShape3D_tbac0")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_orlrc")
+subject_name = "Clownfish1"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="clownfish1" parent="Graphics" instance=ExtResource("3_542g1")]
+transform = Transform3D(-0.1, 0, 9.07716e-05, 0, 0.1, 0, -9.07716e-05, 0, -0.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/clownfish1" index="0"]
+bones/1/rotation = Quaternion(0.0287262, 0.0269368, -0.728895, 0.683492)
+bones/2/rotation = Quaternion(8.03688e-06, 0.000229972, -0.0349191, 0.99939)
+bones/3/rotation = Quaternion(0.000778575, -0.11162, 0.00693144, 0.993726)
+bones/4/rotation = Quaternion(0.00142102, -0.0801529, 0.0176691, 0.996625)
+bones/5/rotation = Quaternion(0.00721631, -0.225102, 0.0247473, 0.973994)
+bones/6/rotation = Quaternion(-0.0024895, -0.240244, -0.0387382, 0.969936)
+bones/7/rotation = Quaternion(0, 0, 0, 1)
+bones/8/rotation = Quaternion(0.0456101, -0.0602009, 0.602161, 0.794794)
+bones/9/rotation = Quaternion(-0.000545682, 0.0121824, -0.274589, 0.961484)
+bones/11/rotation = Quaternion(0.00304258, -0.00684161, 0.545637, 0.837988)
+
+[node name="AnimationPlayer" parent="Graphics/clownfish1" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/clownfish1"]
