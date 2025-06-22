@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cr774sksons2f"]
+[gd_scene load_steps=84 format=3 uid="uid://cr774sksons2f"]
 
 [ext_resource type="PackedScene" uid="uid://dovc0methr37k" path="res://environment/rock_boulder.tscn" id="1_icxn4"]
 [ext_resource type="PackedScene" uid="uid://dmr124nsouefn" path="res://characters/player/player.tscn" id="1_udsn1"]
@@ -38,6 +38,41 @@
 [ext_resource type="PackedScene" uid="uid://b4unhsmnexrtr" path="res://fish/Convict_Tang/convict_tang.tscn" id="26_kmw47"]
 [ext_resource type="PackedScene" uid="uid://bpny7xiwyhtbd" path="res://fish/Coral_Grouper/coral_grouper.tscn" id="27_m24j2"]
 [ext_resource type="PackedScene" uid="uid://b5jq4sasrelp5" path="res://fish/Discus1/Discus1.tscn" id="28_ugx6t"]
+[ext_resource type="PackedScene" uid="uid://c0d5xyelrjlyq" path="res://fish/Discus2/Discus2.tscn" id="29_23ow3"]
+[ext_resource type="PackedScene" uid="uid://bqoukxtf6woqf" path="res://fish/Discus4/Discus4.tscn" id="30_pmu43"]
+[ext_resource type="PackedScene" uid="uid://wariks08fucg" path="res://fish/Discus5/Discus5.tscn" id="31_kqi5l"]
+[ext_resource type="PackedScene" uid="uid://m2aumupwtk1g" path="res://fish/Flame_Angelfish/flame_angelfish.tscn" id="32_ey0jq"]
+[ext_resource type="PackedScene" uid="uid://bq63f853hs6v5" path="res://fish/French_Angelfish/french_angelfish.tscn" id="33_iq7wo"]
+[ext_resource type="PackedScene" uid="uid://476mlqjhwrse" path="res://fish/Fusilier_Fish/Fusilier_Fish.tscn" id="34_1ri31"]
+[ext_resource type="PackedScene" uid="uid://dve8trf53niqw" path="res://fish/Gem_Tang/Gem_Tang.tscn" id="35_vke2d"]
+[ext_resource type="PackedScene" uid="uid://movks8ruk75s" path="res://fish/Latticed_Butterflyfish/Latticed_Butterflyfish.tscn" id="36_n041y"]
+[ext_resource type="PackedScene" uid="uid://b1ledo34d3yuo" path="res://fish/Lined_Surgeon/Lined_Surgeon.tscn" id="37_fnmnx"]
+[ext_resource type="PackedScene" uid="uid://b1tn82firv8cl" path="res://fish/Lionfish/Lionfish.tscn" id="38_5qmyl"]
+[ext_resource type="PackedScene" uid="uid://58xqeshg52us" path="res://fish/Masked_Swallowtail_Angelfish/Masked_Swallowtail_Angelfish.tscn" id="39_3mmbe"]
+[ext_resource type="PackedScene" uid="uid://doyk46jg0kanp" path="res://fish/Mauritius_Hogfish/Mauritius_Hogfish.tscn" id="40_mtqra"]
+[ext_resource type="PackedScene" uid="uid://m5byooke42k1" path="res://fish/Millet_Butterflyfish/Millet_Butterflyfish.tscn" id="41_0c74g"]
+[ext_resource type="PackedScene" uid="uid://dwjiyrf4lyx4y" path="res://fish/Moorish_Idol/moorish_idol.tscn" id="42_yjqka"]
+[ext_resource type="PackedScene" uid="uid://2bs26cq7520g" path="res://fish/Pearlscale_Butterflyfish/Pearlscale_Butterflyfish.tscn" id="43_wgudq"]
+[ext_resource type="PackedScene" uid="uid://dd7xkmo0jej1b" path="res://fish/Picasso_Triggerfish/Picasso_Triggerfish.tscn" id="44_2t2a4"]
+[ext_resource type="PackedScene" uid="uid://crhjunsnxa02x" path="res://fish/Plectorhinchus_Lineata/Plectorhinchus_Lineata.tscn" id="45_h301m"]
+[ext_resource type="PackedScene" uid="uid://bi4xrn1l58rkp" path="res://fish/Purple_Tang/Purple_Tang.tscn" id="46_4ncji"]
+[ext_resource type="PackedScene" uid="uid://c8164778n5u4w" path="res://fish/Purple_Yellow_Tang/Purple_Yellow_Tang.tscn" id="47_pdk8p"]
+[ext_resource type="PackedScene" uid="uid://uyhect40cipm" path="res://fish/Queen_Angelfish/Queen_Angelfish.tscn" id="48_4dxcs"]
+[ext_resource type="PackedScene" uid="uid://cgrdj7cufswr5" path="res://fish/Regal_Angelfish/Regal_Angelfish.tscn" id="49_33kql"]
+[ext_resource type="PackedScene" uid="uid://cs8ou5ift4326" path="res://fish/Ribbon_Sweetlips/Ribbon_Sweetlips.tscn" id="50_inn32"]
+[ext_resource type="PackedScene" uid="uid://bywn6cl4h2f3q" path="res://fish/Roaops_Butterflyfish/Roaops_Butterflyfish.tscn" id="51_o78wr"]
+[ext_resource type="PackedScene" uid="uid://bf0c7cbigm81y" path="res://fish/Rock_Beauty_Angelfish/Rock_Beauty_Angelfish.tscn" id="52_yvn1y"]
+[ext_resource type="PackedScene" uid="uid://y6gyubbvvvh" path="res://fish/Sailfin_Tang/Sailfin_Tang.tscn" id="53_ti4iu"]
+[ext_resource type="PackedScene" uid="uid://hdwfjh6ukbdm" path="res://fish/Sergeant_Fish/sergeant fish.tscn" id="54_nxwav"]
+[ext_resource type="PackedScene" uid="uid://61b3rttnwb4x" path="res://fish/Sohal_Surgeonfish/Sohal_Surgeonfish.tscn" id="55_lskyv"]
+[ext_resource type="PackedScene" uid="uid://cyqt3wmday478" path="res://fish/Speckled_Butterflyfish/Speckled_Butterflyfish.tscn" id="56_1rbi4"]
+[ext_resource type="PackedScene" uid="uid://cy87rf0ailh6j" path="res://fish/Spot_Banded_Butterflyfish/Spot_Banded_Butterflyfish.tscn" id="57_a2pfi"]
+[ext_resource type="PackedScene" uid="uid://c4cjrb6jiibmv" path="res://fish/Tahitian_Butterflyfish/Tahitian_Butterflyfish.tscn" id="58_djm8c"]
+[ext_resource type="PackedScene" uid="uid://ck0ldb1wgovti" path="res://fish/Yellow_Head_Butterfly/Yellow_Head_Butterfly.tscn" id="59_u4dmc"]
+[ext_resource type="PackedScene" uid="uid://d0peph5fyv6jj" path="res://fish/Yellow_Snapper/Yellow_Snapper.tscn" id="60_k2bje"]
+[ext_resource type="PackedScene" uid="uid://bs3udvdd5nryb" path="res://fish/Yellow_Tang_2/Yellow_Tang_2.tscn" id="61_8kegy"]
+[ext_resource type="PackedScene" uid="uid://dqbgarn5j3cto" path="res://fish/Yellow_Tang/Yellow_Tang.tscn" id="62_6c06n"]
+[ext_resource type="PackedScene" uid="uid://d20orpamlcis8" path="res://fish/Zebrasoma_Desjardinii/Zebrasoma_Desjardinii.tscn" id="63_m2q8r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l5qe5"]
 
@@ -467,6 +502,354 @@ fish_max_speed = 2.0
 depth_level = -25.0
 player = NodePath("../../Player")
 max_fish = 0
+
+[node name="Discus2" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("29_23ow3")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Discus4" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("30_pmu43")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Discus5" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("31_kqi5l")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Flame_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("32_ey0jq")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="French_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("33_iq7wo")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Fusilier_Fish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("34_1ri31")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Gem_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("35_vke2d")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Latticed_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("36_n041y")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Lined_Surgeon" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("37_fnmnx")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Lionfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("38_5qmyl")
+fish_number = 0
+fish_min_speed = 0.2
+fish_max_speed = 0.5
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Masked_Swallowtail_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("39_3mmbe")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Mauritius_Hogfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("40_mtqra")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Millet_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("41_0c74g")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Moorish_Idol" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("42_yjqka")
+fish_number = 0
+fish_min_speed = 0.2
+fish_max_speed = 0.5
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Pearlscale_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("43_wgudq")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Picasso_Triggerfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("44_2t2a4")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 1.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Plectorhinchus_Lineata" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("45_h301m")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Purple_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("46_4ncji")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Purple_Yellow_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("47_pdk8p")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Queen_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("48_4dxcs")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Regal_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("49_33kql")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Ribbon_Sweetlips" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("50_inn32")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Roaops_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("51_o78wr")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Rock_Beauty_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("52_yvn1y")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Sailfin_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("53_ti4iu")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Sergeant_Fish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("54_nxwav")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Sohal_Surgeonfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("55_lskyv")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Speckled_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("56_1rbi4")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Spot_Banded_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("57_a2pfi")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Tahitian_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("58_djm8c")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Yellow_Head_Butterfly" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("59_u4dmc")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Yellow_Snapper" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("60_k2bje")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 1.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Yellow_Tang_2" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("61_8kegy")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Yellow_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("62_6c06n")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Zebrasoma_Desjardinii" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("63_m2q8r")
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
 
 [node name="Pickups" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78823, 0, -10.7005)

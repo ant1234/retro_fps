@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://dve8trf53niqw"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_quidt"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_1w2ui"]
+[ext_resource type="PackedScene" uid="uid://6twpq4qtey8v" path="res://fish/Gem_Tang/Gem_Tang.fbx" id="3_8em7w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.825378, 0.254822)
+
+[node name="Gem_Tang" type="CharacterBody3D"]
+script = ExtResource("1_quidt")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Gem_Tang/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, 0.0133703, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_1w2ui")
+subject_name = "Gem Tang"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Gem_Tang" parent="Graphics" instance=ExtResource("3_8em7w")]
+transform = Transform3D(0.0013876, 0, 1.5, 0, 1.5, 0, -1.5, 0, 0.0013876, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Gem_Tang/Gem_Tang_Gem_Tang2" index="0"]
+bones/1/position = Vector3(0.475323, 0.675408, 0.136792)
+bones/1/rotation = Quaternion(-0.117611, 0.990476, 0.0330121, 0.0635173)
+bones/2/rotation = Quaternion(-0.00419154, -0.0090893, 0.418751, 0.908046)
+bones/4/rotation = Quaternion(-0.0166446, 0.0202017, 0.000330818, 0.999657)
+bones/5/rotation = Quaternion(-0.0138056, 0.00769967, 0.000105172, 0.999875)
+bones/6/rotation = Quaternion(-0.010257, -0.0506672, -0.000517347, 0.998663)
+bones/7/rotation = Quaternion(0.00535423, -0.0774219, 0.126262, 0.988957)
+bones/8/rotation = Quaternion(-0.0233951, -0.172898, -0.125268, 0.976661)
+bones/9/rotation = Quaternion(1.65436e-23, -0.122843, 2.89513e-24, 0.992426)
+bones/10/rotation = Quaternion(2.15067e-23, 0.268362, 0, 0.963318)
+bones/12/rotation = Quaternion(0.0489735, -0.15876, 0.290672, 0.942288)
+bones/15/rotation = Quaternion(0.0585224, -0.155494, 0.347347, 0.922901)
+bones/18/rotation = Quaternion(-0.0662419, -0.0965363, -0.561902, 0.818877)
+bones/21/rotation = Quaternion(-0.0664213, -0.0964129, -0.563424, 0.81783)
+bones/22/rotation = Quaternion(0.00109901, -0.0254102, 0.0431966, 0.998743)
+bones/24/rotation = Quaternion(0.0837283, -0.143502, 0.496952, 0.851725)
+bones/29/rotation = Quaternion(-0.0563647, -0.102617, -0.478118, 0.870457)
+bones/31/rotation = Quaternion(0.091821, -0.138463, 0.544984, 0.82182)
+bones/33/rotation = Quaternion(0.0745658, -0.148469, 0.44257, 0.881209)
+bones/37/rotation = Quaternion(0.0838762, -0.143415, 0.497829, 0.851213)
+bones/39/rotation = Quaternion(0.0567248, -0.67464, -0.056058, 0.733826)
+bones/41/rotation = Quaternion(-0.226623, -0.289432, -0.290222, 0.88354)
+bones/43/rotation = Quaternion(-0.138599, -0.511786, -0.544486, 0.649923)
+bones/44/rotation = Quaternion(-0.133369, -0.375193, -0.460663, 0.793242)
+bones/45/rotation = Quaternion(-0.184209, -0.298543, -0.356582, 0.865903)
+bones/48/rotation = Quaternion(0.174152, 0.183195, -0.351748, 0.901324)
+bones/50/rotation = Quaternion(0.139034, 0.189347, -0.420346, 0.876428)
+bones/52/rotation = Quaternion(0.0944823, 0.267998, -0.569167, 0.771556)
+bones/53/rotation = Quaternion(0.140736, 0.399781, -0.618303, 0.661868)
+
+[node name="AnimationPlayer" parent="Graphics/Gem_Tang" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Gem_Tang"]

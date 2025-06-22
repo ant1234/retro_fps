@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1ledo34d3yuo"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_b41bx"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_mod08"]
+[ext_resource type="PackedScene" uid="uid://cdp7iow20wsdb" path="res://fish/Lined_Surgeon/Lined Surgeon.fbx" id="3_oj66d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.825378, 0.254822)
+
+[node name="Lined_Surgeon" type="CharacterBody3D"]
+script = ExtResource("1_b41bx")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Lined Surgeon/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, 0.0133703, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_mod08")
+subject_name = "Lined Surgeon"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Lined Surgeon" parent="Graphics" instance=ExtResource("3_oj66d")]
+transform = Transform3D(-0.00442445, 0, 1.49999, 0, 1.5, 0, -1.49999, 0, -0.00442445, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Lined Surgeon/Lined_Surgeon2" index="0"]
+bones/1/position = Vector3(0.0506974, 0.384961, 0.0547688)
+bones/1/rotation = Quaternion(-0.071829, 0.995662, -0.0372082, 0.0459724)
+bones/2/rotation = Quaternion(-0.0138593, -0.0300536, 0.418541, 0.907595)
+bones/4/rotation = Quaternion(0.0197759, 0.0266795, -0.000524109, 0.999448)
+bones/5/rotation = Quaternion(0.0147579, 0.0147913, -0.000213459, 0.999782)
+bones/6/rotation = Quaternion(0.00979867, 0.0164178, -0.000162968, 0.999817)
+bones/7/rotation = Quaternion(0.0046527, -0.00250252, 0.126988, 0.99189)
+bones/8/rotation = Quaternion(0.0108071, 0.0660639, -0.126858, 0.989659)
+bones/9/rotation = Quaternion(-1.44757e-23, 0.134904, 1.24077e-24, 0.990859)
+bones/10/rotation = Quaternion(-1.65436e-24, 0.22163, 2.06795e-24, 0.975131)
+bones/12/rotation = Quaternion(-0.0157895, 0.0511856, 0.294345, 0.954197)
+bones/15/rotation = Quaternion(-0.0188681, 0.0501325, 0.351737, 0.934565)
+bones/18/rotation = Quaternion(-0.00947141, -0.013803, -0.565714, 0.824432)
+bones/21/rotation = Quaternion(-0.00949706, -0.0137853, -0.567246, 0.823378)
+bones/22/rotation = Quaternion(0.00335918, -0.0776672, 0.0430798, 0.996042)
+bones/24/rotation = Quaternion(-0.0269947, 0.0462662, 0.503232, 0.862489)
+bones/29/rotation = Quaternion(-0.00805915, -0.0146724, -0.481362, 0.876362)
+bones/31/rotation = Quaternion(-0.0296039, 0.0446418, 0.551872, 0.832207)
+bones/33/rotation = Quaternion(-0.0240406, 0.0478678, 0.448163, 0.892346)
+bones/37/rotation = Quaternion(-0.0270424, 0.0462384, 0.504121, 0.86197)
+bones/39/rotation = Quaternion(0.0524002, -0.727329, -0.0601201, 0.681639)
+bones/41/rotation = Quaternion(-0.278072, -0.446123, -0.244319, 0.814837)
+bones/43/rotation = Quaternion(-0.0819258, -0.420875, -0.565201, 0.704769)
+bones/45/rotation = Quaternion(-0.204367, -0.495627, -0.433857, 0.724125)
+bones/47/rotation = Quaternion(-0.261167, -0.486987, -0.305733, 0.775347)
+bones/50/rotation = Quaternion(0.238612, 0.346853, -0.313633, 0.851112)
+bones/52/rotation = Quaternion(0.231473, 0.382584, -0.378095, 0.810613)
+bones/54/rotation = Quaternion(0.169922, 0.39345, -0.543346, 0.721872)
+bones/56/rotation = Quaternion(0.0853949, 0.321585, -0.634743, 0.697418)
+
+[node name="AnimationPlayer" parent="Graphics/Lined Surgeon" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Lined Surgeon"]

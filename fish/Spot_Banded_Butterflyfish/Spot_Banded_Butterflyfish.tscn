@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy87rf0ailh6j"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_mppgt"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_rlflv"]
+[ext_resource type="PackedScene" uid="uid://bgd71xjfj0hno" path="res://fish/Spot_Banded_Butterflyfish/Spot_banded_Butterflyfish.fbx" id="3_ien86"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.781956, 0.254822)
+
+[node name="Spot_Banded_Butterflyfish" type="CharacterBody3D"]
+script = ExtResource("1_mppgt")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Spot_banded_Butterflyfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, -0.0191959, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_rlflv")
+subject_name = "Spot Banded Butterflyfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Spot_banded_Butterflyfish" parent="Graphics" instance=ExtResource("3_ien86")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Spot_banded_Butterflyfish/Spot_banded_Butterflyfish1" index="0"]
+bones/1/position = Vector3(0.201589, 0.0616746, 0.0357958)
+bones/1/rotation = Quaternion(-0.0383087, 0.998205, -0.0135657, 0.0439925)
+bones/2/rotation = Quaternion(-0.00131286, -0.00284689, 0.418769, 0.908088)
+bones/4/rotation = Quaternion(0.00514292, 0.0389886, -0.000202841, 0.999226)
+bones/5/rotation = Quaternion(0.00274065, 0.00513371, -1.70287e-05, 0.999983)
+bones/6/rotation = Quaternion(0.000552284, -0.0398347, 1.83444e-05, 0.999206)
+bones/7/rotation = Quaternion(0.00836843, -0.0817327, 0.126388, 0.988573)
+bones/8/rotation = Quaternion(-0.0264583, -0.180689, -0.125459, 0.975147)
+bones/9/rotation = Quaternion(-1.48893e-23, -0.158278, -3.72231e-24, 0.987395)
+bones/10/rotation = Quaternion(-5.37667e-24, 0.122817, -8.27181e-25, 0.992429)
+bones/12/rotation = Quaternion(0.026349, -0.0854172, 0.293588, 0.951743)
+bones/15/rotation = Quaternion(0.0314866, -0.0836598, 0.350833, 0.932162)
+bones/18/rotation = Quaternion(-0.0621094, -0.0905138, -0.562374, 0.819564)
+bones/21/rotation = Quaternion(-0.0622776, -0.0903982, -0.563897, 0.818517)
+bones/22/rotation = Quaternion(0.00542317, -0.125389, 0.0428689, 0.991166)
+bones/24/rotation = Quaternion(0.045048, -0.0772078, 0.501938, 0.860272)
+bones/29/rotation = Quaternion(-0.0528484, -0.0962153, -0.47852, 0.871188)
+bones/31/rotation = Quaternion(0.0494021, -0.074497, 0.550453, 0.830067)
+bones/33/rotation = Quaternion(0.0401184, -0.0798805, 0.447011, 0.890051)
+bones/37/rotation = Quaternion(0.0451276, -0.0771613, 0.502825, 0.859754)
+bones/39/rotation = Quaternion(0.0566204, -0.676004, -0.0561635, 0.732569)
+bones/41/rotation = Quaternion(-0.273316, -0.431022, -0.249322, 0.823017)
+bones/43/rotation = Quaternion(-0.10461, -0.457771, -0.557988, 0.684216)
+bones/44/rotation = Quaternion(-0.189363, -0.470493, -0.440612, 0.740701)
+bones/45/rotation = Quaternion(-0.260365, -0.48498, -0.306404, 0.776609)
+bones/48/rotation = Quaternion(0.207399, 0.266466, -0.334086, 0.879982)
+bones/50/rotation = Quaternion(0.214538, 0.346768, -0.387804, 0.82664)
+bones/52/rotation = Quaternion(0.179482, 0.409115, -0.538981, 0.714081)
+bones/53/rotation = Quaternion(0.124153, 0.376549, -0.623993, 0.673371)
+
+[node name="AnimationPlayer" parent="Graphics/Spot_banded_Butterflyfish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Spot_banded_Butterflyfish"]

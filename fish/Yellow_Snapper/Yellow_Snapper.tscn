@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0peph5fyv6jj"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_iuo03"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_tfffc"]
+[ext_resource type="PackedScene" uid="uid://ckw3tyiybjyw5" path="res://fish/Yellow_Snapper/yellow_snapper.fbx" id="3_adebw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.685494, 0.244012, 0.254822)
+
+[node name="Yellow_Snapper" type="CharacterBody3D"]
+script = ExtResource("1_iuo03")
+animation_name = "a"
+animation_player_path = NodePath("Graphics/yellow_snapper/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00852097, 0.0338181, 0.0680755)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_tfffc")
+subject_name = "Yellow Snapper"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="yellow_snapper" parent="Graphics" instance=ExtResource("3_adebw")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/yellow_snapper" index="0"]
+bones/1/rotation = Quaternion(-0.0305387, 0.0300844, 0.711731, 0.701143)
+bones/2/rotation = Quaternion(0.000720326, -0.0334275, 0.0215319, 0.999209)
+bones/3/rotation = Quaternion(0.00116367, -0.0439594, 0.0264366, 0.998683)
+bones/4/rotation = Quaternion(-0.00234441, -0.104156, -0.0202048, 0.994353)
+bones/5/rotation = Quaternion(-0.00280843, -0.097225, -0.0243665, 0.99496)
+bones/6/rotation = Quaternion(-1.45519e-11, 2.27374e-13, 0, 1)
+bones/7/rotation = Quaternion(-0.0539173, -0.0629316, -0.648386, 0.756788)
+bones/8/rotation = Quaternion(1.96451e-08, -5.98811e-09, -0.28553, 0.95837)
+
+[node name="AnimationPlayer" parent="Graphics/yellow_snapper" index="1"]
+autoplay = "a"
+
+[editable path="Graphics/yellow_snapper"]

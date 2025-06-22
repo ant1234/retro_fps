@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqoukxtf6woqf"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_yovan"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_xwb6g"]
+[ext_resource type="PackedScene" uid="uid://cp2puahy5xcth" path="res://fish/Discus4/Discus4.fbx" id="3_3ykyx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dmgsu"]
+size = Vector3(0.885986, 0.859066, 0.305813)
+
+[node name="Discus4" type="CharacterBody3D"]
+transform = Transform3D(-0.999639, -0.00220569, 0.0267785, -0.00227648, 0.999994, -0.00261287, -0.0267727, -0.0026729, -0.999637, 0.0164697, 0, -0.00513029)
+script = ExtResource("1_yovan")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Discus4/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(5.79655e-06, -0.00488949, -0.999938, 0.000336517, 0.999988, -0.00488908, 0.99995, -0.000336386, 6.51926e-06, 0.0352357, 0.0489236, 0.0780571)
+shape = SubResource("BoxShape3D_dmgsu")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_xwb6g")
+subject_name = "Discus4"
+
+[node name="Graphics" type="Node3D" parent="."]
+transform = Transform3D(0.997966, -7.27596e-12, 0.0637485, -1.74623e-10, 1, 0, -0.0637485, 4.65661e-10, 0.997966, -0.361414, 0.000612252, 0.549205)
+
+[node name="Discus4" parent="Graphics" instance=ExtResource("3_3ykyx")]
+transform = Transform3D(0.0391769, 0.000727761, 0.999232, -0.00477337, 0.999989, -0.000541162, -0.999222, -0.0047485, 0.0391799, 0.430958, -0.500091, -0.491069)
+
+[node name="Dummy001" parent="Graphics/Discus4" index="0"]
+transform = Transform3D(0.999223, 0.039401, 1.72227e-09, 0, -4.37114e-08, 1, 0.039401, -0.999223, -4.36774e-08, 0.320911, 0.478896, -0.0166678)
+
+[node name="Skeleton3D" parent="Graphics/Discus4/Dummy001" index="0"]
+bones/0/rotation = Quaternion(0.0935765, -0.70114, 0.698331, 0.109455)
+bones/1/rotation = Quaternion(-0.00512895, 0.0395446, 0.109887, 0.993144)
+bones/2/rotation = Quaternion(-0.00142968, 0.0305696, 0.0337301, 0.998962)
+bones/3/rotation = Quaternion(-0.000278816, -0.00362777, -0.00851312, 0.999957)
+bones/4/rotation = Quaternion(-0.00027789, -0.073531, 0.00838752, 0.997258)
+bones/5/rotation = Quaternion(-0.000790146, -0.163285, -0.000109639, 0.986579)
+bones/6/rotation = Quaternion(0.000562785, -0.168837, 0.0189804, 0.985461)
+bones/7/rotation = Quaternion(0.00388843, -0.174638, 0.0381102, 0.983887)
+bones/8/rotation = Quaternion(0.0082574, -0.14259, 0.0353401, 0.989116)
+bones/9/rotation = Quaternion(0.00113016, -0.0475384, -0.0155299, 0.998748)
+
+[editable path="Graphics/Discus4"]

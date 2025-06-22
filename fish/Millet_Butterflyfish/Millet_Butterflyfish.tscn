@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://m5byooke42k1"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_egbkd"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_lbjrx"]
+[ext_resource type="PackedScene" uid="uid://dh0sag83hnrdq" path="res://fish/Millet_Butterflyfish/Millet Butterflyfish.fbx" id="3_cx2ra"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.771484, 0.254822)
+
+[node name="Millet_Butterflyfish" type="CharacterBody3D"]
+script = ExtResource("1_egbkd")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Millet Butterflyfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, -0.0270499, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_lbjrx")
+subject_name = "Millet Butterflyfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Millet Butterflyfish" parent="Graphics" instance=ExtResource("3_cx2ra")]
+transform = Transform3D(-0.0310211, 0, 1.49968, 0, 1.5, 0, -1.49968, 0, -0.0310211, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Millet Butterflyfish/Millet_Butterflyfish2" index="0"]
+bones/1/position = Vector3(0.351325, 0.0626029, 0.0412441)
+bones/1/rotation = Quaternion(-0.0668431, 0.996627, 0.0227458, 0.0418279)
+bones/2/rotation = Quaternion(-0.0129958, -0.0281809, 0.418569, 0.907655)
+bones/4/rotation = Quaternion(-0.00576047, -0.034722, -0.000203669, 0.99938)
+bones/5/rotation = Quaternion(-0.00416035, 0.0101419, 3.88907e-05, 0.99994)
+bones/6/rotation = Quaternion(-0.00295445, 0.050499, 0.000145806, 0.99872)
+bones/7/rotation = Quaternion(-0.0121176, 0.0822156, 0.126679, 0.988456)
+bones/8/rotation = Quaternion(0.0237454, 0.19188, -0.124432, 0.973209)
+bones/9/rotation = Quaternion(3.30872e-23, 0.17275, 6.61744e-24, 0.984966)
+bones/10/rotation = Quaternion(-9.09899e-24, 0.0610463, -4.1359e-25, 0.998135)
+bones/12/rotation = Quaternion(-0.00173169, 0.00561373, 0.294763, 0.955552)
+bones/15/rotation = Quaternion(-0.00206934, 0.00549823, 0.352237, 0.935893)
+bones/18/rotation = Quaternion(0.0117836, 0.0171725, -0.565671, 0.824368)
+bones/21/rotation = Quaternion(0.0118155, 0.0171506, -0.567202, 0.823315)
+bones/22/rotation = Quaternion(-0.00141193, 0.032645, 0.0431875, 0.998533)
+bones/24/rotation = Quaternion(-0.00296061, 0.0050742, 0.503947, 0.863715)
+bones/29/rotation = Quaternion(0.0100265, 0.0182542, -0.481325, 0.876295)
+bones/31/rotation = Quaternion(-0.00324677, 0.00489604, 0.552656, 0.833389)
+bones/33/rotation = Quaternion(-0.00263663, 0.00524985, 0.448799, 0.893613)
+bones/37/rotation = Quaternion(-0.00296584, 0.00507114, 0.504837, 0.863195)
+bones/39/rotation = Quaternion(0.0548903, -0.697919, -0.0578555, 0.711722)
+bones/41/rotation = Quaternion(-0.286668, -0.473822, -0.234785, 0.798868)
+bones/43/rotation = Quaternion(-0.0372169, -0.346251, -0.575432, 0.740002)
+bones/45/rotation = Quaternion(-0.133413, -0.375269, -0.46065, 0.793206)
+bones/47/rotation = Quaternion(-0.23938, -0.432795, -0.322773, 0.806972)
+bones/50/rotation = Quaternion(0.16503, 0.160719, -0.355935, 0.905674)
+bones/52/rotation = Quaternion(0.160622, 0.234011, -0.412691, 0.86552)
+bones/54/rotation = Quaternion(0.147325, 0.356166, -0.552647, 0.738933)
+bones/56/rotation = Quaternion(0.157238, 0.422608, -0.61204, 0.649682)
+
+[node name="AnimationPlayer" parent="Graphics/Millet Butterflyfish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Millet Butterflyfish"]

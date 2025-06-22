@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://hdwfjh6ukbdm"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_udfwo"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_yk742"]
+[ext_resource type="PackedScene" uid="uid://cvgsos36ls8nn" path="res://fish/Sergeant_Fish/sergeant fish.fbx" id="3_oqtco"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.781956, 0.254822)
+
+[node name="Sergeant_Fish" type="CharacterBody3D"]
+script = ExtResource("1_udfwo")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/sergeant fish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, -0.0191959, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_yk742")
+subject_name = "Sergeant Fish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="sergeant fish" parent="Graphics" instance=ExtResource("3_oqtco")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/sergeant fish/sergeant_fish2" index="0"]
+bones/1/position = Vector3(0.256815, 0.0496448, 0.0372442)
+bones/1/rotation = Quaternion(-0.0604267, 0.99709, 0.0195564, 0.0421726)
+bones/2/rotation = Quaternion(-0.0135855, -0.0294597, 0.41855, 0.907614)
+bones/3/rotation = Quaternion(-0.0112609, -0.038123, -0.000431718, 0.99921)
+bones/4/rotation = Quaternion(-0.0104842, -0.0485504, -0.000509233, 0.998766)
+bones/5/rotation = Quaternion(-0.00928065, -0.0684686, -0.000636016, 0.99761)
+bones/6/rotation = Quaternion(-0.00424139, -0.0228834, 0.126798, 0.991656)
+bones/7/rotation = Quaternion(0.00489187, 0.0825475, -0.126093, 0.988566)
+bones/8/rotation = Quaternion(-5.79027e-24, 0.219834, 1.44757e-24, 0.975537)
+bones/9/rotation = Quaternion(-1.32349e-23, 0.450362, -2.48154e-24, 0.892846)
+bones/11/rotation = Quaternion(0.0350101, -0.113494, 0.292682, 0.948805)
+bones/13/rotation = Quaternion(0.0418364, -0.111159, 0.349749, 0.929284)
+bones/15/rotation = Quaternion(-0.0593034, -0.0864246, -0.562677, 0.820005)
+bones/17/rotation = Quaternion(-0.059464, -0.0863142, -0.5642, 0.818958)
+bones/18/rotation = Quaternion(0.00381528, -0.0882125, 0.0430418, 0.995164)
+bones/19/rotation = Quaternion(0.0598556, -0.102587, 0.500389, 0.857616)
+bones/22/rotation = Quaternion(-0.0504608, -0.0918684, -0.478777, 0.871657)
+bones/23/rotation = Quaternion(0.065641, -0.0989847, 0.548753, 0.827504)
+bones/24/rotation = Quaternion(0.0533056, -0.106138, 0.44563, 0.887303)
+bones/26/rotation = Quaternion(0.0599614, -0.102525, 0.501272, 0.857099)
+bones/27/rotation = Quaternion(0.0551043, -0.695277, -0.0576517, 0.714304)
+bones/29/rotation = Quaternion(-0.221224, -0.273712, -0.29415, 0.888604)
+bones/31/rotation = Quaternion(-0.135283, -0.50654, -0.545974, 0.653474)
+bones/33/rotation = Quaternion(-0.158133, -0.417622, -0.45276, 0.771748)
+bones/35/rotation = Quaternion(-0.190486, -0.313628, -0.353323, 0.860532)
+bones/38/rotation = Quaternion(0.237711, 0.344498, -0.314282, 0.852081)
+bones/40/rotation = Quaternion(0.182903, 0.280389, -0.403452, 0.85156)
+bones/42/rotation = Quaternion(0.0778574, 0.240036, -0.572892, 0.779818)
+bones/44/rotation = Quaternion(0.0271054, 0.236999, -0.644562, 0.726386)
+
+[node name="AnimationPlayer" parent="Graphics/sergeant fish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/sergeant fish"]

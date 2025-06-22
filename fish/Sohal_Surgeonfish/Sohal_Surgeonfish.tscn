@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://61b3rttnwb4x"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_erylm"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_mj22b"]
+[ext_resource type="PackedScene" uid="uid://ct27cgxfml7jk" path="res://fish/Sohal_Surgeonfish/Sohal Surgeonfish.fbx" id="3_d0mwa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.781956, 0.254822)
+
+[node name="Sergeant_Fish" type="CharacterBody3D"]
+script = ExtResource("1_erylm")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Sohal Surgeonfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, -0.0191959, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_mj22b")
+subject_name = "Sohal Surgeonfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Sohal Surgeonfish" parent="Graphics" instance=ExtResource("3_d0mwa")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Sohal Surgeonfish/Sohal_Surgeonfish2" index="0"]
+bones/1/position = Vector3(0.133171, -0.529836, 0.0139459)
+bones/1/rotation = Quaternion(0.0993579, 0.993551, -0.0382546, 0.0390028)
+bones/2/rotation = Quaternion(0.0167939, 0.0346165, -0.000583965, 0.999259)
+bones/3/rotation = Quaternion(0.010352, 0.00805692, -8.73001e-05, 0.999914)
+bones/4/rotation = Quaternion(0.00312706, -0.0377697, 0.000114965, 0.999282)
+bones/5/rotation = Quaternion(0.00439122, -0.0743751, 0.126259, 0.989195)
+bones/6/rotation = Quaternion(-0.0341651, -0.208687, -0.1257, 0.969269)
+bones/7/rotation = Quaternion(-1.44757e-23, -0.176097, -3.72231e-24, 0.984373)
+bones/8/rotation = Quaternion(9.09899e-24, 0.087777, 4.1359e-25, 0.99614)
+bones/10/rotation = Quaternion(0.0569131, -0.672167, -0.0558669, 0.736091)
+
+[node name="AnimationPlayer" parent="Graphics/Sohal Surgeonfish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Sohal Surgeonfish"]

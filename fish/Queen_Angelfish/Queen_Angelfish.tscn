@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://uyhect40cipm"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_4llxk"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_64k0q"]
+[ext_resource type="PackedScene" uid="uid://dksmqa3xmo4qd" path="res://fish/Queen_Angelfish/queen angelfish.fbx" id="3_qvpde"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.817413, 0.254822)
+
+[node name="Queen_Angelfish" type="CharacterBody3D"]
+script = ExtResource("1_4llxk")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/queen angelfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, 0.00739703, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_64k0q")
+subject_name = "Queen Angelfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="queen angelfish" parent="Graphics" instance=ExtResource("3_qvpde")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/queen angelfish/queen_angelfish2" index="0"]
+bones/1/position = Vector3(-0.0600125, 0.137548, -0.0447172)
+bones/1/rotation = Quaternion(-0.000871581, 0.99804, 0.00458891, 0.0624096)
+bones/2/rotation = Quaternion(-0.000400039, -0.000867424, 0.418775, 0.90809)
+bones/4/rotation = Quaternion(0.0012016, 0.0462522, -5.58656e-05, 0.998929)
+bones/5/rotation = Quaternion(0.00214197, 0.0384541, -7.52879e-05, 0.999258)
+bones/6/rotation = Quaternion(0.00282367, 0.0455082, -0.000109526, 0.99896)
+bones/7/rotation = Quaternion(0.0036854, -0.00200035, 0.127, 0.991894)
+bones/8/rotation = Quaternion(-0.00233524, -0.0451834, -0.126707, 0.990908)
+bones/9/rotation = Quaternion(-2.44018e-23, -0.107988, -2.06795e-25, 0.994152)
+bones/10/rotation = Quaternion(7.03104e-24, -0.0945362, 4.1359e-24, 0.995521)
+bones/12/rotation = Quaternion(0.0207399, -0.0672338, 0.294038, 0.953201)
+bones/15/rotation = Quaternion(0.0247838, -0.0658505, 0.35137, 0.933589)
+bones/18/rotation = Quaternion(-0.0682467, -0.0994579, -0.561662, 0.818527)
+bones/21/rotation = Quaternion(-0.0684315, -0.0993309, -0.563183, 0.817481)
+bones/22/rotation = Quaternion(0.0058694, -0.135706, 0.0428101, 0.989807)
+bones/24/rotation = Quaternion(0.0354583, -0.060772, 0.502707, 0.861589)
+bones/29/rotation = Quaternion(-0.0580706, -0.105723, -0.477914, 0.870085)
+bones/31/rotation = Quaternion(0.0388855, -0.0586382, 0.551296, 0.831338)
+bones/33/rotation = Quaternion(0.0315781, -0.0628757, 0.447695, 0.891414)
+bones/37/rotation = Quaternion(0.0355209, -0.0607354, 0.503595, 0.86107)
+bones/39/rotation = Quaternion(0.0553545, -0.692164, -0.0574115, 0.71732)
+bones/40/rotation = Quaternion(-0.0374749, 0.129588, -0.258706, 0.956491)
+bones/41/rotation = Quaternion(0.00672222, -0.0434509, 0.0360278, 0.998383)
+bones/42/rotation = Quaternion(-0.00050413, 0.00573366, 0.208943, 0.977911)
+bones/43/rotation = Quaternion(0.0012431, 0.0500416, -0.0267603, 0.998388)
+bones/44/rotation = Quaternion(-0.0046887, 0.0818592, -0.228857, 0.970001)
+bones/46/rotation = Quaternion(0.0155682, -0.0495568, -0.260377, 0.964109)
+bones/47/rotation = Quaternion(-0.00667883, 0.0434579, 0.035028, 0.998419)
+bones/48/rotation = Quaternion(0.00159639, -0.00788656, 0.193551, 0.981057)
+bones/49/rotation = Quaternion(-0.000347691, -0.011709, -0.0428787, 0.999012)
+bones/50/rotation = Quaternion(0.0212237, -0.11281, -0.212695, 0.970353)
+bones/53/rotation = Quaternion(-0.251613, -0.363818, -0.270016, 0.855231)
+bones/55/rotation = Quaternion(-0.13094, -0.499838, -0.54786, 0.657926)
+bones/57/rotation = Quaternion(-0.207629, -0.501067, -0.432305, 0.720371)
+bones/59/rotation = Quaternion(-0.24925, -0.457243, -0.315348, 0.793321)
+bones/62/rotation = Quaternion(0.204708, 0.259632, -0.335656, 0.882055)
+bones/64/rotation = Quaternion(0.217011, 0.351982, -0.386444, 0.824425)
+bones/66/rotation = Quaternion(0.174144, 0.400429, -0.541472, 0.718428)
+bones/68/rotation = Quaternion(0.129496, 0.384156, -0.622292, 0.669633)
+
+[node name="AnimationPlayer" parent="Graphics/queen angelfish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/queen angelfish"]

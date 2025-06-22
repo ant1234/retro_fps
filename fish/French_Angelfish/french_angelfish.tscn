@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq63f853hs6v5"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_3k27r"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_32i43"]
+[ext_resource type="PackedScene" uid="uid://dmag13w4j3amj" path="res://fish/French_Angelfish/French_Angelfish.fbx" id="3_16rf6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.816528, 0.774048, 0.254822)
+
+[node name="French_Angelfish" type="CharacterBody3D"]
+script = ExtResource("1_3k27r")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/French_Angelfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00773004, -0.0251276, 0.0116443)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_32i43")
+subject_name = "French Angelfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="French_Angelfish" parent="Graphics" instance=ExtResource("3_16rf6")]
+transform = Transform3D(-0.00408406, 0, 1.49999, 0, 1.5, 0, -1.49999, 0, -0.00408406, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/French_Angelfish/French_Angelfish2" index="0"]
+bones/1/position = Vector3(0.12581, 0.579237, 0.163207)
+bones/1/rotation = Quaternion(-0.0623093, 0.997045, 0.0148054, 0.0424239)
+bones/2/rotation = Quaternion(-0.00628179, -0.0136219, 0.418723, 0.90799)
+bones/4/rotation = Quaternion(0.0030792, 0.00922072, -3.622e-05, 0.999953)
+bones/5/rotation = Quaternion(0.00424759, 0.0323205, -0.000139704, 0.999469)
+bones/6/rotation = Quaternion(0.00374053, 0.0830038, -0.000311258, 0.996542)
+bones/7/rotation = Quaternion(-0.00571217, 0.0574111, 0.126678, 0.990265)
+bones/8/rotation = Quaternion(0.00113327, 0.00752438, -0.126995, 0.991874)
+bones/9/rotation = Quaternion(-1.43206e-23, 0.0144938, 2.27475e-24, 0.999895)
+bones/10/rotation = Quaternion(-3.72231e-24, -0.0639609, 7.44463e-24, 0.997952)
+bones/12/rotation = Quaternion(-0.0357544, 0.115907, 0.292592, 0.948513)
+bones/15/rotation = Quaternion(-0.0427258, 0.113522, 0.349642, 0.928998)
+bones/18/rotation = Quaternion(0.0644989, 0.0939961, -0.562105, 0.819172)
+bones/21/rotation = Quaternion(0.0646736, 0.0938761, -0.563627, 0.818126)
+bones/22/rotation = Quaternion(-0.00411357, 0.0951094, 0.0430143, 0.994529)
+bones/24/rotation = Quaternion(-0.0611281, 0.104767, 0.500235, 0.857352)
+bones/29/rotation = Quaternion(0.0548816, 0.0999169, -0.478291, 0.870771)
+bones/31/rotation = Quaternion(-0.0670364, 0.101089, 0.548585, 0.82725)
+bones/33/rotation = Quaternion(-0.0544387, 0.108394, 0.445493, 0.88703)
+bones/37/rotation = Quaternion(-0.061236, 0.104704, 0.501118, 0.856836)
+bones/39/rotation = Quaternion(0.0554273, -0.691254, -0.0573413, 0.718197)
+bones/42/rotation = Quaternion(-0.229371, -0.297478, -0.288168, 0.880826)
+bones/44/rotation = Quaternion(-0.110012, -0.46645, -0.556061, 0.679057)
+bones/46/rotation = Quaternion(-0.128942, -0.367563, -0.461922, 0.796806)
+bones/48/rotation = Quaternion(-0.180845, -0.290474, -0.35827, 0.868656)
+bones/51/rotation = Quaternion(0.177468, 0.191401, -0.35016, 0.899588)
+bones/53/rotation = Quaternion(0.135077, 0.181187, -0.421615, 0.878161)
+bones/55/rotation = Quaternion(0.0897578, 0.260089, -0.570285, 0.773998)
+bones/57/rotation = Quaternion(0.107698, 0.353336, -0.628972, 0.684068)
+
+[node name="AnimationPlayer" parent="Graphics/French_Angelfish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/French_Angelfish"]

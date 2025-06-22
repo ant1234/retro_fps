@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://476mlqjhwrse"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_n7ftx"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_eenmd"]
+[ext_resource type="PackedScene" uid="uid://dif5a34ay2jxc" path="res://fish/Fusilier_Fish/Fusilier_fish.fbx" id="3_4otjm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.74881, 0.774048, 0.254822)
+
+[node name="Fusilier_Fish" type="CharacterBody3D"]
+script = ExtResource("1_n7ftx")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Fusilier_fish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00785546, -0.0251276, 0.0205928)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_eenmd")
+subject_name = "Fusilier Fish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Fusilier_fish" parent="Graphics" instance=ExtResource("3_4otjm")]
+transform = Transform3D(0.0216762, 0, 1.49984, 0, 1.5, 0, -1.49984, 0, 0.0216762, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Fusilier_fish/Fusilier_fish2" index="0"]
+bones/1/position = Vector3(0.0897299, -0.634127, 0.002345)
+bones/1/rotation = Quaternion(-0.000332027, 0.999049, -0.00656364, 0.0431119)
+bones/2/rotation = Quaternion(-0.00290447, -0.0428024, -0.000125097, 0.999079)
+bones/3/rotation = Quaternion(-0.00534701, -0.00673296, -3.75546e-05, 0.999963)
+bones/4/rotation = Quaternion(-0.00721575, -0.0411551, -0.000298333, 0.999127)
+bones/5/rotation = Quaternion(-0.0084609, -0.00417852, 0.126955, 0.991864)
+bones/6/rotation = Quaternion(-0.0211738, -0.0913669, -0.127302, 0.98742)
+bones/7/rotation = Quaternion(-6.82424e-24, -0.0315953, 2.06795e-25, 0.999501)
+bones/8/rotation = Quaternion(1.48893e-23, 0.317297, -1.36485e-23, 0.948326)
+bones/10/rotation = Quaternion(0.0573643, -0.666176, -0.0554035, 0.741518)
+bones/12/rotation = Quaternion(-0.220993, -0.273042, -0.294315, 0.888813)
+bones/14/rotation = Quaternion(-0.158043, -0.541879, -0.535314, 0.628353)
+bones/16/rotation = Quaternion(-0.200511, -0.489185, -0.435653, 0.728492)
+bones/18/rotation = Quaternion(-0.215298, -0.373716, -0.339029, 0.836088)
+bones/21/rotation = Quaternion(0.167385, 0.166507, -0.35488, 0.904609)
+bones/23/rotation = Quaternion(0.175935, 0.265853, -0.406493, 0.856232)
+bones/25/rotation = Quaternion(0.166469, 0.387762, -0.544861, 0.724607)
+bones/27/rotation = Quaternion(0.163248, 0.430887, -0.609583, 0.645055)
+
+[node name="AnimationPlayer" parent="Graphics/Fusilier_fish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Fusilier_fish"]

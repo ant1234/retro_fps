@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwjiyrf4lyx4y"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_q6mp1"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_kfmue"]
+[ext_resource type="PackedScene" uid="uid://vj10biptw5es" path="res://fish/Moorish_Idol/moorish idol.fbx" id="3_6fqpp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.78106, 0.652771, 0.153305)
+
+[node name="Moorish_Idol" type="CharacterBody3D"]
+script = ExtResource("1_q6mp1")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/moorish idol/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, 0.0178108, 0.181919, 0.280642)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_kfmue")
+subject_name = "Moorish Idol"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="moorish idol" parent="Graphics" instance=ExtResource("3_6fqpp")]
+transform = Transform3D(-0.099998, 0, 0.000631795, 0, 0.1, 0, -0.000631795, 0, -0.099998, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/moorish idol" index="0"]
+bones/1/rotation = Quaternion(-0.0295943, -0.0287244, -0.716964, 0.695889)
+bones/2/rotation = Quaternion(0.0027529, 0.0551663, -0.0497635, 0.997233)
+bones/3/rotation = Quaternion(-0.00182342, 0.0528543, 0.0344302, 0.998007)
+bones/4/rotation = Quaternion(0.00891537, 0.132646, -0.0664652, 0.988892)
+bones/5/rotation = Quaternion(-0.00802049, 0.169177, 0.0438123, 0.984579)
+bones/6/rotation = Quaternion(-0.0130565, 0.218607, -0.0196381, 0.975528)
+bones/7/rotation = Quaternion(0.0281715, -0.0351496, 0.624762, 0.779515)
+
+[node name="AnimationPlayer" parent="Graphics/moorish idol" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/moorish idol"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck0ldb1wgovti"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_oq8mf"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_yrb2v"]
+[ext_resource type="PackedScene" uid="uid://b7a4g5ht1lxmi" path="res://fish/Yellow_Head_Butterfly/Yellow_Head_Butterfly.fbx" id="3_020qv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.781956, 0.254822)
+
+[node name="Yellow_Head_Butterfly" type="CharacterBody3D"]
+script = ExtResource("1_oq8mf")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Yellow_Head_Butterfly/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, -0.0191959, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_yrb2v")
+subject_name = "Yellow Head Butterfly"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Yellow_Head_Butterfly" parent="Graphics" instance=ExtResource("3_020qv")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Yellow_Head_Butterfly/Yellow_Head_Butterfly2" index="0"]
+bones/1/position = Vector3(0.461481, 0.772102, 0.121856)
+bones/1/rotation = Quaternion(-0.0681174, 0.996675, -0.00922598, 0.0437417)
+bones/2/rotation = Quaternion(-9.01504e-05, -0.000195484, 0.418771, 0.908092)
+bones/4/rotation = Quaternion(0.0030429, 0.0457757, -0.000137804, 0.998947)
+bones/5/rotation = Quaternion(0.000574171, 0.0504765, -2.94166e-05, 0.998725)
+bones/6/rotation = Quaternion(-0.000871849, 0.0632893, 5.46795e-05, 0.997995)
+bones/7/rotation = Quaternion(-0.000842711, -1.15826e-05, 0.12699, 0.991904)
+bones/8/rotation = Quaternion(-0.0137932, -0.109469, -0.126183, 0.985852)
+bones/9/rotation = Quaternion(-1.32349e-23, -0.23574, -1.07533e-23, 0.971816)
+bones/10/rotation = Quaternion(-8.27181e-24, -0.216426, -5.79026e-24, 0.976299)
+bones/12/rotation = Quaternion(-0.00120557, 0.00390817, 0.294766, 0.955561)
+bones/15/rotation = Quaternion(-0.00144063, 0.00382776, 0.35224, 0.935901)
+bones/18/rotation = Quaternion(0.0138269, 0.0201504, -0.565624, 0.824301)
+bones/21/rotation = Quaternion(0.0138643, 0.0201246, -0.567156, 0.823248)
+bones/22/rotation = Quaternion(-0.00183751, 0.0424849, 0.0431715, 0.998162)
+bones/24/rotation = Quaternion(-0.00206112, 0.00353256, 0.503951, 0.863722)
+bones/29/rotation = Quaternion(0.0117652, 0.0214196, -0.481285, 0.876223)
+bones/31/rotation = Quaternion(-0.00226034, 0.00340853, 0.552661, 0.833396)
+bones/33/rotation = Quaternion(-0.00183557, 0.00365484, 0.448804, 0.893621)
+bones/37/rotation = Quaternion(-0.00206476, 0.00353043, 0.504842, 0.863202)
+bones/39/rotation = Quaternion(0.0565195, -0.677318, -0.056265, 0.731355)
+bones/41/rotation = Quaternion(-0.271935, -0.42666, -0.250739, 0.825313)
+bones/43/rotation = Quaternion(-0.0881797, -0.431159, -0.563377, 0.699238)
+bones/44/rotation = Quaternion(-0.191138, -0.473477, -0.439845, 0.738798)
+bones/45/rotation = Quaternion(-0.261963, -0.488984, -0.305063, 0.774084)
+bones/48/rotation = Quaternion(0.230034, 0.324522, -0.319666, 0.85999)
+bones/50/rotation = Quaternion(0.23264, 0.385058, -0.37739, 0.809436)
+bones/52/rotation = Quaternion(0.155664, 0.369971, -0.549381, 0.732851)
+bones/53/rotation = Quaternion(0.0825266, 0.317499, -0.635423, 0.699014)
+
+[node name="AnimationPlayer" parent="Graphics/Yellow_Head_Butterfly" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Yellow_Head_Butterfly"]

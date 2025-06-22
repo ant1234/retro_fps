@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://bywn6cl4h2f3q"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_c410k"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_xl0cr"]
+[ext_resource type="PackedScene" uid="uid://dsfjk3xh5s0d3" path="res://fish/Roaops_Butterflyfish/Roaops_Butterflyfish.fbx" id="3_ktso4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.817413, 0.254822)
+
+[node name="Roaops_Butterflyfish" type="CharacterBody3D"]
+script = ExtResource("1_c410k")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Roaops_Butterflyfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, 0.00739703, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_xl0cr")
+subject_name = "Roaops Butterflyfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Roaops_Butterflyfish" parent="Graphics" instance=ExtResource("3_ktso4")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Roaops_Butterflyfish/Roaops_Butterflyfish2" index="0"]
+bones/1/position = Vector3(0.0622343, 0.483343, 0.172622)
+bones/1/rotation = Quaternion(0.00873462, 0.999008, 0.00205705, 0.0436208)
+bones/2/rotation = Quaternion(-0.0103528, -0.0224498, 0.418643, 0.907814)
+bones/4/rotation = Quaternion(-0.0042268, -0.0182348, -7.66723e-05, 0.999825)
+bones/5/rotation = Quaternion(-0.00688737, -0.0371264, -0.00025576, 0.999287)
+bones/6/rotation = Quaternion(-0.00817525, -0.0852327, -0.000699379, 0.996327)
+bones/7/rotation = Quaternion(0.000460507, -0.0603788, 0.126327, 0.990149)
+bones/8/rotation = Quaternion(-0.00739731, -0.0169859, -0.127059, 0.991722)
+bones/9/rotation = Quaternion(2.79173e-23, 0.0464598, -2.06795e-25, 0.99892)
+bones/10/rotation = Quaternion(6.61744e-24, 0.391497, 1.31315e-23, 0.920179)
+bones/12/rotation = Quaternion(0.0225529, -0.0731112, 0.293905, 0.952768)
+bones/15/rotation = Quaternion(0.0269503, -0.071607, 0.35121, 0.933165)
+bones/18/rotation = Quaternion(-0.0343301, -0.0500302, -0.564751, 0.823028)
+bones/21/rotation = Quaternion(-0.034423, -0.0499663, -0.56628, 0.821977)
+bones/22/rotation = Quaternion(0.00172987, -0.039996, 0.0431759, 0.998265)
+bones/24/rotation = Quaternion(0.038558, -0.0660845, 0.502478, 0.861198)
+bones/29/rotation = Quaternion(-0.0292112, -0.0531816, -0.480542, 0.87487)
+bones/31/rotation = Quaternion(0.0422848, -0.0637642, 0.551045, 0.83096)
+bones/33/rotation = Quaternion(0.0343385, -0.0683721, 0.447492, 0.891009)
+bones/37/rotation = Quaternion(0.0386261, -0.0660447, 0.503366, 0.860679)
+bones/39/rotation = Quaternion(0.0560785, -0.683008, -0.0567046, 0.726044)
+bones/41/rotation = Quaternion(-0.240261, -0.329686, -0.279633, 0.86913)
+bones/43/rotation = Quaternion(-0.140196, -0.514228, -0.5438, 0.648226)
+bones/44/rotation = Quaternion(-0.22031, -0.52213, -0.425983, 0.705254)
+bones/45/rotation = Quaternion(-0.252399, -0.465084, -0.31288, 0.788732)
+bones/48/rotation = Quaternion(0.190693, 0.224346, -0.343452, 0.891822)
+bones/50/rotation = Quaternion(0.22087, 0.360133, -0.384288, 0.82088)
+bones/52/rotation = Quaternion(0.187923, 0.422938, -0.534916, 0.706876)
+bones/53/rotation = Quaternion(0.142581, 0.402294, -0.617654, 0.660555)
+
+[editable path="Graphics/Roaops_Butterflyfish"]

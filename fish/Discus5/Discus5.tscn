@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://wariks08fucg"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_sxien"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_drpiy"]
+[ext_resource type="PackedScene" uid="uid://capxup3tbttsw" path="res://fish/Discus5/Discus5.fbx" id="3_ypqrx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dmgsu"]
+size = Vector3(0.76123, 0.878509, 0.301132)
+
+[node name="Discus5" type="CharacterBody3D"]
+transform = Transform3D(-0.999639, -0.00220569, 0.0267785, -0.00227648, 0.999994, -0.00261287, -0.0267727, -0.0026729, -0.999637, 0.0164697, 0, -0.00513029)
+script = ExtResource("1_sxien")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Discus5/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(5.77047e-06, -0.00488949, -0.999943, 0.000336499, 0.999988, -0.00488908, 0.999955, -0.000336386, 6.49132e-06, 0.0136855, -0.0251776, 0.102617)
+shape = SubResource("BoxShape3D_dmgsu")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_drpiy")
+subject_name = "Discus5"
+
+[node name="Graphics" type="Node3D" parent="."]
+transform = Transform3D(0.997966, -7.27596e-12, 0.0637485, -1.74623e-10, 1, 0, -0.0637485, 4.65661e-10, 0.997966, -0.361414, 0.000612252, 0.549205)
+
+[node name="Discus5" parent="Graphics" instance=ExtResource("3_ypqrx")]
+transform = Transform3D(0.0402755, 0.000729955, 0.999188, -0.00477093, 0.999989, -0.000538232, -0.999177, -0.00474538, 0.0402786, 0.406537, 0.00168873, -0.529124)
+
+[node name="Skeleton3D" parent="Graphics/Discus5/Discus8" index="0"]
+bones/1/position = Vector3(0.146465, -0.580302, 0.0188968)
+bones/1/rotation = Quaternion(0.0700279, 0.996556, -0.0153406, 0.0416687)
+bones/2/rotation = Quaternion(0.00135475, 0.00293774, 0.418768, 0.908087)
+bones/4/rotation = Quaternion(0.0144863, 0.0547475, -0.000794456, 0.998395)
+bones/5/rotation = Quaternion(0.0115137, 0.0477811, -0.000550746, 0.998791)
+bones/6/rotation = Quaternion(0.00616106, 0.0339444, -0.000209118, 0.999405)
+bones/7/rotation = Quaternion(0.00113347, -0.0245805, 0.126901, 0.99161)
+bones/8/rotation = Quaternion(-0.0248934, -0.152453, -0.126291, 0.979892)
+bones/9/rotation = Quaternion(-2.19203e-23, -0.282796, 4.1359e-25, 0.95918)
+bones/10/rotation = Quaternion(-5.79026e-24, -0.176072, -2.06795e-24, 0.984377)
+bones/12/rotation = Quaternion(0.00808581, -0.0262123, 0.294658, 0.955209)
+bones/15/rotation = Quaternion(0.00966239, -0.025673, 0.35211, 0.935557)
+bones/18/rotation = Quaternion(-0.0321053, -0.046788, -0.564882, 0.823219)
+bones/21/rotation = Quaternion(-0.0321922, -0.0467282, -0.566411, 0.822167)
+bones/22/rotation = Quaternion(0.00331736, -0.0767003, 0.043083, 0.996117)
+bones/24/rotation = Quaternion(0.013824, -0.023693, 0.503766, 0.863404)
+bones/29/rotation = Quaternion(-0.0273181, -0.0497351, -0.480653, 0.875073)
+bones/31/rotation = Quaternion(0.0151602, -0.0228611, 0.552458, 0.83309)
+bones/33/rotation = Quaternion(0.0123113, -0.0245132, 0.448638, 0.893292)
+bones/37/rotation = Quaternion(0.0138485, -0.0236788, 0.504656, 0.862885)
+bones/39/rotation = Quaternion(0.0566128, -0.676104, -0.0561711, 0.732478)
+bones/41/rotation = Quaternion(-0.24565, -0.345818, -0.275167, 0.862757)
+bones/43/rotation = Quaternion(-0.140858, -0.515267, -0.543503, 0.647505)
+bones/45/rotation = Quaternion(-0.221003, -0.523277, -0.425624, 0.704403)
+bones/47/rotation = Quaternion(-0.248497, -0.455379, -0.315933, 0.794396)
+bones/50/rotation = Quaternion(0.197289, 0.240907, -0.339877, 0.887426)
+bones/52/rotation = Quaternion(0.216091, 0.350045, -0.386954, 0.825251)
+bones/54/rotation = Quaternion(0.188674, 0.424168, -0.534545, 0.706219)
+bones/56/rotation = Quaternion(0.143348, 0.403365, -0.617375, 0.659997)
+
+[node name="AnimationPlayer" parent="Graphics/Discus5" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Discus5"]

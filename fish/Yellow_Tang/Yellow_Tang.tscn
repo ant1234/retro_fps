@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqbgarn5j3cto"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_vyl2m"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_r3rg1"]
+[ext_resource type="PackedScene" uid="uid://c0tgkokn3tx4e" path="res://fish/Yellow_Tang/yellow_tang.fbx" id="3_ev1q8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.781956, 0.254822)
+
+[node name="Yellow_Tang" type="CharacterBody3D"]
+script = ExtResource("1_vyl2m")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/yellow_tang/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, -0.0191959, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_r3rg1")
+subject_name = "Yellow Tang"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="yellow_tang" parent="Graphics" instance=ExtResource("3_ev1q8")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/yellow_tang/yellow_tang2" index="0"]
+bones/1/rotation = Quaternion(0.00345104, 0.998986, 0.0105045, 0.0436466)
+bones/2/rotation = Quaternion(-0.00427512, -0.00927027, 0.418754, 0.908042)
+bones/4/rotation = Quaternion(-0.00763684, 0.0196833, 0.000150352, 0.999777)
+bones/5/rotation = Quaternion(-0.00369281, 0.0433739, 0.000160323, 0.999052)
+bones/6/rotation = Quaternion(-0.000476725, 0.0826513, 3.95372e-05, 0.996579)
+bones/7/rotation = Quaternion(-0.00430555, 0.0388892, 0.126865, 0.991148)
+bones/8/rotation = Quaternion(0.000528595, 0.0074186, -0.126982, 0.991877)
+bones/9/rotation = Quaternion(1.39845e-23, -0.0141431, -1.24077e-24, 0.9999)
+bones/10/rotation = Quaternion(4.54949e-24, 0.0186885, 0, 0.999825)
+bones/12/rotation = Quaternion(-0.00586023, 0.0189975, 0.29471, 0.95538)
+bones/15/rotation = Quaternion(-0.00700286, 0.0186066, 0.352173, 0.935724)
+bones/18/rotation = Quaternion(-0.0487957, -0.0711114, -0.563685, 0.821475)
+bones/21/rotation = Quaternion(-0.0489278, -0.0710205, -0.565212, 0.820426)
+bones/22/rotation = Quaternion(0.00544761, -0.125954, 0.0428658, 0.991095)
+bones/24/rotation = Quaternion(-0.010019, 0.0171716, 0.503856, 0.863559)
+bones/29/rotation = Quaternion(-0.0415199, -0.0755906, -0.479635, 0.873219)
+bones/31/rotation = Quaternion(-0.0109874, 0.0165687, 0.552556, 0.833238)
+bones/33/rotation = Quaternion(-0.00892264, 0.017766, 0.448719, 0.893452)
+bones/37/rotation = Quaternion(-0.0100367, 0.0171613, 0.504746, 0.863039)
+bones/39/rotation = Quaternion(0.0562449, -0.680871, -0.0565395, 0.728049)
+bones/43/rotation = Quaternion(-0.134052, -0.504713, -0.546528, 0.654677)
+bones/45/rotation = Quaternion(-0.217344, -0.517217, -0.427503, 0.708865)
+bones/47/rotation = Quaternion(-0.255992, -0.474041, -0.31, 0.78336)
+bones/50/rotation = Quaternion(0.236879, 0.342313, -0.314876, 0.852973)
+bones/52/rotation = Quaternion(0.236248, 0.39272, -0.375177, 0.80573)
+bones/56/rotation = Quaternion(0.0831349, 0.318384, -0.635339, 0.698616)
+
+[node name="AnimationPlayer" parent="Graphics/yellow_tang" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/yellow_tang"]

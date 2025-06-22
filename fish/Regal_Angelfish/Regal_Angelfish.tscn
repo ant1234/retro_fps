@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgrdj7cufswr5"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_i0qbw"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_qjke2"]
+[ext_resource type="PackedScene" uid="uid://dpjq15ycmtn1k" path="res://fish/Regal_Angelfish/Regal Angelfish.fbx" id="3_gmyjn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.817413, 0.254822)
+
+[node name="Regal_Angelfish" type="CharacterBody3D"]
+script = ExtResource("1_i0qbw")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Regal Angelfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, 0.00739703, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_qjke2")
+subject_name = "Regal Angelfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Regal Angelfish" parent="Graphics" instance=ExtResource("3_gmyjn")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Regal Angelfish/Bicolor_Angelfish9" index="0"]
+bones/1/position = Vector3(0.410521, 0.700163, 0.104987)
+bones/1/rotation = Quaternion(-0.158184, 0.986394, 0.0228347, 0.0385213)
+bones/2/rotation = Quaternion(-0.000833303, -0.00180701, 0.41877, 0.90809)
+bones/4/rotation = Quaternion(0.00345095, 0.0411441, -0.000142274, 0.999147)
+bones/5/rotation = Quaternion(0.0154647, 0.0354401, -0.000546253, 0.999252)
+bones/6/rotation = Quaternion(0.0230917, 0.0194983, -0.000437165, 0.999543)
+bones/7/rotation = Quaternion(0.0313496, -0.0476029, 0.12806, 0.990127)
+bones/8/rotation = Quaternion(-0.000539741, -0.178413, -0.121002, 0.976487)
+bones/9/rotation = Quaternion(-2.68834e-23, -0.0832313, -4.1359e-24, 0.99653)
+bones/10/rotation = Quaternion(-9.09899e-24, -0.113298, 3.72231e-24, 0.993561)
+bones/12/rotation = Quaternion(-0.0147915, 0.0479505, 0.294397, 0.954365)
+bones/15/rotation = Quaternion(-0.0176755, 0.0469639, 0.351799, 0.93473)
+bones/18/rotation = Quaternion(0.00616864, 0.00898974, -0.56576, 0.824498)
+bones/21/rotation = Quaternion(0.00618535, 0.00897826, -0.567292, 0.823445)
+bones/22/rotation = Quaternion(0.00108056, -0.0249836, 0.043197, 0.998754)
+bones/24/rotation = Quaternion(-0.0252885, 0.043342, 0.503321, 0.862641)
+bones/29/rotation = Quaternion(0.00524884, 0.009556, -0.4814, 0.876433)
+bones/31/rotation = Quaternion(-0.0277328, 0.0418202, 0.551969, 0.832353)
+bones/33/rotation = Quaternion(-0.0225212, 0.0448423, 0.448242, 0.892503)
+bones/37/rotation = Quaternion(-0.0253332, 0.0433159, 0.50421, 0.862122)
+bones/39/rotation = Quaternion(0.0568116, -0.673502, -0.0559701, 0.73487)
+bones/40/rotation = Quaternion(-0.0372546, 0.128434, -0.258802, 0.956629)
+bones/41/rotation = Quaternion(0.00646733, -0.0434896, 0.0301733, 0.998577)
+bones/42/rotation = Quaternion(0.00530197, -0.0292047, 0.210661, 0.977109)
+bones/43/rotation = Quaternion(0.000191357, -0.00569758, 0.00934254, 0.99994)
+bones/44/rotation = Quaternion(-0.0100433, -0.00105645, -0.169629, 0.985456)
+bones/46/rotation = Quaternion(0.0157981, -0.0507289, -0.260251, 0.964078)
+bones/47/rotation = Quaternion(-0.0067709, 0.0434437, 0.0371435, 0.998342)
+bones/48/rotation = Quaternion(-0.0110544, 0.0642212, 0.221665, 0.972943)
+bones/49/rotation = Quaternion(-0.00047593, 0.0499066, 0.00741891, 0.998726)
+bones/50/rotation = Quaternion(0.0264477, -0.0124839, -0.185236, 0.982259)
+bones/53/rotation = Quaternion(-0.218767, -0.266598, -0.29589, 0.890795)
+bones/55/rotation = Quaternion(-0.147287, -0.525271, -0.540542, 0.640478)
+bones/57/rotation = Quaternion(-0.183399, -0.460454, -0.443128, 0.746984)
+bones/59/rotation = Quaternion(-0.191449, -0.315947, -0.352811, 0.85968)
+bones/62/rotation = Quaternion(0.164719, 0.159956, -0.356073, 0.905811)
+bones/64/rotation = Quaternion(0.147572, 0.206981, -0.417466, 0.872413)
+bones/66/rotation = Quaternion(0.148013, 0.357307, -0.552382, 0.738443)
+bones/68/rotation = Quaternion(0.150789, 0.413689, -0.614574, 0.65454)
+
+[node name="AnimationPlayer" parent="Graphics/Regal Angelfish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Regal Angelfish"]

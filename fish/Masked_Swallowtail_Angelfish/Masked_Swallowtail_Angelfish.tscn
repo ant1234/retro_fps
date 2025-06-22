@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://58xqeshg52us"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_muock"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_tcf1s"]
+[ext_resource type="PackedScene" uid="uid://cqixg5cxkjduk" path="res://fish/Masked_Swallowtail_Angelfish/Masked_Swallowtail_Angelfish1.fbx" id="3_n7f6l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.825378, 0.254822)
+
+[node name="Masked_Swallowtail_Angelfish" type="CharacterBody3D"]
+script = ExtResource("1_muock")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Masked_Swallowtail_Angelfish1/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, 0.0133703, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_tcf1s")
+subject_name = "Masked Swallowtail Angelfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Masked_Swallowtail_Angelfish1" parent="Graphics" instance=ExtResource("3_n7f6l")]
+transform = Transform3D(0.0411758, 0, 1.49943, 0, 1.5, 0, -1.49943, 0, 0.0411758, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Masked_Swallowtail_Angelfish1/Masked_Swallowtail_Angelfish2" index="0"]
+bones/1/position = Vector3(0.0619922, 0.499754, 0.173539)
+bones/1/rotation = Quaternion(-0.000261793, 0.999047, -0.00141526, 0.0436178)
+bones/2/rotation = Quaternion(-0.0122687, -0.0266044, 0.418591, 0.907702)
+bones/4/rotation = Quaternion(-0.0044961, -0.0301873, -0.000135931, 0.999534)
+bones/5/rotation = Quaternion(-0.00714548, -0.0445983, -0.000319082, 0.99898)
+bones/6/rotation = Quaternion(-0.00809178, -0.0785566, -0.000637676, 0.996877)
+bones/7/rotation = Quaternion(-0.000971069, -0.0434788, 0.126591, 0.991001)
+bones/8/rotation = Quaternion(-0.00331165, 0.00610453, -0.12699, 0.99188)
+bones/9/rotation = Quaternion(-2.91581e-23, 0.0822047, 1.03398e-24, 0.996615)
+bones/10/rotation = Quaternion(2.48154e-23, 0.431147, -4.1359e-24, 0.902282)
+bones/12/rotation = Quaternion(0.0185505, -0.0601362, 0.294184, 0.953675)
+bones/15/rotation = Quaternion(0.0221675, -0.058899, 0.351544, 0.934054)
+bones/18/rotation = Quaternion(-0.0242285, -0.0353089, -0.565274, 0.823791)
+bones/21/rotation = Quaternion(-0.0242941, -0.0352638, -0.566805, 0.822738)
+bones/22/rotation = Quaternion(0.000828626, -0.0191586, 0.0432026, 0.998882)
+bones/24/rotation = Quaternion(0.0317152, -0.0543566, 0.502957, 0.862017)
+bones/29/rotation = Quaternion(-0.0206158, -0.037533, -0.480988, 0.875681)
+bones/31/rotation = Quaternion(0.0347806, -0.0524481, 0.55157, 0.831751)
+bones/33/rotation = Quaternion(0.0282445, -0.0562382, 0.447918, 0.891857)
+bones/37/rotation = Quaternion(0.0317712, -0.0543239, 0.503845, 0.861498)
+bones/39/rotation = Quaternion(0.0557999, -0.686558, -0.0569787, 0.722688)
+bones/41/rotation = Quaternion(-0.259082, -0.386651, -0.263263, 0.845027)
+bones/43/rotation = Quaternion(-0.121074, -0.484113, -0.551865, 0.668147)
+bones/45/rotation = Quaternion(-0.219682, -0.52109, -0.426307, 0.706023)
+bones/47/rotation = Quaternion(-0.265333, -0.497441, -0.302191, 0.768656)
+bones/50/rotation = Quaternion(0.213895, 0.283005, -0.330157, 0.87473)
+bones/52/rotation = Quaternion(0.236807, 0.393906, -0.37483, 0.805148)
+bones/54/rotation = Quaternion(0.187243, 0.421821, -0.53525, 0.70747)
+bones/56/rotation = Quaternion(0.120473, 0.371374, -0.625157, 0.67583)
+
+[editable path="Graphics/Masked_Swallowtail_Angelfish1"]

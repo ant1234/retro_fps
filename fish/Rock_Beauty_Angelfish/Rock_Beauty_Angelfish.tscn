@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf0c7cbigm81y"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_gqh0u"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_u8ook"]
+[ext_resource type="PackedScene" uid="uid://btg8ud5oe8mal" path="res://fish/Rock_Beauty_Angelfish/Rock_Beauty_Angelfish.fbx" id="3_q03y6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.817413, 0.254822)
+
+[node name="Roaops_Butterflyfish" type="CharacterBody3D"]
+script = ExtResource("1_gqh0u")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Rock_Beauty_Angelfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, 0.00739703, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_u8ook")
+subject_name = "Rock Beauty Angelfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Rock_Beauty_Angelfish" parent="Graphics" instance=ExtResource("3_q03y6")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Rock_Beauty_Angelfish/Rock_Beauty_Angelfish2" index="0"]
+bones/1/position = Vector3(0.162259, 0.582869, 0.147769)
+bones/1/rotation = Quaternion(-0.110506, 0.992766, -0.015044, 0.0444814)
+bones/2/rotation = Quaternion(0.000922195, 0.00199975, 0.41877, 0.90809)
+bones/4/rotation = Quaternion(0.00711723, 0.0540199, -0.000384569, 0.998514)
+bones/5/rotation = Quaternion(0.00284145, 0.0320918, -9.84484e-05, 0.999481)
+bones/6/rotation = Quaternion(-0.000766444, 0.026081, 1.3029e-05, 0.99966)
+bones/7/rotation = Quaternion(0.00358007, -0.0548865, 0.126609, 0.990427)
+bones/8/rotation = Quaternion(-0.0245453, -0.165256, -0.125768, 0.977891)
+bones/9/rotation = Quaternion(1.44757e-23, -0.0920635, 1.65436e-24, 0.995753)
+bones/10/rotation = Quaternion(-6.61744e-24, -0.0900755, 2.89513e-24, 0.995935)
+bones/12/rotation = Quaternion(-0.00597144, 0.019358, 0.294708, 0.955373)
+bones/15/rotation = Quaternion(-0.00713576, 0.0189597, 0.35217, 0.935717)
+bones/18/rotation = Quaternion(-0.00810167, -0.0118068, -0.565735, 0.824463)
+bones/21/rotation = Quaternion(-0.0081236, -0.0117917, -0.567267, 0.823409)
+bones/22/rotation = Quaternion(0.00197726, -0.045716, 0.0431653, 0.998019)
+bones/24/rotation = Quaternion(-0.0102092, 0.0174975, 0.503852, 0.863552)
+bones/29/rotation = Quaternion(-0.00689365, -0.0125505, -0.48138, 0.876395)
+bones/31/rotation = Quaternion(-0.0111959, 0.0168832, 0.552552, 0.833232)
+bones/33/rotation = Quaternion(-0.00909197, 0.0181032, 0.448715, 0.893445)
+bones/37/rotation = Quaternion(-0.0102272, 0.017487, 0.504742, 0.863032)
+bones/39/rotation = Quaternion(0.0567666, -0.674093, -0.0560157, 0.734329)
+bones/41/rotation = Quaternion(-0.257551, -0.381942, -0.264676, 0.847192)
+bones/43/rotation = Quaternion(-0.121647, -0.48508, -0.55166, 0.667511)
+bones/45/rotation = Quaternion(-0.181165, -0.456686, -0.444046, 0.749293)
+bones/47/rotation = Quaternion(-0.237866, -0.429057, -0.323872, 0.808973)
+bones/50/rotation = Quaternion(0.211989, 0.278137, -0.331323, 0.876314)
+bones/52/rotation = Quaternion(0.203139, 0.322775, -0.393803, 0.836343)
+bones/54/rotation = Quaternion(0.145582, 0.353341, -0.553327, 0.740125)
+bones/56/rotation = Quaternion(0.121146, 0.372363, -0.624972, 0.675336)
+
+[node name="AnimationPlayer" parent="Graphics/Rock_Beauty_Angelfish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Rock_Beauty_Angelfish"]

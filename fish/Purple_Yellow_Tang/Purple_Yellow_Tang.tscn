@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8164778n5u4w"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_0i3ru"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_dp5t0"]
+[ext_resource type="PackedScene" uid="uid://cb1objupbeicg" path="res://fish/Purple_Yellow_Tang/Purple_ Yellow Tang.fbx" id="3_2h43f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.861145, 0.254822)
+
+[node name="Purple_Yellow_Tang" type="CharacterBody3D"]
+script = ExtResource("1_0i3ru")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Purple_ Yellow Tang/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, 0.0401958, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_dp5t0")
+subject_name = "Purple Yellow Tang"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Purple_ Yellow Tang" parent="Graphics" instance=ExtResource("3_2h43f")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Purple_ Yellow Tang/Zebrasoma" index="0"]
+bones/1/position = Vector3(0.1979, 0.0652982, 0.0357255)
+bones/1/rotation = Quaternion(-0.0372336, 0.998189, -0.0168853, 0.0441192)
+bones/2/rotation = Quaternion(-7.7735e-05, -0.000168576, 0.418771, 0.908092)
+bones/4/rotation = Quaternion(0.00744832, 0.04655, -0.000348778, 0.998888)
+bones/5/rotation = Quaternion(0.00484841, 0.0168707, -8.47468e-05, 0.999846)
+bones/6/rotation = Quaternion(0.00235889, -0.0226456, 4.95043e-05, 0.999741)
+bones/7/rotation = Quaternion(0.00811564, -0.0699021, 0.126613, 0.989453)
+bones/8/rotation = Quaternion(-0.0278615, -0.198558, -0.1249, 0.971699)
+bones/9/rotation = Quaternion(-8.27181e-24, -0.202306, -6.20386e-25, 0.979322)
+bones/10/rotation = Quaternion(2.51256e-23, 0.0449801, -3.30872e-24, 0.998988)
+bones/12/rotation = Quaternion(0.0200394, -0.0649628, 0.294087, 0.953358)
+bones/15/rotation = Quaternion(0.0239466, -0.0636262, 0.351428, 0.933743)
+bones/18/rotation = Quaternion(-0.0516913, -0.0753312, -0.563427, 0.821099)
+bones/21/rotation = Quaternion(-0.0518313, -0.075235, -0.564953, 0.82005)
+bones/22/rotation = Quaternion(0.00481269, -0.111274, 0.0429417, 0.99285)
+bones/24/rotation = Quaternion(0.0342606, -0.0587192, 0.50279, 0.861731)
+bones/29/rotation = Quaternion(-0.0439837, -0.0800763, -0.479416, 0.872819)
+bones/31/rotation = Quaternion(0.0375721, -0.0566576, 0.551387, 0.831475)
+bones/33/rotation = Quaternion(0.0305114, -0.0607519, 0.447769, 0.891561)
+bones/37/rotation = Quaternion(0.0343211, -0.0586839, 0.503678, 0.861212)
+bones/39/rotation = Quaternion(0.0568139, -0.673472, -0.0559677, 0.734899)
+bones/42/rotation = Quaternion(-0.269007, -0.417461, -0.2537, 0.830059)
+bones/44/rotation = Quaternion(-0.0882557, -0.431242, -0.563333, 0.699211)
+bones/46/rotation = Quaternion(-0.164362, -0.428226, -0.450536, 0.765915)
+bones/48/rotation = Quaternion(-0.250311, -0.459886, -0.314523, 0.791786)
+bones/51/rotation = Quaternion(0.194292, 0.233369, -0.34152, 0.889468)
+bones/53/rotation = Quaternion(0.193377, 0.302296, -0.398612, 0.843997)
+bones/55/rotation = Quaternion(0.168497, 0.391115, -0.54398, 0.722997)
+bones/57/rotation = Quaternion(0.1201, 0.370837, -0.625268, 0.676088)
+
+[editable path="Graphics/Purple_ Yellow Tang"]

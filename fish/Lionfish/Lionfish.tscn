@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1tn82firv8cl"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_51xbj"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_dbfb4"]
+[ext_resource type="PackedScene" uid="uid://15n37c6vplj7" path="res://fish/Lionfish/lionfish.fbx" id="3_tu4kw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.768243, 0.91262, 1.0744)
+
+[node name="Lionfish" type="CharacterBody3D"]
+script = ExtResource("1_51xbj")
+animation_name = "A"
+animation_player_path = NodePath("Graphics/lionfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, 0.0684901, 0.231981, 0.0914035)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_dbfb4")
+subject_name = "Lionfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="lionfish" parent="Graphics" instance=ExtResource("3_tu4kw")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/lionfish" index="0"]
+bones/3/rotation = Quaternion(0.000761669, 0.0353581, -0.0215231, 0.999143)
+bones/4/rotation = Quaternion(0.00424263, 0.122355, -0.0343932, 0.991881)
+bones/5/rotation = Quaternion(-0.00370246, 0.125986, 0.0291408, 0.991597)
+bones/6/rotation = Quaternion(2.32831e-10, 0, 0, 1)
+bones/7/rotation = Quaternion(0.0233948, 0.0491283, -0.429263, 0.901539)
+bones/8/rotation = Quaternion(-0.351159, -0.574619, 0.298322, 0.676391)
+bones/10/rotation = Quaternion(-0.262229, -0.59553, 0.237863, 0.721111)
+bones/12/rotation = Quaternion(-0.265494, -0.596978, 0.218678, 0.724783)
+bones/13/rotation = Quaternion(-0.0599427, 0.16039, 0.00127473, 0.985231)
+bones/14/rotation = Quaternion(0.397128, -0.527123, -0.304864, 0.68665)
+bones/15/rotation = Quaternion(-0.0223761, 0.0838331, 0.0199476, 0.996029)
+bones/16/rotation = Quaternion(-0.377275, -0.41738, -0.581721, 0.587417)
+bones/18/rotation = Quaternion(-0.451816, -0.341952, -0.528437, 0.632206)
+bones/20/rotation = Quaternion(0.221269, 0.671595, 0.671595, -0.221269)
+bones/22/rotation = Quaternion(-0.677972, -0.200883, -0.200883, 0.677972)
+
+[node name="AnimationPlayer" parent="Graphics/lionfish" index="1"]
+autoplay = "A"
+
+[editable path="Graphics/lionfish"]

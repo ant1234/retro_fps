@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4cjrb6jiibmv"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_nfkjb"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_l5liu"]
+[ext_resource type="PackedScene" uid="uid://cxxii0btx00l3" path="res://fish/Tahitian_Butterflyfish/Tahitian_butterflyfish.fbx" id="3_q0yrd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.781956, 0.254822)
+
+[node name="Tahitian_Butterflyfish" type="CharacterBody3D"]
+script = ExtResource("1_nfkjb")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Tahitian_butterflyfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, -0.0191959, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_l5liu")
+subject_name = "Tahitian Butterflyfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Tahitian_butterflyfish" parent="Graphics" instance=ExtResource("3_q0yrd")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Tahitian_butterflyfish/Tahitian_butterflyfish2" index="0"]
+bones/1/position = Vector3(0.0456107, 0.327114, 0.0270118)
+bones/1/rotation = Quaternion(-0.034966, 0.978396, -0.0364302, 0.200476)
+bones/2/rotation = Quaternion(-0.0127873, -0.0277277, 0.418584, 0.907665)
+bones/4/rotation = Quaternion(0.0228945, -0.0230421, 0.000527322, 0.999472)
+bones/5/rotation = Quaternion(0.0159967, -0.0360802, 0.000577291, 0.999221)
+bones/6/rotation = Quaternion(0.00943738, -0.0710119, 0.000672666, 0.997431)
+bones/7/rotation = Quaternion(0.00838241, -0.0433329, 0.126989, 0.990922)
+bones/8/rotation = Quaternion(-0.00699672, -0.0589485, -0.126731, 0.990159)
+bones/9/rotation = Quaternion(5.16988e-24, -0.0249647, -5.37667e-24, 0.999688)
+bones/10/rotation = Quaternion(-6.61744e-24, 0.426981, 9.09899e-24, 0.90426)
+bones/12/rotation = Quaternion(0.00503059, -0.016308, 0.294726, 0.95543)
+bones/15/rotation = Quaternion(0.00601146, -0.0159725, 0.352191, 0.935772)
+bones/18/rotation = Quaternion(0.0529023, 0.0770961, -0.563315, 0.820935)
+bones/21/rotation = Quaternion(0.0530456, 0.0769976, -0.56484, 0.819886)
+bones/22/rotation = Quaternion(-0.00676325, 0.156372, 0.042678, 0.986753)
+bones/24/rotation = Quaternion(0.00860064, -0.0147406, 0.503882, 0.863604)
+bones/29/rotation = Quaternion(0.0450142, 0.0819524, -0.47932, 0.872645)
+bones/31/rotation = Quaternion(0.00943193, -0.0142231, 0.552585, 0.833282)
+bones/33/rotation = Quaternion(0.00765946, -0.0152509, 0.448742, 0.893498)
+bones/37/rotation = Quaternion(0.00861583, -0.0147317, 0.504772, 0.863084)
+bones/39/rotation = Quaternion(0.0548434, -0.698497, -0.0579, 0.711156)
+bones/41/rotation = Quaternion(-0.266565, -0.409794, -0.256113, 0.833917)
+bones/43/rotation = Quaternion(-0.0473024, -0.363288, -0.573582, 0.732658)
+bones/45/rotation = Quaternion(-0.111135, -0.336741, -0.466526, 0.810314)
+bones/47/rotation = Quaternion(-0.216377, -0.376341, -0.33835, 0.834906)
+bones/50/rotation = Quaternion(0.223256, 0.306988, -0.324196, 0.866494)
+bones/52/rotation = Quaternion(0.177226, 0.268541, -0.405937, 0.85539)
+bones/54/rotation = Quaternion(0.0708555, 0.228208, -0.57429, 0.783002)
+bones/56/rotation = Quaternion(0.0354807, 0.249274, -0.643611, 0.722751)
+
+[node name="AnimationPlayer" parent="Graphics/Tahitian_butterflyfish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Tahitian_butterflyfish"]

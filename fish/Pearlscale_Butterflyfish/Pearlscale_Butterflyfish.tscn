@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://2bs26cq7520g"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_jtbip"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_i5xrt"]
+[ext_resource type="PackedScene" uid="uid://b6abqesh4ygdo" path="res://fish/Pearlscale_Butterflyfish/Pearlscale_Butterflyfish.fbx" id="3_ixwac"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.726456, 0.771484, 0.254822)
+
+[node name="Pearlscale_Butterflyfish" type="CharacterBody3D"]
+script = ExtResource("1_jtbip")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Pearlscale_Butterflyfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.00809042, -0.0270499, 0.0373568)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_i5xrt")
+subject_name = "Pearlscale Butterflyfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Pearlscale_Butterflyfish" parent="Graphics" instance=ExtResource("3_ixwac")]
+transform = Transform3D(-0.0209694, 0, 1.49985, 0, 1.5, 0, -1.49985, 0, -0.0209694, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Pearlscale_Butterflyfish/Pearlscale_Butterflyfish2" index="0"]
+bones/1/position = Vector3(0.0543111, 0.390555, 0.048691)
+bones/1/rotation = Quaternion(-0.0711603, 0.995819, -0.0344671, 0.0457456)
+bones/2/rotation = Quaternion(-0.0138789, -0.0300961, 0.41854, 0.907593)
+bones/4/rotation = Quaternion(0.0200859, 0.019006, -0.000382298, 0.999618)
+bones/5/rotation = Quaternion(0.015729, 0.00817199, -0.000126601, 0.999843)
+bones/6/rotation = Quaternion(0.0110064, 0.0129508, -0.000138463, 0.999856)
+bones/7/rotation = Quaternion(0.00301035, 0.0186871, 0.12686, 0.99174)
+bones/8/rotation = Quaternion(0.011134, 0.0623272, -0.126928, 0.989889)
+bones/9/rotation = Quaternion(-1.98523e-23, 0.131146, -1.24077e-24, 0.991363)
+bones/10/rotation = Quaternion(2.97785e-23, 0.268109, -1.11669e-23, 0.963389)
+bones/12/rotation = Quaternion(-0.0245266, 0.0795093, 0.293746, 0.952255)
+bones/15/rotation = Quaternion(-0.0293088, 0.0778735, 0.351021, 0.932663)
+bones/18/rotation = Quaternion(0.0155635, 0.0226811, -0.565579, 0.824235)
+bones/21/rotation = Quaternion(0.0156056, 0.0226521, -0.567111, 0.823182)
+bones/22/rotation = Quaternion(0.0018967, -0.0438534, 0.0431689, 0.998103)
+bones/24/rotation = Quaternion(-0.0419323, 0.0718677, 0.502208, 0.860734)
+bones/29/rotation = Quaternion(0.0132428, 0.0241098, -0.481247, 0.876153)
+bones/31/rotation = Quaternion(-0.0459853, 0.0693444, 0.550749, 0.830513)
+bones/33/rotation = Quaternion(-0.0373436, 0.0743555, 0.447251, 0.89053)
+bones/37/rotation = Quaternion(-0.0420064, 0.0718245, 0.503095, 0.860216)
+bones/39/rotation = Quaternion(0.0528046, -0.722714, -0.0597652, 0.686531)
+bones/41/rotation = Quaternion(-0.273078, -0.430269, -0.249567, 0.823415)
+bones/43/rotation = Quaternion(-0.0962714, -0.444282, -0.5608, 0.691989)
+bones/45/rotation = Quaternion(-0.215059, -0.513425, -0.428657, 0.711616)
+bones/47/rotation = Quaternion(-0.261233, -0.487153, -0.305678, 0.775242)
+bones/50/rotation = Quaternion(0.232103, 0.329892, -0.318242, 0.857917)
+bones/52/rotation = Quaternion(0.231731, 0.38313, -0.37794, 0.810354)
+bones/54/rotation = Quaternion(0.18195, 0.413172, -0.537815, 0.711996)
+bones/56/rotation = Quaternion(0.10076, 0.343497, -0.630891, 0.688356)
+
+[node name="AnimationPlayer" parent="Graphics/Pearlscale_Butterflyfish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Pearlscale_Butterflyfish"]

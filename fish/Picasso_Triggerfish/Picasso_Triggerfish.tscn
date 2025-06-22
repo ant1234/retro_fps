@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd7xkmo0jej1b"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_5im4w"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_5au3x"]
+[ext_resource type="PackedScene" uid="uid://x8ucwe4134fy" path="res://fish/Picasso_Triggerfish/picasso_triggerfish.fbx" id="3_36aep"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(2.52896, 1.53769, 0.993156)
+
+[node name="Picasso_Triggerfish" type="CharacterBody3D"]
+script = ExtResource("1_5im4w")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/picasso_triggerfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0105109, 0, -0.749926, 0, 0.75, 0, 0.749926, 0, -0.0105109, -0.0948564, 0.183579, 0.114324)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_5au3x")
+subject_name = "Picasso Triggerfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="picasso_triggerfish" parent="Graphics" instance=ExtResource("3_36aep")]
+transform = Transform3D(-0.199979, 0, 0.00289366, 0, 0.2, 0, -0.00289366, 0, -0.199979, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/picasso_triggerfish" index="0"]
+bones/1/rotation = Quaternion(-0.039082, 0.0335336, 0.757916, 0.650316)
+bones/4/rotation = Quaternion(0.0274376, 0.0273745, -0.707389, 0.705761)
+bones/5/rotation = Quaternion(-0.00635505, -0.0908357, -0.0695016, 0.993417)
+bones/6/rotation = Quaternion(0.0019463, -0.0350113, 0.0545742, 0.997894)
+bones/7/rotation = Quaternion(-0.010632, -0.146395, -0.0716504, 0.986571)
+bones/8/rotation = Quaternion(0.00131738, -0.0426057, 0.0289173, 0.998673)
+bones/9/rotation = Quaternion(0.00239301, -0.0199265, -0.000786052, 0.999798)
+bones/10/rotation = Quaternion(-0.0189841, 0.0508892, 0.386435, 0.920716)
+bones/12/rotation = Quaternion(-0.0254962, -0.0618313, -0.353241, 0.933139)
+bones/14/rotation = Quaternion(0.0377784, -0.0433149, 0.578122, 0.813923)
+bones/16/rotation = Quaternion(0.0539171, 0.0891702, -0.552716, 0.826829)
+bones/18/rotation = Quaternion(-0.284277, 0.647446, 0.647446, 0.284277)
+bones/19/rotation = Quaternion(8.27181e-25, -2.03788e-24, -0.042995, 0.999075)
+bones/20/rotation = Quaternion(-0.646697, 0.285977, 0.285977, 0.646697)
+bones/21/rotation = Quaternion(0, 7.46832e-25, 0.0468622, 0.998901)
+
+[editable path="Graphics/picasso_triggerfish"]
