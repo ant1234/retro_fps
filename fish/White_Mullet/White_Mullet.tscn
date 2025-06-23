@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://gfggb7gfxcai"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_f81f1"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_m5eti"]
+[ext_resource type="PackedScene" uid="uid://4dqany7goclo" path="res://fish/White_Mullet/white mullet.fbx" id="3_rrmmg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(2.06239, 0.681131, 0.478342)
+
+[node name="White_Mullet" type="CharacterBody3D"]
+script = ExtResource("1_f81f1")
+animation_name = "Take 002"
+animation_player_path = NodePath("Graphics/white mullet/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -0.00710581, 0.00316718, 0.0601271)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_m5eti")
+subject_name = "White Mullet"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="white mullet" parent="Graphics" instance=ExtResource("3_rrmmg")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/white mullet" index="0"]
+bones/1/rotation = Quaternion(-0.018646, 0.0183686, 0.712142, 0.701548)
+bones/2/rotation = Quaternion(0.000473344, -0.021966, 0.0215387, 0.999527)
+bones/3/rotation = Quaternion(0.000825392, -0.0311805, 0.0264493, 0.999163)
+bones/4/rotation = Quaternion(-0.00154051, -0.0672353, -0.0194084, 0.997547)
+bones/5/rotation = Quaternion(-0.00280366, -0.102014, -0.0223216, 0.994529)
+bones/6/rotation = Quaternion(-0.0020955, -0.0822741, 0.0028108, 0.996604)
+bones/7/rotation = Quaternion(-0.0338366, -0.0394937, -0.649743, 0.758372)
+bones/8/rotation = Quaternion(-0.000138957, -0.000384552, -0.273518, 0.961867)
+bones/10/rotation = Quaternion(6.52854e-08, -3.67763e-08, -0.490801, 0.871272)
+
+[editable path="Graphics/white mullet"]

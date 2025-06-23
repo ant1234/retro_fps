@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://c17jq6dc0sliv"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_22uyy"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_kk8du"]
+[ext_resource type="PackedScene" uid="uid://ndq208ucqcfa" path="res://fish/Tylosaurus/tylosaurus.fbx" id="3_xrd02"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(1.55294, 0.382082, 0.566612)
+
+[node name="Tylosaurus" type="CharacterBody3D"]
+script = ExtResource("1_22uyy")
+animation_name = "Take 002"
+animation_player_path = NodePath("Graphics/tylosaurus/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.43099e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, 1.43099e-08, -0.0234399, 0.0436799, 0.230397)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_kk8du")
+subject_name = "Tylosaurus"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="tylosaurus" parent="Graphics" instance=ExtResource("3_xrd02")]
+transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/tylosaurus" index="0"]
+bones/1/rotation = Quaternion(0.0310575, 0.0331341, -0.683168, 0.728848)
+bones/2/rotation = Quaternion(0.00222238, 0.0271095, -0.0815493, 0.996298)
+bones/3/rotation = Quaternion(-0.000940575, -0.118029, -0.00787576, 0.992979)
+bones/4/rotation = Quaternion(0.00112246, -0.0275289, 0.044083, 0.998648)
+bones/6/rotation = Quaternion(-0.00291451, 0.0677527, 0.043507, 0.996749)
+bones/7/rotation = Quaternion(-0.00175046, -0.0565064, -0.0309137, 0.997922)
+bones/8/rotation = Quaternion(-0.000322009, 0.0553876, 0.00580472, 0.998448)
+bones/9/rotation = Quaternion(-0.000481645, 0.0403813, 0.0210513, 0.998962)
+bones/10/rotation = Quaternion(0.00163351, 0.107443, -0.0113671, 0.994145)
+bones/11/rotation = Quaternion(0.00204939, 0.186284, -0.0108082, 0.982434)
+bones/19/rotation = Quaternion(0.0385659, -0.0413995, 0.741341, 0.66874)
+bones/20/rotation = Quaternion(-0.00136148, -0.0389707, -0.0348882, 0.99863)
+bones/21/rotation = Quaternion(-5.91565e-07, -6.50849e-05, -0.00908887, 0.999959)
+bones/22/rotation = Quaternion(2.0467e-13, -5.37872e-15, -0.0333599, 0.999443)
+bones/24/rotation = Quaternion(1.25455e-14, -9.72088e-16, 0.0588563, 0.998267)
+
+[editable path="Graphics/tylosaurus"]

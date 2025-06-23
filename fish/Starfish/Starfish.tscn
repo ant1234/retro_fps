@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn7kbl4mryp42"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_465gi"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_sjkh1"]
+[ext_resource type="PackedScene" uid="uid://mykcybb7yrrk" path="res://fish/Starfish/Starfish.fbx" id="3_c6rd3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.487034, 0.111262, 0.488998)
+
+[node name="Starfish" type="CharacterBody3D"]
+script = ExtResource("1_465gi")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/Starfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, 0.00956786, 0.0119599, -0.034383)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_sjkh1")
+subject_name = "Starfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Starfish" parent="Graphics" instance=ExtResource("3_c6rd3")]
+transform = Transform3D(0.1, 0, 0, 0, -0.1, 8.74228e-09, 0, -8.74228e-09, -0.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Starfish" index="0"]
+bones/0/rotation = Quaternion(0.605902, -0.583877, -0.389087, 0.374943)
+bones/3/rotation = Quaternion(1.9645e-07, 3.30602e-08, 0.017866, 0.99984)
+bones/6/rotation = Quaternion(0.00899167, -0.118061, 0.0754092, 0.990098)
+bones/9/rotation = Quaternion(1.12648e-07, 1.55023e-08, 0.00388319, 0.999993)
+bones/12/rotation = Quaternion(-0.00267942, -0.109247, -0.0243723, 0.993712)
+bones/15/rotation = Quaternion(-0.000171686, -0.0725217, -0.00236184, 0.997364)
+
+[node name="AnimationPlayer" parent="Graphics/Starfish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/Starfish"]

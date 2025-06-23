@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://702cki1ldxoj"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_mvst0"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_ub5ok"]
+[ext_resource type="PackedScene" uid="uid://d3mlc6gfs7kxf" path="res://fish/Yellowfin_Tuna/yellowfin tuna.fbx" id="3_3rwnf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(1.95287, 0.811269, 0.750783)
+
+[node name="Yellowfin_Tuna" type="CharacterBody3D"]
+script = ExtResource("1_mvst0")
+animation_name = "a"
+animation_player_path = NodePath("Graphics/yellowfin tuna/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.0395952, 0.0357016, 0.0699641)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_ub5ok")
+subject_name = "Yellowfin Tuna"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="yellowfin tuna" parent="Graphics" instance=ExtResource("3_3rwnf")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/yellowfin tuna" index="0"]
+bones/1/rotation = Quaternion(0.0153681, -0.014889, 0.718049, 0.695663)
+bones/2/rotation = Quaternion(-0.004166, 0.137416, 0.0300151, 0.99005)
+bones/3/rotation = Quaternion(0.00395751, 0.112686, -0.0326979, 0.993085)
+bones/4/rotation = Quaternion(4.19803e-16, 2.39761e-17, 0.0281649, 0.999603)
+bones/6/rotation = Quaternion(0.0371678, 0.037166, -0.706146, 0.706112)
+
+[node name="AnimationPlayer" parent="Graphics/yellowfin tuna" index="1"]
+autoplay = "a"
+
+[editable path="Graphics/yellowfin tuna"]

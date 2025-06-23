@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu2q2a1bmq40l"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_1l2eo"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_ehog8"]
+[ext_resource type="PackedScene" uid="uid://bleaqt2igkwp8" path="res://fish/Whitefish/whitefish.fbx" id="3_gvjgo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(3.83583, 1.94157, 1.53282)
+
+[node name="Whitefish" type="CharacterBody3D"]
+script = ExtResource("1_1l2eo")
+animation_name = "Take 002"
+animation_player_path = NodePath("Graphics/whitefish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -0.0736463, 0.127816, 0.161005)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_ehog8")
+subject_name = "Whitefish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="whitefish" parent="Graphics" instance=ExtResource("3_gvjgo")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/whitefish" index="0"]
+bones/0/rotation = Quaternion(0.5, -0.5, -0.5, 0.5)
+bones/1/rotation = Quaternion(-0.0381654, 0.036104, 0.72545, 0.686266)
+bones/3/rotation = Quaternion(-0.00322271, -0.156903, -0.0202808, 0.987401)
+bones/4/rotation = Quaternion(-4.2067e-05, 0.00298728, 0.0140805, 0.999896)
+bones/5/rotation = Quaternion(0.000369973, -0.107033, 0.00343676, 0.99425)
+bones/6/rotation = Quaternion(0.00344307, -0.181397, 0.0147447, 0.983293)
+bones/7/rotation = Quaternion(0, 0, 9.31323e-10, 1)
+bones/8/rotation = Quaternion(-0.0553175, -0.124206, -0.407623, 0.902971)
+bones/10/rotation = Quaternion(-0.0476615, -0.0543703, -0.657464, 0.750009)
+bones/11/rotation = Quaternion(-1.97807e-06, -0.00244715, -0.1293, 0.991602)
+bones/13/rotation = Quaternion(1.61876e-08, 5.89243e-08, -0.264903, 0.964275)
+bones/16/rotation = Quaternion(-5.73857e-24, -6.61745e-24, 0.329119, 0.944288)
+bones/17/rotation = Quaternion(0.225736, 0.670107, 0.670107, -0.225736)
+bones/18/rotation = Quaternion(1.55096e-25, -5.82811e-26, -0.434519, 0.900663)
+
+[node name="AnimationPlayer" parent="Graphics/whitefish" index="1"]
+autoplay = "Take 002"
+
+[editable path="Graphics/whitefish"]

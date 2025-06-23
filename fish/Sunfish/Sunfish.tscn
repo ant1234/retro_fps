@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb6vukao8l3ay"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_8mw16"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_o0xss"]
+[ext_resource type="PackedScene" uid="uid://diu4avrrbxdt8" path="res://fish/Sunfish/sunfish.fbx" id="3_akgoe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(1.54335, 1.97591, 0.945563)
+
+[node name="Sunfish" type="CharacterBody3D"]
+script = ExtResource("1_8mw16")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/sunfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, 0.0117659, 0.0588087, 0.308724)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_o0xss")
+subject_name = "Sunfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="sunfish" parent="Graphics" instance=ExtResource("3_akgoe")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/sunfish" index="0"]
+bones/1/rotation = Quaternion(9.07914e-05, 0.00433352, -0.0209462, 0.999771)
+bones/3/rotation = Quaternion(-0.000155789, -0.00856717, -0.0181807, 0.999798)
+bones/5/rotation = Quaternion(-0.0697502, 0.0485851, 0.644086, 0.760216)
+bones/7/rotation = Quaternion(0.0674026, 0.0629373, -0.673068, 0.733809)
+
+[node name="AnimationPlayer" parent="Graphics/sunfish" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/sunfish"]

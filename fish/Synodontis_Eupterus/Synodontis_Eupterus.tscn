@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx3l2qj0qylj0"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_kdien"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_0dv41"]
+[ext_resource type="PackedScene" uid="uid://btkhdo7k0cifg" path="res://fish/Synodontis_Eupterus/Synodontis Eupterus.fbx" id="3_a4g4f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(1.60801, 1.09771, 0.630143)
+
+[node name="Synodontis_Eupterus" type="CharacterBody3D"]
+script = ExtResource("1_kdien")
+animation_name = "a"
+animation_player_path = NodePath("Graphics/Synodontis Eupterus/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, -0.0549127, 0.262148, 0.269931)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_0dv41")
+subject_name = "Synodontis Eupterus"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Synodontis Eupterus" parent="Graphics" instance=ExtResource("3_a4g4f")]
+transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Synodontis Eupterus" index="0"]
+bones/1/rotation = Quaternion(0.0606068, 0.0530732, -0.749871, 0.656661)
+bones/3/rotation = Quaternion(0.00628859, -0.114956, 0.0350332, 0.992733)
+bones/4/rotation = Quaternion(-0.00365665, -0.174027, -0.0123421, 0.984657)
+bones/5/rotation = Quaternion(-0.00187424, -0.0546339, -0.062652, 0.996537)
+bones/6/rotation = Quaternion(7.97973e-16, 9.30799e-16, 0.0428675, 0.999081)
+bones/7/rotation = Quaternion(-2.17708e-16, 2.42349e-17, -0.0135017, 0.999909)
+bones/8/rotation = Quaternion(8.88178e-16, 7.10543e-15, -2.71171e-31, 1)
+bones/9/rotation = Quaternion(-0.0400628, 0.0511229, 0.615517, 0.785443)
+
+[editable path="Graphics/Synodontis Eupterus"]

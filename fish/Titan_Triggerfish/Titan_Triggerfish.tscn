@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi32hltre8g37"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_bb8wc"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_e45yl"]
+[ext_resource type="PackedScene" uid="uid://dbf6vqtcnjndf" path="res://fish/Titan_Triggerfish/titan_triggerfish.fbx" id="3_8iebp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(2.35033, 1.32264, 1.06562)
+
+[node name="Titan_Triggerfish" type="CharacterBody3D"]
+script = ExtResource("1_bb8wc")
+animation_name = "a"
+animation_player_path = NodePath("Graphics/titan_triggerfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, -0.152877, 0.209499, 0.271716)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_e45yl")
+subject_name = "Titan Triggerfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="titan_triggerfish" parent="Graphics" instance=ExtResource("3_8iebp")]
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/titan_triggerfish" index="0"]
+bones/1/rotation = Quaternion(0.0260551, -0.0223561, 0.758476, 0.650796)
+bones/4/rotation = Quaternion(-0.0124484, -0.0124197, -0.707811, 0.706183)
+bones/5/rotation = Quaternion(0.0052487, 0.0750219, -0.0695939, 0.994737)
+bones/6/rotation = Quaternion(0.000194689, -0.00253161, 0.0537657, 0.99855)
+bones/7/rotation = Quaternion(0.0117548, 0.161854, -0.0714748, 0.984153)
+bones/8/rotation = Quaternion(0.00443721, -0.121964, 0.0224129, 0.992272)
+bones/9/rotation = Quaternion(0.0148768, -0.169116, -0.0171046, 0.985336)
+bones/10/rotation = Quaternion(0.0385075, -0.0898265, 0.371002, 0.923475)
+bones/12/rotation = Quaternion(0.0319213, 0.086244, -0.36341, 0.927079)
+bones/14/rotation = Quaternion(-0.100793, 0.145678, 0.593374, 0.785192)
+bones/16/rotation = Quaternion(-0.0423929, -0.0603014, -0.537872, 0.839798)
+bones/18/rotation = Quaternion(0.144678, 0.692147, 0.692147, -0.144678)
+bones/19/rotation = Quaternion(3.97047e-23, -3.30872e-23, -0.331156, 0.943576)
+bones/20/rotation = Quaternion(-0.696533, -0.12183, -0.12183, 0.696532)
+bones/21/rotation = Quaternion(0, -2.72423e-25, 0.398061, 0.917359)
+
+[editable path="Graphics/titan_triggerfish"]

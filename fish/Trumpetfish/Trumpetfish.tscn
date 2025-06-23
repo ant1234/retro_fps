@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqkybphlrmn2s"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_7vvrw"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_v6khs"]
+[ext_resource type="PackedScene" uid="uid://cc3e0o0yodgvu" path="res://fish/Trumpetfish/trumpetfish.fbx" id="3_w3b3y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(1.1856, 0.287259, 0.245204)
+
+[node name="Trumpetfish" type="CharacterBody3D"]
+script = ExtResource("1_7vvrw")
+animation_name = "Take 002"
+animation_player_path = NodePath("Graphics/trumpetfish/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.43099e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, 1.43099e-08, -0.0107516, -0.00536406, 0.0159645)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_v6khs")
+subject_name = "Trumpetfish"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="trumpetfish" parent="Graphics" instance=ExtResource("3_w3b3y")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/trumpetfish" index="0"]
+bones/0/rotation = Quaternion(0.5, -0.5, -0.5, 0.5)
+bones/1/rotation = Quaternion(0.0049181, 0.0061782, -0.622785, 0.782353)
+bones/2/rotation = Quaternion(1.42485e-15, -2.21903e-16, -0.163877, 0.986481)
+bones/3/rotation = Quaternion(0, 6.66134e-16, 0, 1)
+bones/4/rotation = Quaternion(0.0070962, -0.00745378, 0.689485, 0.724227)
+bones/5/rotation = Quaternion(0.00064734, 0.0101352, -0.0637371, 0.997915)
+bones/6/rotation = Quaternion(-0.000829854, 0.0128887, 0.0624614, 0.997964)
+bones/7/rotation = Quaternion(-0.00141667, 0.0992203, 0.0147722, 0.994955)
+bones/8/rotation = Quaternion(-0.00227536, 0.0339888, 0.064875, 0.997312)
+bones/9/rotation = Quaternion(0.00458068, 0.064764, -0.0708598, 0.995371)
+bones/10/rotation = Quaternion(-0.00306679, 0.144208, 0.0210393, 0.989319)
+bones/11/rotation = Quaternion(1.74713e-15, 0.180653, -3.20904e-16, 0.983547)
+
+[editable path="Graphics/trumpetfish"]

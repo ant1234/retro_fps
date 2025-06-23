@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://clsl5pqrqdjj8"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_ctrhf"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_5oge0"]
+[ext_resource type="PackedScene" uid="uid://dhbibwbipuxvt" path="res://fish/White_Grunt/white_grunt.fbx" id="3_lrt0o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(3.78952, 2.1818, 1.59529)
+
+[node name="White_Grunt" type="CharacterBody3D"]
+script = ExtResource("1_ctrhf")
+animation_name = "Take 002"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.0859552, -0.0271726, 0.064929)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_5oge0")
+subject_name = "White Grunt"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="white_grunt" parent="Graphics" instance=ExtResource("3_lrt0o")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/white_grunt" index="0"]
+bones/1/rotation = Quaternion(0.0228, -0.0240406, 0.68776, 0.725182)
+bones/2/rotation = Quaternion(9.05002e-06, 0.0316058, -0.000286198, 0.9995)
+bones/3/rotation = Quaternion(-0.00645942, 0.125605, 0.0509507, 0.99075)
+bones/5/rotation = Quaternion(0, 5.17957e-09, -0.0237891, 0.999717)
+bones/6/rotation = Quaternion(0, 0, 0, 1)
+bones/7/rotation = Quaternion(0.0269025, 0.0364406, -0.593326, 0.803687)
+bones/10/rotation = Quaternion(3.42669e-08, -1.50552e-08, -0.40224, 0.915534)
+bones/12/rotation = Quaternion(0.386, 0.592456, 0.592456, -0.386)
+bones/14/rotation = Quaternion(-0.590121, -0.38956, -0.38956, 0.590121)
+
+[node name="AnimationPlayer" parent="Graphics/white_grunt" index="1"]
+autoplay = "Take 002"
+
+[editable path="Graphics/white_grunt"]
