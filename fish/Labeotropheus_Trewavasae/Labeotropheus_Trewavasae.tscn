@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bteeiui4t2l2a"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_c18wn"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_axg8p"]
+[ext_resource type="PackedScene" uid="uid://dgcd7b0yl7xm" path="res://fish/Labeotropheus_Trewavasae/Labeotropheus Trewavasae.fbx" id="3_y1ufc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(1.46597, 0.596075, 0.472547)
+
+[node name="Labeotropheus_Trewavasae" type="CharacterBody3D"]
+script = ExtResource("1_c18wn")
+animation_name = "Take 002"
+animation_player_path = NodePath("Graphics/Labeotropheus Trewavasae/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0210218, 0, -1.49985, 0, 1.5, 0, 1.49985, 0, -0.0210218, -0.0218507, 0.183188, 0.145047)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_axg8p")
+subject_name = "Labeotropheus Trewavasae"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Labeotropheus Trewavasae" parent="Graphics" instance=ExtResource("3_y1ufc")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Labeotropheus Trewavasae" index="0"]
+bones/1/rotation = Quaternion(0.0071346, -0.006701, 0.728874, 0.684578)
+bones/2/rotation = Quaternion(-0.000408487, 0.0153335, 0.0266275, 0.999528)
+bones/3/rotation = Quaternion(0.000513267, 0.0215112, -0.0238481, 0.999484)
+bones/4/rotation = Quaternion(0.00228859, 0.0210055, -0.107058, 0.994028)
+bones/5/rotation = Quaternion(-0.0019058, 0.0359103, 0.0502515, 0.998089)
+bones/6/rotation = Quaternion(-0.00198923, -0.135614, -0.0139857, 0.990661)
+bones/7/rotation = Quaternion(0.0115965, -0.145468, -0.0176852, 0.989137)
+bones/8/rotation = Quaternion(-0.00199528, -0.00298833, -0.555286, 0.831651)
+bones/9/rotation = Quaternion(0.000170264, 0.00569417, -0.184675, 0.982783)
+bones/11/rotation = Quaternion(2.02959e-08, 4.21534e-08, -0.311076, 0.950385)
+bones/13/rotation = Quaternion(0.144833, 0.692115, 0.692115, -0.144833)
+bones/14/rotation = Quaternion(0, -4.40203e-25, -0.0352076, 0.99938)
+bones/15/rotation = Quaternion(-8.27181e-25, 1.10748e-24, -0.202833, 0.979214)
+bones/16/rotation = Quaternion(-0.692862, -0.141215, -0.141215, 0.692862)
+bones/17/rotation = Quaternion(0, -4.5855e-25, 0.0597081, 0.998216)
+bones/18/rotation = Quaternion(0, 9.1134e-25, 0.133407, 0.991061)
+
+[editable path="Graphics/Labeotropheus Trewavasae"]

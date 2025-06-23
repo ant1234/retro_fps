@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cr774sksons2f"]
+[gd_scene load_steps=87 format=3 uid="uid://cr774sksons2f"]
 
 [ext_resource type="PackedScene" uid="uid://dovc0methr37k" path="res://environment/rock_boulder.tscn" id="1_icxn4"]
 [ext_resource type="PackedScene" uid="uid://dmr124nsouefn" path="res://characters/player/player.tscn" id="1_udsn1"]
@@ -73,6 +73,9 @@
 [ext_resource type="PackedScene" uid="uid://bs3udvdd5nryb" path="res://fish/Yellow_Tang_2/Yellow_Tang_2.tscn" id="61_8kegy"]
 [ext_resource type="PackedScene" uid="uid://dqbgarn5j3cto" path="res://fish/Yellow_Tang/Yellow_Tang.tscn" id="62_6c06n"]
 [ext_resource type="PackedScene" uid="uid://d20orpamlcis8" path="res://fish/Zebrasoma_Desjardinii/Zebrasoma_Desjardinii.tscn" id="63_m2q8r"]
+[ext_resource type="PackedScene" uid="uid://bmffgo1uaf8l8" path="res://fish/Shark/Shark.tscn" id="64_8tnpk"]
+[ext_resource type="PackedScene" uid="uid://dqnfge5dks1i3" path="res://fish/Humpback_Whale/Humpback_Whale.tscn" id="65_tprcg"]
+[ext_resource type="PackedScene" uid="uid://bteeiui4t2l2a" path="res://fish/Labeotropheus_Trewavasae/Labeotropheus_Trewavasae.tscn" id="66_87d5r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l5qe5"]
 
@@ -846,6 +849,36 @@ max_fish = 0
 [node name="Zebrasoma_Desjardinii" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("63_m2q8r")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 2.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Shark" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("64_8tnpk")
+fish_number = 0
+fish_min_speed = 0.5
+fish_max_speed = 1.0
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Humpback_Whale" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("65_tprcg")
+fish_number = 0
+fish_min_speed = 0.1
+fish_max_speed = 0.3
+depth_level = -25.0
+player = NodePath("../../Player")
+max_fish = 0
+
+[node name="Labeotropheus_Trewavasae" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+script = ExtResource("9_5xtdf")
+fish_prefab = ExtResource("66_87d5r")
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0

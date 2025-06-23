@@ -71,10 +71,10 @@ func check_proximity_spawn():
 		var offset = Vector3(
 			randf_range(-spawn_radius, spawn_radius),
 			randf_range(-swim_limits.y, swim_limits.y),
-			randf_range(-spawn_radius, spawn_radius)
+			randf_range(-spawn_radius, spawn_radius) 
 		)
 		var pos = player.global_position + offset
-		spawn_fish_at_position(pos)
+		spawn_fish_at_position(pos) 
 
 func spawn_fish():
 	for i in range(fish_number):

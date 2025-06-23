@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqnfge5dks1i3"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_iif4b"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_ahyk4"]
+[ext_resource type="PackedScene" uid="uid://dhnpgwj24kosu" path="res://fish/Humpback_Whale/HumpBack.fbx" id="3_ncadn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(2.14965, 1.00782, 1.26949)
+
+[node name="Humpback_Whale" type="CharacterBody3D"]
+script = ExtResource("1_iif4b")
+animation_name = "hjh"
+animation_player_path = NodePath("Graphics/HumpBack/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, 0.0199414, 0.450173, 0.0152435)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_ahyk4")
+subject_name = "Humpback Whale"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="HumpBack" parent="Graphics" instance=ExtResource("3_ncadn")]
+transform = Transform3D(-30, 0, -2.62268e-06, 0, 30, 0, 2.62268e-06, 0, -30, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/HumpBack/group" index="0"]
+bones/1/rotation = Quaternion(-1.41795e-17, -7.91763e-17, -0.0382392, 0.999269)
+bones/2/rotation = Quaternion(-1.56559e-17, -7.99618e-17, -0.0626629, 0.998035)
+bones/3/rotation = Quaternion(-1.15326e-17, -5.96105e-17, -0.0563171, 0.998413)
+bones/4/rotation = Quaternion(-3.7464e-17, -9.37163e-17, -0.139324, 0.990247)
+bones/5/rotation = Quaternion(-1.41204e-17, -1.40372e-16, -0.0483803, 0.998829)
+bones/7/rotation = Quaternion(0.0122842, -0.000512981, -0.0242714, 0.99963)
+bones/8/rotation = Quaternion(-0.000317824, -0.458202, 0.000565541, 0.888848)
+bones/9/rotation = Quaternion(-0.00162887, 0.20271, -0.00788333, 0.979206)
+bones/11/rotation = Quaternion(0.000512981, 0.0122842, 0.99963, 0.0242714)
+bones/12/rotation = Quaternion(-0.000317772, -0.458202, 0.00056544, 0.888848)
+bones/13/rotation = Quaternion(-0.00162875, 0.20271, -0.00788311, 0.979206)
+bones/15/rotation = Quaternion(0.00599077, 0.999982, -3.85902e-15, 6.05639e-17)
+bones/16/rotation = Quaternion(0.0504398, 0.998727, -3.83111e-15, -1.93487e-16)
+bones/17/rotation = Quaternion(-0.322346, -0.617123, 0.356433, 0.623064)
+bones/18/rotation = Quaternion(0.0107245, 0.0272691, 0.157133, 0.987143)
+bones/19/rotation = Quaternion(0.00625005, 0.19375, 0.0321928, 0.980503)
+bones/21/rotation = Quaternion(0.595153, -0.357995, 0.602262, -0.39359)
+bones/22/rotation = Quaternion(0.0135258, 0.0307222, 0.160883, 0.986403)
+bones/23/rotation = Quaternion(0.00663998, 0.19974, 0.0193505, 0.979635)
+
+[node name="AnimationPlayer" parent="Graphics/HumpBack" index="1"]
+autoplay = "hjh"
+
+[editable path="Graphics/HumpBack"]

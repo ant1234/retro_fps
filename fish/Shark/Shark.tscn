@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmffgo1uaf8l8"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_b8c6q"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_pj0gc"]
+[ext_resource type="PackedScene" uid="uid://dsopix75fc4ui" path="res://fish/Shark/shark.fbx" id="3_dt6jy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(3.83357, 1.52083, 1.4909)
+
+[node name="Shark" type="CharacterBody3D"]
+script = ExtResource("1_b8c6q")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/shark/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.002072, 0.233, -0.00698997)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_pj0gc")
+subject_name = "Shark"
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="shark" parent="Graphics" instance=ExtResource("3_dt6jy")]
+transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/shark/shark_rigg/rigg" index="0"]
+bones/1/rotation = Quaternion(0.0191601, -0.0191601, -0.706847, 0.706847)
+bones/2/rotation = Quaternion(-0.166808, -2.70251e-07, -9.75382e-06, 0.985989)
+bones/6/rotation = Quaternion(0.00115368, -0.000998228, 0.988723, -0.149748)
+bones/10/rotation = Quaternion(6.12323e-17, -4.66922e-34, 1, -6.12323e-17)
+bones/12/rotation = Quaternion(6.12323e-17, -4.66922e-34, 1, -6.12323e-17)
+bones/16/rotation = Quaternion(0.0364992, 0.03365, 0.735087, 0.676153)
+bones/17/rotation = Quaternion(-0.0301986, 0.00112658, 0.042494, 0.99864)
+bones/18/rotation = Quaternion(-0.0153535, 0.000331987, 0.0139864, 0.999784)
+bones/19/rotation = Quaternion(-0.00482881, 1.49051e-05, -0.00805178, 0.999956)
+bones/20/rotation = Quaternion(-0.015581, -0.000374203, -0.0270195, 0.999513)
+bones/21/rotation = Quaternion(-0.0253295, -0.00132009, -0.0360666, 0.999027)
+bones/24/rotation = Quaternion(0.494337, -1.70082e-08, -1.11826e-08, 0.86927)
+bones/25/rotation = Quaternion(-0.0760658, -2.10156e-09, 3.50261e-09, 0.997103)
+bones/28/rotation = Quaternion(-0.454385, 6.01153e-09, -2.287e-09, 0.890806)
+bones/29/rotation = Quaternion(0.0803281, 8.87625e-09, 3.2702e-09, 0.996768)
+bones/30/rotation = Quaternion(-0.020096, -8.15072e-09, -1.16439e-09, 0.999798)
+bones/32/rotation = Quaternion(0.56225, 3.456e-08, 4.46605e-08, 0.826967)
+bones/33/rotation = Quaternion(-0.0696868, -2.02473e-08, -2.80078e-09, 0.997569)
+bones/34/rotation = Quaternion(7.71368e-07, 8.26549e-09, -4.65661e-10, 1)
+bones/36/rotation = Quaternion(-0.205099, 0.101077, -0.603976, 0.763499)
+bones/37/rotation = Quaternion(-0.0513609, -0.0551926, 0.106015, 0.991502)
+bones/38/rotation = Quaternion(-3.78117e-06, -3.59432e-08, 3.68225e-06, 1)
+bones/40/rotation = Quaternion(-0.603976, 0.763499, -0.205099, 0.101077)
+bones/41/rotation = Quaternion(0.0513609, 0.0551925, 0.106015, 0.991502)
+bones/42/rotation = Quaternion(3.79793e-06, 4.37722e-08, 3.5548e-06, 1)
+
+[node name="AnimationPlayer" parent="Graphics/shark" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/shark"]
