@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://huehucr7c1ft"]
+
+[ext_resource type="Texture2D" uid="uid://5xrfjy10v3lf" path="res://fish/Grass_Puffer/uploads_files_4704888_Grass+Puffer_0.png" id="1_vlafq"]
+
+[resource]
+resource_name = "Grass_Puffer1"
+albedo_color = Color(0.906332, 0.906332, 0.906332, 0.8)
+albedo_texture = ExtResource("1_vlafq")
+emission_enabled = true

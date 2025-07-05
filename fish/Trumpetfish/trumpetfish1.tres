@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://6ctbwdcoa5rb"]
+
+[ext_resource type="Texture2D" uid="uid://74riwv5lfvat" path="res://fish/Trumpetfish/trumpetfish_0.png" id="1_sqsf7"]
+
+[resource]
+resource_name = "trumpetfish1"
+albedo_color = Color(0.906332, 0.906332, 0.906332, 0.8)
+albedo_texture = ExtResource("1_sqsf7")
+emission_enabled = true

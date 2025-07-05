@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://77tmgawkqbct"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_jyqhb"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_b5dd2"]
+[ext_resource type="PackedScene" uid="uid://vm30at3ql3jo" path="res://fish/Grass_Puffer/uploads_files_4704888_Grass+Puffer.fbx" id="3_lj3we"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.779505, 0.290339, 0.33531)
+
+[node name="Grass_Puffer" type="CharacterBody3D"]
+script = ExtResource("1_jyqhb")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/uploads_files_4704888_Grass+Puffer/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, 0.0148932, 0.00331995, 0.0820641)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_b5dd2")
+subject_name = "Grass Puffer (Takifugu niphobles)"
+description = "A small, coastal pufferfish recognized by its rounded body, short snout, and mottled brownish-green coloration that blends well with seagrass beds and sandy shallows. Like other pufferfish, it can inflate its body when threatened by swallowing water or air, making it difficult for predators to swallow. It has small spines on its skin and beak-like fused teeth used for crushing hard-shelled prey such as crustaceans and mollusks. The Grass Puffer is also known for its unique spawning behavior, often gathering in large groups along shorelines during high tide."
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="uploads_files_4704888_Grass+Puffer" parent="Graphics" instance=ExtResource("3_lj3we")]
+transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, 0.120719, 0)
+
+[node name="Skeleton3D" parent="Graphics/uploads_files_4704888_Grass+Puffer/transform1" index="0"]
+bones/5/rotation = Quaternion(-4.29693e-08, 1.19182e-07, 0.0001854, 1)
+bones/6/rotation = Quaternion(6.46451e-08, -2.12065e-07, 0.000657808, 1)
+bones/7/rotation = Quaternion(2.78944e-07, -1.97656e-06, 0.00127283, 0.999999)
+bones/8/rotation = Quaternion(5.28514e-08, -2.17101e-06, 0.0010531, 0.999999)
+bones/9/rotation = Quaternion(-0.0121855, 1.2951e-05, 0.00132424, 0.999925)
+bones/10/rotation = Quaternion(0.0121868, -2.39646e-05, 0.00160744, 0.999924)
+bones/11/rotation = Quaternion(2.56072e-06, -8.5522e-06, 0.00313002, 0.999995)
+bones/15/rotation = Quaternion(-0.166434, 5.73872e-06, 2.03224e-06, 0.986053)
+bones/16/rotation = Quaternion(-0.588157, 0.00010105, 0.000263632, 0.808746)
+bones/19/rotation = Quaternion(-3.05192e-06, 0.0326899, 0.999466, -3.34088e-08)
+bones/25/rotation = Quaternion(8.53233e-06, 0.635792, 0.771861, -7.37323e-06)
+
+[node name="AnimationPlayer" parent="Graphics/uploads_files_4704888_Grass+Puffer" index="1"]
+autoplay = "Take 001"
+
+[editable path="Graphics/uploads_files_4704888_Grass+Puffer"]

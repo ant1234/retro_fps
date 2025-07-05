@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c3u75x1tchyu"]
+
+[ext_resource type="Texture2D" uid="uid://dehnccfxx5yc4" path="res://fish/Jelly_Fish/textures/bell1_diffuse.png" id="1_2ltpx"]
+
+[resource]
+resource_name = "jelly"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_2ltpx")
+emission_enabled = true
+emission_energy_multiplier = 0.0

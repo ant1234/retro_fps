@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs24kmloh2aah"]
+
+[ext_resource type="Script" path="res://fish/FishSwimmer.gd" id="1_ub6nr"]
+[ext_resource type="Script" path="res://fish/photo_subject.gd" id="2_c5478"]
+[ext_resource type="PackedScene" uid="uid://drva356vaubu4" path="res://fish/Jelly_Fish/jellyfish_idle_morph.FBX" id="3_rlvc4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jucq6"]
+size = Vector3(0.162659, 0.611992, 0.207761)
+
+[node name="Jelly_Fish" type="CharacterBody3D"]
+script = ExtResource("1_ub6nr")
+animation_name = "Take 001"
+animation_player_path = NodePath("Graphics/jellyfish_idle_morph/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, 0.0118863, 0.457968, 0.00172539)
+shape = SubResource("BoxShape3D_jucq6")
+
+[node name="PhotoSubject" type="Node3D" parent="."]
+script = ExtResource("2_c5478")
+subject_name = "Jellyfish (phylum Cnidaria, class Scyphozoa)"
+description = "A soft-bodied, gelatinous marine animal known for its umbrella-shaped bell and long, trailing tentacles lined with stinging cells called cnidocytes. These tentacles are used to capture prey such as small fish and plankton. Jellyfish move by pulsating their bell in the water, though they are largely carried by ocean currents. They have a simple body structure with no brain or bones, but they can detect light and respond to stimuli. Despite their delicate appearance, some species deliver powerful stings, while others are harmless to humans."
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="jellyfish_idle_morph" parent="Graphics" instance=ExtResource("3_rlvc4")]
+
+[node name="Bell_morph" parent="Graphics/jellyfish_idle_morph" index="0"]
+blend_shapes/Bell_for_morph003 = 0.186574
+blend_shapes/Bell_for_morph004 = 0.813426
+
+[node name="Arm_01_morph" parent="Graphics/jellyfish_idle_morph" index="1"]
+blend_shapes/Arm_01g003 = 0.186574
+blend_shapes/Arm_01g004 = 0.813426
+
+[node name="Arm_02_morph" parent="Graphics/jellyfish_idle_morph" index="2"]
+blend_shapes/Arm_02g003 = 0.186574
+blend_shapes/Arm_02g004 = 0.813426
+
+[node name="Arm_03_morph" parent="Graphics/jellyfish_idle_morph" index="3"]
+blend_shapes/Arm_03g001 = 0.0584976
+blend_shapes/Arm_03g003 = 0.186574
+blend_shapes/Arm_03g004 = 0.813426
+
+[node name="Subumbrella_01_morph" parent="Graphics/jellyfish_idle_morph" index="4"]
+blend_shapes/Subumbrella_01g003 = 0.186574
+blend_shapes/Subumbrella_01g004 = 0.813426
+
+[node name="Subumbrella_02_morph" parent="Graphics/jellyfish_idle_morph" index="5"]
+blend_shapes/Subumbrella_02g003 = 0.186574
+blend_shapes/Subumbrella_02g004 = 0.813426
+
+[node name="Tentacles_short_morph" parent="Graphics/jellyfish_idle_morph" index="6"]
+blend_shapes/Tentacles_short003 = 0.186574
+blend_shapes/Tentacles_short004 = 0.813426
+
+[node name="Tentacles_morph" parent="Graphics/jellyfish_idle_morph" index="7"]
+blend_shapes/Tentacles003 = 0.186574
+blend_shapes/Tentacles004 = 0.813426
+
+[node name="AnimationPlayer" parent="Graphics/jellyfish_idle_morph" index="8"]
+autoplay = "Take 001"
+
+[editable path="Graphics/jellyfish_idle_morph"]
