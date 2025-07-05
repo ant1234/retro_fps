@@ -45,11 +45,8 @@ func LoadPhoto(Photo: TextureRect, num: int, ImageScale):
 			file.close()
 
 			if json_string.strip_edges() != "":
-				print("Parsing JSON from:", json_path)
 				var result = JSON.parse_string(json_string)
-				
-				print(result)
-				
+								
 				if result != null and typeof(result) == TYPE_DICTIONARY:
 					var data = result
 					MetadataLabel.text = "Name: %s\nDescription: %s\nRareness: %s" % [

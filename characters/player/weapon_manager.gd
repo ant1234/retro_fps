@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var weapons = $Weapons.get_children()
 var weapons_unlocked = []
-var cur_slot = 0 
+var cur_slot = 0
 var cur_weapon = null
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -20,7 +20,7 @@ func _ready() -> void:
 	for _i in range(weapons.size()):
 		weapons_unlocked.append(false)
 	weapons_unlocked[4] = true
-	switch_to_weapon_slot(0)
+	switch_to_weapon_slot(4)
 		
 func attack(input_just_pressed: bool, input_held: bool):
 	if  cur_weapon is Weapon:

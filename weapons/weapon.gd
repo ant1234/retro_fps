@@ -70,7 +70,7 @@ func attack(input_just_pressed: bool, input_held: bool):
 			if has_node("OutOfAmmo"):
 				$OutOfAmmo.play()
 		return
-
+		
 	var cur_time = Time.get_ticks_msec() / 1000.0
 	if cur_time - last_attack_time < attack_rate:
 		return
@@ -82,7 +82,7 @@ func attack(input_just_pressed: bool, input_held: bool):
 		actually_attack()
 
 	last_attack_time = cur_time
-	animation_player.stop()
+	#animation_player.stop()
 	play_animation_safe("attack")
 	fired.emit()
 	$AttackSounds.play()

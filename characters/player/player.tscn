@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://dmr124nsouefn"]
+[gd_scene load_steps=86 format=3 uid="uid://dmr124nsouefn"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_2l7n6"]
 [ext_resource type="Script" path="res://characters/player/weapon_manager.gd" id="2_2lhyc"]
@@ -47,6 +47,7 @@
 [ext_resource type="AudioStream" uid="uid://dbygicikuh1nf" path="res://sfx/steps/step_1.wav" id="30_ldcuo"]
 [ext_resource type="AudioStream" uid="uid://5bb6lw0roh3c" path="res://sfx/player/player_die.wav" id="30_trfwd"]
 [ext_resource type="AudioStream" uid="uid://b4ghcfh068r6u" path="res://sfx/steps/step_2.wav" id="31_jjvbv"]
+[ext_resource type="AudioStream" uid="uid://b0e5axuhyaeie" path="res://sfx/weapons/camera-shutter-click-01.wav" id="31_txs3k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k3bin"]
 
@@ -732,6 +733,8 @@ bus = &"Sfx"
 
 [node name="DigitalCamera" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
 script = ExtResource("4_l073q")
+damage = 0
+ammo = 50
 
 [node name="Graphics" type="Node3D" parent="Camera3D/WeaponManager/Weapons/DigitalCamera"]
 transform = Transform3D(0.998174, -0.0520781, -0.0305889, 0.0544449, 0.995106, 0.0824581, 0.026145, -0.083973, 0.996125, 0.0544804, 0.307876, 0.605866)
@@ -765,8 +768,24 @@ libraries = {
 [node name="BulletEmitter" parent="Camera3D/WeaponManager/Weapons/DigitalCamera" instance=ExtResource("7_v708d")]
 
 [node name="EquipSound" type="AudioStreamPlayer" parent="Camera3D/WeaponManager/Weapons/DigitalCamera"]
-stream = ExtResource("26_it8sj")
 pitch_scale = 0.7
+bus = &"Sfx"
+
+[node name="AttackSounds" type="Node3D" parent="Camera3D/WeaponManager/Weapons/DigitalCamera"]
+script = SubResource("GDScript_ta1lj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/AttackSounds"]
+stream = ExtResource("31_txs3k")
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/AttackSounds"]
+stream = ExtResource("31_txs3k")
+pitch_scale = 0.9
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/AttackSounds"]
+stream = ExtResource("31_txs3k")
+pitch_scale = 0.95
 bus = &"Sfx"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/WeaponManager"]
