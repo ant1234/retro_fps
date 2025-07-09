@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://73oi6mxbniqj"]
+
+[ext_resource type="Script" path="res://scene_scripts/id_card_page.gd" id="1_uwt1g"]
+
+[node name="IDCardPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uwt1g")
+
+[node name="MainColumn" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="NameInput" type="LineEdit" parent="MainColumn"]
+layout_mode = 2
+placeholder_text = "Enter your name"
+max_length = 20
+
+[node name="ConfirmButton" type="Button" parent="MainColumn"]
+layout_mode = 2
+text = "Submit"
+
+[node name="TextureRect" type="TextureRect" parent="MainColumn"]
+layout_mode = 2

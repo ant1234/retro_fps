@@ -1,0 +1,12 @@
+~ start
+Narrator: Please fill out your name.
+=> END
+
+~ confirm_name
+{{GameState.player_name}}: This will be your name. Are you happy with it?
+- Yes => finish
+- No => start
+
+~ finish
+Narrator: Great! Let's get started!
+=> END

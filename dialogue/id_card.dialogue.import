@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://dbyuwonxpwrts"
+path="res://.godot/imported/id_card.dialogue-fbfc8b1321eca161397f74acf744f114.tres"
+
+[deps]
+
+source_file="res://dialogue/id_card.dialogue"
+dest_files=["res://.godot/imported/id_card.dialogue-fbfc8b1321eca161397f74acf744f114.tres"]
+
+[params]
+
+defaults=true
