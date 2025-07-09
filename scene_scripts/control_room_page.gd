@@ -7,8 +7,8 @@ func _ready():
 	album_button.disabled = true
 	mission_button.disabled = true
 
-	var resource = load("res://dialogue/control_room_intro.dialogue")
-	DialogueManager.show_dialogue_balloon(resource, "this_is_a_node_title")
+	var resource = load("res://dialogue/control_room.dialogue")
+	DialogueManager.show_dialogue_balloon(resource, "start")
 
 	#if not resource:
 		#push_error("Failed to load dialogue resource!")

@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4da40qd7rx65"]
+
+[ext_resource type="Script" path="res://scenes/new_game_page.gd" id="1_awea4"]
+
+[node name="NewGamePage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_awea4")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 727.0
+offset_top = -250.0
+offset_right = -727.0
+offset_bottom = -117.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="NewGameButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="ContinueButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="OptionsButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+text = "Options"
