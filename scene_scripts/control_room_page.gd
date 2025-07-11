@@ -7,26 +7,29 @@ func _ready():
 	album_button.disabled = true
 	mission_button.disabled = true
 
-	var resource = load("res://dialogue/control_room.dialogue")
-	DialogueManager.show_dialogue_balloon(resource, "start")
+	call_deferred("_start_dialogue")
 
-	#if not resource:
-		#push_error("Failed to load dialogue resource!")
-	#else:
-		#print("Dialogue loaded successfully: ", resource)
-#
-#
-	# This shows the dialogue using the default balloon system
-	#DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
-	#DialogueManager.show_dialogue_balloon(resource, "this_is_a_node_title")  # This matches your ~title in the .dialogue
-	#
+func _start_dialogue():
+	print("start dialogue")
+	var resource = load("res://dialogue/control_room.dialogue")
+
+	if resource and DialogueManager and DialogueManager.has_method("show_dialogue_balloon"):
+		print("run dialogue")
+		DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
+		DialogueManager.show_dialogue_balloon(resource, "start")
+		print("end dialogue")
+	else:
+		printerr("DialogueManager is not valid or missing required methods.")
+		print("Type of DialogueManager: ", typeof(DialogueManager))
+		print("DialogueManager: ", DialogueManager)
 
 func _on_dialogue_finished(_resource = null):
 	album_button.disabled = false
 	mission_button.disabled = false
+	
+func _on_mission_pressed():
+	print("gets to to mission function")
+	SceneRouter.goto_scene("res://scenes/level_select_page.tscn")
 
 func _on_album_pressed():
-	SceneRouter.goto_scene("res://scenes/ui/album_page.tscn")
-
-func _on_mission_pressed():
-	SceneRouter.goto_scene("res://scenes/ui/level_select_page.tscn")
+	SceneRouter.goto_scene("res://scenes/album_page.tscn")

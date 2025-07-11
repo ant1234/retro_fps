@@ -1,0 +1,17 @@
+~ stage_prompt
+Narrator: Should I take this course?
+- Yes
+    do GameState.set_selected_stage("Stage 1")
+    do GameState.set_confirmed_stage(true)
+    Nathan: Let's go!
+    => go_stage
+- No
+    do GameState.set_confirmed_stage(false)
+    Nathan: Maybe next time.
+    => cancel
+
+~ go_stage
+=> END
+
+~ cancel
+=> END

@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="Retro_FPS"
-run/main_scene="res://world.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Helper="*res://helper.gd"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 SceneRouter="*res://scene_scripts/scene_router.gd"
 GameState="*res://globals/GameState.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
 
@@ -136,7 +136,7 @@ camera_roll={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/control_room.dialogue", "res://dialogue/id_card.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/control_room.dialogue", "res://dialogue/id_card.dialogue", "res://dialogue/level_select.dialogue")
 
 [layer_names]
 

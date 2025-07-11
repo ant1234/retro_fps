@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsybln6c6wka2"]
+
+[ext_resource type="Script" path="res://scene_scripts/level_select_page.gd" id="1_swsue"]
+[ext_resource type="Texture2D" uid="uid://csg6mx6ijudlm" path="res://ui/Maps/Screenshot 2025-07-10 at 15-56-45 1570-theatrum-orbis-terrarum-map-monsters.jpg (JPEG Image 860 × 580 pixels).png" id="2_r8mej"]
+
+[node name="LevelSelectPage" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 355.0
+offset_bottom = 476.0
+script = ExtResource("1_swsue")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 418.0
+offset_bottom = 1203.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -548.5
+offset_right = 192.0
+offset_bottom = 598.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1000
+
+[node name="Stage1Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Stage 1"
+
+[node name="Return" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Return"
+
+[node name="MapPreview" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 40.0
+offset_right = 1549.0
+offset_bottom = 914.0
+texture = ExtResource("2_r8mej")

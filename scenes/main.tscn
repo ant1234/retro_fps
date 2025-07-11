@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://pkxhukhsq6av"]
+
+[ext_resource type="Script" path="res://scene_scripts/scene_router.gd" id="1_j7ncm"]
+
+[node name="Main" type="Node3D"]
+
+[node name="SceneRouter" type="Node3D" parent="."]
+script = ExtResource("1_j7ncm")
