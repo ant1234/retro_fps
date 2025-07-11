@@ -1,11 +1,31 @@
+using GameState
+
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+Bartender: Master {{GameState.player_name}} — well met, and not a moment too soon. The wind carries odd tales of your return.
+Bartender: The hour grows late, yet here you are, lantern-eyed and burdened with thought. You’ve been walking with ghosts, I wager.
+Bartender: Come now — sit. A dram of something dark, to take the chill from your bones?
+Inventor: Aye... the road was long, and the night longer still. I’ll take the drink, but keep your ghosts to yourself.
+Bartender: Ha! You wound me, sir. I am but a humble keeper of cups and quiet company. Still, the sea... she leaves a mark, does she not?
+Inventor: She does. In silence and salt. There are things I’ve seen, things I’ve built — and none of them ask for company.
+Bartender: But company finds us all the same. In drink, in storm, in the long hours when sleep forgets its duty. What is it you’ve built, if I may ask?
+Inventor: A machine. Of no concern to most men. Meant to reach where the world forgets itself.
+Bartender: Now that’s a notion worth raising a glass to. The sea’s deep is full of old stories and older bones. You've an eye for such places, do you?
+Inventor: I have no taste for tales. Only work. *The Turtle*, she’s called. Iron and breath, nothing more — but she’ll sink where light cannot follow.
+Bartender: Hah... A noble venture, I’m sure. Though some might say the deep hides what ought never be found.
+Bartender: There’s word — idle word, of course — of a wreck, long swallowed, full of coin and silence both.
+Bartender: Find that, and you’d not want for coin again. Nor would I, should you care to remember your old friend behind the bar.
+Inventor: I didn’t come here to make bargains.
+Bartender: No, of course not. But every journey starts with a friendly voice, and a drink shared in trust. You’ll do what you must, I’m sure.
+Bartender: Shall I tell you again what little I know of that wreck, or are you ready to see for yourself?
+- Aye, speak once more. Best to know what I’m facing. => repeat_briefing
+- Nay. I’ve heard enough. The sea will speak in her own tongue. => prepare_departure
+
+~ repeat_briefing
+Bartender: They say the wreck lies west of the reef, where the water dims too fast and sound won’t carry.
+Bartender: Keep your eye sharp for broken masts, and your mind sharper still — not all that stirs beneath the waves is dead.
+Bartender: Bring back what you find, or at least what the sea allows you to keep. You’ll find the mission board ready.
+=> prepare_departure
+
+~ prepare_departure
+Bartender: May the tide bear you gentle, {{GameState.player_name}}... and may you remember who poured your last drink before the plunge.
 => END
