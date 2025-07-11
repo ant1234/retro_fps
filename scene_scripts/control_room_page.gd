@@ -33,17 +33,18 @@ func _start_dialogue_if_needed():
 		printerr("DialogueManager missing or invalid.")
 
 func _on_dialogue_finished(_resource = null):
-	print("Dialogue finished. Enabling mission button.")
+	print("Dialogue finished. Will enable mission button after delay.")
 
 	if DialogueManager.dialogue_ended.is_connected(_on_dialogue_finished):
 		DialogueManager.dialogue_ended.disconnect(_on_dialogue_finished)
 
+	await get_tree().create_timer(0.3).timeout
 	_enable_mission_button()
 
 func _enable_mission_button():
 	album_button.disabled = true
 	mission_button.disabled = false
-	mission_button.grab_focus()
+	print("Mission button enabled.")
 
 func _on_mission_pressed():
 	print("Mission button pressed.")
