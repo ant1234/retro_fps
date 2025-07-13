@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://c2bll016icoil"
+path="res://.godot/imported/camera_check.dialogue-2b15f292497e91512c31fd7ef2e8184b.tres"
+
+[deps]
+
+source_file="res://dialogue/camera_check.dialogue"
+dest_files=["res://.godot/imported/camera_check.dialogue-2b15f292497e91512c31fd7ef2e8184b.tres"]
+
+[params]
+
+defaults=true

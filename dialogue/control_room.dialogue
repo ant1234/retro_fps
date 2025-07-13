@@ -1,31 +1,33 @@
 using GameState
 
 ~ start
-Bartender: Master {{GameState.player_name}} — well met, and not a moment too soon. The wind carries odd tales of your return.
-Bartender: The hour grows late, yet here you are, lantern-eyed and burdened with thought. You’ve been walking with ghosts, I wager.
-Bartender: Come now — sit. A dram of something dark, to take the chill from your bones?
-Inventor: Aye... the road was long, and the night longer still. I’ll take the drink, but keep your ghosts to yourself.
-Bartender: Ha! You wound me, sir. I am but a humble keeper of cups and quiet company. Still, the sea... she leaves a mark, does she not?
-Inventor: She does. In silence and salt. There are things I’ve seen, things I’ve built — and none of them ask for company.
-Bartender: But company finds us all the same. In drink, in storm, in the long hours when sleep forgets its duty. What is it you’ve built, if I may ask?
-Inventor: A machine. Of no concern to most men. Meant to reach where the world forgets itself.
-Bartender: Now that’s a notion worth raising a glass to. The sea’s deep is full of old stories and older bones. You've an eye for such places, do you?
-Inventor: I have no taste for tales. Only work. *The Turtle*, she’s called. Iron and breath, nothing more — but she’ll sink where light cannot follow.
-Bartender: Hah... A noble venture, I’m sure. Though some might say the deep hides what ought never be found.
-Bartender: There’s word — idle word, of course — of a wreck, long swallowed, full of coin and silence both.
-Bartender: Find that, and you’d not want for coin again. Nor would I, should you care to remember your old friend behind the bar.
-Inventor: I didn’t come here to make bargains.
-Bartender: No, of course not. But every journey starts with a friendly voice, and a drink shared in trust. You’ll do what you must, I’m sure.
-Bartender: Shall I tell you again what little I know of that wreck, or are you ready to see for yourself?
+Bartender: {{GameState.player_name}}... now there’s a face I thought the sea had claimed. Yet here you stand — salt in your boots and silence in your eyes.
+Inventor: Silence travels light. Easier company than men, most days.
+Bartender: Hah! A toast, then — to silence, and the madmen who carry it. The bottle’s warm, the hour cold. Will you drink?
+Inventor: A small one. To clear the silt from my thoughts.
+Bartender: A fair trade. You’ve been below, haven’t you? Not just on the waves — beneath. Where light forgets to follow.
+Inventor: I’ve drifted where maps go pale. Places where even the compass turns its face away.
+Bartender: And yet you returned. Men don’t do that by accident. Word is, you’ve built a machine — iron lungs, brass bones. They call her *The Turtle*, aye?
+Inventor: A vessel, not a savior. She sinks, and listens.
+Bartender: The deep speaks, does it? I thought she only swallowed.
+Inventor: She swallows. But in the dark, old truths rise. Things older than men. Older than lies.
+Bartender: You talk like a prophet with his robes burnt off. Makes me wonder what exactly you saw down there.
+Bartender: There’s talk — idle, yes — of a wreck to the west. Galleon, maybe. Maybe older. Full of gold. Full of... something.
+Bartender: Some say the sea herself choked on it. That it's still down there, waiting to be remembered.
+Inventor: Some things ought to stay forgotten.
+Bartender: And yet you built a key, didn't you? You didn’t come back to sit in silence. Not truly.
+Bartender: Find me a piece of it — gold, bone, story — and I’ll see your cup filled for life. Men have traded more for less.
+Inventor: I trade in questions. What’s buried speaks louder than what floats.
+Bartender: Mm. Just mind it doesn’t speak your name. So then... shall I chart the course again, or do you already hear the tide calling?
 - Aye, speak once more. Best to know what I’m facing. => repeat_briefing
 - Nay. I’ve heard enough. The sea will speak in her own tongue. => prepare_departure
 
 ~ repeat_briefing
-Bartender: They say the wreck lies west of the reef, where the water dims too fast and sound won’t carry.
-Bartender: Keep your eye sharp for broken masts, and your mind sharper still — not all that stirs beneath the waves is dead.
-Bartender: Bring back what you find, or at least what the sea allows you to keep. You’ll find the mission board ready.
+Bartender: West of the reef. Where the water dims like a dying thought. No birds, no currents — just weight and whisper.
+Bartender: Wreck’s half-sunk in the silt. Marked by masts like broken fingers. They say the timbers breathe. They say the gold does too.
+Bartender: Whatever you find — coin, curse, memory — bring it back, if it lets you. The board waits.
 => prepare_departure
 
 ~ prepare_departure
-Bartender: May the tide bear you gentle, {{GameState.player_name}}... and may you remember who poured your last drink before the plunge.
+Bartender: Then down you go, {{GameState.player_name}}. May the sea forget your sins, and may you remember who poured the last drink before your descent.
 => END

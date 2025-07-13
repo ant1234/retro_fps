@@ -3,6 +3,7 @@ extends Node
 var player_name: String = ""
 var selected_stage := ""
 var confirmed_stage := false
+var photo_count: int = 0
 
 var control_room_dialogue_shown := false
 
