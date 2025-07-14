@@ -1,0 +1,131 @@
+[gd_scene load_steps=14 format=3 uid="uid://kef8hpqjy4jc"]
+
+[ext_resource type="Script" path="res://scene_scripts/album_page.gd" id="1_72qj0"]
+[ext_resource type="Texture2D" uid="uid://bs8ygxnqe4gaq" path="res://ui/Icons/shadedLight24.png" id="1_iw4hs"]
+[ext_resource type="Texture2D" uid="uid://dhb3wr5irg0h8" path="res://ui/Icons/shadedLight25.png" id="2_aoaos"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dio2d"]
+bg_color = Color(0.168804, 0.671628, 0.738642, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgntx"]
+bg_color = Color(0.0182843, 0.270847, 0.46701, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1tfk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fs746"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n0bnd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ciyw1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gixq5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ncar"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v7uye"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aom4v"]
+
+[node name="AlbumPage" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 355.0
+offset_bottom = 476.0
+script = ExtResource("1_72qj0")
+
+[node name="RightBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1944.0
+offset_bottom = 737.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dio2d")
+
+[node name="BannerBackground" type="Panel" parent="RightBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -684.5
+offset_top = -427.5
+offset_right = 1007.5
+offset_bottom = 394.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kgntx")
+
+[node name="TopContainer" type="HBoxContainer" parent="RightBackground/BannerBackground"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 54.0
+offset_right = 1650.0
+offset_bottom = 384.0
+
+[node name="BottomContainer" type="HBoxContainer" parent="RightBackground/BannerBackground"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 443.0
+offset_right = 1650.0
+offset_bottom = 773.0
+
+[node name="ScrollLeft" type="Button" parent="RightBackground"]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 40.0
+offset_right = 569.0
+offset_bottom = 144.0
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_j1tfk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fs746")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_n0bnd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ciyw1")
+icon = ExtResource("1_iw4hs")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ScrollRight" type="Button" parent="RightBackground"]
+offset_left = 2054.0
+offset_top = 40.0
+offset_right = 2156.0
+offset_bottom = 144.0
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gixq5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6ncar")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v7uye")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_aom4v")
+icon = ExtResource("2_aoaos")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 418.0
+offset_bottom = 1203.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -548.5
+offset_right = 192.0
+offset_bottom = 598.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1000
+
+[node name="MarkPage" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Stage Mark"
+
+[node name="ToControlRoom" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Control Room"

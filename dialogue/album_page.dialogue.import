@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://c3bvpyql324xu"
+path="res://.godot/imported/album_page.dialogue-f2d5c34cccff0c5bfdc0e72b4b853821.tres"
+
+[deps]
+
+source_file="res://dialogue/album_page.dialogue"
+dest_files=["res://.godot/imported/album_page.dialogue-f2d5c34cccff0c5bfdc0e72b4b853821.tres"]
+
+[params]
+
+defaults=true

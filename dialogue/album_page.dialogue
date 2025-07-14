@@ -1,0 +1,5 @@
+title: album_page
+
+~ photo_info
+Narrator: {{GameState.album_subject_count}}x pictures of {{GameState.album_subject_name}} have been taken. Press Y.
+=> END
