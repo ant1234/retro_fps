@@ -6,7 +6,8 @@ var confirmed_stage := false
 var photo_count: int = 0
 var album_subject_name: String = ""
 var album_subject_count: int = 0
-
+var selected_photo_path := ""
+var selected_photo_meta := {}
 
 var control_room_dialogue_shown := false
 

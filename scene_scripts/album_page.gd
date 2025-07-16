@@ -14,6 +14,11 @@ const PHOTOS_PER_PAGE := 8
 var photo_data: Array = []
 var current_page := 0
 var total_pages := 0
+var selected_photo_index := -1
+
+var last_clicked_index := -1
+var last_click_time := 0.0
+const DOUBLE_CLICK_TIME := 0.8
 
 func _ready():
 	mark_page.disabled = true
@@ -23,6 +28,13 @@ func _ready():
 
 	_load_photos_with_metadata()
 	_display_page(0)
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("open_action") and selected_photo_index >= 0:
+		var selected = photo_data[selected_photo_index]
+		GameState.selected_photo_path = selected["image_path"]
+		GameState.selected_photo_meta = selected["meta"]
+		get_tree().change_scene_to_file("res://scenes/view_page.tscn")
 
 func _load_photos_with_metadata():
 	var dir = DirAccess.open(META_DIR)
@@ -105,12 +117,31 @@ func _on_scroll_right():
 		_display_page(current_page + 1)
 
 func _on_photo_selected(event: InputEvent, index: int):
-	if event is InputEventMouseButton and event.pressed:
-		var selected_subject = photo_data[index]["meta"].get("subject_name", "Unknown")
-		var count = _count_subject_name(selected_subject)
-		GameState.album_subject_count = count
-		GameState.album_subject_name = selected_subject
-		DialogueManager.show_dialogue_balloon(load("res://dialogue/album_page.dialogue"), "photo_info")
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var now := Time.get_ticks_msec() / 1000.0  # seconds
+		print("Clicked index:", index, "Time:", now)
+
+		if index == last_clicked_index and now - last_click_time <= DOUBLE_CLICK_TIME:
+			print("Double click detected. Opening view.")
+			var selected = photo_data[index]
+			GameState.selected_photo_path = selected["image_path"]
+			GameState.selected_photo_meta = selected["meta"]
+			get_tree().change_scene_to_file("res://scenes/view_page.tscn")
+		else:
+			print("First click. Showing balloon.")
+			last_clicked_index = index
+			last_click_time = now
+
+			var selected_subject = photo_data[index]["meta"].get("subject_name", "Unknown")
+			var count = _count_subject_name(selected_subject)
+			GameState.album_subject_count = count
+			GameState.album_subject_name = selected_subject
+			selected_photo_index = index
+
+			CustomDialogueManager.show_dialogue_balloon(
+				load("res://dialogue/album_page.dialogue"),
+				"photo_info"
+			)
 
 func _count_subject_name(subject: String) -> int:
 	var count := 0
@@ -118,3 +149,4 @@ func _count_subject_name(subject: String) -> int:
 		if entry["meta"].get("subject_name", "") == subject:
 			count += 1
 	return count
+	

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://d1o4rkbcgwtrq"
+path="res://.godot/imported/view_page_prompt.dialogue-e4fc46ac0a2daff4ca443050b3e8d259.tres"
+
+[deps]
+
+source_file="res://dialogue/view_page_prompt.dialogue"
+dest_files=["res://.godot/imported/view_page_prompt.dialogue-e4fc46ac0a2daff4ca443050b3e8d259.tres"]
+
+[params]
+
+defaults=true
