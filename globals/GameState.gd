@@ -21,16 +21,22 @@ func set_confirmed_stage(value: bool) -> void:
 func confirm_photo_selection(choice) -> void:
 	print("User confirmed selection:", choice)
 	if choice:
-		# Save the photo path and mark it
 		if selected_photo_path != "":
-			selected_photos.append({
+			var new_photo = {
 				"path": selected_photo_path,
 				"meta": selected_photo_meta,
 				"badge": true
-			})
+			}
+			GameState.selected_photos.append(new_photo)
+			print("photo array:", GameState.selected_photos)
+
+			# Refresh photo display with badge
+			var view_page = get_tree().get_current_scene()
+			if view_page and view_page.has_method("_load_selected_photo"):
+				view_page._load_selected_photo()
 	else:
-		# Don't save the photo, simply ignore it
 		pass
+
 
 func go_to_album() -> void:
 	print("Going back to album")

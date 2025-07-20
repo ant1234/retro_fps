@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ds0oir786i581"]
+[gd_scene load_steps=19 format=3 uid="uid://ds0oir786i581"]
 
 [ext_resource type="Script" path="res://scene_scripts/view_page.gd" id="1_1u0oe"]
 [ext_resource type="Texture2D" uid="uid://bs8ygxnqe4gaq" path="res://ui/Icons/shadedLight24.png" id="2_1ytp8"]
@@ -9,6 +9,9 @@ bg_color = Color(0.168804, 0.671628, 0.738642, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgntx"]
 bg_color = Color(0.0182843, 0.270847, 0.46701, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v83ha"]
+load_path = "res://.godot/imported/star.png-74dd3b88e72f44d417c610993df44588.s3tc.ctex"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1tfk"]
 
@@ -94,6 +97,18 @@ offset_left = 39.0
 offset_top = 38.0
 offset_right = 733.0
 offset_bottom = 782.0
+
+[node name="BadgeIcon" type="TextureRect" parent="RightBackground/BannerBackground"]
+visible = false
+z_index = 10
+layout_mode = 2
+offset_left = 650.0
+offset_top = 676.0
+offset_right = 714.0
+offset_bottom = 740.0
+texture = SubResource("CompressedTexture2D_v83ha")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="ImageDescription" type="RichTextLabel" parent="RightBackground/BannerBackground"]
 layout_mode = 0
