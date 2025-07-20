@@ -23,7 +23,7 @@ var responses: Array = []:
 		return responses
 	set(value):
 		responses = value
-
+		
 		# Remove any current items
 		for item in get_children():
 			if item == response_template: continue

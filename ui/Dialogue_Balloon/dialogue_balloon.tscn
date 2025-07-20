@@ -150,12 +150,10 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
 script = ExtResource("3_1en1t")
-response_template = NodePath("ResponseExample")
+response_template = NodePath("ResponseTemplate")
 
-[node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
+[node name="ResponseTemplate" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Response example"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

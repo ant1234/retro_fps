@@ -119,16 +119,13 @@ func _on_scroll_right():
 func _on_photo_selected(event: InputEvent, index: int):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var now := Time.get_ticks_msec() / 1000.0  # seconds
-		print("Clicked index:", index, "Time:", now)
 
 		if index == last_clicked_index and now - last_click_time <= DOUBLE_CLICK_TIME:
-			print("Double click detected. Opening view.")
 			var selected = photo_data[index]
 			GameState.selected_photo_path = selected["image_path"]
 			GameState.selected_photo_meta = selected["meta"]
 			get_tree().change_scene_to_file("res://scenes/view_page.tscn")
 		else:
-			print("First click. Showing balloon.")
 			last_clicked_index = index
 			last_click_time = now
 

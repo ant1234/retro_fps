@@ -86,7 +86,6 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 	resource = dialogue_resource
 	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
 
-
 ## Apply any changes to the balloon given a new [DialogueLine].
 func apply_dialogue_line() -> void:
 	mutation_cooldown.stop()
@@ -103,7 +102,7 @@ func apply_dialogue_line() -> void:
 
 	responses_menu.hide()
 	responses_menu.responses = dialogue_line.responses
-
+	
 	# Show our balloon
 	balloon.show()
 	will_hide_balloon = false
@@ -114,7 +113,7 @@ func apply_dialogue_line() -> void:
 		await dialogue_label.finished_typing
 
 	# Wait for input
-	if dialogue_line.responses.size() > 0:
+	if dialogue_line.responses.size() > 0:		
 		balloon.focus_mode = Control.FOCUS_NONE
 		responses_menu.show()
 	elif dialogue_line.time != "":
@@ -142,6 +141,7 @@ func _on_mutation_cooldown_timeout() -> void:
 
 
 func _on_mutated(_mutation: Dictionary) -> void:
+	print("Mutation received:", _mutation)
 	is_waiting_for_input = false
 	will_hide_balloon = true
 	mutation_cooldown.start(0.1)

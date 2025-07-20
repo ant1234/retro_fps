@@ -1,5 +1,6 @@
 extends Node
 
+
 func show_dialogue_balloon(dialogue_resource: Resource, start_node: String):
 	var balloon = preload("res://ui/Dialogue_Balloon/dialogue_balloon.tscn").instantiate()
 
@@ -10,3 +11,7 @@ func show_dialogue_balloon(dialogue_resource: Resource, start_node: String):
 
 	get_tree().get_current_scene().add_child(balloon)
 	balloon.start(dialogue_resource, start_node)
+
+func show_dialogue(dialogue_resource: DialogueResource, start_id := "start"):
+	DialogueManager.show_dialogue_balloon(dialogue_resource, start_id)
+	

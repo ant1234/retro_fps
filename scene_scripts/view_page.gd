@@ -1,16 +1,14 @@
 extends Control
 
-@onready var to_control_room: Button = $Panel/VBoxContainer/ToControlRoom
+@onready var to_album_page: Button = $Panel/VBoxContainer/ToAlbumPage
 @onready var mark_page: Button = $Panel/VBoxContainer/MarkPage
 @onready var image_description: RichTextLabel = $RightBackground/BannerBackground/ImageDescription
 @onready var image_container: HBoxContainer = $RightBackground/BannerBackground/ImageContainer
 
 func _ready():
-	mark_page.disabled = true
-	to_control_room.disabled = true
-
 	_load_selected_photo()
 	_show_prompt_dialogue()
+	to_album_page.pressed.connect(_on_to_album_page_pressed)
 
 func _load_selected_photo():
 	var image_path: String = GameState.selected_photo_path
@@ -36,7 +34,6 @@ func _load_selected_photo():
 
 	image_container.add_child(tex_rect)
 
-	# Fill in the description
 	if meta.has("description"):
 		image_description.bbcode_enabled = true
 		image_description.text = "[font_size=44][b]" + meta.get("subject_name", "Unknown") + "[/b][/font_size]\n\n" + meta["description"]
@@ -46,4 +43,8 @@ func _load_selected_photo():
 func _show_prompt_dialogue():
 	var dialogue_res = load("res://dialogue/view_page_prompt.dialogue")
 	if dialogue_res:
-		CustomDialogueManager.show_dialogue_balloon(dialogue_res, "view_prompt")
+		CustomDialogueManager.show_dialogue_balloon(dialogue_res, "start")
+
+func _on_to_album_page_pressed():
+	print("Returning to album page")
+	SceneRouter.goto_scene("res://scenes/album_page.tscn")

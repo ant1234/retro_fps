@@ -1,13 +1,7 @@
-~ view_prompt
+~ start
 Narrator: Should I pick this one?
 - Yes
-    do GameState.confirm_photo_selection(true)
-    Narrator: Great! This one is saved.
-    => end_prompt
+	Narrator: Great, you have selected this photo. [do GameState.confirm_photo_selection(true)]
 - No
-    do GameState.confirm_photo_selection(false)
-    Narrator: Alright, maybe another one will be better.
-    => end_prompt
-
-~ end_prompt
+	Narrator: Ok Let's return to the album. [do GameState.confirm_photo_selection(false)]
 => END
