@@ -32,7 +32,7 @@ func _load_selected_photo():
 
 	var texture = ImageTexture.create_from_image(image)
 
-	# Create container for image + badge
+	# Create container for image only
 	var overlay_container = MarginContainer.new()
 	overlay_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	overlay_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -47,23 +47,28 @@ func _load_selected_photo():
 	image_node.size_flags_vertical = Control.SIZE_EXPAND_FILL
 
 	overlay_container.add_child(image_node)
-	# Load badge instance from scene (already set up in editor with visibility off)
-	badge_icon.visible = false  # hidden by default
-	badge_icon.z_index = 10
-	overlay_container.add_child(badge_icon)
-
-	# Check if badge should be shown
-	var normalized_current_path = ProjectSettings.globalize_path(image_path)
-	print("Checking for badge on path:", normalized_current_path)
-
-	for photo in GameState.selected_photos:
-		var normalized_stored_path = ProjectSettings.globalize_path(photo["path"])
-		if normalized_stored_path == normalized_current_path:
-			if photo.get("badge", false):
-				badge_icon.visible = true
-			break
-
 	image_container.add_child(overlay_container)
+
+	# Control badge_icon visibility without moving it
+	badge_icon.visible = false  # default to hidden
+
+	var photo_json_path = image_path.get_file().replace(".png", ".json")
+	photo_json_path = "user://photo_json/" + photo_json_path
+	
+	if FileAccess.file_exists(photo_json_path):
+
+		var file = FileAccess.open(photo_json_path, FileAccess.READ)
+		var text = file.get_as_text()
+		file.close()
+
+		var json = JSON.new()
+		var result = json.parse(text)
+		if result == OK:
+			var data: Dictionary = json.data
+			if data.get("badge", false) == true:
+				badge_icon.visible = true
+		else:
+			printerr("JSON parse failed: ", json.get_error_message())
 
 	# Add description
 	if meta.has("description"):
@@ -79,5 +84,4 @@ func _show_prompt_dialogue():
 		CustomDialogueManager.show_dialogue_balloon(dialogue_res, "start")
 
 func _on_to_album_page_pressed():
-	print("Returning to album page")
 	SceneRouter.goto_scene("res://scenes/album_page.tscn")

@@ -99,13 +99,12 @@ offset_right = 733.0
 offset_bottom = 782.0
 
 [node name="BadgeIcon" type="TextureRect" parent="RightBackground/BannerBackground"]
-visible = false
 z_index = 10
 layout_mode = 2
-offset_left = 650.0
-offset_top = 676.0
-offset_right = 714.0
-offset_bottom = 740.0
+offset_left = 670.0
+offset_top = 80.0
+offset_right = 715.0
+offset_bottom = 125.0
 texture = SubResource("CompressedTexture2D_v83ha")
 expand_mode = 1
 stretch_mode = 4
