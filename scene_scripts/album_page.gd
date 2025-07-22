@@ -10,6 +10,8 @@ const PHOTOS_PER_PAGE := 8
 @onready var scroll_right: Button = $RightBackground/ScrollRight
 @onready var to_control_room: Button = $Panel/VBoxContainer/ToControlRoom
 @onready var mark_page: Button = $Panel/VBoxContainer/MarkPage
+@onready var preview_text: RichTextLabel = $Panel/PreviewText
+@onready var preview_photo: HBoxContainer = $Panel/PreviewPhoto
 
 var photo_data: Array = []
 var current_page := 0
@@ -139,6 +141,30 @@ func _on_photo_selected(event: InputEvent, index: int):
 				load("res://dialogue/album_page.dialogue"),
 				"photo_info"
 			)
+			
+			# Search for badge=true photo with same subject_name
+			preview_photo.visible = false
+			preview_text.visible = false
+			preview_photo.get_children().map(func(c): c.queue_free())
+
+			for entry in photo_data:
+				if entry["meta"].get("subject_name", "") == selected_subject and entry["meta"].get("badge", false) == true:
+					var image = Image.new()
+					if image.load(entry["image_path"]) == OK:
+						var texture = ImageTexture.create_from_image(image)
+
+						var badge_image = TextureRect.new()
+						badge_image.texture = texture
+						badge_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+						badge_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+						badge_image.custom_minimum_size = Vector2(300, 300)
+						badge_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+						preview_photo.add_child(badge_image)
+						preview_photo.visible = true
+						preview_text.visible = true
+						break  # Stop after first badge match
+
 
 func _count_subject_name(subject: String) -> int:
 	var count := 0
