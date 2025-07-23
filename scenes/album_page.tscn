@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://kef8hpqjy4jc"]
+[gd_scene load_steps=19 format=3 uid="uid://kef8hpqjy4jc"]
 
 [ext_resource type="Script" path="res://scene_scripts/album_page.gd" id="1_72qj0"]
 [ext_resource type="Texture2D" uid="uid://bs8ygxnqe4gaq" path="res://ui/Icons/shadedLight24.png" id="1_iw4hs"]
@@ -25,6 +25,43 @@ bg_color = Color(0.0182843, 0.270847, 0.46701, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v7uye"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aom4v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7h2gx"]
+bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+border_width_right = 3
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrhvi"]
+bg_color = Color(0.0196078, 0.270588, 0.466667, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02ooa"]
+bg_color = Color(0.0196078, 0.270588, 0.466667, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qcpt"]
+bg_color = Color(0.0196078, 0.270588, 0.466667, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ku2eq"]
+bg_color = Color(0.0196078, 0.270588, 0.466667, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
 
 [node name="AlbumPage" type="Control"]
 layout_mode = 3
@@ -105,24 +142,24 @@ expand_icon = true
 layout_mode = 0
 offset_right = 418.0
 offset_bottom = 1203.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7h2gx")
 
 [node name="PreviewText" type="RichTextLabel" parent="Panel"]
 visible = false
 layout_mode = 0
-offset_left = 50.0
-offset_top = 267.0
-offset_right = 368.0
-offset_bottom = 323.0
-theme_override_font_sizes/normal_font_size = 31
+offset_left = 42.0
+offset_top = 195.0
+offset_right = 360.0
+offset_bottom = 251.0
+theme_override_font_sizes/normal_font_size = 30
 text = " I choose this one!"
 
 [node name="PreviewPhoto" type="HBoxContainer" parent="Panel"]
-visible = false
 layout_mode = 2
-offset_left = 50.0
-offset_top = 323.0
-offset_right = 370.0
-offset_bottom = 627.0
+offset_left = 52.0
+offset_top = 249.0
+offset_right = 372.0
+offset_bottom = 553.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -132,19 +169,24 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -192.0
-offset_top = -548.5
+offset_top = -568.5
 offset_right = 192.0
-offset_bottom = 598.5
+offset_bottom = 578.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 1000
+alignment = 2
 
 [node name="MarkPage" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_styles/disabled = SubResource("StyleBoxFlat_xrhvi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_02ooa")
 text = "Stage Mark"
 
 [node name="ToControlRoom" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_styles/disabled = SubResource("StyleBoxFlat_6qcpt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ku2eq")
 text = "Control Room"
