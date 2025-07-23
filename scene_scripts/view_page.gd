@@ -6,15 +6,65 @@ extends Control
 @onready var image_container: HBoxContainer = $RightBackground/BannerBackground/ImageContainer
 @onready var badge_icon: TextureRect = $RightBackground/BannerBackground/BadgeIcon
 
+const META_DIR := "user://photo_json"
+
 func _ready():
 	_load_selected_photo()
 	_show_prompt_dialogue()
 	to_album_page.pressed.connect(_on_to_album_page_pressed)
 
+	mark_page.pressed.connect(_on_mark_page_pressed)
+
+func _on_mark_page_pressed():
+	_mark_photo_and_clear_others()
+
+func _mark_photo_and_clear_others():
+	var selected_meta = GameState.selected_photo_meta
+	var selected_path = GameState.selected_photo_path
+	var selected_subject = selected_meta.get("subject_name", null)
+
+	if selected_subject == null:
+		printerr("Selected photo has no subject_name")
+		return
+
+	var selected_json_name = selected_path.get_file().replace(".png", ".json")
+	var selected_json_path = META_DIR + "/" + selected_json_name
+
+	# Step 1: Loop through all JSON files
+	var dir = DirAccess.open(META_DIR)
+	if not dir:
+		printerr("Could not open metadata directory.")
+		return
+
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if file_name.ends_with(".json"):
+			var file_path = META_DIR + "/" + file_name
+			var file = FileAccess.open(file_path, FileAccess.READ)
+			if file:
+				var data = JSON.parse_string(file.get_as_text())
+				file.close()
+				if typeof(data) == TYPE_DICTIONARY:
+					if data.get("subject_name", "") == selected_subject:
+						# Update badge field
+						var is_current = file_name == selected_json_name
+						data["badge"] = is_current
+
+						var out_file = FileAccess.open(file_path, FileAccess.WRITE)
+						if out_file:
+							out_file.store_string(JSON.stringify(data, "\t"))
+							out_file.close()
+		file_name = dir.get_next()
+	dir.list_dir_end()
+
+	# Show the badge icon if it was just marked
+	badge_icon.visible = true
+
+
 func _load_selected_photo():
 	print("Loading selected photo:", GameState.selected_photo_path)
 
-	# Clear previous children to avoid duplicates
 	for child in image_container.get_children():
 		child.queue_free()
 
@@ -32,7 +82,6 @@ func _load_selected_photo():
 
 	var texture = ImageTexture.create_from_image(image)
 
-	# Create container for image only
 	var overlay_container = MarginContainer.new()
 	overlay_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	overlay_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -49,14 +98,12 @@ func _load_selected_photo():
 	overlay_container.add_child(image_node)
 	image_container.add_child(overlay_container)
 
-	# Control badge_icon visibility without moving it
 	badge_icon.visible = false  # default to hidden
 
 	var photo_json_path = image_path.get_file().replace(".png", ".json")
-	photo_json_path = "user://photo_json/" + photo_json_path
-	
-	if FileAccess.file_exists(photo_json_path):
+	photo_json_path = META_DIR + "/" + photo_json_path
 
+	if FileAccess.file_exists(photo_json_path):
 		var file = FileAccess.open(photo_json_path, FileAccess.READ)
 		var text = file.get_as_text()
 		file.close()
@@ -70,13 +117,11 @@ func _load_selected_photo():
 		else:
 			printerr("JSON parse failed: ", json.get_error_message())
 
-	# Add description
 	if meta.has("description"):
 		image_description.bbcode_enabled = true
 		image_description.text = "[font_size=44][b]" + meta.get("subject_name", "Unknown") + "[/b][/font_size]\n\n" + meta["description"]
 	else:
 		image_description.text = "No description found."
-
 
 func _show_prompt_dialogue():
 	var dialogue_res = load("res://dialogue/view_page_prompt.dialogue")
