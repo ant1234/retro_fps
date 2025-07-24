@@ -137,10 +137,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -147.0
-offset_top = -558.0
-offset_right = 494.0
-offset_bottom = -154.0
+offset_left = -150.0
+offset_top = -443.0
+offset_right = 491.0
+offset_bottom = -39.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -148,12 +148,13 @@ grow_vertical = 0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_constants/separation = 2
+theme_override_constants/separation = 5
 script = ExtResource("3_1en1t")
 response_template = NodePath("ResponseTemplate")
 
 [node name="ResponseTemplate" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

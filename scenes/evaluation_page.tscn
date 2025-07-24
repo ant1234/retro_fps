@@ -1,0 +1,305 @@
+[gd_scene load_steps=4 format=3 uid="uid://bal8hxdmdqume"]
+
+[ext_resource type="Script" path="res://scene_scripts/view_page.gd" id="1_pshqi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dio2d"]
+bg_color = Color(0.168804, 0.671628, 0.738642, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgntx"]
+bg_color = Color(0.0182843, 0.270847, 0.46701, 1)
+
+[node name="EvaluationPage" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 355.0
+offset_bottom = 476.0
+script = ExtResource("1_pshqi")
+
+[node name="RightBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1944.0
+offset_bottom = 737.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dio2d")
+
+[node name="BannerBackground" type="Panel" parent="RightBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1149.5
+offset_top = -95.5
+offset_right = 1149.5
+offset_bottom = 394.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kgntx")
+
+[node name="PreviousPhoto" type="HBoxContainer" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 0
+offset_left = 256.0
+offset_top = -387.0
+offset_right = 586.0
+offset_bottom = -57.0
+
+[node name="CurrentPhoto" type="HBoxContainer" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 0
+offset_left = 1659.0
+offset_top = -387.0
+offset_right = 1989.0
+offset_bottom = -57.0
+
+[node name="PreviousText" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 0
+offset_left = 300.0
+offset_top = -449.0
+offset_right = 543.0
+offset_bottom = -391.0
+theme_override_font_sizes/font_size = 50
+text = "Last time"
+
+[node name="CurrentText" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 0
+offset_left = 1699.0
+offset_top = -457.0
+offset_right = 1942.0
+offset_bottom = -399.0
+theme_override_font_sizes/font_size = 50
+text = "This time"
+
+[node name="Size" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.5
+offset_top = 40.0
+offset_right = 96.5
+offset_bottom = 98.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Size"
+
+[node name="SizePreviousScore" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -774.0
+offset_top = 40.0
+offset_right = -598.0
+offset_bottom = 98.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="SizeCurrentScore" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 641.0
+offset_top = 40.0
+offset_right = 817.0
+offset_bottom = 98.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Pose" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.5
+offset_top = 127.0
+offset_right = 96.5
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Pose"
+
+[node name="PosePreviousScore" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -773.5
+offset_top = 127.0
+offset_right = -597.5
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="PoseCurrentScore" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 641.5
+offset_top = 127.0
+offset_right = 817.5
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Rarity" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.5
+offset_top = -25.0
+offset_right = 76.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Rarity"
+
+[node name="RarityPreviousScore" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -773.5
+offset_top = -25.0
+offset_right = -597.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="RarityCurrentScore" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 641.5
+offset_top = -25.0
+offset_right = 817.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Bonus" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = 69.0
+offset_right = 84.5
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Bonus"
+
+[node name="BonusPreviousScore" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -773.5
+offset_top = 69.0
+offset_right = -597.5
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="BonusCurrentScore" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 641.5
+offset_top = 69.0
+offset_right = 817.5
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Total" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -91.5
+offset_top = -88.0
+offset_right = 84.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Total"
+
+[node name="TotalPreviousScore" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -773.5
+offset_top = -88.0
+offset_right = -597.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+
+[node name="TotalCurrentScore" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 641.5
+offset_top = -88.0
+offset_right = 817.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
