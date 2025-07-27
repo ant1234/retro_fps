@@ -32,6 +32,10 @@ const PHOTO_DIR := "user://photos"
 const DIALOGUE_PATH := "res://dialogue/evaluation.dialogue"
 
 func _ready():
+	# Register the GameState singleton instance once here
+	DialogueManager.game_states.clear()
+	DialogueManager.game_states.append(GameState)
+
 	DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
 	_load_badged_photos()
 	if badge_photos.size() > 0:
@@ -79,6 +83,7 @@ func _evaluate_next_photo():
 	_clear_ui()
 	_load_current_photo_image()
 
+	# Update GameState singleton properties
 	var subject = current_data.get("subject_name", "Unknown Subject")
 	subject_name_label.text = subject
 	GameState.subject_name = subject
@@ -110,9 +115,7 @@ func _evaluate_next_photo():
 	GameState.total_score = current_total
 	total_current_score.text = str(current_total)
 
-	# Clear any previous game_states and set flat variables dictionary
-	DialogueManager.game_states.clear()
-	DialogueManager.game_states.append(GameState)
+	# No need to touch DialogueManager.game_states here — already set in _ready()
 
 	_show_dialogue("reveal_all")
 
