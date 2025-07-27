@@ -23,10 +23,11 @@ var last_click_time := 0.0
 const DOUBLE_CLICK_TIME := 0.8
 
 func _ready():
-	mark_page.disabled = true
-	to_control_room.disabled = true
+	#mark_page.disabled = true
+	#to_control_room.disabled = true
 	scroll_left.pressed.connect(_on_scroll_left)
 	scroll_right.pressed.connect(_on_scroll_right)
+	mark_page.pressed.connect(_on_to_mark_page)
 
 	_load_photos_with_metadata()
 	_display_page(0)
@@ -172,4 +173,7 @@ func _count_subject_name(subject: String) -> int:
 		if entry["meta"].get("subject_name", "") == subject:
 			count += 1
 	return count
+	
+func _on_to_mark_page():
+	SceneRouter.goto_scene("res://scenes/evaluation_page.tscn")
 	

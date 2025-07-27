@@ -12,7 +12,6 @@ func _ready():
 	_load_selected_photo()
 	_show_prompt_dialogue()
 	to_album_page.pressed.connect(_on_to_album_page_pressed)
-
 	mark_page.pressed.connect(_on_mark_page_pressed)
 
 func _on_mark_page_pressed():

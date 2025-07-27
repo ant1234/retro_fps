@@ -10,6 +10,13 @@ var selected_photo_path := ""
 var selected_photo_meta := {}
 var selected_photos := []  # or load it from somewhere else if needed
 
+var subject_name: String = ""
+var size_score: int = 0
+var pose_score: int = 0
+var rarity_mult: float = 1.0
+var bonus_score: int = 0
+var total_score: int = 0
+
 var control_room_dialogue_shown := false
 
 func set_selected_stage(stage_name: String) -> void:
@@ -63,3 +70,7 @@ func is_photo_selected(path: String) -> bool:
 		if photo["path"] == path:
 			return true
 	return false
+	
+	
+func _to_string():
+	return "[subject_name: %s, size: %d, pose: %d, rarity: %f, bonus: %d]" % [subject_name, size_score, pose_score, rarity_mult, bonus_score]
