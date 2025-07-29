@@ -7,33 +7,25 @@ Narrator: Subject: {{GameState.subject_name}}!
 => reveal_size
 
 ~ reveal_size
-Narrator: Size score: {{GameState.size_score}}pts!
+Narrator: [do show_size_score()]Size score: {{GameState.size_score}}pts!
 => reveal_pose
 
 ~ reveal_pose
-Narrator: Pose score: {{GameState.pose_score}}pts!
+Narrator: [do show_pose_score()]Pose score: {{GameState.pose_score}}pts!
 => reveal_rarity
 
 ~ reveal_rarity
-Narrator: Rarity multiplier: {{GameState.rarity_mult}}x!
+Narrator: [do show_rarity_score()]Rarity multiplier: {{GameState.rarity_mult}}x!
 => reveal_bonus
 
 ~ reveal_bonus
-Narrator: Bonus score: {{GameState.bonus_score}}pts!
+Narrator: [do show_bonus_score()]Bonus score: {{GameState.bonus_score}}pts!
 => reveal_total
 
 ~ reveal_total
-Narrator: Total score: {{GameState.total_score}}pts!
+Narrator: [do show_total_score()]Total score: {{GameState.total_score}}pts!
 => reveal_end
 
 ~ reveal_end
 Narrator: Final score calculated! Let’s move on.
-=> END
-
-~ complete
-Narrator: That’s all the photos for now.
-=> END
-
-~ empty
-Narrator: You have no photos marked for evaluation.
 => END

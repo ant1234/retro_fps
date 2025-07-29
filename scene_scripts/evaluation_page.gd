@@ -32,12 +32,14 @@ const PHOTO_DIR := "user://photos"
 const DIALOGUE_PATH := "res://dialogue/evaluation.dialogue"
 
 func _ready():
-	# Register the GameState singleton instance once here
 	DialogueManager.game_states.clear()
+	DialogueManager.game_states.append(self)  # ✅ Add self so [do function()] works
 	DialogueManager.game_states.append(GameState)
 
 	DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
+
 	_load_badged_photos()
+
 	if badge_photos.size() > 0:
 		_evaluate_next_photo()
 	else:
@@ -83,40 +85,27 @@ func _evaluate_next_photo():
 	_clear_ui()
 	_load_current_photo_image()
 
-	# Update GameState singleton properties
 	var subject = current_data.get("subject_name", "Unknown Subject")
 	subject_name_label.text = subject
 	GameState.subject_name = subject
 
 	var size_score = 370
 	GameState.size_score = size_score
-	size.visible = true
-	size_current_score.text = str(size_score)
 	current_total += size_score
 
 	var pose_score = 350
 	GameState.pose_score = pose_score
-	pose.visible = true
-	pose_current_score.text = str(pose_score)
 	current_total += pose_score
 
 	var rarity_mult = current_data.get("rarity", 1)
 	GameState.rarity_mult = rarity_mult
-	rarity.visible = true
-	rarity_current_score.text = str(rarity_mult) + "x"
 	current_total *= rarity_mult
 
 	var bonus_score = 230
 	GameState.bonus_score = bonus_score
-	bonus.visible = true
-	bonus_current_score.text = str(bonus_score) + "pts"
 	current_total += bonus_score
 
 	GameState.total_score = current_total
-	total_current_score.text = str(current_total)
-
-	# No need to touch DialogueManager.game_states here — already set in _ready()
-
 	_show_dialogue("reveal_all")
 
 func _clear_ui():
@@ -154,35 +143,46 @@ func _load_current_photo_image():
 	var tex = ImageTexture.create_from_image(img)
 	var tex_rect = TextureRect.new()
 	tex_rect.texture = tex
-
-	# Allow TextureRect to be smaller than texture size
 	tex_rect.expand_mode = TextureRect.ExpandMode.EXPAND_IGNORE_SIZE
-
-	# Set fixed size 330x330
 	tex_rect.size = Vector2(330, 330)
-
-	# Keep aspect ratio centered
 	tex_rect.stretch_mode = TextureRect.StretchMode.STRETCH_KEEP_ASPECT_CENTERED
-
-	# Disable size flags
 	tex_rect.size_flags_horizontal = 0
 	tex_rect.size_flags_vertical = 0
-
-	# Anchors to top-left absolute positioning
 	tex_rect.anchor_left = 0.0
 	tex_rect.anchor_top = 0.0
 	tex_rect.anchor_right = 0.0
 	tex_rect.anchor_bottom = 0.0
-
-	# Position at 0,0 or center inside parent as needed
 	tex_rect.position = Vector2.ZERO
-
 	current_photo.add_child(tex_rect)
-
 
 func _show_dialogue(key: String):
 	var res = load(DIALOGUE_PATH)
 	if res and DialogueManager:
-		DialogueManager.show_dialogue_balloon(res, key)
+		DialogueManager.show_dialogue_balloon(res, key, [self, GameState])
 	else:
 		printerr("Failed to load dialogue resource or DialogueManager missing.")
+
+func show_size_score():
+	print("✅ YES! show_size_score.")
+	size.visible = true
+	size_current_score.text = str(GameState.size_score)
+
+func show_pose_score():
+	print("✅ YES! show_pose_score.")
+	pose.visible = true
+	pose_current_score.text = str(GameState.pose_score)
+
+func show_rarity_score():
+	print("✅ YES! show_rarity_score.")
+	rarity.visible = true
+	rarity_current_score.text = str(GameState.rarity_mult) + "x"
+
+func show_bonus_score():
+	print("✅ YES! show_bonus_score.")
+	bonus.visible = true
+	bonus_current_score.text = str(GameState.bonus_score) + "pts"
+
+func show_total_score():
+	print("✅ YES! show_total_score.")
+	total.visible = true
+	total_current_score.text = str(GameState.total_score)
