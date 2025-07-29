@@ -1,7 +1,7 @@
 extends Node
 
-@onready var previous_photo: HBoxContainer = $RightBackground/BannerBackground/PreviousPhoto
-@onready var current_photo: HBoxContainer = $RightBackground/BannerBackground/CurrentPhoto
+@onready var previous_photo: Panel = $RightBackground/BannerBackground/PreviousPhoto
+@onready var current_photo: Panel = $RightBackground/BannerBackground/CurrentPhoto
 @onready var previous_text: Label = $RightBackground/BannerBackground/PreviousText
 @onready var current_text: Label = $RightBackground/BannerBackground/CurrentText
 @onready var size: Label = $RightBackground/BannerBackground/Size
@@ -152,14 +152,33 @@ func _load_current_photo_image():
 		return
 
 	var tex = ImageTexture.create_from_image(img)
-
 	var tex_rect = TextureRect.new()
 	tex_rect.texture = tex
-	tex_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
-	tex_rect.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	tex_rect.size_flags_vertical = Control.SIZE_EXPAND_FILL
+
+	# Allow TextureRect to be smaller than texture size
+	tex_rect.expand_mode = TextureRect.ExpandMode.EXPAND_IGNORE_SIZE
+
+	# Set fixed size 330x330
+	tex_rect.size = Vector2(330, 330)
+
+	# Keep aspect ratio centered
+	tex_rect.stretch_mode = TextureRect.StretchMode.STRETCH_KEEP_ASPECT_CENTERED
+
+	# Disable size flags
+	tex_rect.size_flags_horizontal = 0
+	tex_rect.size_flags_vertical = 0
+
+	# Anchors to top-left absolute positioning
+	tex_rect.anchor_left = 0.0
+	tex_rect.anchor_top = 0.0
+	tex_rect.anchor_right = 0.0
+	tex_rect.anchor_bottom = 0.0
+
+	# Position at 0,0 or center inside parent as needed
+	tex_rect.position = Vector2.ZERO
 
 	current_photo.add_child(tex_rect)
+
 
 func _show_dialogue(key: String):
 	var res = load(DIALOGUE_PATH)

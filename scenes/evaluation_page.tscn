@@ -41,7 +41,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kgntx")
 
-[node name="PreviousPhoto" type="HBoxContainer" parent="RightBackground/BannerBackground"]
+[node name="PreviousPhoto" type="Panel" parent="RightBackground/BannerBackground"]
+visible = false
 layout_mode = 0
 offset_left = 256.0
 offset_top = -387.0
@@ -61,7 +62,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 
-[node name="CurrentPhoto" type="HBoxContainer" parent="RightBackground/BannerBackground"]
+[node name="CurrentPhoto" type="Panel" parent="RightBackground/BannerBackground"]
 layout_mode = 0
 offset_left = 1659.0
 offset_top = -387.0
@@ -69,6 +70,7 @@ offset_right = 1989.0
 offset_bottom = -57.0
 
 [node name="PreviousText" type="Label" parent="RightBackground/BannerBackground"]
+visible = false
 layout_mode = 0
 offset_left = 300.0
 offset_top = -449.0
