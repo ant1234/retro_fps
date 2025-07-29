@@ -113,6 +113,7 @@ func _clear_ui():
 	pose.visible = false
 	rarity.visible = false
 	bonus.visible = false
+	total.visible = false  
 
 	size_current_score.text = ""
 	pose_current_score.text = ""
