@@ -164,26 +164,21 @@ func _show_dialogue(key: String):
 		printerr("Failed to load dialogue resource or DialogueManager missing.")
 
 func show_size_score():
-	print("✅ YES! show_size_score.")
 	size.visible = true
 	size_current_score.text = str(GameState.size_score)
 
 func show_pose_score():
-	print("✅ YES! show_pose_score.")
 	pose.visible = true
 	pose_current_score.text = str(GameState.pose_score)
 
 func show_rarity_score():
-	print("✅ YES! show_rarity_score.")
 	rarity.visible = true
 	rarity_current_score.text = str(GameState.rarity_mult) + "x"
 
 func show_bonus_score():
-	print("✅ YES! show_bonus_score.")
 	bonus.visible = true
 	bonus_current_score.text = str(GameState.bonus_score) + "pts"
 
 func show_total_score():
-	print("✅ YES! show_total_score.")
 	total.visible = true
 	total_current_score.text = str(GameState.total_score)
