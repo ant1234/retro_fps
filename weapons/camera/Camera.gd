@@ -1,38 +1,28 @@
 extends Control
 
-# "Camera CANON EOS 400D" (https://skfb.ly/6VsDZ) by santy is licensed under Creative Commons Attribution 
-# (http://creativecommons.org/licenses/by/4.0/).
-
 var FileName = "photo"
 
 func _ready():
 	CreatePhotoDir()
 
 func SavePhoto():
-
 	var camera_viewport: Viewport = $".."
 	var overlay := camera_viewport.get_node("CameraOverlay")
 	var overlay_was_visible: bool = overlay.visible
 	
-	# Hide overlay to prevent it from appearing in photo
 	overlay.visible = false
-	await get_tree().process_frame  # Wait one frame to flush changes
+	await get_tree().process_frame
 
-	# Take photo
 	var image: Image = camera_viewport.get_texture().get_image()
-
-	# Restore overlay visibility
 	overlay.visible = overlay_was_visible
 
-	# Save the image
 	var photo_index = Helper.PhotosTaken
 	var photo_base_path = "user://photos/photo" + str(photo_index)
 	var err = image.save_png(photo_base_path + ".png")
 	if err != OK:
 		return
 
-	# Detect subject (fish)
-	Helper.LastPhotoMetadata = {}  # Reset
+	Helper.LastPhotoMetadata = {}
 	var viewport_camera: Camera3D = $"../ViewportCamera"
 	if is_instance_valid(viewport_camera):
 		var screen_size = camera_viewport.get_visible_rect().size
@@ -53,6 +43,7 @@ func SavePhoto():
 			var subject_node = collider.get_node_or_null("PhotoSubject")
 			if not subject_node:
 				subject_node = collider.find_child("PhotoSubject", true, false)
+
 			if subject_node:
 				Helper.LastPhotoMetadata = {
 					"subject_name": subject_node.subject_name,
@@ -61,11 +52,67 @@ func SavePhoto():
 				}
 				subject_node.set_meta("_printed", true)
 
-	# Save metadata if found
+				# Look for CollisionShape3D in subject's parent
+				var parent_node = subject_node.get_parent()
+				var shape_node: CollisionShape3D = parent_node.get_node_or_null("CollisionShape3D")
+				if shape_node == null:
+					shape_node = parent_node.find_child("CollisionShape3D", true, false)
+
+				if shape_node and shape_node.shape is BoxShape3D:
+					var box = shape_node.shape as BoxShape3D
+					var extents = box.extents
+					var basis = parent_node.global_transform.basis
+					var origin = parent_node.global_transform.origin
+
+					var corners = []
+					for x_sign in [-1, 1]:
+						for y_sign in [-1, 1]:
+							for z_sign in [-1, 1]:
+								var local = Vector3(x_sign * extents.x, y_sign * extents.y, z_sign * extents.z)
+								var world = origin + basis * local
+								corners.append(world)
+
+					var projected = []
+					var all_visible = true
+					for world_point in corners:
+						var screen_point = viewport_camera.unproject_position(world_point)
+						if screen_point.x < 0 or screen_point.x > screen_size.x or screen_point.y < 0 or screen_point.y > screen_size.y:
+							all_visible = false
+						projected.append(screen_point)
+
+					var min_x = INF
+					var max_x = -INF
+					for p in projected:
+						min_x = min(min_x, p.x)
+						max_x = max(max_x, p.x)
+					var horizontal_width = max_x - min_x
+					var width_ratio = horizontal_width / screen_size.x
+
+					var size_score = 0
+					if all_visible:
+						if width_ratio > 1.1:
+							size_score = 500
+						elif width_ratio >= 0.8:
+							size_score = 1000
+						elif width_ratio >= 0.5:
+							size_score = 600
+						elif width_ratio >= 0.3:
+							size_score = 400
+						elif width_ratio >= 0.1:
+							size_score = 200
+						else:
+							size_score = 50
+					else:
+						size_score = 50
+
+					Helper.LastPhotoMetadata["size"] = size_score
+
 	if Helper.LastPhotoMetadata:
+		for key in Helper.LastPhotoMetadata.keys():
+			print("  ", key, ": ", Helper.LastPhotoMetadata[key])
+			
 		var json_base_path = "user://photo_json/photo" + str(photo_index)
 		var file = FileAccess.open(json_base_path + ".json", FileAccess.WRITE)
-
 		if file:
 			var json_string = JSON.stringify(Helper.LastPhotoMetadata)
 			file.store_string(json_string)
