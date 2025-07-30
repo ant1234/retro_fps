@@ -57,6 +57,9 @@ func SavePhoto():
 				var size_score = CalculateSubjectSizeScore(subject_node, viewport_camera, screen_size)
 				Helper.LastPhotoMetadata["size"] = size_score
 
+				var pose_score = CalculateSubjectPoseScore(subject_node, viewport_camera)
+				Helper.LastPhotoMetadata["pose"] = pose_score
+
 	# Save metadata to JSON
 	if Helper.LastPhotoMetadata:
 		for key in Helper.LastPhotoMetadata.keys():
@@ -70,7 +73,7 @@ func SavePhoto():
 			file.close()
 
 	Helper.PhotosTaken += 1
-
+	
 func CreatePhotoDir():
 	var dir = DirAccess.open("user://")
 	if dir:
@@ -139,3 +142,20 @@ func CalculateSubjectSizeScore(subject_node: Node3D, camera: Camera3D, screen_si
 		return size_score
 	
 	return 0
+	
+func CalculateSubjectPoseScore(subject_node: Node3D, camera: Camera3D) -> int:
+	var fish_forward: Vector3 = subject_node.global_transform.basis.z.normalized()
+	var to_camera: Vector3 = (camera.global_position - subject_node.global_position).normalized()
+
+	# Flatten vectors to XZ plane
+	var fish_forward_flat = Vector3(fish_forward.x, 0, fish_forward.z).normalized()
+	var to_camera_flat = Vector3(to_camera.x, 0, to_camera.z).normalized()
+
+	var dot = fish_forward_flat.dot(to_camera_flat)
+
+	if dot < -0.9:
+		return 500  # Front-facing
+	elif dot > 0.9:
+		return 100  # Swimming away
+	else:
+		return 1000  # Side-on (perfect)
