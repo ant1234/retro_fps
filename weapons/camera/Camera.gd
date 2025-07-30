@@ -151,11 +151,15 @@ func CalculateSubjectPoseScore(subject_node: Node3D, camera: Camera3D) -> int:
 	var fish_forward_flat = Vector3(fish_forward.x, 0, fish_forward.z).normalized()
 	var to_camera_flat = Vector3(to_camera.x, 0, to_camera.z).normalized()
 
-	var dot = fish_forward_flat.dot(to_camera_flat)
+	# Use dot product to determine alignment
+	var dot = fish_forward_flat.dot(to_camera_flat)  # -1 front-facing, 0 side-on, +1 swimming away
 
-	if dot < -0.9:
-		return 500  # Front-facing
-	elif dot > 0.9:
-		return 100  # Swimming away
+	var score: int
+	if dot >= 0.0:
+		# From side-on to swimming away (dot: 0 to 1)
+		score = int(lerp(1000, 100, dot))
 	else:
-		return 1000  # Side-on (perfect)
+		# From side-on to front-facing (dot: 0 to -1)
+		score = int(lerp(1000, 500, -dot))
+
+	return score
