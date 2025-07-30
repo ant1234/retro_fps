@@ -60,6 +60,10 @@ func SavePhoto():
 				var pose_score = CalculateSubjectPoseScore(subject_node, viewport_camera)
 				Helper.LastPhotoMetadata["pose"] = pose_score
 
+				# ✅ Correct bonus method call
+				var bonus_score = CalculateSubjectBonusScore(subject_node, viewport_camera)
+				Helper.LastPhotoMetadata["bonus"] = bonus_score
+
 	# Save metadata to JSON
 	if Helper.LastPhotoMetadata:
 		for key in Helper.LastPhotoMetadata.keys():
@@ -73,7 +77,7 @@ func SavePhoto():
 			file.close()
 
 	Helper.PhotosTaken += 1
-	
+
 func CreatePhotoDir():
 	var dir = DirAccess.open("user://")
 	if dir:
@@ -163,3 +167,28 @@ func CalculateSubjectPoseScore(subject_node: Node3D, camera: Camera3D) -> int:
 		score = int(lerp(1000, 500, -dot))
 
 	return score
+
+func CalculateSubjectBonusScore(subject_node: Node3D, camera: Camera3D) -> int:
+	var bonus := 1
+	var screen_size: Vector2 = camera.get_viewport().get_visible_rect().size
+	var center_rect_size: Vector2 = Vector2(100, 100)  # Define reticle area size
+	var center_rect := Rect2(
+		(screen_size - center_rect_size) / 2,
+		center_rect_size
+	)
+
+	var fish_nodes := get_tree().get_nodes_in_group("fish")
+	for fish in fish_nodes:
+		if fish == subject_node or not fish.is_inside_tree():
+			continue
+
+		# Check visibility using unproject_position (in screen space)
+		var screen_pos = camera.unproject_position(fish.global_transform.origin)
+
+		if screen_pos.x < 0 or screen_pos.y < 0 or screen_pos.x > screen_size.x or screen_pos.y > screen_size.y:
+			continue  # Off-screen
+
+		if center_rect.has_point(screen_pos):
+			bonus += 1  # Only count fish *visible and inside reticle*
+
+	return min(bonus, 10)

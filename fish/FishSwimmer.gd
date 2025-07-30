@@ -12,6 +12,8 @@ extends CharacterBody3D
 var time_since_last_turn: float = 999.0
 
 func _ready():
+	add_to_group("fish")  
+
 	if animation_player and animation_player.has_animation(animation_name):
 		animation_player.play(animation_name)
 		animation_player.get_animation(animation_name).loop = true
@@ -64,6 +66,6 @@ func _turn_around_random():
 
 func _set_initial_velocity():
 	velocity = global_transform.basis.z
-	velocity.y *= 0.3  # ✅ Reduce vertical movement
+	velocity.y *= 0.3  
 	velocity = velocity.normalized() * swim_speed
-	self.velocity = velocity  # ✅ Assign to CharacterBody3D's velocity
+	self.velocity = velocity 
