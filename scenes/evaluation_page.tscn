@@ -257,6 +257,7 @@ offset_bottom = 127.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
+text = "123"
 
 [node name="Total" type="Label" parent="RightBackground/BannerBackground"]
 visible = false
@@ -304,3 +305,4 @@ offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 50
+text = "123"

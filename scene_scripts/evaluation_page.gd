@@ -89,23 +89,22 @@ func _evaluate_next_photo():
 	subject_name_label.text = subject
 	GameState.subject_name = subject
 
-	var size_score = 370
+	# Fetch values from JSON
+	var size_score = current_data.get("size", 0)
+	var pose_score = current_data.get("pose", 0)
+	var rareness_score = current_data.get("rareness", 0)
+	var bonus_mult = current_data.get("bonus", 1)
+
+	# Store in GameState
 	GameState.size_score = size_score
-	current_total += size_score
-
-	var pose_score = 350
 	GameState.pose_score = pose_score
-	current_total += pose_score
+	GameState.rarity_score = (rareness_score * 100)
+	GameState.bonus_score = bonus_mult
 
-	var rarity_mult = current_data.get("rarity", 1)
-	GameState.rarity_mult = rarity_mult
-	current_total *= rarity_mult
-
-	var bonus_score = 230
-	GameState.bonus_score = bonus_score
-	current_total += bonus_score
-
+	# Final total = (size + pose + rareness) * bonus
+	current_total = (size_score + pose_score + (rareness_score * 100)) * bonus_mult
 	GameState.total_score = current_total
+
 	_show_dialogue("reveal_all")
 
 func _clear_ui():
@@ -173,12 +172,12 @@ func show_pose_score():
 
 func show_rarity_score():
 	rarity.visible = true
-	rarity_current_score.text = str(GameState.rarity_mult) + "x"
+	rarity_current_score.text = str(GameState.rarity_score)
 
 func show_bonus_score():
 	bonus.visible = true
-	bonus_current_score.text = str(GameState.bonus_score) + "pts"
+	bonus_current_score.text = str(GameState.bonus_score) + "x"
 
 func show_total_score():
 	total.visible = true
-	total_current_score.text = str(GameState.total_score)
+	total_current_score.text = str(GameState.total_score) + "pts"

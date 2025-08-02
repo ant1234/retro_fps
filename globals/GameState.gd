@@ -13,9 +13,11 @@ var selected_photos := []  # or load it from somewhere else if needed
 var subject_name: String = ""
 var size_score: int = 0
 var pose_score: int = 0
-var rarity_mult: float = 1.0
+var rarity_score = 0
 var bonus_score: int = 0
 var total_score: int = 0
+
+
 
 var control_room_dialogue_shown := false
 
@@ -73,4 +75,4 @@ func is_photo_selected(path: String) -> bool:
 	
 	
 func _to_string():
-	return "[subject_name: %s, size: %d, pose: %d, rarity: %f, bonus: %d]" % [subject_name, size_score, pose_score, rarity_mult, bonus_score]
+	return "[subject_name: %s, size: %d, pose: %d, bonus: %d, rarity: %f]" % [subject_name, size_score, pose_score, bonus_score, rarity_score]
