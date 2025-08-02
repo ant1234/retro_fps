@@ -169,26 +169,40 @@ func CalculateSubjectPoseScore(subject_node: Node3D, camera: Camera3D) -> int:
 	return score
 
 func CalculateSubjectBonusScore(subject_node: Node3D, camera: Camera3D) -> int:
-	var bonus := 1
+	var bonus := 0
 	var screen_size: Vector2 = camera.get_viewport().get_visible_rect().size
-	var center_rect_size: Vector2 = Vector2(100, 100)  # Define reticle area size
-	var center_rect := Rect2(
-		(screen_size - center_rect_size) / 2,
-		center_rect_size
-	)
+	var center_rect_size: Vector2 = Vector2(512, 512)
+	var center_rect := Rect2((screen_size - center_rect_size) / 2, center_rect_size)
+
+	var cam_origin := camera.global_transform.origin
+	var cam_forward := -camera.global_transform.basis.z.normalized()
+
+	var player := get_node_or_null("../../../../../../../../..") # root player
+	var player_origin: Vector3 = player.global_transform.origin if player else cam_origin
 
 	var fish_nodes := get_tree().get_nodes_in_group("fish")
 	for fish in fish_nodes:
 		if fish == subject_node or not fish.is_inside_tree():
 			continue
 
-		# Check visibility using unproject_position (in screen space)
+		# Optional: Only count fish within 10 meters of player
+		var distance_to_player: float = fish.global_transform.origin.distance_to(player_origin)
+		if distance_to_player > 10.0:
+			continue
+
+		var to_fish: Vector3 = (fish.global_transform.origin - cam_origin).normalized()
+		var facing := cam_forward.dot(to_fish)
+
+		if facing <= 0:
+			continue  # Fish is behind the camera
+
 		var screen_pos = camera.unproject_position(fish.global_transform.origin)
 
 		if screen_pos.x < 0 or screen_pos.y < 0 or screen_pos.x > screen_size.x or screen_pos.y > screen_size.y:
 			continue  # Off-screen
 
 		if center_rect.has_point(screen_pos):
-			bonus += 1  # Only count fish *visible and inside reticle*
+			print("Fish:", fish.name, " screen_pos:", screen_pos, " distance:", distance_to_player)
+			bonus += 1
 
 	return min(bonus, 10)
