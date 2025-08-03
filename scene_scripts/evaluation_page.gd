@@ -44,7 +44,8 @@ func _ready():
 		_evaluate_next_photo()
 	else:
 		_show_dialogue("empty")
-
+		
+	
 func _on_dialogue_finished(_res = null):
 	current_index += 1
 	_evaluate_next_photo()
@@ -81,31 +82,55 @@ func _evaluate_next_photo():
 		return
 
 	current_data = badge_photos[current_index]
+	if current_data.is_empty():
+		printerr("Warning: current_data is empty at index ", current_index)
+		_show_dialogue("complete")
+		return
+
 	current_total = 0
 	_clear_ui()
 	_load_current_photo_image()
 
+	# Fetch subject and update UI + GameState
 	var subject = current_data.get("subject_name", "Unknown Subject")
 	subject_name_label.text = subject
 	GameState.subject_name = subject
 
-	# Fetch values from JSON
+	# Get individual scores from the JSON data
 	var size_score = current_data.get("size", 0)
 	var pose_score = current_data.get("pose", 0)
 	var rareness_score = current_data.get("rareness", 0)
 	var bonus_mult = current_data.get("bonus", 1)
 
-	# Store in GameState
+	# Update GameState for dialogue system
 	GameState.size_score = size_score
 	GameState.pose_score = pose_score
-	GameState.rarity_score = (rareness_score * 100)
+	GameState.rarity_score = rareness_score * 100
 	GameState.bonus_score = bonus_mult
 
-	# Final total = (size + pose + rareness) * bonus
+	# Compute final score
 	current_total = (size_score + pose_score + (rareness_score * 100)) * bonus_mult
 	GameState.total_score = current_total
 
+	# Update only what is needed
+	current_data["total"] = current_total
+	current_data["badge"] = false
+
+	# Save back to JSON file
+	var file_path = current_data.get("__file_path", "")
+	if file_path == "":
+		printerr("No __file_path found in current_data.")
+	else:
+		var file = FileAccess.open(file_path, FileAccess.WRITE)
+		if file:
+			file.store_string(JSON.stringify(current_data, "\t"))  # Indented JSON
+			file.close()
+		else:
+			printerr("Could not open file for writing: ", file_path)
+
+	# Trigger dialogue
 	_show_dialogue("reveal_all")
+
 
 func _clear_ui():
 	size.visible = false
@@ -158,9 +183,24 @@ func _load_current_photo_image():
 func _show_dialogue(key: String):
 	var res = load(DIALOGUE_PATH)
 	if res and DialogueManager:
-		DialogueManager.show_dialogue_balloon(res, key, [self, GameState])
+		if typeof(GameState) == TYPE_OBJECT and GameState:
+			# Clear and reset game_states
+			DialogueManager.game_states.clear()
+			DialogueManager.game_states.append({"self": self})
+			DialogueManager.game_states.append({"GameState": GameState})
+
+			await get_tree().process_frame
+
+			DialogueManager.show_dialogue_balloon(res, key)
 	else:
 		printerr("Failed to load dialogue resource or DialogueManager missing.")
+		if !res:
+			printerr("res (dialogue resource) is null!")
+		if !DialogueManager:
+			printerr("DialogueManager is null or not initialized!")
+
+func show_subject_name():
+	return GameState.subject_name
 
 func show_size_score():
 	size.visible = true
