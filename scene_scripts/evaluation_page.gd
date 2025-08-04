@@ -199,9 +199,6 @@ func _show_dialogue(key: String):
 		if !DialogueManager:
 			printerr("DialogueManager is null or not initialized!")
 
-func show_subject_name():
-	return GameState.subject_name
-
 func show_size_score():
 	size.visible = true
 	size_current_score.text = str(GameState.size_score)
