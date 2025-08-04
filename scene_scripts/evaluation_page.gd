@@ -114,7 +114,6 @@ func _evaluate_next_photo():
 
 	# Update only what is needed
 	current_data["total"] = current_total
-	current_data["badge"] = false
 
 	# Save back to JSON file
 	var file_path = current_data.get("__file_path", "")

@@ -5,6 +5,7 @@ extends Control
 
 func _ready():
 	update_totals()
+	start_dialogue()
 
 func update_totals():
 	var total_score := 0
@@ -40,3 +41,10 @@ func update_totals():
 	# Update UI
 	report_subjects_number.text = str(photo_count) + " x"
 	report_score_number.text = str(total_score) + " pts"
+
+func start_dialogue():
+	var dialogue_resource = load("res://dialogue/totals.dialogue")
+	DialogueManager.show_dialogue_balloon(dialogue_resource, "start")
+
+func return_to_control_room():
+	SceneRouter.goto_scene("res://scenes/control_room_page.tscn")

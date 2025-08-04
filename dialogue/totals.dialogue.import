@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://cnora0c7d8lxd"
+path="res://.godot/imported/totals.dialogue-680c0052364c8d59767d370ba9f8a480.tres"
+
+[deps]
+
+source_file="res://dialogue/totals.dialogue"
+dest_files=["res://.godot/imported/totals.dialogue-680c0052364c8d59767d370ba9f8a480.tres"]
+
+[params]
+
+defaults=true

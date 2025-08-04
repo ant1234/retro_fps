@@ -1,0 +1,8 @@
+title: totals
+---
+
+~ start
+Narrator: This is what you have scored!!
+Narrator: I'll save the results in the report.
+Narrator: Let's return to the control room..... [do return_to_control_room()]
+=> END
