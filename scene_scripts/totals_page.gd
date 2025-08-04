@@ -21,12 +21,22 @@ func update_totals():
 			var json_data = JSON.parse_string(file.get_as_text())
 			file.close()
 
-			if json_data and typeof(json_data) == TYPE_DICTIONARY and json_data.has("total"):
-				total_score += int(json_data["total"])
+			if json_data is Dictionary and json_data.get("badge", false) == true:
+				# Add to total and count
+				total_score += int(json_data.get("total", 0))
 				photo_count += 1
+
+				# Set badge to false
+				json_data["badge"] = false
+
+				# Write back to the file
+				var write_file = FileAccess.open(file_path, FileAccess.WRITE)
+				if write_file:
+					write_file.store_string(JSON.stringify(json_data, "\t"))  # Pretty-print with tabs
+					write_file.close()
 
 		index += 1
 
 	# Update UI
-	report_subjects_number.text = str(photo_count)
+	report_subjects_number.text = str(photo_count) + " x"
 	report_score_number.text = str(total_score) + " pts"
