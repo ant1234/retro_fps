@@ -1,7 +1,7 @@
 extends Control
 
-@onready var album_button = $Panel/VBoxContainer/AlbumButton
-@onready var mission_button = $Panel/VBoxContainer/MissionButton
+@onready var mission_button: Button = $Panel/VBoxContainer/MissionButton
+@onready var album_button: Button = $Panel/VBoxContainer/AlbumButton
 
 func _ready():
 	album_button.disabled = true

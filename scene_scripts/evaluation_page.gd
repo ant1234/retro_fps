@@ -78,7 +78,7 @@ func _load_badged_photos():
 
 func _evaluate_next_photo():
 	if current_index >= badge_photos.size():
-		_show_dialogue("complete")
+		SceneRouter.goto_scene("res://scenes/totals_page.tscn")
 		return
 
 	current_data = badge_photos[current_index]
