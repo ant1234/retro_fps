@@ -18,3 +18,9 @@ Bartender: West of the reef. No birds, no light. Just a wreck breathing in the s
 ~ prepare_departure
 Bartender: Then down you go, {{GameState.player_name}}. May the sea forget your name.
 => END
+
+~ post_evaluation
+Bartender: Good photos this time...
+Inventor: I think we’re getting closer.
+Bartender: Then let’s go to the next stage.... [do go_to_stage]
+=> END

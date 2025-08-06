@@ -47,4 +47,5 @@ func start_dialogue():
 	DialogueManager.show_dialogue_balloon(dialogue_resource, "start")
 
 func return_to_control_room():
+	GameState.returning_from_totals = true
 	SceneRouter.goto_scene("res://scenes/control_room_page.tscn")

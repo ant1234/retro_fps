@@ -9,16 +9,14 @@ var album_subject_count: int = 0
 var selected_photo_path := ""
 var selected_photo_meta := {}
 var selected_photos := []  # or load it from somewhere else if needed
-
 var subject_name: String = ""
 var size_score: int = 0
 var pose_score: int = 0
 var rarity_score = 0
 var bonus_score: int = 0
 var total_score: int = 0
-
-
-
+var intro_dialogue_shown := false
+var returning_from_totals := false
 var control_room_dialogue_shown := false
 
 func set_selected_stage(stage_name: String) -> void:
