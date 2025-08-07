@@ -4,10 +4,11 @@ extends Control
 @onready var control_room_button = $Panel/VBoxContainer/ToControlRoom
 
 func _ready():
-	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	DialogueManager.game_states.clear()
-	DialogueManager.game_states.append(self)  # ✅ Add self so [do function()] works
+	DialogueManager.game_states.append(self)
 	DialogueManager.game_states.append(GameState)
+	DialogueManager.dialogue_ended.connect(to_album_page)
 	
 	# Disable buttons initially
 	mark_button.disabled = true
@@ -46,4 +47,7 @@ func _on_dialogue_finished(_resource = null):
 	# Re-enable the buttons after dialogue ends
 	mark_button.disabled = false
 	control_room_button.disabled = false
+	
+func to_album_page(resource = null):
+	SceneRouter.goto_scene("res://scenes/album_page.tscn")
 	

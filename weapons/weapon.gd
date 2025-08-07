@@ -132,5 +132,4 @@ func add_ammo(amnt: int):
 	ammo_updated.emit(ammo)         
 	
 func to_camera_check(resource = null):
-	print("Dialogue ended")
 	SceneRouter.goto_scene("res://scenes/camera_check_page.tscn")
