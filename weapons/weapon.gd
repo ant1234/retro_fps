@@ -16,6 +16,7 @@ var _taking_photo := false
 @export var attack_rate = 0.2
 var last_attack_time = -9999.9
 var CameraInUse = false
+var has_shown_out_of_ammo_message: bool = false
 
 @export var animation_controller_attack = false
 @export var silent_weapon = false
@@ -24,8 +25,15 @@ signal fired
 signal out_of_ammo
 signal ammo_updated(add_ammo: int)
 
+
+
 func _ready() -> void:
 	bullet_emitter.set_damage(damage)
+
+	DialogueManager.game_states.clear()
+	DialogueManager.game_states.append(self) 
+	DialogueManager.game_states.append(GameState)
+	DialogueManager.dialogue_ended.connect(to_camera_check)
 
 # Camera input with animation fallback
 func _input(event):
@@ -69,8 +77,17 @@ func attack(input_just_pressed: bool, input_held: bool):
 			out_of_ammo.emit()
 			if has_node("OutOfAmmo"):
 				$OutOfAmmo.play()
+				
+			if not has_shown_out_of_ammo_message:
+				var dialogue_res = load("res://dialogue/out_of_ammo.dialogue")
+				if dialogue_res and CustomDialogueManager:
+					CustomDialogueManager.show_dialogue_balloon(dialogue_res, "start")
+					has_shown_out_of_ammo_message = true
 		return
-		
+
+	# Reset the flag when player has ammo again
+	has_shown_out_of_ammo_message = false
+
 	var cur_time = Time.get_ticks_msec() / 1000.0
 	if cur_time - last_attack_time < attack_rate:
 		return
@@ -82,13 +99,13 @@ func attack(input_just_pressed: bool, input_held: bool):
 		actually_attack()
 
 	last_attack_time = cur_time
-	#animation_player.stop()
 	play_animation_safe("attack")
 	fired.emit()
 	$AttackSounds.play()
 	ammo_updated.emit(ammo)
 	if has_node("Graphics/MuzzleFlash"):
 		$Graphics/MuzzleFlash.flash()
+
 
 func actually_attack():
 	bullet_emitter.global_transform = fire_point.global_transform
@@ -112,4 +129,8 @@ func is_idle() -> bool:
 
 func add_ammo(amnt: int):
 	ammo += amnt
-	ammo_updated.emit(ammo)
+	ammo_updated.emit(ammo)         
+	
+func to_camera_check(resource = null):
+	print("Dialogue ended")
+	SceneRouter.goto_scene("res://scenes/camera_check_page.tscn")

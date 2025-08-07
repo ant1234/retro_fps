@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-	call_deferred("goto_scene", "res://scenes/album_page.tscn")
+	call_deferred("goto_scene", "res://world.tscn")
 
 func goto_scene(scene_path: String) -> void:
 	var scene_resource = load(scene_path)

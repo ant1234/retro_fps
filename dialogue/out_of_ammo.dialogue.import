@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://b7tbj3b7mcon7"
+path="res://.godot/imported/out_of_ammo.dialogue-fed9324657c3b337ca12ee0fc7cf8ecb.tres"
+
+[deps]
+
+source_file="res://dialogue/out_of_ammo.dialogue"
+dest_files=["res://.godot/imported/out_of_ammo.dialogue-fed9324657c3b337ca12ee0fc7cf8ecb.tres"]
+
+[params]
+
+defaults=true

@@ -71,7 +71,6 @@ func _mark_photo_and_clear_others():
 
 
 func _load_selected_photo():
-	print("Loading selected photo:", GameState.selected_photo_path)
 
 	for child in image_container.get_children():
 		child.queue_free()

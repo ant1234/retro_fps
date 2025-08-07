@@ -4,6 +4,11 @@ extends Control
 @onready var control_room_button = $Panel/VBoxContainer/ToControlRoom
 
 func _ready():
+	
+	DialogueManager.game_states.clear()
+	DialogueManager.game_states.append(self)  # ✅ Add self so [do function()] works
+	DialogueManager.game_states.append(GameState)
+	
 	# Disable buttons initially
 	mark_button.disabled = true
 	control_room_button.disabled = true
@@ -41,3 +46,4 @@ func _on_dialogue_finished(_resource = null):
 	# Re-enable the buttons after dialogue ends
 	mark_button.disabled = false
 	control_room_button.disabled = false
+	

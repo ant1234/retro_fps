@@ -1,3 +1,3 @@
 ~ start
-Bartender: You have captured {{GameState.photo_count}} interesting images.
+Bartender: You have captured {{GameState.photo_count}} interesting images...
 => END

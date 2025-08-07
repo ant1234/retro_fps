@@ -734,7 +734,7 @@ bus = &"Sfx"
 [node name="DigitalCamera" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
 script = ExtResource("4_l073q")
 damage = 0
-ammo = 50
+ammo = 1
 
 [node name="Graphics" type="Node3D" parent="Camera3D/WeaponManager/Weapons/DigitalCamera"]
 transform = Transform3D(0.998174, -0.0520781, -0.0305889, 0.0544449, 0.995106, 0.0824581, 0.026145, -0.083973, 0.996125, 0.0544804, 0.307876, 0.605866)
