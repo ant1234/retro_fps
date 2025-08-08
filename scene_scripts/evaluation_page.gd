@@ -33,7 +33,7 @@ const DIALOGUE_PATH := "res://dialogue/evaluation.dialogue"
 
 func _ready():
 	DialogueManager.game_states.clear()
-	DialogueManager.game_states.append(self) 
+	DialogueManager.game_states.append(self)  # ✅ Add self so [do function()] works
 	DialogueManager.game_states.append(GameState)
 
 	DialogueManager.dialogue_ended.connect(_on_dialogue_finished)

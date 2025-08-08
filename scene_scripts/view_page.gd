@@ -14,6 +14,7 @@ var subject_photos: Array = []
 var current_photo_index: int = 0
 
 func _ready():
+	GameState.photo_badge_selected.connect(_mark_photo_and_clear_others)
 	_load_all_photos_for_subject()
 	_load_selected_photo()
 	_show_prompt_dialogue()
@@ -36,7 +37,8 @@ func _mark_photo_and_clear_others():
 		return
 
 	var selected_json_name = selected_path.get_file().replace(".png", ".json")
-	var selected_json_path = META_DIR + "/" + selected_json_name
+	print("Selected photo:", selected_json_name)
+	print("Subject name:", selected_subject)
 
 	# Step 1: Loop through all JSON files
 	var dir = DirAccess.open(META_DIR)
@@ -45,29 +47,60 @@ func _mark_photo_and_clear_others():
 		return
 
 	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
-		if file_name.ends_with(".json"):
-			var file_path = META_DIR + "/" + file_name
-			var file = FileAccess.open(file_path, FileAccess.READ)
-			if file:
-				var data = JSON.parse_string(file.get_as_text())
-				file.close()
-				if typeof(data) == TYPE_DICTIONARY:
-					if data.get("subject_name", "") == selected_subject:
-						# Update badge field
-						var is_current = file_name == selected_json_name
-						data["badge"] = is_current
+	while true:
+		var file_name = dir.get_next()
+		if file_name == "":
+			break
+		if dir.current_is_dir():
+			continue
+		if not file_name.ends_with(".json"):
+			continue
 
+		var file_path = META_DIR + "/" + file_name
+		print("---")
+		print("Checking file:", file_path)
+
+		var file = FileAccess.open(file_path, FileAccess.READ)
+		if file:
+			var text = file.get_as_text()
+			file.close()
+
+			var data = JSON.parse_string(text)
+			if typeof(data) == TYPE_DICTIONARY:
+				var subject = data.get("subject_name", "")
+				var existing_badge = data.get("badge", false)
+				print(" - subject_name:", subject)
+				print(" - existing badge:", existing_badge)
+
+				if subject == selected_subject:
+					var is_current = file_name == selected_json_name
+					print(" - Matches selected subject.")
+					print(" - Is current file?:", is_current)
+
+					if existing_badge != is_current:
+						data["badge"] = is_current
 						var out_file = FileAccess.open(file_path, FileAccess.WRITE)
 						if out_file:
 							out_file.store_string(JSON.stringify(data, "\t"))
 							out_file.close()
-		file_name = dir.get_next()
+							print(" - Updated badge to", is_current, "in", file_name)
+						else:
+							printerr(" - Failed to open for write:", file_path)
+					else:
+						print(" - Badge already correct. No write needed.")
+				else:
+					print(" - Different subject. Skipping.")
+			else:
+				printerr(" - Failed to parse JSON or data is not a dictionary in", file_name)
+		else:
+			printerr(" - Failed to open for read:", file_path)
+
 	dir.list_dir_end()
 
-	# Show the badge icon if it was just marked
+	# Show the badge icon if this photo was just marked
 	badge_icon.visible = true
+	print("Finished badge update.")
+
 
 
 func _load_selected_photo():

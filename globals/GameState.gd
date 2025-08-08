@@ -1,5 +1,7 @@
 extends Node
 
+signal photo_badge_selected
+
 var player_name: String = ""
 var selected_stage := ""
 var confirmed_stage := false
@@ -40,7 +42,7 @@ func confirm_photo_selection(choice) -> void:
 			var result = json.parse(text)
 			if result == OK:
 				var data: Dictionary = json.data
-				data["badge"] = choice  # <-- this line updates badge to true or false depending on user input
+				data["badge"] = choice
 
 				var amended_data = json.stringify(data, "\t")
 
@@ -49,6 +51,11 @@ func confirm_photo_selection(choice) -> void:
 				file.close()
 
 				print("Updated badge to", choice, "in:", photo_json_path)
+
+				# ✅ ADD THIS TO CLEAR OTHER BADGES
+				if choice:
+					emit_signal("photo_badge_selected")
+
 			else:
 				printerr("Failed to parse JSON for photo:", selected_photo_path)
 		else:
@@ -58,6 +65,7 @@ func confirm_photo_selection(choice) -> void:
 		var view_page = get_tree().get_current_scene()
 		if view_page and view_page.has_method("_load_selected_photo"):
 			view_page._load_selected_photo()
+
 
 func go_to_album() -> void:
 	print("Going back to album")
