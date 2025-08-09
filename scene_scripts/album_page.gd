@@ -23,23 +23,16 @@ var last_click_time := 0.0
 const DOUBLE_CLICK_TIME := 0.8
 
 func _ready():
-	#mark_page.disabled = true
-	#to_control_room.disabled = true
 	scroll_left.pressed.connect(_on_scroll_left)
 	scroll_right.pressed.connect(_on_scroll_right)
 	mark_page.pressed.connect(_on_to_mark_page)
 
 	_load_photos_with_metadata()
 	_display_page(0)
-	
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("open_action") and selected_photo_index >= 0:
-		var selected = photo_data[selected_photo_index]
-		GameState.selected_photo_path = selected["image_path"]
-		GameState.selected_photo_meta = selected["meta"]
-		get_tree().change_scene_to_file("res://scenes/view_page.tscn")
+	_update_mark_page_button()  # Update button state on load
 
 func _load_photos_with_metadata():
+	photo_data.clear()
 	var dir = DirAccess.open(META_DIR)
 	if not dir:
 		printerr("Failed to open photo_json directory.")
@@ -143,7 +136,7 @@ func _on_photo_selected(event: InputEvent, index: int):
 				"photo_info"
 			)
 			
-			# Search for badge=true photo with same subject_name
+			# Show preview for first badge=true photo of the selected subject
 			preview_photo.visible = false
 			preview_text.visible = false
 			preview_photo.get_children().map(func(c): c.queue_free())
@@ -166,14 +159,25 @@ func _on_photo_selected(event: InputEvent, index: int):
 						preview_text.visible = true
 						break  # Stop after first badge match
 
-
 func _count_subject_name(subject: String) -> int:
 	var count := 0
 	for entry in photo_data:
 		if entry["meta"].get("subject_name", "") == subject:
 			count += 1
 	return count
-	
+
 func _on_to_mark_page():
-	SceneRouter.goto_scene("res://scenes/evaluation_page.tscn")
-	
+	if _any_photo_marked():
+		SceneRouter.goto_scene("res://scenes/evaluation_page.tscn")
+	else:
+		# Optionally show a warning or dialog here to inform user to mark at least one photo
+		print("Please mark at least one photo before proceeding.")
+		
+func _any_photo_marked() -> bool:
+	for entry in photo_data:
+		if entry["meta"].get("badge", false) == true:
+			return true
+	return false
+
+func _update_mark_page_button() -> void:
+	mark_page.disabled = not _any_photo_marked()

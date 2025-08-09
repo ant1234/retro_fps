@@ -18,6 +18,7 @@ func _ready():
 	_load_all_photos_for_subject()
 	_load_selected_photo()
 	_show_prompt_dialogue()
+	_update_mark_page_button()  # <-- Added: disable/enable mark_page on ready
 	
 	to_album_page.pressed.connect(_on_to_album_page_pressed)
 	mark_page.pressed.connect(_on_to_evaluation_page_pressed)
@@ -28,6 +29,7 @@ func _on_mark_page_pressed():
 	_mark_photo_and_clear_others()
 
 func _mark_photo_and_clear_others():
+	print("==> _mark_photo_and_clear_others started")
 	var selected_meta = GameState.selected_photo_meta
 	var selected_path = GameState.selected_photo_path
 	var selected_subject = selected_meta.get("subject_name", null)
@@ -40,7 +42,7 @@ func _mark_photo_and_clear_others():
 	print("Selected photo:", selected_json_name)
 	print("Subject name:", selected_subject)
 
-	# Step 1: Loop through all JSON files
+	# Update JSON badge files on disk
 	var dir = DirAccess.open(META_DIR)
 	if not dir:
 		printerr("Could not open metadata directory.")
@@ -57,8 +59,7 @@ func _mark_photo_and_clear_others():
 			continue
 
 		var file_path = META_DIR + "/" + file_name
-		print("---")
-		print("Checking file:", file_path)
+		print("--- Checking file:", file_path)
 
 		var file = FileAccess.open(file_path, FileAccess.READ)
 		if file:
@@ -97,10 +98,12 @@ func _mark_photo_and_clear_others():
 
 	dir.list_dir_end()
 
-	# Show the badge icon if this photo was just marked
-	badge_icon.visible = true
-	print("Finished badge update.")
+	print("Reloading in-memory photo data after badge update...")
+	_load_all_photos_for_subject()
+	_load_selected_photo()
 
+	print("Finished badge update.")
+	call_deferred("_delayed_update_button")
 
 
 func _load_selected_photo():
@@ -173,8 +176,12 @@ func _on_to_album_page_pressed():
 	SceneRouter.goto_scene("res://scenes/album_page.tscn")
 	
 func _on_to_evaluation_page_pressed():
-	SceneRouter.goto_scene("res://scenes/evaluation_page.tscn")
-	
+	# Added safety: only go if at least one photo marked
+	if _any_photo_marked():
+		SceneRouter.goto_scene("res://scenes/evaluation_page.tscn")
+	else:
+		print("Please mark at least one photo before proceeding.")
+
 func _load_all_photos_for_subject():
 	var selected_meta = GameState.selected_photo_meta
 	var subject_name = selected_meta.get("subject_name", "")
@@ -213,7 +220,6 @@ func _load_all_photos_for_subject():
 	# Find index of currently selected photo
 	current_photo_index = subject_photos.find(subject_photos.filter(func(p): return p["path"] == GameState.selected_photo_path).front())
 	
-
 func _on_scroll_left_pressed():
 	if subject_photos.size() == 0:
 		return
@@ -233,3 +239,55 @@ func _load_photo_by_index():
 	GameState.selected_photo_path = entry["path"]
 	GameState.selected_photo_meta = entry["meta"]
 	_load_selected_photo()
+
+func _update_mark_page_button() -> void:
+	var any_marked = _any_photo_marked()
+	print("_update_mark_page_button called. Any photo marked? ", any_marked)
+	mark_page.disabled = not any_marked
+	print("mark_page.disabled set to ", mark_page.disabled)
+
+# --- NEW function to check if any photo is marked with badge: true ---
+func _any_photo_marked() -> bool:
+	print("Checking if any photo is marked (badge = true)...")
+	var dir = DirAccess.open(META_DIR)
+	if not dir:
+		printerr("Failed to open metadata directory for badge check.")
+		return false
+
+	dir.list_dir_begin()
+	while true:
+		var file_name = dir.get_next()
+		if file_name == "":
+			break
+		if dir.current_is_dir():
+			continue
+		if not file_name.ends_with(".json"):
+			continue
+
+		var file_path = META_DIR + "/" + file_name
+		var file = FileAccess.open(file_path, FileAccess.READ)
+		if file:
+			var text = file.get_as_text()
+			file.close()
+			var data = JSON.parse_string(text)
+			if typeof(data) == TYPE_DICTIONARY:
+				var badge = data.get("badge", false)
+				print(" - File:", file_name, "badge:", badge)
+				if badge == true:
+					dir.list_dir_end()
+					print("Found a photo marked with badge = true.")
+					return true
+	dir.list_dir_end()
+	print("No photos marked with badge = true found.")
+	return false
+
+	
+func _delayed_update_button() -> void:
+	print("_delayed_update_button started, waiting 0.1 seconds...")
+	await get_tree().create_timer(0.1).timeout
+	print("_delayed_update_button timer finished, updating UI...")
+	_load_all_photos_for_subject()
+	_load_selected_photo()
+	_update_mark_page_button()
+	print("_delayed_update_button finished.")
+	
