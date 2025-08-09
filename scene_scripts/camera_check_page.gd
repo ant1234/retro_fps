@@ -5,9 +5,12 @@ extends Control
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+	# ✅ Set game_states immediately, just like evaluation_page.gd
 	DialogueManager.game_states.clear()
 	DialogueManager.game_states.append(self)
 	DialogueManager.game_states.append(GameState)
+
 	DialogueManager.dialogue_ended.connect(to_album_page)
 	
 	# Disable buttons initially
@@ -33,6 +36,11 @@ func _count_photos_and_show_dialogue():
 
 	GameState.photo_count = count
 
+	# Reset game_states again before showing dialogue
+	DialogueManager.game_states.clear()
+	DialogueManager.game_states.append({"self": self})
+	DialogueManager.game_states.append({"GameState": GameState})
+
 	var dialogue_resource = load("res://dialogue/camera_check.dialogue")
 	if dialogue_resource and DialogueManager:
 		DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
@@ -50,4 +58,3 @@ func _on_dialogue_finished(_resource = null):
 	
 func to_album_page(resource = null):
 	SceneRouter.goto_scene("res://scenes/album_page.tscn")
-	
