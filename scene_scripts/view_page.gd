@@ -169,6 +169,7 @@ func _show_prompt_dialogue():
 		CustomDialogueManager.show_dialogue_balloon(dialogue_res, "start")
 
 func _on_to_album_page_pressed():
+	SceneRouter.reset_current_scene()
 	SceneRouter.goto_scene("res://scenes/album_page.tscn")
 	
 func _load_all_photos_for_subject():
