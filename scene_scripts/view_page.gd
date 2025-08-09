@@ -20,7 +20,7 @@ func _ready():
 	_show_prompt_dialogue()
 	
 	to_album_page.pressed.connect(_on_to_album_page_pressed)
-	mark_page.pressed.connect(_on_mark_page_pressed)
+	mark_page.pressed.connect(_on_to_evaluation_page_pressed)
 	scroll_left.pressed.connect(_on_scroll_left_pressed)
 	scroll_right.pressed.connect(_on_scroll_right_pressed)
 
@@ -171,6 +171,9 @@ func _show_prompt_dialogue():
 func _on_to_album_page_pressed():
 	SceneRouter.reset_current_scene()
 	SceneRouter.goto_scene("res://scenes/album_page.tscn")
+	
+func _on_to_evaluation_page_pressed():
+	SceneRouter.goto_scene("res://scenes/evaluation_page.tscn")
 	
 func _load_all_photos_for_subject():
 	var selected_meta = GameState.selected_photo_meta
