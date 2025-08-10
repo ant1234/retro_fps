@@ -7,23 +7,23 @@ Narrator: Subject: {{GameState.subject_name}}!
 => reveal_size
 
 ~ reveal_size
-Narrator: [do show_size_score()]Size score: {{GameState.size_score}}pts!
+Narrator: [do show_size_score()]Size score: {{GameState.size_score}} [if GameState.size_score > 800]pts ... that's a fantastic score!![/if][if GameState.size_score > 600 and GameState.size_score <= 800]pts ... that's a pretty good score![/if][if GameState.size_score > 300 and GameState.size_score <= 600]pts ... that's errr so so ..[/if][if GameState.size_score <= 300]pts ... that's umm not good ..[/if]
 => reveal_pose
 
 ~ reveal_pose
-Narrator: [do show_pose_score()]Pose score: {{GameState.pose_score}}pts!
+Narrator: [do show_pose_score()]Pose score: {{GameState.pose_score}} [if GameState.pose_score > 800]pts ... that's a fantastic score!![/if][if GameState.pose_score > 600 and GameState.pose_score <= 800]pts ... that's a pretty good score![/if][if GameState.pose_score > 300 and GameState.pose_score <= 600]pts ... that's errr so so ..[/if][if GameState.pose_score <= 300]pts ... that's umm not good ..[/if]
 => reveal_rarity
 
 ~ reveal_rarity
-Narrator: [do show_rarity_score()]Rarity multiplier: {{GameState.rarity_score}}!
+Narrator: [do show_rarity_score()]Rarity score: {{GameState.rarity_score}} pts [if GameState.rarity_score > 800]... extremely rare!![/if][if GameState.rarity_score > 600 and GameState.rarity_score <= 800]... quite rare![/if][if GameState.rarity_score > 300 and GameState.rarity_score <= 600]... a little rare[/if][if GameState.rarity_score <= 300]... pretty common[/if]
 => reveal_bonus
 
 ~ reveal_bonus
-Narrator: [do show_bonus_score()]Bonus score: {{GameState.bonus_score}}
+Narrator: [do show_bonus_score()]Bonus score: {{GameState.bonus_score}}x [if GameState.bonus_score > 8]... that's a fantastic bonus!![/if][if GameState.bonus_score > 6 and GameState.bonus_score <= 8]... that's a pretty good bonus![/if][if GameState.bonus_score > 3 and GameState.bonus_score <= 6]... yea, there's a bit of a bonus here ..[/if][if GameState.bonus_score <= 3]... err not much of a bonus here ..[/if]
 => reveal_total
 
 ~ reveal_total
-Narrator: [do show_total_score()]Total score: {{GameState.total_score}}pts!
+Narrator: [do show_total_score()]Total score: {{GameState.total_score}} [if GameState.total_score > 3000]pts ... an amazing total!![/if][if GameState.total_score > 2000 and GameState.total_score <= 3000]pts ... a strong total![/if][if GameState.total_score > 1000 and GameState.total_score <= 2000]pts ... a decent total[/if][if GameState.total_score <= 1000]pts ... needs improvement[/if]
 => reveal_end
 
 ~ reveal_end
