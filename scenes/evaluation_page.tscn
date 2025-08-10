@@ -77,7 +77,7 @@ offset_top = -449.0
 offset_right = 543.0
 offset_bottom = -391.0
 theme_override_font_sizes/font_size = 50
-text = "Last time"
+text = "Previous Best"
 
 [node name="CurrentText" type="Label" parent="RightBackground/BannerBackground"]
 layout_mode = 0

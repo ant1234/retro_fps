@@ -158,6 +158,8 @@ func _show_previous_best(subject: String):
 		rarity.visible = true
 		bonus.visible = true
 		total.visible = true
+		previous_photo.visible = true
+		previous_text.visible = true
 		size_previous_score.text = str(prev.get("size", 0))
 		pose_previous_score.text = str(prev.get("pose", 0))
 		rarity_previous_score.text = str(prev.get("rareness", 0) * 100)
@@ -168,9 +170,12 @@ func _show_previous_best(subject: String):
 		for child in previous_photo.get_children():
 			child.queue_free()
 		var img_path = PHOTO_DIR + "/" + prev.get("__image_file", "")
+		print('Image path : ', img_path)
 		if FileAccess.file_exists(img_path):
+			print('Image exists')
 			var img = Image.new()
 			if img.load(img_path) == OK:
+				print('Image loaded')
 				var tex = ImageTexture.create_from_image(img)
 				var tex_rect = TextureRect.new()
 				tex_rect.texture = tex
