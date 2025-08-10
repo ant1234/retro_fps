@@ -17,9 +17,23 @@ var pose_score: int = 0
 var rarity_score = 0
 var bonus_score: int = 0
 var total_score: int = 0
+var size_previous_score: int = 0
+var pose_previous_score: int = 0
+var rarity_previous_score = 0
+var bonus_previous_score: int = 0
+var total_previous_score: int = 0
+
+var prev_size_score = null
+var prev_pose_score = null
+var prev_rarity_score = null
+var prev_bonus_score = null
+var prev_total_score = null
+
+
 var intro_dialogue_shown := false
 var returning_from_totals := false
 var control_room_dialogue_shown := false
+
 
 func set_selected_stage(stage_name: String) -> void:
 	selected_stage = stage_name

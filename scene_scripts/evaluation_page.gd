@@ -42,7 +42,7 @@ func _ready():
 
 	DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
 
-	_load_last_evaluated() # 🆕 load persistent scores
+	_load_last_evaluated()
 	_load_badged_photos()
 
 	if badge_photos.size() > 0:
@@ -51,7 +51,6 @@ func _ready():
 		_show_dialogue("empty")
 
 func _on_dialogue_finished(_res = null):
-	# 🆕 After dialogue finishes, update persistent best score
 	_update_last_evaluated()
 	current_index += 1
 	_evaluate_next_photo()
@@ -83,7 +82,7 @@ func _load_badged_photos():
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
 	while file_name != "":
-		if file_name.ends_with(".json") and file_name != "last_evaluated.json": # avoid loading persistent file
+		if file_name.ends_with(".json") and file_name != "last_evaluated.json":
 			var file_path = META_DIR + "/" + file_name
 			var file = FileAccess.open(file_path, FileAccess.READ)
 			if file:
@@ -132,7 +131,7 @@ func _evaluate_next_photo():
 	GameState.total_score = current_total
 	current_data["total"] = current_total
 
-	# Save back to original photo JSON
+	# Save updated photo JSON
 	var file_path = current_data.get("__file_path", "")
 	if file_path != "":
 		var file = FileAccess.open(file_path, FileAccess.WRITE)
@@ -140,9 +139,7 @@ func _evaluate_next_photo():
 			file.store_string(JSON.stringify(current_data, "\t"))
 			file.close()
 
-	# 🆕 Load and show previous best if it exists
 	_show_previous_best(subject)
-
 	_show_dialogue("reveal_all")
 
 func _show_previous_best(subject: String):
@@ -152,30 +149,21 @@ func _show_previous_best(subject: String):
 			prev = entry
 			break
 	if prev:
-		# Set labels for previous score
-		size.visible = true
-		pose.visible = true
-		rarity.visible = true
-		bonus.visible = true
-		total.visible = true
+		GameState.prev_size_score = prev.get("size", 0)
+		GameState.prev_pose_score = prev.get("pose", 0)
+		GameState.prev_rarity_score = prev.get("rareness", 0) * 100
+		GameState.prev_bonus_score = prev.get("bonus", 1)
+		GameState.prev_total_score = prev.get("total", 0)
+
 		previous_photo.visible = true
 		previous_text.visible = true
-		size_previous_score.text = str(prev.get("size", 0))
-		pose_previous_score.text = str(prev.get("pose", 0))
-		rarity_previous_score.text = str(prev.get("rareness", 0) * 100)
-		bonus_previous_score.text = str(prev.get("bonus", 1)) + "x"
-		total_previous_score.text = str(prev.get("total", 0)) + "pts"
 
-		# Load previous photo image
 		for child in previous_photo.get_children():
 			child.queue_free()
 		var img_path = PHOTO_DIR + "/" + prev.get("__image_file", "")
-		print('Image path : ', img_path)
 		if FileAccess.file_exists(img_path):
-			print('Image exists')
 			var img = Image.new()
 			if img.load(img_path) == OK:
-				print('Image loaded')
 				var tex = ImageTexture.create_from_image(img)
 				var tex_rect = TextureRect.new()
 				tex_rect.texture = tex
@@ -183,6 +171,15 @@ func _show_previous_best(subject: String):
 				tex_rect.size = Vector2(330, 330)
 				tex_rect.stretch_mode = TextureRect.StretchMode.STRETCH_KEEP_ASPECT_CENTERED
 				previous_photo.add_child(tex_rect)
+	else:
+		# Hide previous completely if no previous photo exists
+		GameState.prev_size_score = null
+		GameState.prev_pose_score = null
+		GameState.prev_rarity_score = null
+		GameState.prev_bonus_score = null
+		GameState.prev_total_score = null
+		previous_photo.visible = false
+		previous_text.visible = false
 
 func _update_last_evaluated():
 	var subject = current_data.get("subject_name", "")
@@ -222,6 +219,8 @@ func _clear_ui():
 		child.queue_free()
 	for child in previous_photo.get_children():
 		child.queue_free()
+	previous_photo.visible = false
+	previous_text.visible = false
 
 func _load_current_photo_image():
 	var image_filename = current_data.get("__image_file", "")
@@ -252,21 +251,41 @@ func _show_dialogue(key: String):
 			DialogueManager.show_dialogue_balloon(res, key)
 
 func show_size_score():
+	if GameState.prev_size_score != null:
+		size_previous_score.text = str(GameState.prev_size_score)
+	else:
+		size_previous_score.text = ""
 	size.visible = true
 	size_current_score.text = str(GameState.size_score)
 
 func show_pose_score():
+	if GameState.prev_pose_score != null:
+		pose_previous_score.text = str(GameState.prev_pose_score)
+	else:
+		pose_previous_score.text = ""
 	pose.visible = true
 	pose_current_score.text = str(GameState.pose_score)
 
 func show_rarity_score():
+	if GameState.prev_rarity_score != null:
+		rarity_previous_score.text = str(GameState.prev_rarity_score)
+	else:
+		rarity_previous_score.text = ""
 	rarity.visible = true
 	rarity_current_score.text = str(GameState.rarity_score)
 
 func show_bonus_score():
+	if GameState.prev_bonus_score != null:
+		bonus_previous_score.text = str(GameState.prev_bonus_score) + "x"
+	else:
+		bonus_previous_score.text = ""
 	bonus.visible = true
 	bonus_current_score.text = str(GameState.bonus_score) + "x"
 
 func show_total_score():
+	if GameState.prev_total_score != null:
+		total_previous_score.text = str(GameState.prev_total_score) + "pts"
+	else:
+		total_previous_score.text = ""
 	total.visible = true
 	total_current_score.text = str(GameState.total_score) + "pts"
