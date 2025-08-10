@@ -169,9 +169,6 @@ func _count_subject_name(subject: String) -> int:
 func _on_to_mark_page():
 	if _any_photo_marked():
 		SceneRouter.goto_scene("res://scenes/evaluation_page.tscn")
-	else:
-		# Optionally show a warning or dialog here to inform user to mark at least one photo
-		print("Please mark at least one photo before proceeding.")
 		
 func _any_photo_marked() -> bool:
 	for entry in photo_data:

@@ -29,7 +29,6 @@ func _on_mark_page_pressed():
 	_mark_photo_and_clear_others()
 
 func _mark_photo_and_clear_others():
-	print("==> _mark_photo_and_clear_others started")
 	var selected_meta = GameState.selected_photo_meta
 	var selected_path = GameState.selected_photo_path
 	var selected_subject = selected_meta.get("subject_name", null)
@@ -39,8 +38,6 @@ func _mark_photo_and_clear_others():
 		return
 
 	var selected_json_name = selected_path.get_file().replace(".png", ".json")
-	print("Selected photo:", selected_json_name)
-	print("Subject name:", selected_subject)
 
 	# Update JSON badge files on disk
 	var dir = DirAccess.open(META_DIR)
@@ -59,7 +56,6 @@ func _mark_photo_and_clear_others():
 			continue
 
 		var file_path = META_DIR + "/" + file_name
-		print("--- Checking file:", file_path)
 
 		var file = FileAccess.open(file_path, FileAccess.READ)
 		if file:
@@ -70,13 +66,9 @@ func _mark_photo_and_clear_others():
 			if typeof(data) == TYPE_DICTIONARY:
 				var subject = data.get("subject_name", "")
 				var existing_badge = data.get("badge", false)
-				print(" - subject_name:", subject)
-				print(" - existing badge:", existing_badge)
 
 				if subject == selected_subject:
 					var is_current = file_name == selected_json_name
-					print(" - Matches selected subject.")
-					print(" - Is current file?:", is_current)
 
 					if existing_badge != is_current:
 						data["badge"] = is_current
@@ -84,25 +76,14 @@ func _mark_photo_and_clear_others():
 						if out_file:
 							out_file.store_string(JSON.stringify(data, "\t"))
 							out_file.close()
-							print(" - Updated badge to", is_current, "in", file_name)
-						else:
-							printerr(" - Failed to open for write:", file_path)
-					else:
-						print(" - Badge already correct. No write needed.")
-				else:
-					print(" - Different subject. Skipping.")
 			else:
 				printerr(" - Failed to parse JSON or data is not a dictionary in", file_name)
 		else:
 			printerr(" - Failed to open for read:", file_path)
 
 	dir.list_dir_end()
-
-	print("Reloading in-memory photo data after badge update...")
 	_load_all_photos_for_subject()
 	_load_selected_photo()
-
-	print("Finished badge update.")
 	call_deferred("_delayed_update_button")
 
 
@@ -179,8 +160,6 @@ func _on_to_evaluation_page_pressed():
 	# Added safety: only go if at least one photo marked
 	if _any_photo_marked():
 		SceneRouter.goto_scene("res://scenes/evaluation_page.tscn")
-	else:
-		print("Please mark at least one photo before proceeding.")
 
 func _load_all_photos_for_subject():
 	var selected_meta = GameState.selected_photo_meta
@@ -242,13 +221,10 @@ func _load_photo_by_index():
 
 func _update_mark_page_button() -> void:
 	var any_marked = _any_photo_marked()
-	print("_update_mark_page_button called. Any photo marked? ", any_marked)
 	mark_page.disabled = not any_marked
-	print("mark_page.disabled set to ", mark_page.disabled)
 
 # --- NEW function to check if any photo is marked with badge: true ---
 func _any_photo_marked() -> bool:
-	print("Checking if any photo is marked (badge = true)...")
 	var dir = DirAccess.open(META_DIR)
 	if not dir:
 		printerr("Failed to open metadata directory for badge check.")
@@ -272,22 +248,16 @@ func _any_photo_marked() -> bool:
 			var data = JSON.parse_string(text)
 			if typeof(data) == TYPE_DICTIONARY:
 				var badge = data.get("badge", false)
-				print(" - File:", file_name, "badge:", badge)
 				if badge == true:
 					dir.list_dir_end()
-					print("Found a photo marked with badge = true.")
 					return true
 	dir.list_dir_end()
-	print("No photos marked with badge = true found.")
 	return false
 
 	
 func _delayed_update_button() -> void:
-	print("_delayed_update_button started, waiting 0.1 seconds...")
 	await get_tree().create_timer(0.1).timeout
-	print("_delayed_update_button timer finished, updating UI...")
 	_load_all_photos_for_subject()
 	_load_selected_photo()
 	_update_mark_page_button()
-	print("_delayed_update_button finished.")
 	
