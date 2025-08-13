@@ -54,9 +54,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle water and land movement
 	if in_water:
-		
-		print('is in water?')
-		
+				
 		# Apply water resistance and swim force (no camera alignment adjustment)
 		character_body.velocity += move_dir * get_move_speed() * delta
 
@@ -64,7 +62,7 @@ func _physics_process(delta: float) -> void:
 			character_body.velocity.y += swim_up_speed * delta
 		else:
 			# Apply slow sinking/gravity
-			character_body.velocity.y -= gravity * 0.1 * delta
+			character_body.velocity.y -= gravity * 0.01 * delta
 
 		# Gentle drag to reduce momentum
 		character_body.velocity.x = lerp(character_body.velocity.x, 0.0, 1.5 * delta)

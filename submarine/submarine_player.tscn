@@ -467,6 +467,8 @@ _data = {
 }
 
 [node name="SubmarinePlayer" type="CharacterBody3D" groups=["player"]]
+collision_layer = 6
+collision_mask = 3
 script = ExtResource("1_c0ouq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -527,7 +529,7 @@ libraries = {
 }
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 0, 5.5, 6)
+transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 0, 5.12962, 4.97057)
 
 [node name="FirePoint" type="Node3D" parent="Camera3D"]
 unique_name_in_owner = true
@@ -822,7 +824,7 @@ ammo = 1
 transform = Transform3D(0.998174, -0.0520781, -0.0305889, 0.0544449, 0.995106, 0.0824581, 0.026145, -0.083973, 0.996125, 0.0544804, 0.307876, 0.605866)
 
 [node name="ViewFinder" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics" instance=ExtResource("27_wwnii")]
-transform = Transform3D(-0.999954, 0.001759, -0.00939901, 0.00567892, 0.900057, -0.435734, 0.00769319, -0.435766, -0.900027, 0.953, 1.223, -0.361)
+transform = Transform3D(-0.999954, 0.00175899, -0.00939901, 0.00567892, 0.900056, -0.435734, 0.00769319, -0.435766, -0.900027, 0.953, 1.223, -0.361)
 
 [node name="cilindro_low1" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS" index="0"]
 layers = 2
