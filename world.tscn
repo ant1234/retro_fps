@@ -1,10 +1,10 @@
 [gd_scene load_steps=125 format=3 uid="uid://cr774sksons2f"]
 
 [ext_resource type="PackedScene" uid="uid://dovc0methr37k" path="res://environment/rock_boulder.tscn" id="1_icxn4"]
-[ext_resource type="PackedScene" uid="uid://dmr124nsouefn" path="res://characters/player/player.tscn" id="1_udsn1"]
 [ext_resource type="PackedScene" uid="uid://btrct7bmnno5j" path="res://environment/rock_cliff.tscn" id="2_jw0dc"]
 [ext_resource type="PackedScene" uid="uid://vn1bwbqig364" path="res://environment/rock_pillar.tscn" id="3_2ngro"]
 [ext_resource type="PackedScene" uid="uid://d2x8tg0dnc24d" path="res://environment/sand.tscn" id="4_6vxsd"]
+[ext_resource type="PackedScene" uid="uid://cbv8l2gqlkmtk" path="res://submarine/submarine_player.tscn" id="5_x6dsx"]
 [ext_resource type="PackedScene" uid="uid://bmjn4e75mnrrd" path="res://characters/enemies/bird_monster/bird_monster.tscn" id="6_vnm2c"]
 [ext_resource type="PackedScene" uid="uid://b8r6odxwtmy0r" path="res://characters/enemies/reptile_monster/reptile_monster.tscn" id="8_4e18j"]
 [ext_resource type="PackedScene" uid="uid://b0xdsx7f4lkrm" path="res://fish/flocking_manager.tscn" id="8_ontqe"]
@@ -390,12 +390,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5413, -15.6041, 51.605)
 [node name="RockPillar3" parent="Enviroment" instance=ExtResource("3_2ngro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5413, -15.6041, 51.605)
 
+[node name="SubmarinePlayer" parent="." groups=["player"] instance=ExtResource("5_x6dsx")]
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 visible = false
 navigation_mesh = SubResource("NavigationMesh_3a2pe")
-
-[node name="Player" parent="." instance=ExtResource("1_udsn1")]
-transform = Transform3D(-0.122898, -0.0303317, 0.991957, -0.0507095, 0.99842, 0.0242461, -0.991123, -0.0473217, -0.124242, -12.4891, -3.65239, -10.0108)
 
 [node name="BirdMonster" parent="." instance=ExtResource("6_vnm2c")]
 transform = Transform3D(-0.878684, 0, 0.477404, 0, 1, 0, -0.477404, 0, -0.878684, 13.8361, -0.177008, -25.9791)
@@ -408,7 +407,7 @@ transform = Transform3D(-0.999921, 0, -0.0125836, 0, 1, 0, 0.0125836, 0, -0.9999
 [node name="Tuna" type="Node3D" parent="Fish"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1323, -17.8429, 22.0968)
 
-[node name="FlockingManager" parent="Fish/Tuna" node_paths=PackedStringArray("player") instance=ExtResource("8_ontqe")]
+[node name="FlockingManager" parent="Fish/Tuna" instance=ExtResource("8_ontqe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.94947)
 fish_number = 20
 swim_limits = Vector3(20, 10, 20)
@@ -417,34 +416,31 @@ fish_max_speed = 0.2
 neighbourhood_distance = 50.0
 rotation_speed = 2.0
 depth_level = -30.0
-player = NodePath("../../../Player")
 max_fish = 2
 
 [node name="Hammer_Head_Shark" type="Node3D" parent="Fish"]
 
-[node name="FlockingManager" type="Node3D" parent="Fish/Hammer_Head_Shark" node_paths=PackedStringArray("player")]
+[node name="FlockingManager" type="Node3D" parent="Fish/Hammer_Head_Shark"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("10_atvss")
 fish_number = 5
 swim_limits = Vector3(20, 10, 20)
 depth_level = -35.0
-player = NodePath("../../../Player")
 max_fish = 5
 
 [node name="Porbeagle_Shark" type="Node3D" parent="Fish"]
 
-[node name="FlockingManager" type="Node3D" parent="Fish/Porbeagle_Shark" node_paths=PackedStringArray("player")]
+[node name="FlockingManager" type="Node3D" parent="Fish/Porbeagle_Shark"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("11_w0vny")
 fish_number = 5
 swim_limits = Vector3(20, 10, 20)
 depth_level = -45.0
-player = NodePath("../../../Player")
 max_fish = 5
 
 [node name="Emperor_Angelfish" type="Node3D" parent="Fish"]
 
-[node name="FlockingManager" type="Node3D" parent="Fish/Emperor_Angelfish" node_paths=PackedStringArray("player")]
+[node name="FlockingManager" type="Node3D" parent="Fish/Emperor_Angelfish"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00824922, -4.76837e-07, -0.00450683)
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("12_oxec3")
@@ -453,93 +449,83 @@ fish_min_speed = 0.5
 fish_max_speed = 1.0
 neighbourhood_distance = 50.0
 depth_level = -25.0
-player = NodePath("../../../Player")
 max_fish = 2
 
-[node name="Striped_Sweetlips" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Striped_Sweetlips" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("14_rp1wf")
 fish_number = 0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Auriga_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Auriga_Butterflyfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("15_f8ecj")
 fish_number = 0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Bicolor_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Bicolor_Angelfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("16_xqdf5")
 fish_number = 0
 fish_min_speed = 0.2
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Bluecheek_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Bluecheek_Butterflyfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("17_juvaa")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Blueface_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Blueface_Angelfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("18_s1afx")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Blue-striped_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Blue-striped_Angelfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("18_mk7lv")
 fish_number = 0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Blue_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Blue_Tang" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("19_wy6u6")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Brown_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Brown_Tang" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("20_geuo1")
 fish_number = 0
 fish_max_speed = 3.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Chelmon_Rostratus" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Chelmon_Rostratus" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("21_81uhb")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Clown_Butterfly" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Clown_Butterfly" type="Node3D" parent="Fish"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00824976, 0, -0.00450706)
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("22_j2df8")
@@ -547,831 +533,748 @@ fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Clown_Coris" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Clown_Coris" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("23_063i1")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Clownfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Clownfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("24_vice3")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Clownfish1" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Clownfish1" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("25_7vl4d")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Convict_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Convict_Tang" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("26_kmw47")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Coral_Grouper" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Coral_Grouper" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("27_m24j2")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Discus1" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Discus1" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_fbkfr")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Discus2" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Discus2" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_kgbpi")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Discus4" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Discus4" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_r4bew")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Discus5" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Discus5" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_l47j5")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Flame_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Flame_Angelfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("32_ey0jq")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="French_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="French_Angelfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("33_iq7wo")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Fusilier_Fish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Fusilier_Fish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("34_1ri31")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Gem_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Gem_Tang" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("35_vke2d")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Latticed_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Latticed_Butterflyfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("36_n041y")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Lined_Surgeon" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Lined_Surgeon" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("37_fnmnx")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Lionfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Lionfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("38_5qmyl")
 fish_number = 0
 fish_min_speed = 0.2
 fish_max_speed = 0.5
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Masked_Swallowtail_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Masked_Swallowtail_Angelfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("39_3mmbe")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Mauritius_Hogfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Mauritius_Hogfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("40_mtqra")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Millet_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Millet_Butterflyfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("41_0c74g")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Moorish_Idol" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Moorish_Idol" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("42_yjqka")
 fish_number = 0
 fish_min_speed = 0.2
 fish_max_speed = 0.5
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Pearlscale_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Pearlscale_Butterflyfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("43_wgudq")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Picasso_Triggerfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Picasso_Triggerfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("44_2t2a4")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Plectorhinchus_Lineata" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Plectorhinchus_Lineata" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("45_h301m")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Purple_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Purple_Tang" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("46_4ncji")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Purple_Yellow_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Purple_Yellow_Tang" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("47_pdk8p")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Queen_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Queen_Angelfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("48_4dxcs")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Regal_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Regal_Angelfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("49_33kql")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Ribbon_Sweetlips" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Ribbon_Sweetlips" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("50_inn32")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Roaops_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Roaops_Butterflyfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("51_o78wr")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Rock_Beauty_Angelfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Rock_Beauty_Angelfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("52_yvn1y")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Sailfin_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Sailfin_Tang" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("53_ti4iu")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Sergeant_Fish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Sergeant_Fish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("54_nxwav")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Sohal_Surgeonfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Sohal_Surgeonfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("55_lskyv")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Speckled_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Speckled_Butterflyfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("56_1rbi4")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Spot_Banded_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Spot_Banded_Butterflyfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("57_a2pfi")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Tahitian_Butterflyfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Tahitian_Butterflyfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("58_djm8c")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Yellow_Head_Butterfly" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Yellow_Head_Butterfly" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("59_u4dmc")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Yellow_Snapper" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Yellow_Snapper" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("60_k2bje")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Yellow_Tang_2" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Yellow_Tang_2" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("61_8kegy")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Yellow_Tang" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Yellow_Tang" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("62_6c06n")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Zebrasoma_Desjardinii" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Zebrasoma_Desjardinii" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("63_m2q8r")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Shark" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Shark" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("64_8tnpk")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Humpback_Whale" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Humpback_Whale" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("65_tprcg")
 fish_number = 0
 fish_min_speed = 0.1
 fish_max_speed = 0.3
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Labeotropheus_Trewavasae" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Labeotropheus_Trewavasae" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("66_87d5r")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Manta" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Manta" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("67_a8tou")
 swim_limits = Vector3(10, 0, 10)
 fish_min_speed = 0.3
 fish_max_speed = 0.7
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
 [node name="Starfish" type="Node3D" parent="Fish"]
 
-[node name="Sunfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Sunfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("68_0rns2")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Synodontis_Eupterus" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Synodontis_Eupterus" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("69_syak5")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Titan_Triggerfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Titan_Triggerfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("70_u26f1")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Trumpetfish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Trumpetfish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("71_gsikd")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 1.2
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Tylosaurus" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Tylosaurus" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("72_3pa3h")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.5
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Whitefish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Whitefish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("73_7ps7x")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="White_Grunt" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="White_Grunt" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("74_4yrqv")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="White_Mullet" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="White_Mullet" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("75_5pagh")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Yellowfin_Tuna" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Yellowfin_Tuna" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("76_fouow")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Giant_Sea_Bass" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Giant_Sea_Bass" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_qhi0g")
 fish_number = 0
 fish_min_speed = 0.2
 fish_max_speed = 0.6
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Sea_Turtle" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Sea_Turtle" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_tvwx6")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.6
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
 [node name="Macrobrachium_Rosenbergii" type="Node3D" parent="Fish"]
 
-[node name="Angler_Fish" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Angler_Fish" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_gpd81")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.7
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Southern_Keeled_Octopus" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Southern_Keeled_Octopus" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_1y2ej")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.6
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Leopard_Catshark" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Leopard_Catshark" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_1dlam")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.6
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Eagle_Ray" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Eagle_Ray" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_eqk72")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.6
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Arapaima" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Arapaima" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_mi3yj")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.6
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Green_Puffer" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Green_Puffer" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_mad5i")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Stringray" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Stringray" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_8wxh2")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Squid" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Squid" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_uyg3e")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.6
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Fangtooth" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Fangtooth" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_26y5o")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 2.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Basking_Shark" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Basking_Shark" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_mfbjl")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.6
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Beluga" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Beluga" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_j4d5b")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.7
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Blue_Shark" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Blue_Shark" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_4kkpc")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.7
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Bull_Shark" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Bull_Shark" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_vc3cg")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.7
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Cuvier_Whale" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Cuvier_Whale" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_pyvcb")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.6
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Fin_Whale" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Fin_Whale" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_k1blb")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.7
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Killer_Whale" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Killer_Whale" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_s3o6c")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Dolphin" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Dolphin" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_htejq")
 fish_number = 0
 fish_min_speed = 0.4
 fish_max_speed = 1.0
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Long_Finned_Pilot_Whale" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Long_Finned_Pilot_Whale" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_1oqoc")
 fish_number = 0
 fish_min_speed = 0.2
 fish_max_speed = 0.5
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Manatee" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Manatee" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_6vbyg")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.5
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Pantropical_Spotted_Dolphin" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Pantropical_Spotted_Dolphin" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_nvknk")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.6
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Risso_Dolphin" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Risso_Dolphin" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_oyq2l")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.6
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Sperm_Whale" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Sperm_Whale" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_8b25f")
 fish_number = 0
 fish_min_speed = 0.2
 fish_max_speed = 0.4
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Steno_Dolphin" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Steno_Dolphin" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_typy5")
 fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 1.5
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Whale_Shark" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Whale_Shark" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_nadp2")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.7
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Dunkleosteus" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Dunkleosteus" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_wg0x0")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.7
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
-[node name="Angler_Fish2" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
+[node name="Angler_Fish2" type="Node3D" parent="Fish"]
 script = ExtResource("9_5xtdf")
 fish_prefab = SubResource("Resource_1q4o8")
 fish_number = 0
 fish_min_speed = 0.3
 fish_max_speed = 0.7
 depth_level = -25.0
-player = NodePath("../../Player")
 max_fish = 0
 
 [node name="Pickups" type="Node3D" parent="."]
