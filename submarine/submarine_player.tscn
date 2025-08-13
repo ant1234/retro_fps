@@ -466,7 +466,7 @@ _data = {
 "fade_in": SubResource("Animation_tci0h")
 }
 
-[node name="SubmarinePlayer" type="CharacterBody3D"]
+[node name="SubmarinePlayer" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_c0ouq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

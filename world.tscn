@@ -390,7 +390,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5413, -15.6041, 51.605)
 [node name="RockPillar3" parent="Enviroment" instance=ExtResource("3_2ngro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5413, -15.6041, 51.605)
 
-[node name="SubmarinePlayer" parent="." groups=["player"] instance=ExtResource("5_x6dsx")]
+[node name="SubmarinePlayer" parent="." instance=ExtResource("5_x6dsx")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -25, -11.3128, 12)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 visible = false

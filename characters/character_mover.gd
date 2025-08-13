@@ -1,4 +1,5 @@
 class_name CharacterMover extends Node3D
+@onready var submarine_player: CharacterBody3D = $".."
 
 @export var jump_force = 15.0
 @export var gravity = 30.0
@@ -44,15 +45,18 @@ func jump():
 func _is_in_water() -> bool:
 	# Determine if currently overlapping any water areas
 	for area in get_tree().get_nodes_in_group("water_area"):
-		if area.overlaps_body(character_body):
+		if area.overlaps_body(submarine_player):
 			return true
 	return false
 
 func _physics_process(delta: float) -> void:
 	in_water = _is_in_water()
-
+	
 	# Handle water and land movement
 	if in_water:
+		
+		print('is in water?')
+		
 		# Apply water resistance and swim force (no camera alignment adjustment)
 		character_body.velocity += move_dir * get_move_speed() * delta
 
