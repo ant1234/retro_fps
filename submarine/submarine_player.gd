@@ -31,17 +31,22 @@ func _input(event):
 	if dead:
 		return
 	if event is InputEventMouseMotion:
+		# Yaw (turn left/right) - applied to whole submarine
 		rotation_degrees.y -= event.relative.x * mouse_sensitivity_h
-		camera_3d.rotation_degrees.x -= event.relative.y * mouse_sensitivity_v
-		camera_3d.rotation_degrees.x = clamp(camera_3d.rotation_degrees.x, -90, 90)
+		
+		# Pitch (look up/down) - also applied to whole submarine
+		rotation_degrees.x -= event.relative.y * mouse_sensitivity_v
+		rotation_degrees.x = clamp(rotation_degrees.x, -45, 45) # adjust clamp for your needs
+		
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			weapon_manager.switch_to_previous_weapon()
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			weapon_manager.switch_to_next_weapon()
+			
 	if event is InputEventKey and event.pressed and event.keycode in HOTKEYS:
 		weapon_manager.switch_to_weapon_slot(HOTKEYS[event.keycode])
-					
+		
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()

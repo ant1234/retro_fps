@@ -525,7 +525,7 @@ libraries = {
 }
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 0, 5.12962, 4.97057)
+transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 0, 3.95785, 4.02263)
 
 [node name="FirePoint" type="Node3D" parent="Camera3D"]
 unique_name_in_owner = true
