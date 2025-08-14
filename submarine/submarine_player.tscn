@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://cbv8l2gqlkmtk"]
+[gd_scene load_steps=81 format=3 uid="uid://cbv8l2gqlkmtk"]
 
 [ext_resource type="Script" path="res://submarine/submarine_player.gd" id="1_c0ouq"]
 [ext_resource type="PackedScene" uid="uid://cjoap0c66ph4t" path="res://submarine/HoverVehicle.glb" id="1_istpc"]
@@ -33,11 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://crg5iru2enuy1" path="res://weapons/camera/CameraOverlay.tscn" id="30_kwhsf"]
 [ext_resource type="AudioStream" uid="uid://b0e5axuhyaeie" path="res://sfx/weapons/camera-shutter-click-01.wav" id="30_logsu"]
 [ext_resource type="PackedScene" uid="uid://cx8cr7xij0wq" path="res://characters/character_mover.tscn" id="31_e2h7y"]
-[ext_resource type="AudioStream" uid="uid://clbt1guq1afek" path="res://sfx/player/player_jump.wav" id="32_vadx0"]
 [ext_resource type="Script" path="res://characters/player/step_tracker.gd" id="33_jxhu0"]
-[ext_resource type="Script" path="res://sfx/play_random_sound.gd" id="34_ah381"]
-[ext_resource type="AudioStream" uid="uid://dbygicikuh1nf" path="res://sfx/steps/step_1.wav" id="35_y4taj"]
-[ext_resource type="AudioStream" uid="uid://b4ghcfh068r6u" path="res://sfx/steps/step_2.wav" id="36_4tb2l"]
 [ext_resource type="PackedScene" uid="uid://bih2mq0xv62mg" path="res://characters/health_manager.tscn" id="37_kwsoi"]
 [ext_resource type="AudioStream" uid="uid://ba3dmvrho7u8t" path="res://sfx/player/player_hurt.wav" id="38_uroox"]
 [ext_resource type="AudioStream" uid="uid://5bb6lw0roh3c" path="res://sfx/player/player_die.wav" id="39_bmaj5"]
@@ -897,26 +893,10 @@ shape = SubResource("SphereShape3D_ff1kv")
 enabled = false
 
 [node name="CharacterMover" parent="." instance=ExtResource("31_e2h7y")]
-
-[node name="JumpSound" type="AudioStreamPlayer" parent="CharacterMover"]
-stream = ExtResource("32_vadx0")
-bus = &"Sfx"
+gravity = 100.0
 
 [node name="StepTracker" type="Node3D" parent="CharacterMover"]
 script = ExtResource("33_jxhu0")
-
-[node name="StepSounds" type="Node3D" parent="CharacterMover/StepTracker"]
-script = ExtResource("34_ah381")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CharacterMover/StepTracker/StepSounds"]
-stream = ExtResource("35_y4taj")
-volume_db = -8.0
-bus = &"Sfx"
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="CharacterMover/StepTracker/StepSounds"]
-stream = ExtResource("36_4tb2l")
-volume_db = -8.0
-bus = &"Sfx"
 
 [node name="HealthManager" parent="." instance=ExtResource("37_kwsoi")]
 unique_name_in_owner = true
