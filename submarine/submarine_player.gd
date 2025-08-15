@@ -35,7 +35,7 @@ func _input(event):
 		rotation_degrees.y -= event.relative.x * mouse_sensitivity_h
 		
 		# Pitch (look up/down) - also applied to whole submarine
-		rotation_degrees.x -= event.relative.y * mouse_sensitivity_v
+		rotation_degrees.x += event.relative.y * mouse_sensitivity_v
 		rotation_degrees.x = clamp(rotation_degrees.x, -45, 45) # adjust clamp for your needs
 		
 	if event is InputEventMouseButton and event.pressed:
