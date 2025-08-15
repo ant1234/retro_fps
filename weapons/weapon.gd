@@ -37,16 +37,24 @@ func _ready() -> void:
 
 # Camera input with animation fallback
 func _input(event):
-	if Input.is_action_just_pressed("raise_camera"):
-		play_animation_safe("raise_camera")
-		CameraInUse = true
+	# Right mouse (raise_camera action) controls showing the reticle
+	if Input.is_action_pressed("raise_camera"):
+		if not CameraInUse:
+			CameraInUse = true
+			show_reticle(true)
+	else:
+		if CameraInUse:
+			CameraInUse = false
+			show_reticle(false)
 
-	if Input.is_action_just_released("raise_camera"):
-		play_animation_backwards_safe("raise_camera")
-		CameraInUse = false
-
+	# Left mouse (attack action) takes the picture if reticle is up
 	if Input.is_action_just_pressed("attack") and CameraInUse:
 		TakePhoto()
+		
+func show_reticle(state: bool):
+	var crosshairs = get_node_or_null("Crosshairs")
+	if crosshairs:
+		crosshairs.visible = state
 
 func play_animation_safe(anim_name: String):
 	if animation_player.has_animation(anim_name):

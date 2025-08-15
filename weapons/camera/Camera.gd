@@ -1,70 +1,102 @@
 extends Control
 
 var FileName = "photo"
+@onready var main_camera : Camera3D = $"../../../../../../../.."
 
 func _ready():
 	CreatePhotoDir()
 
 func SavePhoto():
-	var camera_viewport: Viewport = $".."
-	var overlay := camera_viewport.get_node("CameraOverlay")
-	var overlay_was_visible: bool = overlay.visible
+	print("--- SavePhoto() called ---")
 
-	# Hide overlay for screenshot
-	overlay.visible = false
+	var main_viewport: Viewport = get_viewport()
+	print("Got main viewport:", main_viewport)
+
+	if main_camera == null:
+		push_error("No player camera found in 'player_camera' group")
+		print("❌ No player camera found in 'player_camera' group — aborting")
+		return
+	print("Main camera found:", main_camera.name)
+
+	# Hide reticle if it exists
+	var reticle := get_node_or_null("../HUD/Crosshairs")
+	var reticle_was_visible := false
+	if reticle:
+		reticle_was_visible = reticle.visible
+		reticle.visible = false
+		print("Hid reticle for screenshot")
+
 	await get_tree().process_frame
+	print("Waited 1 frame before capture")
 
-	# Capture photo
-	var image: Image = camera_viewport.get_texture().get_image()
-	overlay.visible = overlay_was_visible
+	# Capture from main viewport
+	var texture := main_viewport.get_texture()
+	if texture == null:
+		print("❌ Viewport has no texture — cannot capture")
+		return
+	var image: Image = texture.get_image()
+	print("Captured image size:", image.get_size())
 
+	# Restore reticle
+	if reticle:
+		reticle.visible = reticle_was_visible
+		print("Restored reticle visibility to:", reticle_was_visible)
+
+	# Save image
 	var photo_index = Helper.PhotosTaken
 	var photo_base_path = "user://photos/photo" + str(photo_index)
 	var err = image.save_png(photo_base_path + ".png")
 	if err != OK:
+		print("❌ Failed to save image:", err)
 		return
+	print("✅ Saved photo:", photo_base_path + ".png")
 
+	# Reset and collect metadata
 	Helper.LastPhotoMetadata = {}
-	var viewport_camera: Camera3D = $"../ViewportCamera"
-	if is_instance_valid(viewport_camera):
-		var screen_size = camera_viewport.get_visible_rect().size
-		var from = viewport_camera.project_ray_origin(screen_size / 2)
-		var to = from + viewport_camera.project_ray_normal(screen_size / 2) * 100.0
+	var screen_size = main_viewport.get_visible_rect().size
+	print("Screen size:", screen_size)
 
-		var query = PhysicsRayQueryParameters3D.new()
-		query.from = from
-		query.to = to
-		query.collide_with_areas = true
-		query.collide_with_bodies = true
+	var from = main_camera.project_ray_origin(screen_size / 2)
+	var to = from + main_camera.project_ray_normal(screen_size / 2) * 100.0
+	print("Ray from:", from, " to:", to)
 
-		var space_state = viewport_camera.get_world_3d().direct_space_state
-		var result = space_state.intersect_ray(query)
+	var query = PhysicsRayQueryParameters3D.new()
+	query.from = from
+	query.to = to
+	query.collide_with_areas = true
+	query.collide_with_bodies = true
 
-		if result:
-			var collider = result.get("collider")
-			var subject_node = collider.get_node_or_null("PhotoSubject")
-			if not subject_node:
-				subject_node = collider.find_child("PhotoSubject", true, false)
+	var space_state = main_camera.get_world_3d().direct_space_state
+	var result = space_state.intersect_ray(query)
+	print("Raycast result:", result)
 
-			if subject_node:
-				Helper.LastPhotoMetadata = {
-					"subject_name": subject_node.subject_name,
-					"description": subject_node.description,
-					"rareness": subject_node.rareness
-				}
-				subject_node.set_meta("_printed", true)
+	if result:
+		var collider = result.get("collider")
+		print("Hit collider:", collider)
+		var subject_node = collider.get_node_or_null("PhotoSubject")
+		if not subject_node:
+			subject_node = collider.find_child("PhotoSubject", true, false)
 
-				var size_score = CalculateSubjectSizeScore(subject_node, viewport_camera, screen_size)
-				Helper.LastPhotoMetadata["size"] = size_score
+		if subject_node:
+			print("Found PhotoSubject:", subject_node.name)
+			Helper.LastPhotoMetadata = {
+				"subject_name": subject_node.subject_name,
+				"description": subject_node.description,
+				"rareness": subject_node.rareness
+			}
+			subject_node.set_meta("_printed", true)
 
-				var pose_score = CalculateSubjectPoseScore(subject_node, viewport_camera)
-				Helper.LastPhotoMetadata["pose"] = pose_score
+			var size_score = CalculateSubjectSizeScore(subject_node, main_camera, screen_size)
+			Helper.LastPhotoMetadata["size"] = size_score
 
-				# ✅ Correct bonus method call
-				var bonus_score = CalculateSubjectBonusScore(subject_node, viewport_camera)
-				Helper.LastPhotoMetadata["bonus"] = bonus_score
+			var pose_score = CalculateSubjectPoseScore(subject_node, main_camera)
+			Helper.LastPhotoMetadata["pose"] = pose_score
 
-	# Save metadata to JSON
+			var bonus_score = CalculateSubjectBonusScore(subject_node, main_camera)
+			Helper.LastPhotoMetadata["bonus"] = bonus_score
+			print("Scores → size:", size_score, " pose:", pose_score, " bonus:", bonus_score)
+
+	# Save metadata JSON
 	if Helper.LastPhotoMetadata:
 		for key in Helper.LastPhotoMetadata.keys():
 			print("  ", key, ": ", Helper.LastPhotoMetadata[key])
@@ -75,9 +107,12 @@ func SavePhoto():
 			var json_string = JSON.stringify(Helper.LastPhotoMetadata)
 			file.store_string(json_string)
 			file.close()
+			print("✅ Saved metadata JSON:", json_base_path + ".json")
 
 	Helper.PhotosTaken += 1
-
+	print("PhotosTaken counter incremented to:", Helper.PhotosTaken)
+	print("--- SavePhoto() finished ---")
+  
 func CreatePhotoDir():
 	var dir = DirAccess.open("user://")
 	if dir:
