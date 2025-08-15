@@ -178,6 +178,7 @@ func CalculateSubjectBonusScore(subject_node: Node3D, camera: Camera3D) -> int:
 	var cam_forward := -camera.global_transform.basis.z.normalized()
 
 	var player := get_node_or_null("../../../../../../../../..") # root player
+
 	var player_origin: Vector3 = player.global_transform.origin if player else cam_origin
 
 	var fish_nodes := get_tree().get_nodes_in_group("fish")

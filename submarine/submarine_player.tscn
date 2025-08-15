@@ -466,6 +466,8 @@ _data = {
 collision_layer = 6
 collision_mask = 3
 script = ExtResource("1_c0ouq")
+mouse_sensitivity_h = 0.015
+mouse_sensitivity_v = 0.015
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0138749, -0.999904, 0, 0.999904, 0.0138749, 0.169514, 3.21649, -0.00846538)
