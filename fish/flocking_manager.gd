@@ -14,9 +14,6 @@ extends Node3D
 @export var despawn_radius: float = 80.0
 @export var max_fish: int = 100
 @export var spawn_check_interval: float = 1.0  # seconds
-@export var scatter_distance: float = 10.0  # Minimum distance to submarine
-@export var scatter_strength: float = 5.0   # How fast the fish scatter away
-
 
 var spawn_timer := 0.0
 var frame_counter := 0
@@ -127,7 +124,7 @@ func apply_flocking_rules(fish: Node3D, delta: float):
 		if distance < neighbourhood_distance:
 			v_center += other_fish.position
 			avg_speed += other_fish.swim_speed
-			avg_velocity += other_fish.velocity
+			avg_velocity += other_fish.velocity  # Use velocity directly now
 			group_size += 1
 
 			if distance < neighbourhood_distance / 2:
@@ -159,18 +156,6 @@ func apply_flocking_rules(fish: Node3D, delta: float):
 		fish.swim_speed = clamp(avg_speed, fish_min_speed, fish_max_speed)
 		fish.velocity = fish.velocity.normalized() * fish.swim_speed
 
-	# --- Submarine avoidance / scatter ---
-	if player:
-		var distance_to_player = fish.global_position.distance_to(player.global_position)
-		if distance_to_player < scatter_distance:
-			var away_from_player = (fish.global_position - player.global_position).normalized()
-			var scatter_factor = (scatter_distance - distance_to_player) / scatter_distance
-			fish.velocity += away_from_player * scatter_strength * scatter_factor
-
-	# Clamp and normalize final velocity
-	fish.velocity = fish.velocity.normalized() * fish.swim_speed
-
-	# --- Swim limits box correction ---
 	var relative_pos = fish.position - Vector3(0, depth_level, 0)
 	if abs(relative_pos.x) > swim_limits.x or relative_pos.y > swim_limits.y or abs(relative_pos.z) > swim_limits.z:
 		var to_center = (-relative_pos).normalized()
@@ -179,7 +164,7 @@ func apply_flocking_rules(fish: Node3D, delta: float):
 		var max_turn = rotation_speed * delta
 		var turn_ratio = 1.0 if angle_diff == 0 else clamp(max_turn / angle_diff, 0, 1)
 		var new_velocity_dir = current_velocity.slerp(to_center, turn_ratio)
-		fish.velocity = new_velocity_dir.normalized() * fish.swim_speed
+		fish.velocity = new_velocity_dir * fish.swim_speed
 
 func move_forward(fish: Node3D, delta: float):
 	var new_pos = fish.position + fish.velocity * delta
