@@ -32,7 +32,15 @@ func _ready() -> void:
 
 func _on_body_entered(body):
 	if body.is_in_group("fish"):
-		body.react_to_submarine(global_position)
+		# Remove from its parent manager's all_fish list if present
+		var parent_node: Node = body.get_parent()
+		if parent_node and parent_node.has_method("all_fish"):
+			var maybe_arr = parent_node.get("all_fish")
+			if typeof(maybe_arr) == TYPE_ARRAY:
+				(maybe_arr as Array).erase(body)
+
+		# Queue the fish for deletion safely
+		body.call_deferred("queue_free")
 		
 func _input(event):
 	if dead:
