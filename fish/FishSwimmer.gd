@@ -12,7 +12,6 @@ extends CharacterBody3D
 @export var scatter_radius: float = 12.0
 @export var scatter_duration: float = 3.0
 @export var separation_offset: float = 2.0      # increased to avoid clipping
-@export var removal_radius: float = 2.0
 
 @onready var animation_player: AnimationPlayer = get_node_or_null(animation_player_path)
 
@@ -38,17 +37,6 @@ func _physics_process(delta):
 	if player == null:
 		player = get_tree().get_first_node_in_group("player")
 
-	# --- Remove fish if too close to submarine ---
-	if player:
-		var distance_to_sub = global_position.distance_to(player.global_position)
-		if distance_to_sub < removal_radius:
-			if get_parent() and get_parent().has_method("all_fish"):
-				var manager = get_parent()
-				if self in manager.all_fish:
-					manager.all_fish.erase(self)
-			call_deferred("queue_free")
-			return
-
 	# --- Submarine avoidance / scatter ---
 	if player and not is_scattering:
 		var future_pos = global_position + velocity * delta
@@ -62,7 +50,6 @@ func _physics_process(delta):
 		var distance = offset_vec.length()
 		if distance < separation_offset:
 			global_position = player.global_position + offset_vec.normalized() * separation_offset
-			# push velocity away from submarine
 			velocity = (global_position - player.global_position).normalized() * swim_speed
 
 	# --- Move with collision ---
