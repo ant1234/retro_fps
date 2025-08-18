@@ -8,8 +8,11 @@
 size = Vector3(0.565792, 0.585208, 1.79079)
 
 [node name="Tuna" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_13oyj")
 animation_player_path = NodePath("Graphics/Tuna/AnimationPlayer")
+scatter_distance = 20.0
 
 [node name="PhotoSubject" type="Node3D" parent="."]
 script = ExtResource("2_tp3yn")

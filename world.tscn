@@ -401,13 +401,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1323, -17.8429, 22.0968)
 
 [node name="FlockingManager" parent="Fish/Tuna" node_paths=PackedStringArray("player") instance=ExtResource("8_ontqe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.94947)
+fish_number = 300
 swim_limits = Vector3(20, 10, 20)
 fish_max_speed = 2.0
 neighbourhood_distance = 50.0
 rotation_speed = 2.0
 depth_level = -30.0
 player = NodePath("../../../SubmarinePlayer")
-max_fish = 50
+max_fish = 300
 
 [node name="Hammer_Head_Shark" type="Node3D" parent="Fish"]
 
@@ -437,13 +438,13 @@ max_fish = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00824922, -4.76837e-07, -0.00450683)
 script = ExtResource("9_5xtdf")
 fish_prefab = ExtResource("12_oxec3")
-fish_number = 2
+fish_number = 0
 fish_min_speed = 0.5
 fish_max_speed = 1.0
 neighbourhood_distance = 50.0
 depth_level = -25.0
 player = NodePath("../../../SubmarinePlayer")
-max_fish = 2
+max_fish = 0
 
 [node name="Striped_Sweetlips" type="Node3D" parent="Fish" node_paths=PackedStringArray("player")]
 script = ExtResource("9_5xtdf")
@@ -1366,6 +1367,10 @@ transform = Transform3D(1, 0, 0, 0, 2.1812, 0, 0, 0, 1, -29.726, -53.4446, 9.258
 size = Vector3(39.529, 47.2921, 73.384)
 material = SubResource("StandardMaterial3D_qs43p")
 water_texture_move_speed = Vector3(0.02, 0.002, 0.002)
+
+[node name="SwimmableArea3D" parent="WaterMaker3D" index="0"]
+collision_layer = 8
+collision_mask = 12
 
 [node name="CollisionShape3D" parent="WaterMaker3D/SwimmableArea3D" index="0"]
 shape = SubResource("BoxShape3D_68hyx")

@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var mouse_sensitivity_h = 0.15
 @export var mouse_sensitivity_v = 0.15
 @onready var death_screen: Control = $PlayerUILayer/DeathScreen
+@onready var proximity_area: Area3D = $Area3D
 
 var dead = false
 
@@ -24,9 +25,15 @@ const HOTKEYS = {
 }
 
 func _ready() -> void:
+	proximity_area.connect("body_entered", _on_body_entered)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	health_manager.died.connect(kill)
-	
+
+
+func _on_body_entered(body):
+	if body.is_in_group("fish"):
+		body.react_to_submarine(global_position)
+		
 func _input(event):
 	if dead:
 		return
@@ -76,6 +83,7 @@ func kill():
 	dead = true
 	character_mover.set_move_dir(Vector3.ZERO)
 	death_screen.show_death_screen()
+	
 func hurt(damage_data: DamageData):
 	health_manager.hurt(damage_data)
 			

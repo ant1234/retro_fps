@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://cbv8l2gqlkmtk"]
+[gd_scene load_steps=82 format=3 uid="uid://cbv8l2gqlkmtk"]
 
 [ext_resource type="Script" path="res://submarine/submarine_player.gd" id="1_c0ouq"]
 [ext_resource type="PackedScene" uid="uid://cjoap0c66ph4t" path="res://submarine/HoverVehicle.glb" id="1_istpc"]
@@ -251,7 +251,7 @@ _data = {
 [sub_resource type="FogMaterial" id="FogMaterial_edak8"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_g3rbj"]
-viewport_path = NodePath("Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport")
+viewport_path = NodePath("CameraEOS/CameraViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c3l5d"]
 resource_local_to_scene = true
@@ -462,9 +462,11 @@ _data = {
 "fade_in": SubResource("Animation_tci0h")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_exks0"]
+radius = 9.0
+
 [node name="SubmarinePlayer" type="CharacterBody3D" groups=["player"]]
-collision_layer = 6
-collision_mask = 3
+collision_layer = 4
 script = ExtResource("1_c0ouq")
 mouse_sensitivity_h = 0.015
 mouse_sensitivity_v = 0.015
@@ -1083,6 +1085,14 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_adxql")
 }
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.184762)
+shape = SubResource("SphereShape3D_exks0")
 
 [editable path="CollisionShape3D/HoverVehicle"]
 [editable path="Camera3D/WeaponManager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter"]

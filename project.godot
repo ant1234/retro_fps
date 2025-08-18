@@ -46,6 +46,7 @@ import/blender/enabled=false
 
 player=""
 navigation_mesh_source_group=""
+fish=""
 
 [gui]
 
