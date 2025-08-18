@@ -251,7 +251,7 @@ _data = {
 [sub_resource type="FogMaterial" id="FogMaterial_edak8"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_g3rbj"]
-viewport_path = NodePath("CameraEOS/CameraViewport")
+viewport_path = NodePath("Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c3l5d"]
 resource_local_to_scene = true
@@ -825,6 +825,9 @@ transform = Transform3D(0.998174, -0.0520781, -0.0305889, 0.0544449, 0.995106, 0
 
 [node name="ViewFinder" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics" instance=ExtResource("27_wwnii")]
 transform = Transform3D(-0.999954, 0.00175899, -0.00939901, 0.00567892, 0.900056, -0.435734, 0.00769319, -0.435766, -0.900027, 0.953, 1.223, -0.361)
+
+[node name="CameraEOS" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder" index="2"]
+visible = false
 
 [node name="cilindro_low1" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS" index="0"]
 layers = 2

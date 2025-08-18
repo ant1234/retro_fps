@@ -401,14 +401,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1323, -17.8429, 22.0968)
 
 [node name="FlockingManager" parent="Fish/Tuna" node_paths=PackedStringArray("player") instance=ExtResource("8_ontqe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.94947)
-fish_number = 300
 swim_limits = Vector3(20, 10, 20)
 fish_max_speed = 2.0
 neighbourhood_distance = 50.0
 rotation_speed = 2.0
 depth_level = -30.0
 player = NodePath("../../../SubmarinePlayer")
-max_fish = 300
+max_fish = 50
 
 [node name="Hammer_Head_Shark" type="Node3D" parent="Fish"]
 
