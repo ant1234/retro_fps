@@ -45,7 +45,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yy8pn"]
 radius = 5.43414
-height = 19.4395
+height = 20.0
 
 [sub_resource type="Animation" id="Animation_4qcrf"]
 length = 0.001
@@ -462,9 +462,9 @@ _data = {
 "fade_in": SubResource("Animation_tci0h")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m8i5o"]
-radius = 3.57406
-height = 20.3105
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_okb64"]
+height = 6.10238
+radius = 2.39334
 
 [node name="SubmarinePlayer" type="CharacterBody3D" groups=["player"]]
 collision_layer = 4
@@ -1095,8 +1095,8 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 0.00872656, -0.999962, 0, 0.999962, 0.00872656, 0, 3.41843, -1.31467)
-shape = SubResource("CapsuleShape3D_m8i5o")
+transform = Transform3D(1, 0, 0, 0, 0.00872656, -0.999962, 0, 0.999962, 0.00872656, 0.119244, 3.82402, 4.03686)
+shape = SubResource("CylinderShape3D_okb64")
 
 [editable path="CollisionShape3D/HoverVehicle"]
 [editable path="Camera3D/WeaponManager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter"]
