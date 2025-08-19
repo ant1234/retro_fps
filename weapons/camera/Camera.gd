@@ -9,16 +9,16 @@ func _ready():
 func SavePhoto():
 	print("--- SavePhoto() called ---")
 
-	var main_viewport: Viewport = get_viewport()
-	print("Got main viewport:", main_viewport)
+	# Get photo viewport + camera
+	var camera_viewport: Viewport = $".."
+	var viewport_camera: Camera3D = $"../ViewportCamera"
 
-	if main_camera == null:
-		push_error("No player camera found in 'player_camera' group")
-		print("❌ No player camera found in 'player_camera' group — aborting")
+	if viewport_camera == null:
+		push_error("No viewport camera found")
 		return
-	print("Main camera found:", main_camera.name)
+	print("Viewport camera found:", viewport_camera.name)
 
-	# Hide reticle if it exists
+	# Hide HUD reticle if exists
 	var reticle := get_node_or_null("../HUD/Crosshairs")
 	var reticle_was_visible := false
 	if reticle:
@@ -29,10 +29,10 @@ func SavePhoto():
 	await get_tree().process_frame
 	print("Waited 1 frame before capture")
 
-	# Capture from main viewport
-	var texture := main_viewport.get_texture()
+	# Capture from photo viewport (not main)
+	var texture := camera_viewport.get_texture()
 	if texture == null:
-		print("❌ Viewport has no texture — cannot capture")
+		print("❌ Camera viewport has no texture — cannot capture")
 		return
 	var image: Image = texture.get_image()
 	print("Captured image size:", image.get_size())
@@ -40,9 +40,8 @@ func SavePhoto():
 	# Restore reticle
 	if reticle:
 		reticle.visible = reticle_was_visible
-		print("Restored reticle visibility to:", reticle_was_visible)
 
-	# Save image
+	# Save PNG
 	var photo_index = Helper.PhotosTaken
 	var photo_base_path = "user://photos/photo" + str(photo_index)
 	var err = image.save_png(photo_base_path + ".png")
@@ -51,14 +50,11 @@ func SavePhoto():
 		return
 	print("✅ Saved photo:", photo_base_path + ".png")
 
-	# Reset and collect metadata
+	# Metadata
 	Helper.LastPhotoMetadata = {}
-	var screen_size = main_viewport.get_visible_rect().size
-	print("Screen size:", screen_size)
-
-	var from = main_camera.project_ray_origin(screen_size / 2)
-	var to = from + main_camera.project_ray_normal(screen_size / 2) * 100.0
-	print("Ray from:", from, " to:", to)
+	var screen_size = camera_viewport.get_visible_rect().size
+	var from = viewport_camera.project_ray_origin(screen_size / 2)
+	var to = from + viewport_camera.project_ray_normal(screen_size / 2) * 100.0
 
 	var query = PhysicsRayQueryParameters3D.new()
 	query.from = from
@@ -66,19 +62,14 @@ func SavePhoto():
 	query.collide_with_areas = true
 	query.collide_with_bodies = true
 
-	var space_state = main_camera.get_world_3d().direct_space_state
-	var result = space_state.intersect_ray(query)
-	print("Raycast result:", result)
-
+	var result = viewport_camera.get_world_3d().direct_space_state.intersect_ray(query)
 	if result:
 		var collider = result.get("collider")
-		print("Hit collider:", collider)
 		var subject_node = collider.get_node_or_null("PhotoSubject")
 		if not subject_node:
 			subject_node = collider.find_child("PhotoSubject", true, false)
 
 		if subject_node:
-			print("Found PhotoSubject:", subject_node.name)
 			Helper.LastPhotoMetadata = {
 				"subject_name": subject_node.subject_name,
 				"description": subject_node.description,
@@ -86,33 +77,22 @@ func SavePhoto():
 			}
 			subject_node.set_meta("_printed", true)
 
-			var size_score = CalculateSubjectSizeScore(subject_node, main_camera, screen_size)
-			Helper.LastPhotoMetadata["size"] = size_score
+			Helper.LastPhotoMetadata["size"]  = CalculateSubjectSizeScore(subject_node, viewport_camera, screen_size)
+			Helper.LastPhotoMetadata["pose"]  = CalculateSubjectPoseScore(subject_node, viewport_camera)
+			Helper.LastPhotoMetadata["bonus"] = CalculateSubjectBonusScore(subject_node, viewport_camera)
 
-			var pose_score = CalculateSubjectPoseScore(subject_node, main_camera)
-			Helper.LastPhotoMetadata["pose"] = pose_score
-
-			var bonus_score = CalculateSubjectBonusScore(subject_node, main_camera)
-			Helper.LastPhotoMetadata["bonus"] = bonus_score
-			print("Scores → size:", size_score, " pose:", pose_score, " bonus:", bonus_score)
-
-	# Save metadata JSON
-	if Helper.LastPhotoMetadata:
-		for key in Helper.LastPhotoMetadata.keys():
-			print("  ", key, ": ", Helper.LastPhotoMetadata[key])
-		
-		var json_base_path = "user://photo_json/photo" + str(photo_index)
-		var file = FileAccess.open(json_base_path + ".json", FileAccess.WRITE)
-		if file:
-			var json_string = JSON.stringify(Helper.LastPhotoMetadata)
-			file.store_string(json_string)
-			file.close()
-			print("✅ Saved metadata JSON:", json_base_path + ".json")
+	# Always save JSON
+	var json_base_path = "user://photo_json/photo" + str(photo_index)
+	var file = FileAccess.open(json_base_path + ".json", FileAccess.WRITE)
+	if file:
+		var json_string = JSON.stringify(Helper.LastPhotoMetadata)
+		file.store_string(json_string)
+		file.close()
+		print("✅ Saved metadata JSON:", json_base_path + ".json")
 
 	Helper.PhotosTaken += 1
-	print("PhotosTaken counter incremented to:", Helper.PhotosTaken)
 	print("--- SavePhoto() finished ---")
-  
+
 func CreatePhotoDir():
 	var dir = DirAccess.open("user://")
 	if dir:
