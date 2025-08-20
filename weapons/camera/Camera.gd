@@ -24,7 +24,15 @@ func SavePhoto():
 	if reticle:
 		reticle_was_visible = reticle.visible
 		reticle.visible = false
-		print("Hid reticle for screenshot")
+		print("Hid HUD reticle for screenshot")
+
+	# Hide photo viewport crosshairs if exists
+	var photo_crosshairs := get_node_or_null("../ViewportCamera/Crosshairs")
+	var photo_crosshairs_was_visible := false
+	if photo_crosshairs:
+		photo_crosshairs_was_visible = photo_crosshairs.visible
+		photo_crosshairs.visible = false
+		print("Hid photo viewport crosshairs for screenshot")
 
 	await get_tree().process_frame
 	print("Waited 1 frame before capture")
@@ -37,9 +45,11 @@ func SavePhoto():
 	var image: Image = texture.get_image()
 	print("Captured image size:", image.get_size())
 
-	# Restore reticle
+	# Restore reticle + photo crosshairs
 	if reticle:
 		reticle.visible = reticle_was_visible
+	if photo_crosshairs:
+		photo_crosshairs.visible = photo_crosshairs_was_visible
 
 	# Save PNG
 	var photo_index = Helper.PhotosTaken
