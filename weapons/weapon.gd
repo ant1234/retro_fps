@@ -1,5 +1,4 @@
 extends Node3D
-
 class_name Weapon 
 
 @onready var animation_player: AnimationPlayer = $Graphics/AnimationPlayer
@@ -26,7 +25,6 @@ signal out_of_ammo
 signal ammo_updated(add_ammo: int)
 
 
-
 func _ready() -> void:
 	bullet_emitter.set_damage(damage)
 
@@ -35,26 +33,30 @@ func _ready() -> void:
 	DialogueManager.game_states.append(GameState)
 	DialogueManager.dialogue_ended.connect(to_camera_check)
 
-# Camera input with animation fallback
 func _input(event):
-	# Right mouse (raise_camera action) controls showing the reticle
-	if Input.is_action_pressed("raise_camera"):
-		if not CameraInUse:
-			CameraInUse = true
-			show_reticle(true)
-	else:
-		if CameraInUse:
-			CameraInUse = false
-			show_reticle(false)
+	# Handle camera toggle with right mouse button
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			if event.pressed:
+				CameraInUse = true
+			else:
+				CameraInUse = false
 
-	# Left mouse (attack action) takes the picture if reticle is up
-	if Input.is_action_just_pressed("attack") and CameraInUse:
-		TakePhoto()
-		
+	# Left mouse attack
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and CameraInUse:
+			TakePhoto()
+
+func _process(delta):
+	# Keep reticle in sync every frame
+	show_reticle(CameraInUse)
+
+
 func show_reticle(state: bool):
 	var crosshairs = get_node_or_null("Crosshairs")
 	if crosshairs:
 		crosshairs.visible = state
+
 
 func play_animation_safe(anim_name: String):
 	if animation_player.has_animation(anim_name):
@@ -93,7 +95,6 @@ func attack(input_just_pressed: bool, input_held: bool):
 					has_shown_out_of_ammo_message = true
 		return
 
-	# Reset the flag when player has ammo again
 	has_shown_out_of_ammo_message = false
 
 	var cur_time = Time.get_ticks_msec() / 1000.0
