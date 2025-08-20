@@ -16,6 +16,7 @@ var _taking_photo := false
 var last_attack_time = -9999.9
 var CameraInUse = false
 var has_shown_out_of_ammo_message: bool = false
+var hide_for_screenshot := false
 
 @export var animation_controller_attack = false
 @export var silent_weapon = false
@@ -49,7 +50,7 @@ func _input(event):
 
 func _process(delta):
 	# Keep reticle in sync every frame
-	show_reticle(CameraInUse)
+	show_reticle(CameraInUse and not hide_for_screenshot)
 
 
 func show_reticle(state: bool):

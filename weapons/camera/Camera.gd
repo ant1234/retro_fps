@@ -9,47 +9,59 @@ func _ready():
 func SavePhoto():
 	print("--- SavePhoto() called ---")
 
-	# Get photo viewport + camera
-	var camera_viewport: Viewport = $".."
-	var viewport_camera: Camera3D = $"../ViewportCamera"
-
-	if viewport_camera == null:
-		push_error("No viewport camera found")
+	if not main_camera:
+		push_error("Main camera not set")
 		return
-	print("Viewport camera found:", viewport_camera.name)
 
-	# Hide HUD reticle if exists
-	var reticle := get_node_or_null("../HUD/Crosshairs")
-	var reticle_was_visible := false
-	if reticle:
-		reticle_was_visible = reticle.visible
-		reticle.visible = false
-		print("Hid HUD reticle for screenshot")
+	# --- Hide weapon crosshairs if present ---
+	var weapon := get_node_or_null("../../../../../../../Weapon") # adjust path to your weapon
+	var weapon_reticle_visible := false
+	if weapon:
+		if weapon.has_variable("hide_for_screenshot"):
+			weapon.hide_for_screenshot = true
+		var weapon_crosshairs = weapon.get_node_or_null("Crosshairs")
+		if weapon_crosshairs:
+			weapon_reticle_visible = weapon_crosshairs.visible
+			weapon_crosshairs.visible = false
+			print("Hid weapon crosshairs for screenshot")
 
-	# Hide photo viewport crosshairs if exists
-	var photo_crosshairs := get_node_or_null("../ViewportCamera/Crosshairs")
-	var photo_crosshairs_was_visible := false
-	if photo_crosshairs:
-		photo_crosshairs_was_visible = photo_crosshairs.visible
-		photo_crosshairs.visible = false
-		print("Hid photo viewport crosshairs for screenshot")
+	# Hide the 2D UI layer
+	var ui_layer := get_node_or_null("../../../../../../../../../PlayerUILayer")
+	var ui_layer_was_visible := false
+	if ui_layer:
+		ui_layer_was_visible = ui_layer.visible
+		ui_layer.visible = false
+		print("Hid PlayerUILayer for screenshot")
 
+	# Wait a frame to ensure visibility changes take effect
 	await get_tree().process_frame
 	print("Waited 1 frame before capture")
 
-	# Capture from photo viewport (not main)
-	var texture := camera_viewport.get_texture()
-	if texture == null:
-		print("❌ Camera viewport has no texture — cannot capture")
+	# Capture from main camera's viewport
+	var main_viewport := main_camera.get_viewport()
+	if not main_viewport:
+		push_error("Main camera has no viewport")
 		return
-	var image: Image = texture.get_image()
-	print("Captured image size:", image.get_size())
 
-	# Restore reticle + photo crosshairs
-	if reticle:
-		reticle.visible = reticle_was_visible
-	if photo_crosshairs:
-		photo_crosshairs.visible = photo_crosshairs_was_visible
+	var tex := main_viewport.get_texture()
+	if not tex:
+		push_error("Viewport texture missing")
+		return
+
+	# Convert to image and resize to 512x512
+	var image := tex.get_image()
+	image.resize(512, 512, Image.INTERPOLATE_BILINEAR)
+	print("Captured and resized image to 512x512")
+
+	# --- Restore weapon reticle + UI ---
+	if weapon:
+		if weapon.has_variable("hide_for_screenshot"):
+			weapon.hide_for_screenshot = false
+		var weapon_crosshairs = weapon.get_node_or_null("Crosshairs")
+		if weapon_crosshairs:
+			weapon_crosshairs.visible = weapon_reticle_visible
+	if ui_layer:
+		ui_layer.visible = ui_layer_was_visible
 
 	# Save PNG
 	var photo_index = Helper.PhotosTaken
@@ -62,9 +74,9 @@ func SavePhoto():
 
 	# Metadata
 	Helper.LastPhotoMetadata = {}
-	var screen_size = camera_viewport.get_visible_rect().size
-	var from = viewport_camera.project_ray_origin(screen_size / 2)
-	var to = from + viewport_camera.project_ray_normal(screen_size / 2) * 100.0
+	var screen_size = main_viewport.get_visible_rect().size
+	var from = main_camera.project_ray_origin(screen_size / 2)
+	var to = from + main_camera.project_ray_normal(screen_size / 2) * 100.0
 
 	var query = PhysicsRayQueryParameters3D.new()
 	query.from = from
@@ -72,7 +84,7 @@ func SavePhoto():
 	query.collide_with_areas = true
 	query.collide_with_bodies = true
 
-	var result = viewport_camera.get_world_3d().direct_space_state.intersect_ray(query)
+	var result = main_camera.get_world_3d().direct_space_state.intersect_ray(query)
 	if result:
 		var collider = result.get("collider")
 		var subject_node = collider.get_node_or_null("PhotoSubject")
@@ -86,10 +98,9 @@ func SavePhoto():
 				"rareness": subject_node.rareness
 			}
 			subject_node.set_meta("_printed", true)
-
-			Helper.LastPhotoMetadata["size"]  = CalculateSubjectSizeScore(subject_node, viewport_camera, screen_size)
-			Helper.LastPhotoMetadata["pose"]  = CalculateSubjectPoseScore(subject_node, viewport_camera)
-			Helper.LastPhotoMetadata["bonus"] = CalculateSubjectBonusScore(subject_node, viewport_camera)
+			Helper.LastPhotoMetadata["size"]  = CalculateSubjectSizeScore(subject_node, main_camera, screen_size)
+			Helper.LastPhotoMetadata["pose"]  = CalculateSubjectPoseScore(subject_node, main_camera)
+			Helper.LastPhotoMetadata["bonus"] = CalculateSubjectBonusScore(subject_node, main_camera)
 
 	# Always save JSON
 	var json_base_path = "user://photo_json/photo" + str(photo_index)
