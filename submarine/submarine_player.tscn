@@ -843,7 +843,7 @@ use_taa = true
 [node name="ViewportCamera" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport" index="0"]
 cull_mask = 1048569
 
-[node name="Crosshairs" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/ViewportCamera" index="0"]
+[node name="Crosshairs" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/ViewportCamera" index="0" groups=["crosshairs"]]
 visible = true
 
 [node name="CameraOverlay" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport" index="1" instance=ExtResource("30_kwhsf")]

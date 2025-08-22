@@ -48,10 +48,13 @@ func SavePhoto():
 		push_error("Viewport texture missing")
 		return
 
-	# Convert to image and resize to 512x512
+	# Convert to image and crop center to 512x512
 	var image := tex.get_image()
-	image.resize(512, 512, Image.INTERPOLATE_BILINEAR)
-	print("Captured and resized image to 512x512")
+	var img_size := image.get_size()
+	var crop_size := Vector2i(512, 512)
+	var crop_pos := (img_size - crop_size) / 2
+	image = image.get_region(Rect2i(crop_pos, crop_size))
+	print("Captured and cropped image to 512x512")
 
 	# --- Restore weapon reticle + UI ---
 	if weapon:

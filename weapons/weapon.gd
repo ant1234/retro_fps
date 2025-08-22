@@ -4,6 +4,7 @@ class_name Weapon
 @onready var animation_player: AnimationPlayer = $Graphics/AnimationPlayer
 @onready var bullet_emitter: BulletEmitter = $BulletEmitter
 @onready var fire_point: Node3D = %FirePoint
+@onready var crosshairs: TextureRect = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/ViewportCamera/Crosshairs"
 
 @export var automatic = false
 var did_capture := false
@@ -49,15 +50,12 @@ func _input(event):
 			TakePhoto()
 
 func _process(delta):
-	# Keep reticle in sync every frame
 	show_reticle(CameraInUse and not hide_for_screenshot)
-
 
 func show_reticle(state: bool):
 	var crosshairs = get_node_or_null("Crosshairs")
 	if crosshairs:
 		crosshairs.visible = state
-
 
 func play_animation_safe(anim_name: String):
 	if animation_player.has_animation(anim_name):
