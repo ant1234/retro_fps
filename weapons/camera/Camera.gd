@@ -2,6 +2,7 @@ extends Control
 
 var FileName = "photo"
 @onready var main_camera : Camera3D = $"../../../../../../../.."
+@onready var camera_crosshairs: TextureRect = $"../../../../../CameraCrosshairs"
 
 func _ready():
 	CreatePhotoDir()
@@ -24,6 +25,13 @@ func SavePhoto():
 			weapon_reticle_visible = weapon_crosshairs.visible
 			weapon_crosshairs.visible = false
 			print("Hid weapon crosshairs for screenshot")
+
+	# --- Hide CameraCrosshairs if present ---
+	var crosshairs_was_visible := false
+	if camera_crosshairs:
+		crosshairs_was_visible = camera_crosshairs.visible
+		camera_crosshairs.visible = false
+		print("Hid CameraCrosshairs for screenshot")
 
 	# Hide the 2D UI layer
 	var ui_layer := get_node_or_null("../../../../../../../../../PlayerUILayer")
@@ -56,13 +64,15 @@ func SavePhoto():
 	image = image.get_region(Rect2i(crop_pos, crop_size))
 	print("Captured and cropped image to 512x512")
 
-	# --- Restore weapon reticle + UI ---
+	# --- Restore weapon reticle + CameraCrosshairs + UI ---
 	if weapon:
 		if weapon.has_variable("hide_for_screenshot"):
 			weapon.hide_for_screenshot = false
 		var weapon_crosshairs = weapon.get_node_or_null("Crosshairs")
 		if weapon_crosshairs:
 			weapon_crosshairs.visible = weapon_reticle_visible
+	if camera_crosshairs:
+		camera_crosshairs.visible = crosshairs_was_visible
 	if ui_layer:
 		ui_layer.visible = ui_layer_was_visible
 
