@@ -71,8 +71,13 @@ func play_animation_backwards_safe(anim_name: String):
 func TakePhoto():
 	# Flash animation
 	var AnPl = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/CameraOverlay/AnimationPlayer"
+	var AnPl2 = $"../../../../PlayerUILayer/HealthEffects/AnimationPlayer"
+	
 	if AnPl:
 		AnPl.play("flash")
+		
+	if AnPl2:
+		AnPl2.play("camera_flash")
 
 func set_bodies_to_exclude(bodies: Array):
 	bullet_emitter.set_bodies_to_exclude(bodies)

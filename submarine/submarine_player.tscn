@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://cbv8l2gqlkmtk"]
+[gd_scene load_steps=83 format=3 uid="uid://cbv8l2gqlkmtk"]
 
 [ext_resource type="Script" path="res://submarine/submarine_player.gd" id="1_c0ouq"]
 [ext_resource type="PackedScene" uid="uid://cjoap0c66ph4t" path="res://submarine/HoverVehicle.glb" id="1_istpc"]
@@ -396,9 +396,26 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0.196078), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_t080w"]
+resource_name = "camera_flash"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06, 0.08, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t80oj"]
 _data = {
 "RESET": SubResource("Animation_g65o6"),
+"camera_flash": SubResource("Animation_t080w"),
 "flash": SubResource("Animation_u8glk")
 }
 
@@ -825,7 +842,7 @@ ammo = 1
 transform = Transform3D(0.998174, -0.0520781, -0.0305889, 0.0544449, 0.995106, 0.0824581, 0.026145, -0.083973, 0.996125, 0.0544804, 0.307876, 0.605866)
 
 [node name="ViewFinder" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics" instance=ExtResource("27_wwnii")]
-transform = Transform3D(-0.999954, 0.00175899, -0.00939901, 0.00567892, 0.900056, -0.435734, 0.00769319, -0.435766, -0.900027, 0.953, 1.223, -0.361)
+transform = Transform3D(-0.999954, 0.00175899, -0.009399, 0.00567892, 0.900056, -0.435734, 0.00769319, -0.435766, -0.900027, 0.953, 1.223, -0.361)
 
 [node name="CameraEOS" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder" index="2"]
 visible = false
@@ -939,6 +956,7 @@ bus = &"Sfx"
 
 [node name="HealthEffects" type="Control" parent="PlayerUILayer"]
 modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.968627, 0, 0, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -946,6 +964,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("40_ymptg")
+
+[node name="Flash" type="ColorRect" parent="PlayerUILayer/HealthEffects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Healed" type="ColorRect" parent="PlayerUILayer/HealthEffects"]
 visible = false
@@ -965,7 +991,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.968816, 0, 0.000328637, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerUILayer/HealthEffects"]
 libraries = {
