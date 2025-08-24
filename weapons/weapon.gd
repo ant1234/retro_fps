@@ -72,6 +72,7 @@ func TakePhoto():
 	# Flash animation
 	var AnPl = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/CameraOverlay/AnimationPlayer"
 	var AnPl2 = $"../../../../PlayerUILayer/HealthEffects/AnimationPlayer"
+	var camera_flash_sound = $"../DigitalCamera/CameraFlash"
 	
 	if AnPl:
 		AnPl.play("flash")
@@ -132,7 +133,7 @@ func set_active(a: bool):
 	if not a:
 		play_animation_safe("RESET")
 	else:
-		$EquipSound.play()
+		#$EquipSound.play()
 		ammo_updated.emit(ammo)
 		
 func is_idle() -> bool:
