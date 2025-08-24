@@ -879,6 +879,20 @@ stream = ExtResource("30_logsu")
 pitch_scale = 0.95
 bus = &"Sfx"
 
+[node name="CameraCrosshairs" type="TextureRect" parent="Camera3D/WeaponManager/Weapons/DigitalCamera"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_58aay")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/WeaponManager"]
 libraries = {
 "": SubResource("AnimationLibrary_vsdb2")

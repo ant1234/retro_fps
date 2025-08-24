@@ -4,7 +4,9 @@ class_name Weapon
 @onready var animation_player: AnimationPlayer = $Graphics/AnimationPlayer
 @onready var bullet_emitter: BulletEmitter = $BulletEmitter
 @onready var fire_point: Node3D = %FirePoint
-@onready var crosshairs: TextureRect = $"../DigitalCamera/Graphics/ViewFinder/CameraEOS/CameraViewport/ViewportCamera/Crosshairs"
+
+# New crosshairs node
+@onready var camera_crosshairs: TextureRect = $"../DigitalCamera/CameraCrosshairs"
 
 @export var automatic = false
 var did_capture := false
@@ -26,9 +28,17 @@ signal fired
 signal out_of_ammo
 signal ammo_updated(add_ammo: int)
 
-
 func _ready() -> void:
 	bullet_emitter.set_damage(damage)
+
+	# Hide any old reticle
+	var old_crosshairs = get_node_or_null("Crosshairs")
+	if old_crosshairs:
+		old_crosshairs.visible = false
+
+	# Ensure the new CameraCrosshairs starts hidden
+	if camera_crosshairs:
+		camera_crosshairs.visible = false
 
 	DialogueManager.game_states.clear()
 	DialogueManager.game_states.append(self) 
@@ -37,25 +47,18 @@ func _ready() -> void:
 
 func _input(event):
 	# Handle camera toggle with right mouse button
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT:
-			if event.pressed:
-				CameraInUse = true
-			else:
-				CameraInUse = false
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		CameraInUse = event.pressed
+		if camera_crosshairs:
+			camera_crosshairs.visible = CameraInUse
 
 	# Left mouse attack
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and CameraInUse:
-			TakePhoto()
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and CameraInUse:
+		TakePhoto()
 
 func _process(delta):
-	show_reticle(CameraInUse and not hide_for_screenshot)
-
-func show_reticle(state: bool):
-	var crosshairs = get_node_or_null("Crosshairs")
-	if crosshairs:
-		crosshairs.visible = state
+	# Nothing else needed here for crosshairs; visibility is handled in _input
+	pass
 
 func play_animation_safe(anim_name: String):
 	if animation_player.has_animation(anim_name):
@@ -114,16 +117,11 @@ func attack(input_just_pressed: bool, input_held: bool):
 	if has_node("Graphics/MuzzleFlash"):
 		$Graphics/MuzzleFlash.flash()
 
-
 func actually_attack():
 	bullet_emitter.global_transform = fire_point.global_transform
 	bullet_emitter.fire()
 
 func set_active(a: bool):
-	var crosshairs = get_node_or_null("Crosshairs")
-	if crosshairs:
-		crosshairs.visible = a
-
 	visible = a
 
 	if not a:
