@@ -8,6 +8,9 @@ class_name Weapon
 # New crosshairs node
 @onready var camera_crosshairs: TextureRect = $"../DigitalCamera/CameraCrosshairs"
 
+# Target lock beep
+@onready var camera_target_beep: AudioStreamPlayer = $"../DigitalCamera/CameraTarget"
+
 @export var automatic = false
 var did_capture := false
 var _taking_photo := false
@@ -31,6 +34,9 @@ signal ammo_updated(add_ammo: int)
 # Reticle colors
 const RETICLE_DEFAULT_COLOR := Color.WHITE
 const RETICLE_TARGET_COLOR := Color.RED
+
+# Track reticle state
+var was_targeting := false
 
 func _ready() -> void:
 	bullet_emitter.set_damage(damage)
@@ -67,6 +73,7 @@ func _process(delta):
 		update_reticle_targeting()
 	elif camera_crosshairs:
 		camera_crosshairs.modulate = RETICLE_DEFAULT_COLOR
+		was_targeting = false
 
 func update_reticle_targeting():
 	var main_camera: Camera3D = get_viewport().get_camera_3d()
@@ -92,10 +99,16 @@ func update_reticle_targeting():
 
 		if subject_node:
 			camera_crosshairs.modulate = RETICLE_TARGET_COLOR
+
+			# Play beep only once when locking on
+			if not was_targeting and camera_target_beep:
+				camera_target_beep.play()
+			was_targeting = true
 			return
 	
 	# Reset if no valid subject
 	camera_crosshairs.modulate = RETICLE_DEFAULT_COLOR
+	was_targeting = false
 
 func play_animation_safe(anim_name: String):
 	if animation_player.has_animation(anim_name):
