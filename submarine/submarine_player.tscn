@@ -1028,6 +1028,7 @@ theme = ExtResource("42_l8nig")
 script = ExtResource("43_aqaox")
 
 [node name="AmmoDisplay" type="Label" parent="PlayerUILayer/StatsDisplay"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 19.0
@@ -1035,6 +1036,7 @@ text = "Ammo: 0"
 label_settings = SubResource("LabelSettings_bs1t8")
 
 [node name="HealthDisplay" type="ProgressBar" parent="PlayerUILayer/StatsDisplay"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

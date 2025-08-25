@@ -28,6 +28,10 @@ signal fired
 signal out_of_ammo
 signal ammo_updated(add_ammo: int)
 
+# Reticle colors
+const RETICLE_DEFAULT_COLOR := Color.WHITE
+const RETICLE_TARGET_COLOR := Color.RED
+
 func _ready() -> void:
 	bullet_emitter.set_damage(damage)
 
@@ -39,6 +43,7 @@ func _ready() -> void:
 	# Ensure the new CameraCrosshairs starts hidden
 	if camera_crosshairs:
 		camera_crosshairs.visible = false
+		camera_crosshairs.modulate = RETICLE_DEFAULT_COLOR
 
 	DialogueManager.game_states.clear()
 	DialogueManager.game_states.append(self) 
@@ -57,8 +62,40 @@ func _input(event):
 		TakePhoto()
 
 func _process(delta):
-	# Nothing else needed here for crosshairs; visibility is handled in _input
-	pass
+	# Update reticle targeting if camera in use
+	if CameraInUse and camera_crosshairs:
+		update_reticle_targeting()
+	elif camera_crosshairs:
+		camera_crosshairs.modulate = RETICLE_DEFAULT_COLOR
+
+func update_reticle_targeting():
+	var main_camera: Camera3D = get_viewport().get_camera_3d()
+	if not main_camera:
+		return
+	
+	var screen_size = get_viewport().get_visible_rect().size
+	var from = main_camera.project_ray_origin(screen_size / 2)
+	var to = from + main_camera.project_ray_normal(screen_size / 2) * 100.0
+
+	var query := PhysicsRayQueryParameters3D.new()
+	query.from = from
+	query.to = to
+	query.collide_with_areas = true
+	query.collide_with_bodies = true
+
+	var result = main_camera.get_world_3d().direct_space_state.intersect_ray(query)
+	if result:
+		var collider = result.get("collider")
+		var subject_node = collider.get_node_or_null("PhotoSubject")
+		if not subject_node:
+			subject_node = collider.find_child("PhotoSubject", true, false)
+
+		if subject_node:
+			camera_crosshairs.modulate = RETICLE_TARGET_COLOR
+			return
+	
+	# Reset if no valid subject
+	camera_crosshairs.modulate = RETICLE_DEFAULT_COLOR
 
 func play_animation_safe(anim_name: String):
 	if animation_player.has_animation(anim_name):
