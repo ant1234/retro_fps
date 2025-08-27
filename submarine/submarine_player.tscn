@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cbv8l2gqlkmtk"]
+[gd_scene load_steps=87 format=3 uid="uid://cbv8l2gqlkmtk"]
 
 [ext_resource type="Script" path="res://submarine/submarine_player.gd" id="1_c0ouq"]
 [ext_resource type="PackedScene" uid="uid://cjoap0c66ph4t" path="res://submarine/HoverVehicle.glb" id="1_istpc"]
@@ -42,7 +42,10 @@
 [ext_resource type="Script" path="res://characters/player/pickup_info.gd" id="41_wfee6"]
 [ext_resource type="Theme" uid="uid://bgdafs1btsgid" path="res://ui/main_theme.tres" id="42_l8nig"]
 [ext_resource type="Script" path="res://characters/player/stats_display.gd" id="43_aqaox"]
+[ext_resource type="Script" path="res://submarine/pressure.gd" id="43_pwdx6"]
+[ext_resource type="AudioStream" uid="uid://dxjun1j1ee1u5" path="res://sfx/weapons/73257__jakobhandersen__ship-groans-in-harbour.wav" id="44_h072a"]
 [ext_resource type="Script" path="res://characters/player/death_screen.gd" id="44_m2cq2"]
+[ext_resource type="AudioStream" uid="uid://18yorcql4k6w" path="res://sfx/weapons/546957__sieuamthanh__nolonduoinuoc1.wav" id="45_8uqwl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yy8pn"]
 radius = 5.43414
@@ -427,7 +430,7 @@ font_size = 32
 font_size = 96
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvc24"]
-bg_color = Color(0.450531, 0.0240339, 0.10518, 1)
+bg_color = Color(1, 1, 1, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -438,10 +441,7 @@ expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_744fk"]
-bg_color = Color(0.509157, 0.920806, 0.434818, 1)
-border_width_left = 2
-border_width_right = 2
-border_color = Color(0.128064, 0.354203, 0.16541, 1)
+bg_color = Color(0.172549, 0.407843, 0.862745, 1)
 
 [sub_resource type="Animation" id="Animation_iqgoa"]
 length = 0.001
@@ -1068,6 +1068,45 @@ text = "Health: "
 label_settings = SubResource("LabelSettings_bs1t8")
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Pressure" type="Control" parent="PlayerUILayer"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1450.0
+offset_top = -1353.0
+offset_right = 1928.0
+offset_bottom = -1022.0
+grow_vertical = 0
+size_flags_horizontal = 8
+theme = ExtResource("42_l8nig")
+script = ExtResource("43_pwdx6")
+max_depth = 50.0
+submarine_path = NodePath("../..")
+groan_sounds = Array[AudioStream]([ExtResource("44_h072a")])
+min_implode_time = 10.0
+max_implode_time = 19.0
+implosion_target = NodePath("Implosion")
+
+[node name="PressureDisplay" type="ProgressBar" parent="PlayerUILayer/Pressure"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 352.0
+offset_top = -149.0
+offset_right = 707.0
+offset_bottom = -125.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_uvc24")
+theme_override_styles/fill = SubResource("StyleBoxFlat_744fk")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Implosion" type="AudioStreamPlayer" parent="PlayerUILayer/Pressure"]
+stream = ExtResource("45_8uqwl")
 
 [node name="DeathScreen" type="Control" parent="PlayerUILayer"]
 modulate = Color(1, 1, 1, 0)
