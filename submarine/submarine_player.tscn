@@ -1090,6 +1090,8 @@ max_implode_time = 19.0
 implosion_target = NodePath("Implosion")
 dial_color = Color(0.168591, 0.402621, 0.855172, 1)
 needle_color = Color(1, 1, 1, 1)
+border_color = Color(0.192157, 0.184314, 0.211765, 1)
+border_thickness = 10.0
 
 [node name="Implosion" type="AudioStreamPlayer" parent="PlayerUILayer/PressureGauge"]
 stream = ExtResource("45_8uqwl")

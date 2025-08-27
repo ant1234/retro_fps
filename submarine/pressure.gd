@@ -20,6 +20,8 @@ extends Control
 @export var danger_color: Color = Color.RED
 @export var needle_color: Color = Color.YELLOW
 @export var center_color: Color = Color.BLACK
+@export var border_color: Color = Color.WHITE # border color
+@export var border_thickness: float = 4.0   # border thickness
 
 # ------------------------
 # Internal Nodes
@@ -114,8 +116,11 @@ func _draw():
 	var center = size / 2
 	var radius = min(size.x, size.y) / 2 - 10
 
-	# Outer circle
-	draw_circle(center, radius, dial_color)
+	# Border (draw a slightly larger ring)
+	draw_arc(center, radius, 0, 2*PI, 64, border_color, border_thickness)
+
+	# Outer circle (dial fill)
+	draw_circle(center, radius - border_thickness/2, dial_color)
 
 	# Tick marks
 	for i in range(0, 11):
