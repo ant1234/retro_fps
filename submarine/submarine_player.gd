@@ -89,7 +89,9 @@ func _process(delta: float) -> void:
 		return
 
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
-	var move_dir = (transform.basis * Vector3(-input_dir.x, 0, -input_dir.y)).normalized()
+	var yaw_only_basis = Basis(Vector3.UP, rotation.y)
+	var move_dir = (yaw_only_basis * Vector3(-input_dir.x, 0, -input_dir.y)).normalized()
+	
 	character_mover.set_move_dir(move_dir)
 	
 	if Input.is_action_just_pressed("jump"):

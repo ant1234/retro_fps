@@ -54,17 +54,13 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle water and land movement
 	if in_water:
-				
-		# Apply water resistance and swim force (no camera alignment adjustment)
 		character_body.velocity += move_dir * get_move_speed() * delta
 
 		if Input.is_action_pressed("jump"):
 			character_body.velocity.y += swim_up_speed * delta
 		else:
-			# Apply slow sinking/gravity
 			character_body.velocity.y -= gravity * 0.01 * delta
 
-		# Gentle drag to reduce momentum
 		character_body.velocity.x = lerp(character_body.velocity.x, 0.0, 1.5 * delta)
 		character_body.velocity.z = lerp(character_body.velocity.z, 0.0, 1.5 * delta)
 
@@ -79,6 +75,22 @@ func _physics_process(delta: float) -> void:
 		flat_velo.y = 0.0
 		character_body.velocity += move_accel * move_dir - flat_velo * drag
 
-	# Move character once per frame
-	#character_body.move_and_slide()
-	character_body.move_and_collide(character_body.velocity * delta)
+	# --- Custom multi-collision sliding ---
+	var motion = character_body.velocity * delta
+	var max_slides = 4
+	var remaining_motion = motion
+
+	for i in range(max_slides):
+		var collision = character_body.move_and_collide(remaining_motion)
+		if not collision:
+			break
+
+		# Slide along collision
+		remaining_motion = collision.get_remainder()
+		character_body.velocity = character_body.velocity.slide(collision.get_normal())
+
+		# Prevent wall-climbing: block upward velocity unless jump pressed
+		if character_body.velocity.y > 0.0 and not Input.is_action_pressed("jump"):
+			character_body.velocity.y = 0.0
+
+	moved.emit(character_body.velocity, character_body.is_on_floor())
