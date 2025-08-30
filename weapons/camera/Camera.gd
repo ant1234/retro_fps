@@ -222,22 +222,20 @@ func CalculateSubjectBonusScore(subject_node: Node3D, camera: Camera3D) -> int:
 	var screen_size: Vector2 = camera.get_viewport().get_visible_rect().size
 	var center_rect_size: Vector2 = Vector2(512, 512)
 	var center_rect := Rect2((screen_size - center_rect_size) / 2, center_rect_size)
-
 	var cam_origin := camera.global_transform.origin
 	var cam_forward := -camera.global_transform.basis.z.normalized()
-
 	var player := get_node_or_null("../../../../../../../../..") # root player
-
 	var player_origin: Vector3 = player.global_transform.origin if player else cam_origin
-
 	var fish_nodes := get_tree().get_nodes_in_group("fish")
+
 	for fish in fish_nodes:
 		if fish == subject_node or not fish.is_inside_tree():
 			continue
 
 		# Optional: Only count fish within 10 meters of player
 		var distance_to_player: float = fish.global_transform.origin.distance_to(player_origin)
-		if distance_to_player > 10.0:
+
+		if distance_to_player > 100.0:
 			continue
 
 		var to_fish: Vector3 = (fish.global_transform.origin - cam_origin).normalized()
@@ -252,7 +250,6 @@ func CalculateSubjectBonusScore(subject_node: Node3D, camera: Camera3D) -> int:
 			continue  # Off-screen
 
 		if center_rect.has_point(screen_pos):
-			print("Fish:", fish.name, " screen_pos:", screen_pos, " distance:", distance_to_player)
 			bonus += 1
 
 	return min(bonus, 10)
