@@ -79,6 +79,7 @@ func _physics_process(delta):
 
 	if abs(global_transform.basis.determinant()) < 0.001:
 		global_transform.basis = Basis()
+		
 
 func _scatter():
 	if is_scattering:

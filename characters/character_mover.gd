@@ -80,5 +80,5 @@ func _physics_process(delta: float) -> void:
 		character_body.velocity += move_accel * move_dir - flat_velo * drag
 
 	# Move character once per frame
-	character_body.move_and_slide()
-	moved.emit(character_body.velocity, character_body.is_on_floor())
+	#character_body.move_and_slide()
+	character_body.move_and_collide(character_body.velocity * delta)

@@ -384,22 +384,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_u8glk"]
-resource_name = "flash"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.196078), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_t080w"]
 resource_name = "camera_flash"
 step = 0.01
@@ -414,6 +398,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u8glk"]
+resource_name = "flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.196078), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t80oj"]
@@ -843,7 +843,7 @@ ammo = 1
 transform = Transform3D(0.998174, -0.0520781, -0.0305889, 0.0544449, 0.995106, 0.0824581, 0.026145, -0.083973, 0.996125, 0.0544804, 0.307876, 0.605866)
 
 [node name="ViewFinder" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics" instance=ExtResource("27_wwnii")]
-transform = Transform3D(-0.999954, 0.00175899, -0.009399, 0.00567892, 0.900056, -0.435733, 0.00769319, -0.435766, -0.900027, 0.953, 1.223, -0.361)
+transform = Transform3D(-0.999954, 0.00175899, -0.009399, 0.00567892, 0.900056, -0.435733, 0.00769319, -0.435766, -0.900026, 0.953, 1.223, -0.361)
 
 [node name="CameraEOS" parent="Camera3D/WeaponManager/Weapons/DigitalCamera/Graphics/ViewFinder" index="2"]
 visible = false
