@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://gssc0gnwvheo"]
+
+[ext_resource type="Script" path="res://environment/open_world_scripts/world_chunk.gd" id="1_1awvc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jnwsl"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_1awvc")
+
+[node name="EditorOnly" type="Node" parent="."]
+
+[node name="Placeholder" type="MeshInstance3D" parent="EditorOnly"]
+mesh = SubResource("BoxMesh_jnwsl")
