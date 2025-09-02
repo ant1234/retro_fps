@@ -9,7 +9,7 @@ class_name WorldChunk
 @export var biome_type: String = "default"
 
 # Size of the chunk cube in world units (X=width, Y=height/depth, Z=length)
-@export var size: Vector3 = Vector3(200, 200, 200) : set = set_size
+@export var size: Vector3 = Vector3(20, 20, 20) : set = set_size
 
 # Optional: grid index so chunks snap perfectly in a 3D grid
 @export var grid_index: Vector3i = Vector3i.ZERO : set = set_grid_index
@@ -21,6 +21,7 @@ func _ready() -> void:
 	_apply_size()
 	_make_placeholder_material()
 	_apply_snap()
+	add_to_group("world_chunk")
 
 func set_size(v: Vector3) -> void:
 	size = v

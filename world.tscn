@@ -1,6 +1,7 @@
-[gd_scene load_steps=124 format=3 uid="uid://cr774sksons2f"]
+[gd_scene load_steps=126 format=3 uid="uid://cr774sksons2f"]
 
 [ext_resource type="PackedScene" uid="uid://dovc0methr37k" path="res://environment/rock_boulder.tscn" id="1_icxn4"]
+[ext_resource type="Script" path="res://environment/open_world_scripts/WorldManager.gd" id="1_sbc6l"]
 [ext_resource type="PackedScene" uid="uid://btrct7bmnno5j" path="res://environment/rock_cliff.tscn" id="2_jw0dc"]
 [ext_resource type="PackedScene" uid="uid://vn1bwbqig364" path="res://environment/rock_pillar.tscn" id="3_2ngro"]
 [ext_resource type="PackedScene" uid="uid://d2x8tg0dnc24d" path="res://environment/sand.tscn" id="4_6vxsd"]
@@ -85,6 +86,7 @@
 [ext_resource type="PackedScene" uid="uid://clsl5pqrqdjj8" path="res://fish/White_Grunt/White_Grunt.tscn" id="74_4yrqv"]
 [ext_resource type="PackedScene" uid="uid://gfggb7gfxcai" path="res://fish/White_Mullet/White_Mullet.tscn" id="75_5pagh"]
 [ext_resource type="PackedScene" uid="uid://702cki1ldxoj" path="res://fish/Yellowfin_Tuna/Yellowfin_Tuna.tscn" id="76_fouow"]
+[ext_resource type="PackedScene" uid="uid://gssc0gnwvheo" path="res://environment/WorldChunk.tscn" id="87_hdya6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l5qe5"]
 
@@ -231,6 +233,8 @@ shader_parameter/edge_fade = 0.1
 shader_parameter/fade_plane = Vector4(0, 1, 0, -999)
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_sbc6l")
+player_path = NodePath("SubmarinePlayer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qvdrf")
@@ -385,14 +389,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5413, -15.6041, 51.605)
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -25, -11.3128, 12)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-visible = false
 navigation_mesh = SubResource("NavigationMesh_3a2pe")
 
 [node name="BirdMonster" parent="." instance=ExtResource("6_vnm2c")]
 transform = Transform3D(-0.878684, 0, 0.477404, 0, 1, 0, -0.477404, 0, -0.878684, 13.8361, -0.177008, -25.9791)
+visible = false
 
 [node name="ReptileMonster" parent="." instance=ExtResource("8_4e18j")]
 transform = Transform3D(-0.999921, 0, -0.0125836, 0, 1, 0, 0.0125836, 0, -0.999921, 8.08685, -0.177008, -25.9791)
+visible = false
 
 [node name="Fish" type="Node" parent="."]
 
@@ -1340,6 +1345,7 @@ max_fish = 0
 
 [node name="Pickups" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78823, 0, -10.7005)
+visible = false
 
 [node name="HealthPickup" parent="Pickups" instance=ExtResource("9_dagfk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.63827)
@@ -1382,5 +1388,17 @@ material = SubResource("ShaderMaterial_8w07g")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CameraRoll" parent="CanvasLayer" instance=ExtResource("15_ylxip")]
+
+[node name="Chunks" type="Node3D" parent="."]
+
+[node name="Chunk_0_0_0" parent="Chunks" instance=ExtResource("87_hdya6")]
+
+[node name="Chunk_1_0_0" parent="Chunks" instance=ExtResource("87_hdya6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+grid_index = Vector3i(1, 0, 0)
+
+[node name="Chunk_0_0_1" parent="Chunks" instance=ExtResource("87_hdya6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+grid_index = Vector3i(0, 0, 1)
 
 [editable path="WaterMaker3D"]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://environment/open_world_scripts/world_chunk.gd" id="1_1awvc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jnwsl"]
+size = Vector3(20, 20, 20)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_1awvc")
