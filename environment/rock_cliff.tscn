@@ -11,3 +11,5 @@ data = PackedVector3Array(0.2239, 29.3625, 0.2467, -0.5481, 29.036, 11.6891, -10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RockCliff/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dt7hb")
+
+[node name="RockCliffLight" type="DirectionalLight3D" parent="." index="1"]

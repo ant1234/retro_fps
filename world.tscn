@@ -86,7 +86,7 @@
 [ext_resource type="PackedScene" uid="uid://clsl5pqrqdjj8" path="res://fish/White_Grunt/White_Grunt.tscn" id="74_4yrqv"]
 [ext_resource type="PackedScene" uid="uid://gfggb7gfxcai" path="res://fish/White_Mullet/White_Mullet.tscn" id="75_5pagh"]
 [ext_resource type="PackedScene" uid="uid://702cki1ldxoj" path="res://fish/Yellowfin_Tuna/Yellowfin_Tuna.tscn" id="76_fouow"]
-[ext_resource type="PackedScene" uid="uid://gssc0gnwvheo" path="res://environment/WorldChunk.tscn" id="87_hdya6"]
+[ext_resource type="Script" path="res://environment/open_world_scripts/ChunkPlaceholder.gd" id="88_18jlo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l5qe5"]
 
@@ -244,6 +244,7 @@ transform = Transform3D(1, 0, 0, 0, 0.859906, 0.510453, 0, -0.510453, 0.859906, 
 
 [node name="Enviroment" type="Node3D" parent="." groups=["navigation_mesh_source_group"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8223, 12.4981, -8.8521)
+visible = false
 
 [node name="RockBoulder" parent="Enviroment" instance=ExtResource("1_icxn4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43281, -4.71992)
@@ -390,6 +391,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5413, -15.6041, 51.605)
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 6, -0.3128, 8)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+visible = false
 navigation_mesh = SubResource("NavigationMesh_3a2pe")
 
 [node name="BirdMonster" parent="." instance=ExtResource("6_vnm2c")]
@@ -1387,19 +1389,25 @@ size = Vector3(39.529, 47.2921, 73.384)
 material = SubResource("ShaderMaterial_8w07g")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="CameraRoll" parent="CanvasLayer" instance=ExtResource("15_ylxip")]
 
-[node name="Chunks" type="Node3D" parent="."]
+[node name="ChunkPlaceholder1" type="Node3D" parent="." groups=["world_chunk_placeholder"]]
+script = ExtResource("88_18jlo")
+chunk_scene = ExtResource("1_icxn4")
 
-[node name="Chunk_0_0_0" parent="Chunks" instance=ExtResource("87_hdya6")]
-
-[node name="Chunk_1_0_0" parent="Chunks" instance=ExtResource("87_hdya6")]
+[node name="ChunkPlaceholder2" type="Node3D" parent="." groups=["world_chunk_placeholder"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
-grid_index = Vector3i(1, 0, 0)
+script = ExtResource("88_18jlo")
+chunk_scene = ExtResource("2_jw0dc")
 
-[node name="Chunk_0_0_1" parent="Chunks" instance=ExtResource("87_hdya6")]
+[node name="ChunkPlaceholder3" type="Node3D" parent="." groups=["world_chunk_placeholder"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
-grid_index = Vector3i(0, 0, 1)
+script = ExtResource("88_18jlo")
+chunk_scene = ExtResource("3_2ngro")
+
+[node name="Chunks" type="Node3D" parent="."]
+visible = false
 
 [editable path="WaterMaker3D"]
