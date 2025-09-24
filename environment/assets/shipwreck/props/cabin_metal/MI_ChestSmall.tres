@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c8k7ni1v0hr1f"]
+
+[ext_resource type="Texture2D" uid="uid://dbyrxgy6fjeou" path="res://environment/assets/shipwreck/props/cabin_metal/T_TreasureChest_B.PNG" id="1_axsmg"]
+[ext_resource type="Texture2D" uid="uid://baolj7b3vyumi" path="res://environment/assets/shipwreck/props/cabin_metal/T_TreasureChest_N.png" id="2_o2n75"]
+
+[resource]
+resource_name = "MI_ChestSmall"
+cull_mode = 2
+albedo_texture = ExtResource("1_axsmg")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_o2n75")

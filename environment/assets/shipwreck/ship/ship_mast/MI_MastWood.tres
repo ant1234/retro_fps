@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dw6svc2qjhcwm"]
+
+[ext_resource type="Texture2D" uid="uid://c3cjyuwwclxfj" path="res://environment/assets/shipwreck/ship/ship_mast/T_WoodPlanks_D.PNG" id="1_uxn8b"]
+[ext_resource type="Texture2D" uid="uid://cb01bdexjeugr" path="res://environment/assets/shipwreck/ship/ship_mast/T_WoodPlanks_N.png" id="2_bchwr"]
+
+[resource]
+resource_name = "MI_MastWood"
+cull_mode = 2
+albedo_texture = ExtResource("1_uxn8b")
+metallic = 1.0
+roughness = 0.552786
+emission = Color(1, 1, 1, 1)
+normal_enabled = true
+normal_texture = ExtResource("2_bchwr")

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c44a00hvhnb04"]
+
+[ext_resource type="Texture2D" uid="uid://2ysymwnmdw78" path="res://environment/assets/shipwreck/ship/ship_structures/T_MetalRust_B.PNG" id="1_38p5j"]
+[ext_resource type="Texture2D" uid="uid://bpf02iuudldnr" path="res://environment/assets/shipwreck/ship/ship_structures/T_MetalRust_N.png" id="2_mofdc"]
+
+[resource]
+resource_name = "MI_TrapDoorGrid"
+cull_mode = 2
+albedo_texture = ExtResource("1_38p5j")
+metallic = 1.0
+roughness = 0.552786
+emission = Color(1, 1, 1, 1)
+normal_enabled = true
+normal_texture = ExtResource("2_mofdc")

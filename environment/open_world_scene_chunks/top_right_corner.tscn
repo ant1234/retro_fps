@@ -1,0 +1,899 @@
+[gd_scene load_steps=189 format=3 uid="uid://b80qtwa1twql0"]
+
+[ext_resource type="PackedScene" uid="uid://dxxbdet1dlvvk" path="res://environment/assets/shipwreck/environment/coral/Coral_Elkhorn.glb" id="1_66mcg"]
+[ext_resource type="PackedScene" uid="uid://3o0tjudwgfri" path="res://environment/assets/shipwreck/ship/ship_bow/Bow01.glb" id="1_dcani"]
+[ext_resource type="PackedScene" uid="uid://bi1ukj6wmbl40" path="res://environment/assets/shipwreck/environment/coral/Coral_Finger.glb" id="2_2y2ui"]
+[ext_resource type="PackedScene" uid="uid://cmbwivyebyfjg" path="res://environment/assets/shipwreck/ship/ship_bow/Bow02.glb" id="2_24bv6"]
+[ext_resource type="PackedScene" uid="uid://jwieqar1odpq" path="res://environment/assets/shipwreck/ship/ship_bow/Bow03.glb" id="3_pltrg"]
+[ext_resource type="PackedScene" uid="uid://cxqvyyb572efd" path="res://environment/assets/shipwreck/environment/coral/Coral_Golden.glb" id="3_u1jf5"]
+[ext_resource type="PackedScene" uid="uid://cl6540i6v8c81" path="res://environment/assets/shipwreck/ship/ship_bow/Floor_Bow.glb" id="4_c8l48"]
+[ext_resource type="PackedScene" uid="uid://b67tkvof3ige7" path="res://environment/assets/shipwreck/environment/coral/Coral_Heliopora.glb" id="4_xsd5t"]
+[ext_resource type="PackedScene" uid="uid://c33wp703m1t0v" path="res://environment/assets/shipwreck/environment/coral/Coral_Orbicella.glb" id="5_4ku58"]
+[ext_resource type="PackedScene" uid="uid://6lqlbohn0b7g" path="res://environment/assets/shipwreck/ship/ship_bow/Mermaid.glb" id="5_bk61e"]
+[ext_resource type="PackedScene" uid="uid://b8defwjasjgv2" path="res://environment/assets/shipwreck/environment/coral/Coral_Pocillopora.glb" id="6_7loab"]
+[ext_resource type="PackedScene" uid="uid://yfa6jhl3pvws" path="res://environment/assets/shipwreck/ship/ship_bow/Pillars_Bow.glb" id="6_83ouf"]
+[ext_resource type="PackedScene" uid="uid://dq6b2av01v7wu" path="res://environment/assets/shipwreck/ship/ship_broken/BrokenFloor01.glb" id="7_i031w"]
+[ext_resource type="PackedScene" uid="uid://b1cpnc3lbvo7t" path="res://environment/assets/shipwreck/environment/coral/Coral_PoritedaePink.glb" id="7_kasi7"]
+[ext_resource type="PackedScene" uid="uid://bphfsaw1jcuy4" path="res://environment/assets/shipwreck/ship/ship_broken/BrokenFloor02.glb" id="8_pt57w"]
+[ext_resource type="PackedScene" uid="uid://h5rnp6e578u0" path="res://environment/assets/shipwreck/environment/coral/Coral_Porites.glb" id="8_vix6f"]
+[ext_resource type="PackedScene" uid="uid://bgq118b3ustw3" path="res://environment/assets/shipwreck/environment/coral/Coral_Table.glb" id="9_8utk6"]
+[ext_resource type="PackedScene" uid="uid://cr4xxak51u4pc" path="res://environment/assets/shipwreck/ship/ship_broken/WoodPlank01.glb" id="9_vex4x"]
+[ext_resource type="PackedScene" uid="uid://chbxjldfrk1o7" path="res://environment/assets/shipwreck/ship/ship_broken/WoodPlank02.glb" id="10_3gdqi"]
+[ext_resource type="PackedScene" uid="uid://blsgiyyg172dm" path="res://environment/assets/shipwreck/environment/coral/Coral_Tube.glb" id="10_mld8s"]
+[ext_resource type="PackedScene" uid="uid://1ugremox0808" path="res://environment/assets/shipwreck/environment/creatures/Starfish.glb" id="11_wj3es"]
+[ext_resource type="PackedScene" uid="uid://dicj4g01e314r" path="res://environment/assets/shipwreck/ship/ship_broken/WoodPlank03.glb" id="11_yec3o"]
+[ext_resource type="PackedScene" uid="uid://dsqsfo5jixjo7" path="res://environment/assets/shipwreck/environment/creatures/Turtle.glb" id="12_ci0bb"]
+[ext_resource type="PackedScene" uid="uid://dxl5yr2n11fb6" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Ceiling01.glb" id="12_xu7tb"]
+[ext_resource type="PackedScene" uid="uid://by2o8kfrpyisw" path="res://environment/assets/shipwreck/environment/rocks/Rock01.glb" id="13_jddvr"]
+[ext_resource type="PackedScene" uid="uid://qj7fsxuog4vy" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Ceiling02.glb" id="13_w41b3"]
+[ext_resource type="PackedScene" uid="uid://d3wtkko8nrtyo" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Ceiling03.glb" id="14_08w0r"]
+[ext_resource type="PackedScene" uid="uid://dtghswa48nrex" path="res://environment/assets/shipwreck/environment/rocks/Rock02.glb" id="14_bfg8h"]
+[ext_resource type="PackedScene" uid="uid://cjiwk6bca22mr" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Ceiling04.glb" id="15_3o3cx"]
+[ext_resource type="PackedScene" uid="uid://b501tafsi4s6b" path="res://environment/assets/shipwreck/environment/rocks/Rock03.glb" id="15_ylbke"]
+[ext_resource type="PackedScene" uid="uid://rbghikqjkluw" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Ceiling05.glb" id="16_bpkqo"]
+[ext_resource type="PackedScene" uid="uid://dwoxjc3vh1eac" path="res://environment/assets/shipwreck/environment/rocks/Rock04.glb" id="16_jy4qi"]
+[ext_resource type="PackedScene" uid="uid://cpberomin73gh" path="res://environment/assets/shipwreck/environment/rocks/Rock05.glb" id="17_kyju7"]
+[ext_resource type="PackedScene" uid="uid://dm1nkj6hsxla8" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Roof.glb" id="17_rnpvl"]
+[ext_resource type="PackedScene" uid="uid://7npoybk32pra" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Screen01.glb" id="18_dockx"]
+[ext_resource type="PackedScene" uid="uid://b2votivs08bow" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Screen02.glb" id="19_t20e7"]
+[ext_resource type="PackedScene" uid="uid://b85hp6raxdpx4" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Screen03.glb" id="20_rc4d8"]
+[ext_resource type="PackedScene" uid="uid://cusij0i81qf5v" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Screen04.glb" id="21_tk3by"]
+[ext_resource type="PackedScene" uid="uid://ba2iu88f8bx4p" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Wall01.glb" id="22_yc2qc"]
+[ext_resource type="PackedScene" uid="uid://bik8n5i8awbke" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Wall02.glb" id="23_23yrj"]
+[ext_resource type="PackedScene" uid="uid://crq5tasu8rnhu" path="res://environment/assets/shipwreck/ship/ship_cabin/Cabin_Wall03.glb" id="24_iqgjp"]
+[ext_resource type="PackedScene" uid="uid://b7kde6lmg7ebo" path="res://environment/assets/shipwreck/ship/ship_cabin/Curtain01.glb" id="25_bjyni"]
+[ext_resource type="PackedScene" uid="uid://vyvu0pcgimcb" path="res://environment/assets/shipwreck/ship/ship_cabin/Curtain02.glb" id="26_kuxyf"]
+[ext_resource type="PackedScene" uid="uid://cgxnjtcjvhb45" path="res://environment/assets/shipwreck/ship/ship_cabin/Curtain03.glb" id="27_040jv"]
+[ext_resource type="PackedScene" uid="uid://5syjfyvo32yt" path="res://environment/assets/shipwreck/ship/ship_cabin/Curtain04.glb" id="28_catdc"]
+[ext_resource type="PackedScene" uid="uid://3gnaleuhlw0q" path="res://environment/assets/shipwreck/ship/ship_cabin/Floor_Cabin.glb" id="29_vlhrt"]
+[ext_resource type="PackedScene" uid="uid://s2doqsg1ade6" path="res://environment/assets/shipwreck/ship/ship_cabin/Floor_CabinTop.glb" id="30_bio0e"]
+[ext_resource type="PackedScene" uid="uid://vrkvbviuobvj" path="res://environment/assets/shipwreck/ship/ship_cannon/Cannon.glb" id="31_w0h14"]
+[ext_resource type="PackedScene" uid="uid://d3obvluousa35" path="res://environment/assets/shipwreck/ship/ship_cannon/CannonBalls01.glb" id="32_o616x"]
+[ext_resource type="PackedScene" uid="uid://6cgbsvtvi8wo" path="res://environment/assets/shipwreck/ship/ship_cannon/CannonBalls02.glb" id="33_cpgkg"]
+[ext_resource type="PackedScene" uid="uid://cksiwgkd5d10i" path="res://environment/assets/shipwreck/ship/ship_cannon/Floor_CannonBow.glb" id="34_4ha7w"]
+[ext_resource type="PackedScene" uid="uid://de2pwim7t5c02" path="res://environment/assets/shipwreck/ship/ship_cannon/Floor_CannonStern.glb" id="35_w8twj"]
+[ext_resource type="PackedScene" uid="uid://54timt7rq3iv" path="res://environment/assets/shipwreck/ship/ship_cannon/PortDoor.glb" id="36_5jx4e"]
+[ext_resource type="PackedScene" uid="uid://d3cjr48qex2nh" path="res://environment/assets/shipwreck/ship/ship_cannon/Wall_CannonBow01.glb" id="37_cisve"]
+[ext_resource type="PackedScene" uid="uid://cdxvxhdhkywwr" path="res://environment/assets/shipwreck/ship/ship_cannon/Wall_CannonBow02.glb" id="38_hcgwr"]
+[ext_resource type="PackedScene" uid="uid://dnlhexbblc5r3" path="res://environment/assets/shipwreck/ship/ship_cannon/Wall_CannonBow03.glb" id="39_1pkml"]
+[ext_resource type="PackedScene" uid="uid://c6pqvmptlwfbu" path="res://environment/assets/shipwreck/ship/ship_cannon/Wall_CannonStern01.glb" id="40_s8wpx"]
+[ext_resource type="PackedScene" uid="uid://bysuw2h5evffh" path="res://environment/assets/shipwreck/ship/ship_cannon/Wall_CannonStern02.glb" id="41_bjvw6"]
+[ext_resource type="PackedScene" uid="uid://db2dbnlj0hvlq" path="res://environment/assets/shipwreck/ship/ship_cannon/Wall_CannonStern03.glb" id="42_fng4v"]
+[ext_resource type="PackedScene" uid="uid://nkb1ioct4487" path="res://environment/assets/shipwreck/ship/ship_deck/Floor_Forecastle.glb" id="43_vpmel"]
+[ext_resource type="PackedScene" uid="uid://c7san7wopin6h" path="res://environment/assets/shipwreck/ship/ship_deck/Floor_ForecastleTop.glb" id="44_xg8ro"]
+[ext_resource type="PackedScene" uid="uid://bn7lahpyvkvdw" path="res://environment/assets/shipwreck/ship/ship_deck/Floor_MainDeck.glb" id="45_r73dp"]
+[ext_resource type="PackedScene" uid="uid://cqj66vjaullsq" path="res://environment/assets/shipwreck/ship/ship_deck/Floor_NavigationTop.glb" id="46_01tuu"]
+[ext_resource type="PackedScene" uid="uid://b6a88hsog1hcd" path="res://environment/assets/shipwreck/ship/ship_deck/Floor_Officer.glb" id="47_r3y2x"]
+[ext_resource type="PackedScene" uid="uid://dh6op76nqv2ec" path="res://environment/assets/shipwreck/ship/ship_deck/Floor_OfficerTop.glb" id="48_st1sh"]
+[ext_resource type="PackedScene" uid="uid://dud0yfhexbt8y" path="res://environment/assets/shipwreck/ship/ship_deck/Wall_Forecastle.glb" id="49_3wq61"]
+[ext_resource type="PackedScene" uid="uid://fldw8gc1c4nm" path="res://environment/assets/shipwreck/ship/ship_deck/Wall_ForecastleBack.glb" id="50_3xonp"]
+[ext_resource type="PackedScene" uid="uid://bjnonbh65ri6x" path="res://environment/assets/shipwreck/ship/ship_deck/Wall_ForecastleFront.glb" id="51_64bg5"]
+[ext_resource type="PackedScene" uid="uid://cqwk6ip3ve0xq" path="res://environment/assets/shipwreck/ship/ship_deck/Wall_MainDeck01.glb" id="52_mfkh1"]
+[ext_resource type="PackedScene" uid="uid://cn6lvwk2nylg2" path="res://environment/assets/shipwreck/ship/ship_deck/Wall_MainDeck02.glb" id="53_xsv8g"]
+[ext_resource type="PackedScene" uid="uid://c80ue6oadgmvu" path="res://environment/assets/shipwreck/ship/ship_deck/Wall_MainDeckBack.glb" id="54_d1fnj"]
+[ext_resource type="PackedScene" uid="uid://wd0dybv2ysok" path="res://environment/assets/shipwreck/ship/ship_deck/Wall_Navigation.glb" id="55_n15ls"]
+[ext_resource type="PackedScene" uid="uid://drh0x8kpqpenq" path="res://environment/assets/shipwreck/ship/ship_deck/Wall_NavigationBack.glb" id="56_hktvd"]
+[ext_resource type="PackedScene" uid="uid://btxb1buh656um" path="res://environment/assets/shipwreck/ship/ship_deck/Wall_NavigationFront.glb" id="57_kdjdy"]
+[ext_resource type="PackedScene" uid="uid://dnv6kkbm3ryci" path="res://environment/assets/shipwreck/ship/ship_deck/Wall_Officer01.glb" id="58_6k2y0"]
+[ext_resource type="PackedScene" uid="uid://u5let26r0wdj" path="res://environment/assets/shipwreck/ship/ship_deck/Wall_Officer02.glb" id="59_66t2i"]
+[ext_resource type="PackedScene" uid="uid://dy0kaenrlqjdx" path="res://environment/assets/shipwreck/ship/ship_hull/HullBroken.glb" id="60_twkgt"]
+[ext_resource type="PackedScene" uid="uid://bd8ote660eqlf" path="res://environment/assets/shipwreck/ship/ship_hull/HullFront.glb" id="61_v7ojo"]
+[ext_resource type="PackedScene" uid="uid://dv6qcuu8q6cc5" path="res://environment/assets/shipwreck/ship/ship_hull/HullMid.glb" id="62_4c4y6"]
+[ext_resource type="PackedScene" uid="uid://bfxss8lnqjtyn" path="res://environment/assets/shipwreck/ship/ship_hull/HullStern.glb" id="63_ofblg"]
+[ext_resource type="PackedScene" uid="uid://bri7mse4438t3" path="res://environment/assets/shipwreck/ship/ship_hull/Rudder01.glb" id="64_cgklu"]
+[ext_resource type="PackedScene" uid="uid://dkqtu2rvg2uh5" path="res://environment/assets/shipwreck/ship/ship_hull/Rudder02.glb" id="65_6e6yf"]
+[ext_resource type="PackedScene" uid="uid://bqp8xp20biwq3" path="res://environment/assets/shipwreck/ship/ship_hull/Rudder03.glb" id="66_dgns3"]
+[ext_resource type="PackedScene" uid="uid://3dq5x06yv10b" path="res://environment/assets/shipwreck/ship/ship_hull/Rudder04.glb" id="67_ci56f"]
+[ext_resource type="PackedScene" uid="uid://c2c2b7mi6ja4a" path="res://environment/assets/shipwreck/ship/ship_hull/Wall_Hull.glb" id="68_o57x6"]
+[ext_resource type="PackedScene" uid="uid://d4dpfoo6k3jhy" path="res://environment/assets/shipwreck/ship/ship_mast/BowSpirit.glb" id="69_epu01"]
+[ext_resource type="PackedScene" uid="uid://bj0xlcheihscg" path="res://environment/assets/shipwreck/ship/ship_mast/Flag.glb" id="70_5iolu"]
+[ext_resource type="PackedScene" uid="uid://cx6tv426ji76v" path="res://environment/assets/shipwreck/ship/ship_mast/Mast01.glb" id="71_on7x2"]
+[ext_resource type="PackedScene" uid="uid://cqraawnnq407n" path="res://environment/assets/shipwreck/ship/ship_mast/Mast02.glb" id="72_7fmru"]
+[ext_resource type="PackedScene" uid="uid://bd6x1iw7xi1fr" path="res://environment/assets/shipwreck/ship/ship_mast/Mast03.glb" id="73_5eykd"]
+[ext_resource type="PackedScene" uid="uid://bat8dqjp3sq5i" path="res://environment/assets/shipwreck/ship/ship_mast/Mast04.glb" id="74_6ci3h"]
+[ext_resource type="PackedScene" uid="uid://sxussv5f7pi4" path="res://environment/assets/shipwreck/ship/ship_mast/MastBase.glb" id="75_amjtf"]
+[ext_resource type="PackedScene" uid="uid://cb3g5se3ffuvf" path="res://environment/assets/shipwreck/ship/ship_mast/MastConnect01_02.glb" id="76_1t5kr"]
+[ext_resource type="PackedScene" uid="uid://jgmt8suqtt0j" path="res://environment/assets/shipwreck/ship/ship_mast/MastConnect01_03.glb" id="77_h5yy3"]
+[ext_resource type="PackedScene" uid="uid://dl6t2cf2xmxlv" path="res://environment/assets/shipwreck/ship/ship_mast/MastConnect02_03.glb" id="78_y4euc"]
+[ext_resource type="PackedScene" uid="uid://dl87hb6b1sr05" path="res://environment/assets/shipwreck/ship/ship_mast/MastNest.glb" id="79_f0e2r"]
+[ext_resource type="PackedScene" uid="uid://bxfp3i55ffhq" path="res://environment/assets/shipwreck/ship/ship_mast/MastRope01.glb" id="80_5i6m6"]
+[ext_resource type="PackedScene" uid="uid://qi4j1larhx1f" path="res://environment/assets/shipwreck/ship/ship_mast/MastRope02.glb" id="81_h54ik"]
+[ext_resource type="PackedScene" uid="uid://b765i0rs3dhhi" path="res://environment/assets/shipwreck/ship/ship_mast/MastRope03.glb" id="82_xxyjn"]
+[ext_resource type="PackedScene" uid="uid://ct7w700h7kuks" path="res://environment/assets/shipwreck/ship/ship_mast/MastRope_Bow.glb" id="83_6v5fo"]
+[ext_resource type="PackedScene" uid="uid://bqui8v3w1cxsh" path="res://environment/assets/shipwreck/ship/ship_mast/MastRope_Deck.glb" id="84_tlwtb"]
+[ext_resource type="PackedScene" uid="uid://bjd3qhr60ccxl" path="res://environment/assets/shipwreck/ship/ship_mast/MastRope_Stern.glb" id="85_qcplb"]
+[ext_resource type="PackedScene" uid="uid://rwr3rs2hsfs0" path="res://environment/assets/shipwreck/ship/ship_mast/Ropes01.glb" id="86_8s4r2"]
+[ext_resource type="PackedScene" uid="uid://binvj4ely3ey8" path="res://environment/assets/shipwreck/ship/ship_mast/Ropes02.glb" id="87_fhddj"]
+[ext_resource type="PackedScene" uid="uid://t0evywklno67" path="res://environment/assets/shipwreck/ship/ship_pillars/PIllars_Forecastle.glb" id="88_nofp2"]
+[ext_resource type="PackedScene" uid="uid://djvkgdrwhvdf6" path="res://environment/assets/shipwreck/ship/ship_pillars/Pillars_Large.glb" id="89_7mlw0"]
+[ext_resource type="PackedScene" uid="uid://cwokv7clisr8" path="res://environment/assets/shipwreck/ship/ship_pillars/Pillars_Navigation.glb" id="90_27s6q"]
+[ext_resource type="PackedScene" uid="uid://bakruelp87sig" path="res://environment/assets/shipwreck/ship/ship_pillars/Pillars_Small.glb" id="91_y8xml"]
+[ext_resource type="PackedScene" uid="uid://dvmwsrmjupevs" path="res://environment/assets/shipwreck/ship/ship_pillars/Rails_ForeCastle.glb" id="92_ti3cg"]
+[ext_resource type="PackedScene" uid="uid://deviomkoecmdx" path="res://environment/assets/shipwreck/ship/ship_pillars/Rails_Navigation.glb" id="93_oqsa0"]
+[ext_resource type="PackedScene" uid="uid://by5uj6ulshmac" path="res://environment/assets/shipwreck/ship/ship_pillars/Rails_Officer.glb" id="94_84qs8"]
+[ext_resource type="PackedScene" uid="uid://bkdncmpw5ovgf" path="res://environment/assets/shipwreck/ship/ship_pillars/Rails_Stairs.glb" id="95_d5yhe"]
+[ext_resource type="PackedScene" uid="uid://hg15vywlf3uw" path="res://environment/assets/shipwreck/ship/ship_pillars/Rails_Stern.glb" id="96_htajf"]
+[ext_resource type="PackedScene" uid="uid://qwxkkpv84rt3" path="res://environment/assets/shipwreck/ship/ship_structures/Anchor.glb" id="97_xklu2"]
+[ext_resource type="PackedScene" uid="uid://bu0dexe5tbffh" path="res://environment/assets/shipwreck/ship/ship_structures/Door.glb" id="98_5gaj0"]
+[ext_resource type="PackedScene" uid="uid://cqqp45f2pxtr2" path="res://environment/assets/shipwreck/ship/ship_structures/Lantern01.glb" id="99_7ebu5"]
+[ext_resource type="PackedScene" uid="uid://o4a3pqbw12le" path="res://environment/assets/shipwreck/ship/ship_structures/Lantern02.glb" id="100_o6g30"]
+[ext_resource type="PackedScene" uid="uid://bpnxfr8ll731e" path="res://environment/assets/shipwreck/ship/ship_structures/Shroud01.glb" id="101_7sh3v"]
+[ext_resource type="PackedScene" uid="uid://des773fxyto1t" path="res://environment/assets/shipwreck/ship/ship_structures/Shroud02.glb" id="102_cf4pq"]
+[ext_resource type="PackedScene" uid="uid://xl5c5v4do2oi" path="res://environment/assets/shipwreck/ship/ship_structures/Shroud03.glb" id="103_6f70f"]
+[ext_resource type="PackedScene" uid="uid://cvl50ddbs3a8e" path="res://environment/assets/shipwreck/ship/ship_structures/ShroudSupport01.glb" id="104_ucirb"]
+[ext_resource type="PackedScene" uid="uid://dbramw3jdmokr" path="res://environment/assets/shipwreck/ship/ship_structures/ShroudSupport02.glb" id="105_ra3vy"]
+[ext_resource type="PackedScene" uid="uid://cstirtreui2v0" path="res://environment/assets/shipwreck/ship/ship_structures/Stairs01.glb" id="106_j6k4w"]
+[ext_resource type="PackedScene" uid="uid://ckjmqlefb8ph7" path="res://environment/assets/shipwreck/ship/ship_structures/Stairs02.glb" id="107_k8ovv"]
+[ext_resource type="PackedScene" uid="uid://d4f223ammvlxd" path="res://environment/assets/shipwreck/ship/ship_structures/Stairs03.glb" id="108_0w4v6"]
+[ext_resource type="PackedScene" uid="uid://bshp8r1bs8ww8" path="res://environment/assets/shipwreck/ship/ship_structures/SteeringWheel.glb" id="109_2bvrq"]
+[ext_resource type="PackedScene" uid="uid://2id2eygn2ap8" path="res://environment/assets/shipwreck/ship/ship_structures/TrapDoor.glb" id="110_f3crp"]
+[ext_resource type="PackedScene" uid="uid://buiewfy8btvbl" path="res://environment/assets/shipwreck/ship/ship_trim/Trim_BraceBack01.glb" id="111_gyg5r"]
+[ext_resource type="PackedScene" uid="uid://cncrlsowoya4c" path="res://environment/assets/shipwreck/ship/ship_trim/Trim_BraceBack02.glb" id="112_rm6ae"]
+[ext_resource type="PackedScene" uid="uid://c4mxxb2gevdl6" path="res://environment/assets/shipwreck/ship/ship_trim/Trim_BraceFront01.glb" id="113_ionyc"]
+[ext_resource type="PackedScene" uid="uid://cjse0ea7qgr4s" path="res://environment/assets/shipwreck/ship/ship_trim/Trim_BraceFront02.glb" id="114_6df8s"]
+[ext_resource type="PackedScene" uid="uid://cgtpairyqf7mw" path="res://environment/assets/shipwreck/ship/ship_trim/Trim_RailDeck.glb" id="115_s5td1"]
+[ext_resource type="PackedScene" uid="uid://hvxwm0wkxo6p" path="res://environment/assets/shipwreck/ship/ship_trim/Trim_RailOfficer.glb" id="116_62sqv"]
+[ext_resource type="PackedScene" uid="uid://ctjxm5begy7ce" path="res://environment/assets/shipwreck/ship/ship_trim/Trim_Stern.glb" id="117_n1o47"]
+[ext_resource type="PackedScene" uid="uid://dcfusniujpch" path="res://environment/assets/shipwreck/ship/ship_trim/Trim_Walls01.glb" id="118_262ep"]
+[ext_resource type="PackedScene" uid="uid://b44u667snccyi" path="res://environment/assets/shipwreck/ship/ship_trim/Trim_Walls02.glb" id="119_378kh"]
+[ext_resource type="PackedScene" uid="uid://buxmloyj863jd" path="res://environment/assets/shipwreck/ship/ship_trim/Trim_Walls03.glb" id="120_4fwxj"]
+[ext_resource type="PackedScene" uid="uid://cr66asetoda50" path="res://environment/assets/shipwreck/props/cabin_bedding/Bedding01.glb" id="122_25l0e"]
+[ext_resource type="PackedScene" uid="uid://bhodlhwpm1nwx" path="res://environment/assets/shipwreck/props/cabin_bedding/Bedding02.glb" id="123_dqxip"]
+[ext_resource type="PackedScene" uid="uid://dewypjspftnnc" path="res://environment/assets/shipwreck/props/cabin_bedding/BedFrame.glb" id="124_u1fgn"]
+[ext_resource type="PackedScene" uid="uid://dhwywwfscx4vc" path="res://environment/assets/shipwreck/props/cabin_bedding/Blanket.glb" id="125_itaur"]
+[ext_resource type="PackedScene" uid="uid://dmbe1dx302pvq" path="res://environment/assets/shipwreck/props/cabin_bedding/Mattress.glb" id="126_l0clk"]
+[ext_resource type="PackedScene" uid="uid://clxhtxapbbvtw" path="res://environment/assets/shipwreck/props/cabin_bedding/Pillow01.glb" id="127_r17dt"]
+[ext_resource type="PackedScene" uid="uid://y1bjr3fl1orf" path="res://environment/assets/shipwreck/props/cabin_bedding/Pillow02.glb" id="128_g86t6"]
+[ext_resource type="PackedScene" uid="uid://blvygykpahl5b" path="res://environment/assets/shipwreck/props/cabin_books/Book01.glb" id="129_v4b65"]
+[ext_resource type="PackedScene" uid="uid://ddbc3fqmuddpy" path="res://environment/assets/shipwreck/props/cabin_books/Book02.glb" id="130_tay43"]
+[ext_resource type="PackedScene" uid="uid://d2hfjbv70ddeq" path="res://environment/assets/shipwreck/props/cabin_books/Book03.glb" id="131_oew24"]
+[ext_resource type="PackedScene" uid="uid://bfpes1d8k1smp" path="res://environment/assets/shipwreck/props/cabin_containers/Bottle01.glb" id="132_3cxpl"]
+[ext_resource type="PackedScene" uid="uid://oa2yjejy4c2h" path="res://environment/assets/shipwreck/props/cabin_containers/Bottle02.glb" id="133_cgb3h"]
+[ext_resource type="PackedScene" uid="uid://db4wg2uuexcud" path="res://environment/assets/shipwreck/props/cabin_containers/Bottle03.glb" id="134_4rh1p"]
+[ext_resource type="PackedScene" uid="uid://c17jxghp18e3s" path="res://environment/assets/shipwreck/props/cabin_containers/Bottle04.glb" id="135_wnp0t"]
+[ext_resource type="PackedScene" uid="uid://x7u1t1hke4rn" path="res://environment/assets/shipwreck/props/cabin_containers/Bottle05.glb" id="136_4opka"]
+[ext_resource type="PackedScene" uid="uid://ccxq8unj6fvnb" path="res://environment/assets/shipwreck/props/cabin_containers/Bottle06.glb" id="137_xpdob"]
+[ext_resource type="PackedScene" uid="uid://b433i8pf8p1oe" path="res://environment/assets/shipwreck/props/cabin_containers/Flask.glb" id="138_8nrhi"]
+[ext_resource type="PackedScene" uid="uid://7ni1d6xje3ex" path="res://environment/assets/shipwreck/props/cabin_containers/Jug01.glb" id="139_kphqx"]
+[ext_resource type="PackedScene" uid="uid://cs6nhedxt1cwi" path="res://environment/assets/shipwreck/props/cabin_containers/Jug02.glb" id="140_r2hqr"]
+[ext_resource type="PackedScene" uid="uid://dfl7m0ipa3c54" path="res://environment/assets/shipwreck/props/cabin_furniture/Armchair.glb" id="141_dqqtb"]
+[ext_resource type="PackedScene" uid="uid://borkp0a7nfudt" path="res://environment/assets/shipwreck/props/cabin_furniture/Bookshelf.glb" id="142_4hepu"]
+[ext_resource type="PackedScene" uid="uid://b4idq3rur6icj" path="res://environment/assets/shipwreck/props/cabin_furniture/Candles.glb" id="143_fmcga"]
+[ext_resource type="PackedScene" uid="uid://bo6c2l374y58" path="res://environment/assets/shipwreck/props/cabin_furniture/Chair.glb" id="144_651mm"]
+[ext_resource type="PackedScene" uid="uid://d0gfvtd20jajp" path="res://environment/assets/shipwreck/props/cabin_furniture/Chandelier.glb" id="145_cep5g"]
+[ext_resource type="PackedScene" uid="uid://csmaicvhbaeot" path="res://environment/assets/shipwreck/props/cabin_furniture/Desk.glb" id="146_y6ocl"]
+[ext_resource type="PackedScene" uid="uid://rlehpmgfciqa" path="res://environment/assets/shipwreck/props/cabin_furniture/Table.glb" id="147_1p0xq"]
+[ext_resource type="PackedScene" uid="uid://dwxxasxquk0ri" path="res://environment/assets/shipwreck/props/cabin_furniture/TableCloth.glb" id="148_q1s24"]
+[ext_resource type="PackedScene" uid="uid://2e5dwaacc2il" path="res://environment/assets/shipwreck/props/cabin_large/Carpet.glb" id="149_tpx4k"]
+[ext_resource type="PackedScene" uid="uid://c3vs841o40uc6" path="res://environment/assets/shipwreck/props/cabin_large/Frame.glb" id="150_110b3"]
+[ext_resource type="PackedScene" uid="uid://bb0kdanjp0phf" path="res://environment/assets/shipwreck/props/cabin_large/Globe.glb" id="151_rhoih"]
+[ext_resource type="PackedScene" uid="uid://cffyqeiggqcuk" path="res://environment/assets/shipwreck/props/cabin_large/ShipWheel.glb" id="152_cbpr0"]
+[ext_resource type="PackedScene" uid="uid://chs6sxdrtrwku" path="res://environment/assets/shipwreck/props/cabin_large/Violin.glb" id="153_hey3k"]
+[ext_resource type="PackedScene" uid="uid://djakbk6kcx1nd" path="res://environment/assets/shipwreck/props/cabin_large/ViolinBow.glb" id="154_5gdrh"]
+[ext_resource type="PackedScene" uid="uid://ccwnsf38qpjr2" path="res://environment/assets/shipwreck/props/cabin_medium/Barrel.glb" id="155_lcnv7"]
+[ext_resource type="PackedScene" uid="uid://iwb3iu2atskp" path="res://environment/assets/shipwreck/props/cabin_medium/Bucket.glb" id="156_1cf3t"]
+[ext_resource type="PackedScene" uid="uid://c0xqxphvaum0e" path="res://environment/assets/shipwreck/props/cabin_medium/Caddy.glb" id="157_nh8oq"]
+[ext_resource type="PackedScene" uid="uid://cq8b0ju0agcql" path="res://environment/assets/shipwreck/props/cabin_medium/Cargo.glb" id="158_cw4b0"]
+[ext_resource type="PackedScene" uid="uid://ba81cc6jjbw2j" path="res://environment/assets/shipwreck/props/cabin_medium/Crate.glb" id="159_1y45s"]
+[ext_resource type="PackedScene" uid="uid://ne7lj1njt3l5" path="res://environment/assets/shipwreck/props/cabin_medium/Sack01.glb" id="160_37rtc"]
+[ext_resource type="PackedScene" uid="uid://bquqef3tf70n8" path="res://environment/assets/shipwreck/props/cabin_medium/Sack02.glb" id="161_s481g"]
+[ext_resource type="PackedScene" uid="uid://e43i5tbou5j0" path="res://environment/assets/shipwreck/props/cabin_medium/Sack03.glb" id="162_u8atx"]
+[ext_resource type="PackedScene" uid="uid://br8p1eh7tjqky" path="res://environment/assets/shipwreck/props/cabin_medium/Sack04.glb" id="163_77a15"]
+[ext_resource type="PackedScene" uid="uid://cq5hm2mmeb8jx" path="res://environment/assets/shipwreck/props/cabin_metal/CandleHolder.glb" id="164_csq47"]
+[ext_resource type="PackedScene" uid="uid://dt2hjil2gf65r" path="res://environment/assets/shipwreck/props/cabin_metal/Chalice.glb" id="165_g66wb"]
+[ext_resource type="PackedScene" uid="uid://e8k3w4bgetn5" path="res://environment/assets/shipwreck/props/cabin_metal/Coins01.glb" id="166_glkp4"]
+[ext_resource type="PackedScene" uid="uid://cxhchjeb4j4rg" path="res://environment/assets/shipwreck/props/cabin_metal/Coins02.glb" id="167_8d4s2"]
+[ext_resource type="PackedScene" uid="uid://slth5faw4wxb" path="res://environment/assets/shipwreck/props/cabin_metal/LargeChest.glb" id="168_7h4jp"]
+[ext_resource type="PackedScene" uid="uid://d1gbfou1xx3db" path="res://environment/assets/shipwreck/props/cabin_metal/Telescope01.glb" id="169_p64s0"]
+[ext_resource type="PackedScene" uid="uid://cmeg41vfgtypw" path="res://environment/assets/shipwreck/props/cabin_metal/Telescope02.glb" id="170_udigu"]
+[ext_resource type="PackedScene" uid="uid://d3rt7s6lcbhs1" path="res://environment/assets/shipwreck/props/cabin_metal/TreasureChest01.glb" id="171_arvd6"]
+[ext_resource type="PackedScene" uid="uid://clmq4jl6lh4fw" path="res://environment/assets/shipwreck/props/cabin_metal/TreasureChest02.glb" id="172_7ew1t"]
+
+[node name="TopRightCorner" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Coral" type="Node3D" parent="Environment"]
+
+[node name="Coral_Elkhorn" parent="Environment/Coral" instance=ExtResource("1_66mcg")]
+visible = false
+
+[node name="SM_Coral_Elkhorn_ConvexHulls" parent="Environment/Coral/Coral_Elkhorn/BP_RockExterior_C_0_SM_Coral_Elkhorn_11_1560" index="0"]
+visible = false
+
+[node name="Coral_Finger" parent="Environment/Coral" instance=ExtResource("2_2y2ui")]
+visible = false
+
+[node name="SM_Coral_Finger_ConvexHulls" parent="Environment/Coral/Coral_Finger/BP_RockExterior_C_0_SM_Coral_Finger_10_1559" index="0"]
+visible = false
+
+[node name="Coral_Golden" parent="Environment/Coral" instance=ExtResource("3_u1jf5")]
+visible = false
+
+[node name="SM_Coral_Golden_ConvexHulls" parent="Environment/Coral/Coral_Golden/BP_RockExteriorLeft_C_0_SM_Coral_Golden_9_1577" index="0"]
+visible = false
+
+[node name="Coral_Heliopora" parent="Environment/Coral" instance=ExtResource("4_xsd5t")]
+visible = false
+
+[node name="SM_Coral_Heliopora_ConvexHulls" parent="Environment/Coral/Coral_Heliopora/BP_RockExteriorLeft_C_0_SM_Coral_Heliopora_10_1578" index="0"]
+visible = false
+
+[node name="Coral_Orbicella" parent="Environment/Coral" instance=ExtResource("5_4ku58")]
+visible = false
+
+[node name="SM_Coral_Orbicella_ConvexHulls" parent="Environment/Coral/Coral_Orbicella/BP_RockExteriorLeft_C_0_SM_Coral_Orbicella_6_1574" index="0"]
+visible = false
+
+[node name="Coral_Pocillopora" parent="Environment/Coral" instance=ExtResource("6_7loab")]
+visible = false
+
+[node name="SM_Coral_Pocillopora_ConvexHulls" parent="Environment/Coral/Coral_Pocillopora/BP_RockExteriorLeft_C_0_SM_Coral_Pocillopora_8_1576" index="0"]
+visible = false
+
+[node name="Coral_PoritedaePink" parent="Environment/Coral" instance=ExtResource("7_kasi7")]
+visible = false
+
+[node name="SM_Coral_PoritedaePink_ConvexHulls" parent="Environment/Coral/Coral_PoritedaePink/BP_RockExteriorLeft_C_0_SM_Coral_PoritedaePink_5_1573" index="0"]
+visible = false
+
+[node name="Coral_Porites" parent="Environment/Coral" instance=ExtResource("8_vix6f")]
+visible = false
+
+[node name="SM_Coral_Porites_ConvexHulls" parent="Environment/Coral/Coral_Porites/BP_RockExteriorLeft_C_0_SM_Coral_Porites_4_1572" index="0"]
+visible = false
+
+[node name="Coral_Table" parent="Environment/Coral" instance=ExtResource("9_8utk6")]
+visible = false
+
+[node name="SM_Coral_Table_ConvexHulls" parent="Environment/Coral/Coral_Table/BP_RockExterior_C_0_SM_Coral_Table_4_1553" index="0"]
+visible = false
+
+[node name="Coral_Tube" parent="Environment/Coral" instance=ExtResource("10_mld8s")]
+visible = false
+
+[node name="SM_Coral_Tube_ConvexHulls" parent="Environment/Coral/Coral_Tube/Cabin_Coral_BP_C_0_SM_Coral_Tube_7_1223" index="0"]
+visible = false
+
+[node name="Creatures" type="Node3D" parent="Environment"]
+
+[node name="Starfish" parent="Environment/Creatures" instance=ExtResource("11_wj3es")]
+visible = false
+
+[node name="SM_Starfish_ConvexHulls" parent="Environment/Creatures/Starfish/BP_RockExteriorLeft_C_0_SM_Starfish_7_1575" index="0"]
+visible = false
+
+[node name="Turtle" parent="Environment/Creatures" instance=ExtResource("12_ci0bb")]
+visible = false
+
+[node name="Rocks" type="Node3D" parent="Environment"]
+
+[node name="Rock01" parent="Environment/Rocks" instance=ExtResource("13_jddvr")]
+visible = false
+
+[node name="SM_Rock01_ConvexHulls" parent="Environment/Rocks/Rock01/StaticMeshActor_50" index="0"]
+visible = false
+
+[node name="Rock02" parent="Environment/Rocks" instance=ExtResource("14_bfg8h")]
+visible = false
+
+[node name="SM_Rock02_ConvexHulls" parent="Environment/Rocks/Rock02/StaticMeshActor_41" index="0"]
+visible = false
+
+[node name="Rock03" parent="Environment/Rocks" instance=ExtResource("15_ylbke")]
+visible = false
+
+[node name="SM_Rock03_ConvexHulls" parent="Environment/Rocks/Rock03/StaticMeshActor_29" index="0"]
+visible = false
+
+[node name="Rock04" parent="Environment/Rocks" instance=ExtResource("16_jy4qi")]
+visible = false
+
+[node name="SM_Rock04_ConvexHulls" parent="Environment/Rocks/Rock04/StaticMeshActor_52" index="0"]
+visible = false
+
+[node name="Rock05" parent="Environment/Rocks" instance=ExtResource("17_kyju7")]
+visible = false
+
+[node name="SM_Rock05_ConvexHulls" parent="Environment/Rocks/Rock05/StaticMeshActor_51" index="0"]
+visible = false
+
+[node name="Shipwreck" type="Node3D" parent="."]
+
+[node name="ShipBow" type="Node3D" parent="Shipwreck"]
+visible = false
+
+[node name="Bow01" parent="Shipwreck/ShipBow" instance=ExtResource("1_dcani")]
+
+[node name="Bow02" parent="Shipwreck/ShipBow" instance=ExtResource("2_24bv6")]
+
+[node name="Bow03" parent="Shipwreck/ShipBow" instance=ExtResource("3_pltrg")]
+
+[node name="Floor_Bow" parent="Shipwreck/ShipBow" instance=ExtResource("4_c8l48")]
+
+[node name="SM_Floor_Bow_ConvexHulls" parent="Shipwreck/ShipBow/Floor_Bow/Ship_Bow_BP_C_0_SM_Floor_Bow_4_1398" index="0"]
+visible = false
+
+[node name="Mermaid" parent="Shipwreck/ShipBow" instance=ExtResource("5_bk61e")]
+
+[node name="Pillars_Bow" parent="Shipwreck/ShipBow" instance=ExtResource("6_83ouf")]
+
+[node name="ShipBroken" type="Node3D" parent="Shipwreck"]
+visible = false
+
+[node name="BrokenFloor01" parent="Shipwreck/ShipBroken" instance=ExtResource("7_i031w")]
+
+[node name="BrokenFloor02" parent="Shipwreck/ShipBroken" instance=ExtResource("8_pt57w")]
+
+[node name="WoodPlank01" parent="Shipwreck/ShipBroken" instance=ExtResource("9_vex4x")]
+
+[node name="WoodPlank02" parent="Shipwreck/ShipBroken" instance=ExtResource("10_3gdqi")]
+
+[node name="WoodPlank03" parent="Shipwreck/ShipBroken" instance=ExtResource("11_yec3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.76837e-07, 0)
+
+[node name="ShipCabin" type="Node3D" parent="Shipwreck"]
+visible = false
+
+[node name="Cabin_Ceiling01" parent="Shipwreck/ShipCabin" instance=ExtResource("12_xu7tb")]
+
+[node name="Cabin_Ceiling02" parent="Shipwreck/ShipCabin" instance=ExtResource("13_w41b3")]
+
+[node name="Cabin_Ceiling03" parent="Shipwreck/ShipCabin" instance=ExtResource("14_08w0r")]
+
+[node name="Cabin_Ceiling04" parent="Shipwreck/ShipCabin" instance=ExtResource("15_3o3cx")]
+
+[node name="Cabin_Ceiling05" parent="Shipwreck/ShipCabin" instance=ExtResource("16_bpkqo")]
+
+[node name="Cabin_Roof" parent="Shipwreck/ShipCabin" instance=ExtResource("17_rnpvl")]
+
+[node name="Cabin_Screen01" parent="Shipwreck/ShipCabin" instance=ExtResource("18_dockx")]
+
+[node name="SM_Cabin_Screen01_ConvexHulls" parent="Shipwreck/ShipCabin/Cabin_Screen01" index="1"]
+visible = false
+
+[node name="Cabin_Screen02" parent="Shipwreck/ShipCabin" instance=ExtResource("19_t20e7")]
+
+[node name="SM_Cabin_Screen02_ConvexHulls" parent="Shipwreck/ShipCabin/Cabin_Screen02" index="1"]
+visible = false
+
+[node name="Cabin_Screen03" parent="Shipwreck/ShipCabin" instance=ExtResource("20_rc4d8")]
+
+[node name="SM_Cabin_Screen03_ConvexHulls" parent="Shipwreck/ShipCabin/Cabin_Screen03" index="1"]
+visible = false
+
+[node name="Cabin_Screen04" parent="Shipwreck/ShipCabin" instance=ExtResource("21_tk3by")]
+
+[node name="SM_Cabin_Screen04_ConvexHulls" parent="Shipwreck/ShipCabin/Cabin_Screen04" index="1"]
+visible = false
+
+[node name="Cabin_Wall01" parent="Shipwreck/ShipCabin" instance=ExtResource("22_yc2qc")]
+
+[node name="Cabin_Wall04" parent="Shipwreck/ShipCabin" instance=ExtResource("22_yc2qc")]
+transform = Transform3D(0.77686, 0, -0.629673, 0, 1, 0, 0.629673, 0, 0.77686, 0.293604, 0.00166863, 0.0284238)
+
+[node name="Cabin_Wall05" parent="Shipwreck/ShipCabin" instance=ExtResource("22_yc2qc")]
+transform = Transform3D(0.315202, 0, -0.949025, 0, 1, 0, 0.949025, 0, 0.315202, 0.0293415, 0.00200105, -0.207206)
+
+[node name="Cabin_Wall02" parent="Shipwreck/ShipCabin" instance=ExtResource("23_23yrj")]
+transform = Transform3D(0.834483, 0, 0.551034, 0, 1, 0, -0.551034, 0, 0.834483, 0.0776544, -0.0330826, -0.0501797)
+
+[node name="Cabin_Wall06" parent="Shipwreck/ShipCabin" instance=ExtResource("23_23yrj")]
+transform = Transform3D(0.356412, 0, 0.934329, 0, 1, 0, -0.934329, 0, 0.356412, 0.000216484, -0.0227892, 0.0814054)
+
+[node name="Cabin_Wall03" parent="Shipwreck/ShipCabin" instance=ExtResource("24_iqgjp")]
+
+[node name="Cabin_Wall07" parent="Shipwreck/ShipCabin" instance=ExtResource("24_iqgjp")]
+transform = Transform3D(0.0476644, 0, -0.998864, 0, 1, 0, 0.998864, 0, 0.0476644, 4.36764, -0.0238354, 4.49676)
+
+[node name="Curtain01" parent="Shipwreck/ShipCabin" instance=ExtResource("25_bjyni")]
+
+[node name="Curtain02" parent="Shipwreck/ShipCabin" instance=ExtResource("26_kuxyf")]
+
+[node name="Curtain03" parent="Shipwreck/ShipCabin" instance=ExtResource("27_040jv")]
+
+[node name="Curtain04" parent="Shipwreck/ShipCabin" instance=ExtResource("28_catdc")]
+
+[node name="Floor_Cabin" parent="Shipwreck/ShipCabin" instance=ExtResource("29_vlhrt")]
+
+[node name="SM_Floor_Cabin_ConvexHulls" parent="Shipwreck/ShipCabin/Floor_Cabin" index="1"]
+visible = false
+
+[node name="Floor_CabinTop" parent="Shipwreck/ShipCabin" instance=ExtResource("30_bio0e")]
+
+[node name="SM_Floor_CabinTop" parent="Shipwreck/ShipCabin/Floor_CabinTop" index="0"]
+visible = false
+
+[node name="SM_Floor_CabinTop_ConvexHulls" parent="Shipwreck/ShipCabin/Floor_CabinTop" index="1"]
+visible = false
+
+[node name="ShipCannon" type="Node3D" parent="Shipwreck"]
+visible = false
+
+[node name="Cannon" parent="Shipwreck/ShipCannon" instance=ExtResource("31_w0h14")]
+
+[node name="CannonBalls01" parent="Shipwreck/ShipCannon" instance=ExtResource("32_o616x")]
+
+[node name="SM_CannonBalls01_ConvexHulls" parent="Shipwreck/ShipCannon/CannonBalls01/Ship_CannonBow_BP_C_0_SM_CannonBalls01_3_1434" index="0"]
+visible = false
+
+[node name="CannonBalls02" parent="Shipwreck/ShipCannon" instance=ExtResource("33_cpgkg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.556688)
+
+[node name="SM_CannonBalls02_ConvexHulls" parent="Shipwreck/ShipCannon/CannonBalls02" index="1"]
+visible = false
+
+[node name="Floor_CannonBow" parent="Shipwreck/ShipCannon" instance=ExtResource("34_4ha7w")]
+
+[node name="SM_Floor_CannonBow_ConvexHulls" parent="Shipwreck/ShipCannon/Floor_CannonBow/Ship_CannonBow_BP_C_0_SM_Floor_CannonBow_13_1444" index="0"]
+visible = false
+
+[node name="Floor_CannonStern" parent="Shipwreck/ShipCannon" instance=ExtResource("35_w8twj")]
+transform = Transform3D(-0.999996, 0, -0.00284496, 0, 1, 0, 0.00284496, 0, -0.999996, 0.979862, 2.65605, -6.53262)
+
+[node name="SM_Floor_CannonStern_ConvexHulls" parent="Shipwreck/ShipCannon/Floor_CannonStern/Ship_CannonStern_BP_C_0_SM_Floor_CannonStern_8_1337" index="0"]
+visible = false
+
+[node name="PortDoor" parent="Shipwreck/ShipCannon" instance=ExtResource("36_5jx4e")]
+
+[node name="Wall_CannonBow01" parent="Shipwreck/ShipCannon" instance=ExtResource("37_cisve")]
+
+[node name="SM_Wall_CannonBow01_ConvexHulls" parent="Shipwreck/ShipCannon/Wall_CannonBow01/Ship_CannonBow_BP_C_0_SM_Wall_CannonBow01_25_1456" index="0"]
+visible = false
+
+[node name="Wall_CannonBow02" parent="Shipwreck/ShipCannon" instance=ExtResource("38_hcgwr")]
+
+[node name="Wall_CannonBow04" parent="Shipwreck/ShipCannon" instance=ExtResource("38_hcgwr")]
+transform = Transform3D(-0.99863, 0, 0.0523185, 0, 1, 0, -0.0523185, 0, -0.99863, 1.45563, 0.0943995, 2.13977)
+
+[node name="Wall_CannonBow03" parent="Shipwreck/ShipCannon" instance=ExtResource("39_1pkml")]
+
+[node name="Wall_CannonStern01" parent="Shipwreck/ShipCannon" instance=ExtResource("40_s8wpx")]
+transform = Transform3D(-0.994981, 0, -0.100067, 0, 1, 0, 0.100067, 0, -0.994981, 1.41555, 0.0896626, -4.88151)
+
+[node name="SM_Wall_CannonStern01_ConvexHulls" parent="Shipwreck/ShipCannon/Wall_CannonStern01/Ship_CannonStern_BP_C_0_SM_Wall_CannonStern01_7_1336" index="0"]
+visible = false
+
+[node name="Wall_CannonStern02" parent="Shipwreck/ShipCannon" instance=ExtResource("41_bjvw6")]
+transform = Transform3D(0.922704, 0.0174955, 0.385111, -0.0202265, 0.999791, 0.00304127, -0.384978, -0.0105956, 0.922865, 9.24273, 0.614275, -11.4462)
+
+[node name="Wall_CannonStern03" parent="Shipwreck/ShipCannon" instance=ExtResource("42_fng4v")]
+transform = Transform3D(-0.998965, 0, -0.045485, 0, 1, 0, 0.045485, 0, -0.998965, 0, -0.0433339, 14.3393)
+
+[node name="ShipDeck" type="Node3D" parent="Shipwreck"]
+visible = false
+
+[node name="Floor_Forecastle" parent="Shipwreck/ShipDeck" instance=ExtResource("43_vpmel")]
+
+[node name="SM_Floor_Forecastle_ConvexHulls" parent="Shipwreck/ShipDeck/Floor_Forecastle/Ship_Forecastle_BP_C_0_SM_Floor_Forecastle_1_1458" index="0"]
+visible = false
+
+[node name="Floor_ForecastleTop" parent="Shipwreck/ShipDeck" instance=ExtResource("44_xg8ro")]
+
+[node name="SM_Floor_ForecastleTop_ConvexHulls" parent="Shipwreck/ShipDeck/Floor_ForecastleTop/Ship_Forecastle_BP_C_0_SM_Floor_ForecastleTop_5_1461" index="0"]
+visible = false
+
+[node name="Floor_MainDeck" parent="Shipwreck/ShipDeck" instance=ExtResource("45_r73dp")]
+
+[node name="SM_Floor_MainDeck_ConvexHulls" parent="Shipwreck/ShipDeck/Floor_MainDeck/Ship_MainDeck_BP_C_0_SM_Floor_MainDeck_15_1376" index="0"]
+visible = false
+
+[node name="Floor_NavigationTop" parent="Shipwreck/ShipDeck" instance=ExtResource("46_01tuu")]
+
+[node name="SM_Floor_NavigationTop_ConvexHulls" parent="Shipwreck/ShipDeck/Floor_NavigationTop/Ship_Navigation_BP_C_0_SM_Floor_NavigationTop_22_1502" index="0"]
+visible = false
+
+[node name="Floor_Officer" parent="Shipwreck/ShipDeck" instance=ExtResource("47_r3y2x")]
+
+[node name="SM_Floor_Officer_ConvexHulls" parent="Shipwreck/ShipDeck/Floor_Officer/Ship_Officer_BP_C_0_SM_Floor_Officer_9_1354" index="0"]
+visible = false
+
+[node name="Floor_OfficerTop" parent="Shipwreck/ShipDeck" instance=ExtResource("48_st1sh")]
+
+[node name="SM_Floor_OfficerTop_ConvexHulls" parent="Shipwreck/ShipDeck/Floor_OfficerTop/Ship_Officer_BP_C_0_SM_Floor_OfficerTop_6_1351" index="0"]
+visible = false
+
+[node name="Wall_Forecastle" parent="Shipwreck/ShipDeck" instance=ExtResource("49_3wq61")]
+
+[node name="SM_Wall_Forecastle_ConvexHulls" parent="Shipwreck/ShipDeck/Wall_Forecastle/Ship_Forecastle_BP_C_0_SM_Wall_Forecastle_4_1460" index="0"]
+visible = false
+
+[node name="Wall_ForecastleBack" parent="Shipwreck/ShipDeck" instance=ExtResource("50_3xonp")]
+
+[node name="Wall_ForecastleFront" parent="Shipwreck/ShipDeck" instance=ExtResource("51_64bg5")]
+
+[node name="Wall_MainDeck01" parent="Shipwreck/ShipDeck" instance=ExtResource("52_mfkh1")]
+
+[node name="Wall_MainDeck02" parent="Shipwreck/ShipDeck" instance=ExtResource("53_xsv8g")]
+
+[node name="SM_Wall_MainDeck02_ConvexHulls" parent="Shipwreck/ShipDeck/Wall_MainDeck02/Ship_MainDeck_BP_C_0_SM_Wall_MainDeck02_7_1368" index="0"]
+visible = false
+
+[node name="Wall_MainDeckBack" parent="Shipwreck/ShipDeck" instance=ExtResource("54_d1fnj")]
+
+[node name="Wall_Navigation" parent="Shipwreck/ShipDeck" instance=ExtResource("55_n15ls")]
+
+[node name="SM_Wall_Navigation_ConvexHulls" parent="Shipwreck/ShipDeck/Wall_Navigation/Ship_Navigation_BP_C_0_SM_Wall_Navigation_4_1488" index="0"]
+visible = false
+
+[node name="Wall_NavigationBack" parent="Shipwreck/ShipDeck" instance=ExtResource("56_hktvd")]
+
+[node name="Wall_NavigationFront" parent="Shipwreck/ShipDeck" instance=ExtResource("57_kdjdy")]
+
+[node name="Wall_Officer01" parent="Shipwreck/ShipDeck" instance=ExtResource("58_6k2y0")]
+
+[node name="Wall_Officer02" parent="Shipwreck/ShipDeck" instance=ExtResource("59_66t2i")]
+
+[node name="ShipHull" type="Node3D" parent="Shipwreck"]
+visible = false
+
+[node name="HullBroken" parent="Shipwreck/ShipHull" instance=ExtResource("60_twkgt")]
+
+[node name="SM_HullBroken_ConvexHulls" parent="Shipwreck/ShipHull/HullBroken/Ship_HulLStern_BP_C_0_SM_HullBroken_3_1317" index="0"]
+visible = false
+
+[node name="HullFront" parent="Shipwreck/ShipHull" instance=ExtResource("61_v7ojo")]
+
+[node name="SM_HullFront_ConvexHulls" parent="Shipwreck/ShipHull/HullFront/Ship_HullBow_BP_C_0_SM_HullFront_4_1313" index="0"]
+visible = false
+
+[node name="HullMid" parent="Shipwreck/ShipHull" instance=ExtResource("62_4c4y6")]
+
+[node name="SM_HullMid_ConvexHulls" parent="Shipwreck/ShipHull/HullMid/Ship_HullBow_BP_C_0_SM_HullMid_3_1312" index="0"]
+visible = false
+
+[node name="HullStern" parent="Shipwreck/ShipHull" instance=ExtResource("63_ofblg")]
+
+[node name="SM_HullStern_ConvexHulls" parent="Shipwreck/ShipHull/HullStern/Ship_HulLStern_BP_C_0_SM_HullStern_6_1320" index="0"]
+visible = false
+
+[node name="Rudder01" parent="Shipwreck/ShipHull" instance=ExtResource("64_cgklu")]
+
+[node name="Rudder02" parent="Shipwreck/ShipHull" instance=ExtResource("65_6e6yf")]
+
+[node name="Rudder03" parent="Shipwreck/ShipHull" instance=ExtResource("66_dgns3")]
+
+[node name="Rudder04" parent="Shipwreck/ShipHull" instance=ExtResource("67_ci56f")]
+
+[node name="Wall_Hull" parent="Shipwreck/ShipHull" instance=ExtResource("68_o57x6")]
+
+[node name="SM_Wall_Hull_ConvexHulls" parent="Shipwreck/ShipHull/Wall_Hull/Ship_HulLStern_BP_C_0_SM_Wall_Hull_0_1315" index="0"]
+visible = false
+
+[node name="ShipMast" type="Node3D" parent="Shipwreck"]
+visible = false
+
+[node name="BowSpirit" parent="Shipwreck/ShipMast" instance=ExtResource("69_epu01")]
+
+[node name="Flag" parent="Shipwreck/ShipMast" instance=ExtResource("70_5iolu")]
+
+[node name="Mast01" parent="Shipwreck/ShipMast" instance=ExtResource("71_on7x2")]
+
+[node name="Mast02" parent="Shipwreck/ShipMast" instance=ExtResource("72_7fmru")]
+
+[node name="Mast03" parent="Shipwreck/ShipMast" instance=ExtResource("73_5eykd")]
+
+[node name="Mast04" parent="Shipwreck/ShipMast" instance=ExtResource("74_6ci3h")]
+
+[node name="MastBase" parent="Shipwreck/ShipMast" instance=ExtResource("75_amjtf")]
+
+[node name="MastConnect01_02" parent="Shipwreck/ShipMast" instance=ExtResource("76_1t5kr")]
+
+[node name="MastConnect01_03" parent="Shipwreck/ShipMast" instance=ExtResource("77_h5yy3")]
+
+[node name="MastConnect02_03" parent="Shipwreck/ShipMast" instance=ExtResource("78_y4euc")]
+
+[node name="MastNest" parent="Shipwreck/ShipMast" instance=ExtResource("79_f0e2r")]
+
+[node name="MastRope01" parent="Shipwreck/ShipMast" instance=ExtResource("80_5i6m6")]
+
+[node name="MastRope02" parent="Shipwreck/ShipMast" instance=ExtResource("81_h54ik")]
+
+[node name="MastRope03" parent="Shipwreck/ShipMast" instance=ExtResource("82_xxyjn")]
+
+[node name="MastRope_Bow" parent="Shipwreck/ShipMast" instance=ExtResource("83_6v5fo")]
+
+[node name="MastRope_Deck" parent="Shipwreck/ShipMast" instance=ExtResource("84_tlwtb")]
+
+[node name="MastRope_Stern" parent="Shipwreck/ShipMast" instance=ExtResource("85_qcplb")]
+
+[node name="Ropes01" parent="Shipwreck/ShipMast" instance=ExtResource("86_8s4r2")]
+
+[node name="Ropes02" parent="Shipwreck/ShipMast" instance=ExtResource("87_fhddj")]
+
+[node name="ShipPillars" type="Node3D" parent="Shipwreck"]
+visible = false
+
+[node name="PIllars_Forecastle" parent="Shipwreck/ShipPillars" instance=ExtResource("88_nofp2")]
+
+[node name="Pillars_Large" parent="Shipwreck/ShipPillars" instance=ExtResource("89_7mlw0")]
+
+[node name="Pillars_Navigation" parent="Shipwreck/ShipPillars" instance=ExtResource("90_27s6q")]
+
+[node name="Pillars_Small" parent="Shipwreck/ShipPillars" instance=ExtResource("91_y8xml")]
+
+[node name="Rails_ForeCastle" parent="Shipwreck/ShipPillars" instance=ExtResource("92_ti3cg")]
+
+[node name="Rails_Navigation" parent="Shipwreck/ShipPillars" instance=ExtResource("93_oqsa0")]
+
+[node name="Rails_Officer" parent="Shipwreck/ShipPillars" instance=ExtResource("94_84qs8")]
+
+[node name="Rails_Stairs" parent="Shipwreck/ShipPillars" instance=ExtResource("95_d5yhe")]
+
+[node name="Rails_Stern" parent="Shipwreck/ShipPillars" instance=ExtResource("96_htajf")]
+
+[node name="ShipStructure" type="Node3D" parent="Shipwreck"]
+visible = false
+
+[node name="Anchor" parent="Shipwreck/ShipStructure" instance=ExtResource("97_xklu2")]
+
+[node name="Door" parent="Shipwreck/ShipStructure" instance=ExtResource("98_5gaj0")]
+
+[node name="Lantern01" parent="Shipwreck/ShipStructure" instance=ExtResource("99_7ebu5")]
+
+[node name="Lantern02" parent="Shipwreck/ShipStructure" instance=ExtResource("100_o6g30")]
+
+[node name="Shroud01" parent="Shipwreck/ShipStructure" instance=ExtResource("101_7sh3v")]
+
+[node name="Shroud02" parent="Shipwreck/ShipStructure" instance=ExtResource("102_cf4pq")]
+
+[node name="Shroud03" parent="Shipwreck/ShipStructure" instance=ExtResource("103_6f70f")]
+
+[node name="ShroudSupport01" parent="Shipwreck/ShipStructure" instance=ExtResource("104_ucirb")]
+
+[node name="ShroudSupport02" parent="Shipwreck/ShipStructure" instance=ExtResource("105_ra3vy")]
+
+[node name="Stairs01" parent="Shipwreck/ShipStructure" instance=ExtResource("106_j6k4w")]
+
+[node name="Stairs02" parent="Shipwreck/ShipStructure" instance=ExtResource("107_k8ovv")]
+
+[node name="Stairs03" parent="Shipwreck/ShipStructure" instance=ExtResource("108_0w4v6")]
+
+[node name="SteeringWheel" parent="Shipwreck/ShipStructure" instance=ExtResource("109_2bvrq")]
+
+[node name="TrapDoor" parent="Shipwreck/ShipStructure" instance=ExtResource("110_f3crp")]
+
+[node name="ShipTrim" type="Node3D" parent="Shipwreck"]
+visible = false
+
+[node name="Trim_BraceBack01" parent="Shipwreck/ShipTrim" instance=ExtResource("111_gyg5r")]
+
+[node name="SM_Trim_BraceBack01_ConvexHulls" parent="Shipwreck/ShipTrim/Trim_BraceBack01/BP_Ship_TrimStern_C_0_SM_Trim_BraceBack01_3_1394" index="0"]
+visible = false
+
+[node name="Trim_BraceBack02" parent="Shipwreck/ShipTrim" instance=ExtResource("112_rm6ae")]
+
+[node name="Trim_BraceFront01" parent="Shipwreck/ShipTrim" instance=ExtResource("113_ionyc")]
+
+[node name="Trim_BraceFront02" parent="Shipwreck/ShipTrim" instance=ExtResource("114_6df8s")]
+
+[node name="Trim_RailDeck" parent="Shipwreck/ShipTrim" instance=ExtResource("115_s5td1")]
+
+[node name="Trim_RailOfficer" parent="Shipwreck/ShipTrim" instance=ExtResource("116_62sqv")]
+
+[node name="Trim_Stern" parent="Shipwreck/ShipTrim" instance=ExtResource("117_n1o47")]
+
+[node name="Trim_Walls01" parent="Shipwreck/ShipTrim" instance=ExtResource("118_262ep")]
+
+[node name="Trim_Walls02" parent="Shipwreck/ShipTrim" instance=ExtResource("119_378kh")]
+
+[node name="Trim_Walls03" parent="Shipwreck/ShipTrim" instance=ExtResource("120_4fwxj")]
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="CabinBedding" type="Node3D" parent="Props"]
+visible = false
+
+[node name="Bedding01" parent="Props/CabinBedding" instance=ExtResource("122_25l0e")]
+
+[node name="Bedding02" parent="Props/CabinBedding" instance=ExtResource("123_dqxip")]
+
+[node name="BedFrame" parent="Props/CabinBedding" instance=ExtResource("124_u1fgn")]
+
+[node name="Blanket" parent="Props/CabinBedding" instance=ExtResource("125_itaur")]
+
+[node name="Mattress" parent="Props/CabinBedding" instance=ExtResource("126_l0clk")]
+
+[node name="Pillow01" parent="Props/CabinBedding" instance=ExtResource("127_r17dt")]
+
+[node name="Pillow02" parent="Props/CabinBedding" instance=ExtResource("128_g86t6")]
+
+[node name="CabinBooks" type="Node3D" parent="Props"]
+visible = false
+
+[node name="Book01" parent="Props/CabinBooks" instance=ExtResource("129_v4b65")]
+
+[node name="Book02" parent="Props/CabinBooks" instance=ExtResource("130_tay43")]
+
+[node name="Book03" parent="Props/CabinBooks" instance=ExtResource("131_oew24")]
+
+[node name="CabinContainers" type="Node3D" parent="Props"]
+visible = false
+
+[node name="Bottle01" parent="Props/CabinContainers" instance=ExtResource("132_3cxpl")]
+
+[node name="Bottle02" parent="Props/CabinContainers" instance=ExtResource("133_cgb3h")]
+
+[node name="Bottle03" parent="Props/CabinContainers" instance=ExtResource("134_4rh1p")]
+
+[node name="Bottle04" parent="Props/CabinContainers" instance=ExtResource("135_wnp0t")]
+
+[node name="Bottle05" parent="Props/CabinContainers" instance=ExtResource("136_4opka")]
+
+[node name="Bottle06" parent="Props/CabinContainers" instance=ExtResource("137_xpdob")]
+
+[node name="Flask" parent="Props/CabinContainers" instance=ExtResource("138_8nrhi")]
+
+[node name="Jug01" parent="Props/CabinContainers" instance=ExtResource("139_kphqx")]
+
+[node name="Jug02" parent="Props/CabinContainers" instance=ExtResource("140_r2hqr")]
+
+[node name="CabinFurniture" type="Node3D" parent="Props"]
+visible = false
+
+[node name="Armchair" parent="Props/CabinFurniture" instance=ExtResource("141_dqqtb")]
+
+[node name="Bookshelf" parent="Props/CabinFurniture" instance=ExtResource("142_4hepu")]
+
+[node name="Candles" parent="Props/CabinFurniture" instance=ExtResource("143_fmcga")]
+
+[node name="Chair" parent="Props/CabinFurniture" instance=ExtResource("144_651mm")]
+
+[node name="Chandelier" parent="Props/CabinFurniture" instance=ExtResource("145_cep5g")]
+
+[node name="Desk" parent="Props/CabinFurniture" instance=ExtResource("146_y6ocl")]
+
+[node name="Table" parent="Props/CabinFurniture" instance=ExtResource("147_1p0xq")]
+
+[node name="TableCloth" parent="Props/CabinFurniture" instance=ExtResource("148_q1s24")]
+
+[node name="CabinLarge" type="Node3D" parent="Props"]
+visible = false
+
+[node name="Carpet" parent="Props/CabinLarge" instance=ExtResource("149_tpx4k")]
+
+[node name="Frame" parent="Props/CabinLarge" instance=ExtResource("150_110b3")]
+
+[node name="Globe" parent="Props/CabinLarge" instance=ExtResource("151_rhoih")]
+
+[node name="ShipWheel" parent="Props/CabinLarge" instance=ExtResource("152_cbpr0")]
+
+[node name="Violin" parent="Props/CabinLarge" instance=ExtResource("153_hey3k")]
+
+[node name="ViolinBow" parent="Props/CabinLarge" instance=ExtResource("154_5gdrh")]
+
+[node name="CabinMedium" type="Node3D" parent="Props"]
+
+[node name="Barrel" parent="Props/CabinMedium" instance=ExtResource("155_lcnv7")]
+visible = false
+
+[node name="SM_Barrel_ConvexHulls" parent="Props/CabinMedium/Barrel/BP_Ship_Forecastle_SetDrsssing_C_0_SM_Barrel_5_1605" index="0"]
+visible = false
+
+[node name="Bucket" parent="Props/CabinMedium" instance=ExtResource("156_1cf3t")]
+visible = false
+
+[node name="Caddy" parent="Props/CabinMedium" instance=ExtResource("157_nh8oq")]
+visible = false
+
+[node name="Cargo" parent="Props/CabinMedium" instance=ExtResource("158_cw4b0")]
+visible = false
+
+[node name="Crate" parent="Props/CabinMedium" instance=ExtResource("159_1y45s")]
+visible = false
+
+[node name="Sack01" parent="Props/CabinMedium" instance=ExtResource("160_37rtc")]
+visible = false
+
+[node name="SM_Sack01_ConvexHulls" parent="Props/CabinMedium/Sack01/BP_Ship_CannonBowSetDressing_C_0_SM_Sack01_11_1617" index="0"]
+visible = false
+
+[node name="Sack02" parent="Props/CabinMedium" instance=ExtResource("161_s481g")]
+visible = false
+
+[node name="SM_Sack02_ConvexHulls" parent="Props/CabinMedium/Sack02/BP_Ship_CannonBowSetDressing_C_0_SM_Sack02_9_1615" index="0"]
+visible = false
+
+[node name="Sack03" parent="Props/CabinMedium" instance=ExtResource("162_u8atx")]
+visible = false
+
+[node name="SM_Sack03_ConvexHulls" parent="Props/CabinMedium/Sack03/BP_Ship_MainDeck_SetDressing_C_0_SM_Sack03_11_1594" index="0"]
+visible = false
+
+[node name="Sack04" parent="Props/CabinMedium" instance=ExtResource("163_77a15")]
+visible = false
+
+[node name="SM_Sack04_ConvexHulls" parent="Props/CabinMedium/Sack04/BP_Ship_CannonBowSetDressing_C_0_SM_Sack04_12_1618" index="0"]
+visible = false
+
+[node name="CabinMetal" type="Node3D" parent="Props"]
+
+[node name="CandleHolder" parent="Props/CabinMetal" instance=ExtResource("164_csq47")]
+visible = false
+
+[node name="Chalice" parent="Props/CabinMetal" instance=ExtResource("165_g66wb")]
+visible = false
+
+[node name="Coins01" parent="Props/CabinMetal" instance=ExtResource("166_glkp4")]
+visible = false
+
+[node name="Coins02" parent="Props/CabinMetal" instance=ExtResource("167_8d4s2")]
+visible = false
+
+[node name="SM_Coins02_ConvexHulls" parent="Props/CabinMetal/Coins02/BP_Cabin_Table_C_0_SM_Coins02_14_1301" index="0"]
+visible = false
+
+[node name="LargeChest" parent="Props/CabinMetal" instance=ExtResource("168_7h4jp")]
+visible = false
+
+[node name="SM_LargeChest_ConvexHulls" parent="Props/CabinMetal/LargeChest/Cabin_Chest_BP_C_0_SM_LargeChest_9_1209" index="0"]
+visible = false
+
+[node name="Telescope01" parent="Props/CabinMetal" instance=ExtResource("169_p64s0")]
+visible = false
+
+[node name="Telescope02" parent="Props/CabinMetal" instance=ExtResource("170_udigu")]
+visible = false
+
+[node name="TreasureChest01" parent="Props/CabinMetal" instance=ExtResource("171_arvd6")]
+visible = false
+
+[node name="TreasureChest02" parent="Props/CabinMetal" instance=ExtResource("172_7ew1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.184703, 0)
+visible = false
+
+[editable path="Environment/Coral/Coral_Elkhorn"]
+[editable path="Environment/Coral/Coral_Finger"]
+[editable path="Environment/Coral/Coral_Golden"]
+[editable path="Environment/Coral/Coral_Heliopora"]
+[editable path="Environment/Coral/Coral_Orbicella"]
+[editable path="Environment/Coral/Coral_Pocillopora"]
+[editable path="Environment/Coral/Coral_PoritedaePink"]
+[editable path="Environment/Coral/Coral_Porites"]
+[editable path="Environment/Coral/Coral_Table"]
+[editable path="Environment/Coral/Coral_Tube"]
+[editable path="Environment/Creatures/Starfish"]
+[editable path="Environment/Rocks/Rock01"]
+[editable path="Environment/Rocks/Rock02"]
+[editable path="Environment/Rocks/Rock03"]
+[editable path="Environment/Rocks/Rock04"]
+[editable path="Environment/Rocks/Rock05"]
+[editable path="Shipwreck/ShipBow/Floor_Bow"]
+[editable path="Shipwreck/ShipCabin/Cabin_Screen01"]
+[editable path="Shipwreck/ShipCabin/Cabin_Screen02"]
+[editable path="Shipwreck/ShipCabin/Cabin_Screen03"]
+[editable path="Shipwreck/ShipCabin/Cabin_Screen04"]
+[editable path="Shipwreck/ShipCabin/Floor_Cabin"]
+[editable path="Shipwreck/ShipCabin/Floor_CabinTop"]
+[editable path="Shipwreck/ShipCannon/CannonBalls01"]
+[editable path="Shipwreck/ShipCannon/CannonBalls02"]
+[editable path="Shipwreck/ShipCannon/Floor_CannonBow"]
+[editable path="Shipwreck/ShipCannon/Floor_CannonStern"]
+[editable path="Shipwreck/ShipCannon/Wall_CannonBow01"]
+[editable path="Shipwreck/ShipCannon/Wall_CannonStern01"]
+[editable path="Shipwreck/ShipDeck/Floor_Forecastle"]
+[editable path="Shipwreck/ShipDeck/Floor_ForecastleTop"]
+[editable path="Shipwreck/ShipDeck/Floor_MainDeck"]
+[editable path="Shipwreck/ShipDeck/Floor_NavigationTop"]
+[editable path="Shipwreck/ShipDeck/Floor_Officer"]
+[editable path="Shipwreck/ShipDeck/Floor_OfficerTop"]
+[editable path="Shipwreck/ShipDeck/Wall_Forecastle"]
+[editable path="Shipwreck/ShipDeck/Wall_ForecastleBack"]
+[editable path="Shipwreck/ShipDeck/Wall_MainDeck02"]
+[editable path="Shipwreck/ShipDeck/Wall_Navigation"]
+[editable path="Shipwreck/ShipHull/HullBroken"]
+[editable path="Shipwreck/ShipHull/HullFront"]
+[editable path="Shipwreck/ShipHull/HullMid"]
+[editable path="Shipwreck/ShipHull/HullStern"]
+[editable path="Shipwreck/ShipHull/Rudder01"]
+[editable path="Shipwreck/ShipHull/Rudder02"]
+[editable path="Shipwreck/ShipHull/Wall_Hull"]
+[editable path="Shipwreck/ShipTrim/Trim_BraceBack01"]
+[editable path="Props/CabinFurniture/TableCloth"]
+[editable path="Props/CabinMedium/Barrel"]
+[editable path="Props/CabinMedium/Sack01"]
+[editable path="Props/CabinMedium/Sack02"]
+[editable path="Props/CabinMedium/Sack03"]
+[editable path="Props/CabinMedium/Sack04"]
+[editable path="Props/CabinMetal/Coins02"]
+[editable path="Props/CabinMetal/LargeChest"]

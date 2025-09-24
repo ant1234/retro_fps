@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bp4k827h4tdug"]
+
+[ext_resource type="Texture2D" uid="uid://nm7o7u3tfhtr" path="res://environment/assets/shipwreck/props/cabin_medium/Blanket_Blanket_T_Blanket_B.png" id="1_e3s54"]
+[ext_resource type="Texture2D" uid="uid://cbcnv6w2k2qv3" path="res://environment/assets/shipwreck/props/cabin_medium/Bedding02_T_Bedding_N.png" id="2_riwqj"]
+
+[resource]
+resource_name = "MI_SackBurlap"
+cull_mode = 2
+albedo_texture = ExtResource("1_e3s54")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_riwqj")

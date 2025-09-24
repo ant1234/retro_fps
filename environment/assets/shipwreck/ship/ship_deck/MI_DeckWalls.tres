@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bjekq6ay1y88n"]
+
+[ext_resource type="Texture2D" uid="uid://bojqn01fkr4p3" path="res://environment/assets/shipwreck/ship/ship_deck/T_WoodPlanks_D.PNG" id="1_m2xhb"]
+[ext_resource type="Texture2D" uid="uid://bdbw8jh4k6aus" path="res://environment/assets/shipwreck/ship/ship_deck/T_WoodPlanks_N.png" id="2_cmldc"]
+
+[resource]
+resource_name = "MI_DeckWalls"
+cull_mode = 2
+albedo_texture = ExtResource("1_m2xhb")
+metallic = 1.0
+roughness = 0.552786
+emission = Color(1, 1, 1, 1)
+normal_enabled = true
+normal_texture = ExtResource("2_cmldc")

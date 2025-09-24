@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dtjctm7dh1vb3"]
+
+[ext_resource type="Texture2D" uid="uid://dxjr2j217pd0o" path="res://environment/assets/shipwreck/ship/ship_structures/T_Doors_B.PNG" id="1_mphf5"]
+[ext_resource type="Texture2D" uid="uid://b6vyj065njtl1" path="res://environment/assets/shipwreck/ship/ship_structures/T_Doors_N.png" id="2_o3pse"]
+
+[resource]
+resource_name = "MI_Door"
+cull_mode = 2
+albedo_texture = ExtResource("1_mphf5")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_o3pse")

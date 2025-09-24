@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bvdn3dskfwnrh"]
+
+[ext_resource type="Texture2D" uid="uid://kpt0010e31kj" path="res://environment/assets/shipwreck/ship/ship_structures/T_WoodPlanks_D.PNG" id="1_dqvnf"]
+[ext_resource type="Texture2D" uid="uid://d2spfhafyb0rb" path="res://environment/assets/shipwreck/ship/ship_structures/T_WoodPlanks_N.png" id="2_6gkg8"]
+
+[resource]
+resource_name = "MI_ShipPillars"
+cull_mode = 2
+albedo_texture = ExtResource("1_dqvnf")
+metallic = 1.0
+roughness = 0.552786
+emission = Color(1, 1, 1, 1)
+normal_enabled = true
+normal_texture = ExtResource("2_6gkg8")

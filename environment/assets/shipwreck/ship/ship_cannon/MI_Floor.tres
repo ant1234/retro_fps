@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bhk32t5sxqs3g"]
+
+[ext_resource type="Texture2D" uid="uid://cwk1c2ou1je0v" path="res://environment/assets/shipwreck/ship/ship_cannon/T_Floor_B.PNG" id="1_u0c6t"]
+[ext_resource type="Texture2D" uid="uid://darxqtb7xfmek" path="res://environment/assets/shipwreck/ship/ship_cannon/T_Floor_N.png" id="2_lcme1"]
+
+[resource]
+resource_name = "MI_Floor"
+cull_mode = 2
+albedo_texture = ExtResource("1_u0c6t")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_lcme1")

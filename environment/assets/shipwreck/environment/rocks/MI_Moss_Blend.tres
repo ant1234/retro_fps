@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dmpu8tlgogup6"]
+
+[ext_resource type="Texture2D" uid="uid://t70krudf1hnu" path="res://environment/assets/shipwreck/environment/rocks/T_Rock_B.PNG" id="1_o8nok"]
+[ext_resource type="Texture2D" uid="uid://uqb2atdh3cw4" path="res://environment/assets/shipwreck/environment/rocks/T_Rock_N.png" id="2_xr13n"]
+
+[resource]
+resource_name = "MI_Moss_Blend"
+cull_mode = 2
+albedo_texture = ExtResource("1_o8nok")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_xr13n")

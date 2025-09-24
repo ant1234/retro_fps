@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://vgy42l0j7cgn"]
+
+[ext_resource type="Texture2D" uid="uid://dieod3ser6h63" path="res://fish/Mermaid/HairFins.tga" id="1_is0as"]
+[ext_resource type="Texture2D" uid="uid://iceku7ftxsav" path="res://fish/Mermaid/HairFins_N.tga" id="2_yt1iq"]
+[ext_resource type="Texture2D" uid="uid://dxjif0v30mmtp" path="res://fish/Mermaid/HairFins_S.tga" id="3_od7tj"]
+
+[resource]
+resource_name = "Mermaid_HairFins"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+albedo_texture = ExtResource("1_is0as")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_yt1iq")
+subsurf_scatter_enabled = true
+subsurf_scatter_texture = ExtResource("3_od7tj")

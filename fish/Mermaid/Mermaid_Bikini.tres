@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bx3ybw2ocjiyh"]
+
+[ext_resource type="Texture2D" uid="uid://dovjxl0ruhjjc" path="res://fish/Mermaid/Bikini.tga" id="1_kgsyu"]
+[ext_resource type="Texture2D" uid="uid://fwvekblro85" path="res://fish/Mermaid/Bikini_N.tga" id="2_upmw6"]
+[ext_resource type="Texture2D" uid="uid://cqn7bt5py615o" path="res://fish/Mermaid/Bikini_S.tga" id="3_6ywai"]
+
+[resource]
+resource_name = "Mermaid_Bikini"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+albedo_texture = ExtResource("1_kgsyu")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_upmw6")
+subsurf_scatter_enabled = true
+subsurf_scatter_texture = ExtResource("3_6ywai")

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cqbmfvstpmx0"]
+
+[ext_resource type="Texture2D" uid="uid://db85f78hwmr5r" path="res://environment/assets/shipwreck/ship/ship_mast/T_Rope_B.PNG" id="1_ibgco"]
+[ext_resource type="Texture2D" uid="uid://cm5wf06ubotli" path="res://environment/assets/shipwreck/ship/ship_mast/T_Rope_N.png" id="2_o0dkv"]
+
+[resource]
+resource_name = "MI_SackRope"
+cull_mode = 2
+albedo_texture = ExtResource("1_ibgco")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_o0dkv")

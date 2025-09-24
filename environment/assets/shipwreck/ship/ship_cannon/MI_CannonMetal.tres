@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ba3odpobi07l3"]
+
+[ext_resource type="Texture2D" uid="uid://bdqddrw55jld3" path="res://environment/assets/shipwreck/ship/ship_cannon/T_Cannon_Metal_B.PNG" id="1_qcol6"]
+[ext_resource type="Texture2D" uid="uid://cgm0jimjcopd0" path="res://environment/assets/shipwreck/ship/ship_cannon/T_Cannon_Metal_N.png" id="2_04urp"]
+
+[resource]
+resource_name = "MI_CannonMetal"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_qcol6")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_04urp")

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://db2r2etukjm17"]
+
+[ext_resource type="Texture2D" uid="uid://eurvxxd476e" path="res://environment/assets/shipwreck/ship/ship_cabin/T_WoodPlanks_D.PNG" id="1_w2d2u"]
+
+[resource]
+resource_name = "MI_ShipCabinWalls"
+cull_mode = 2
+albedo_texture = ExtResource("1_w2d2u")
+metallic = 1.0
+roughness = 0.552786
+emission = Color(1, 1, 1, 1)

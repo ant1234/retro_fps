@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://jrldq8m3bdgm"]
+
+[ext_resource type="Texture2D" uid="uid://bd4fxyt5tlc5p" path="res://environment/assets/shipwreck/ship/ship_bow/T_CabinTrim_B.PNG" id="1_qjtny"]
+[ext_resource type="Texture2D" uid="uid://cqnbsdphq5ory" path="res://environment/assets/shipwreck/ship/ship_bow/T_CabinTrim_N.png" id="2_chwpw"]
+
+[resource]
+resource_name = "MI_ShipTrim"
+albedo_texture = ExtResource("1_qjtny")
+emission = Color(1, 1, 1, 1)
+normal_enabled = true
+normal_texture = ExtResource("2_chwpw")

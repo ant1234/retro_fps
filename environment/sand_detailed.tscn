@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxdyxtyjdomo8"]
+
+[ext_resource type="PackedScene" uid="uid://bk708g26hd12o" path="res://environment/assets/Sand.glb" id="1_2mdfc"]
+
+[node name="Sand" type="Node3D"]
+
+[node name="Sand" parent="." instance=ExtResource("1_2mdfc")]

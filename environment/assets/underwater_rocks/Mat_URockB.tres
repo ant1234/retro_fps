@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dywey5ey4btp"]
+
+[ext_resource type="Texture2D" uid="uid://w0xu3ev7jd0l" path="res://environment/assets/underwater_rocks/uploads_files_673368_T_URockB_BC.tga" id="1_mj7t6"]
+[ext_resource type="Texture2D" uid="uid://ow3vwa1t8or" path="res://environment/assets/underwater_rocks/uploads_files_673368_T_URockB_N.tga" id="2_30htc"]
+
+[resource]
+resource_name = "Mat_URockB"
+cull_mode = 2
+albedo_texture = ExtResource("1_mj7t6")
+metallic = 1.0
+roughness = 0.858579
+normal_enabled = true
+normal_texture = ExtResource("2_30htc")

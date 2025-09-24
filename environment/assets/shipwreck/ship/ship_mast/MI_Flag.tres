@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dcyrutng2nuoe"]
+
+[ext_resource type="Texture2D" uid="uid://c3cjyuwwclxfj" path="res://environment/assets/shipwreck/ship/ship_mast/T_WoodPlanks_D.PNG" id="1_w5v4v"]
+[ext_resource type="Texture2D" uid="uid://cb01bdexjeugr" path="res://environment/assets/shipwreck/ship/ship_mast/T_WoodPlanks_N.png" id="2_q0q4o"]
+
+[resource]
+resource_name = "MI_Flag"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_w5v4v")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_q0q4o")

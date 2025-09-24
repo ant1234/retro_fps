@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cqxmnx8krjcts"]
+
+[ext_resource type="Texture2D" uid="uid://2ysymwnmdw78" path="res://environment/assets/shipwreck/ship/ship_structures/T_MetalRust_B.PNG" id="1_q5ewr"]
+[ext_resource type="Texture2D" uid="uid://bpf02iuudldnr" path="res://environment/assets/shipwreck/ship/ship_structures/T_MetalRust_N.png" id="2_a4h1a"]
+
+[resource]
+resource_name = "MI_AnchorMetal"
+cull_mode = 2
+albedo_texture = ExtResource("1_q5ewr")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_a4h1a")

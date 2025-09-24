@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dco0c2vif14ek"]
+
+[ext_resource type="Texture2D" uid="uid://drc7k3aeu223u" path="res://environment/assets/shipwreck/props/cabin_furniture/T_Bedding_B.PNG" id="1_fah10"]
+[ext_resource type="Texture2D" uid="uid://cvbn6b23aobal" path="res://environment/assets/shipwreck/props/cabin_furniture/T_Bedding_N.png" id="2_3iftj"]
+
+[resource]
+resource_name = "MI_TableCloth"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_fah10")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_3iftj")

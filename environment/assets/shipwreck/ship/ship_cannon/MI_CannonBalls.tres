@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://qgnsywf208s1"]
+
+[ext_resource type="Texture2D" uid="uid://cpbwyt4p4rjwk" path="res://environment/assets/shipwreck/ship/ship_cannon/T_HeavyMetal_B.PNG" id="1_8bb7x"]
+[ext_resource type="Texture2D" uid="uid://bsj2gg5sgkbai" path="res://environment/assets/shipwreck/ship/ship_cannon/T_HeavyMetal_N.png" id="2_7l6u0"]
+
+[resource]
+resource_name = "MI_CannonBalls"
+cull_mode = 2
+albedo_texture = ExtResource("1_8bb7x")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_7l6u0")

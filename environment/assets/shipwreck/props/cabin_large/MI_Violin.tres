@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://be883xc6v4263"]
+
+[ext_resource type="Texture2D" uid="uid://cwn5cb7n3rw6g" path="res://environment/assets/shipwreck/props/cabin_large/Violin_T_Violin_B.png" id="1_di222"]
+[ext_resource type="Texture2D" uid="uid://by75vfx5ndm1c" path="res://environment/assets/shipwreck/props/cabin_large/Violin_T_Violin_N.png" id="2_a4jna"]
+
+[resource]
+resource_name = "MI_Violin"
+cull_mode = 2
+albedo_texture = ExtResource("1_di222")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_a4jna")

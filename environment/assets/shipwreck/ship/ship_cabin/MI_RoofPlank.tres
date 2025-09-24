@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://74d8p063am86"]
+
+[ext_resource type="Texture2D" uid="uid://eurvxxd476e" path="res://environment/assets/shipwreck/ship/ship_cabin/T_WoodPlanks_D.PNG" id="1_do3it"]
+[ext_resource type="Texture2D" uid="uid://du8u2agrgirv1" path="res://environment/assets/shipwreck/ship/ship_cabin/T_WoodPlanks_N.png" id="2_v2tht"]
+
+[resource]
+resource_name = "MI_RoofPlank"
+cull_mode = 2
+albedo_texture = ExtResource("1_do3it")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_v2tht")

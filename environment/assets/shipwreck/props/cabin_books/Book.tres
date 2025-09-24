@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://pgtdng8ltuf7"]
+
+[ext_resource type="Texture2D" uid="uid://chp3o22benob0" path="res://environment/assets/shipwreck/props/cabin_books/T_Books_B.PNG" id="1_paya3"]
+[ext_resource type="Texture2D" uid="uid://ckamaq3hhsklk" path="res://environment/assets/shipwreck/props/cabin_books/T_Books_N.png" id="2_cfhig"]
+
+[resource]
+resource_name = "Book"
+cull_mode = 2
+albedo_texture = ExtResource("1_paya3")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_cfhig")

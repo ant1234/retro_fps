@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c28vcalhn5e3q"]
+
+[ext_resource type="Texture2D" uid="uid://dw4xqkuqd0fx8" path="res://environment/assets/shipwreck/ship/ship_structures/T_HeavyMetal_B.PNG" id="1_me25e"]
+[ext_resource type="Texture2D" uid="uid://cm2ir7ga4gi5i" path="res://environment/assets/shipwreck/ship/ship_structures/T_HeavyMetal_N.png" id="2_u5w6l"]
+
+[resource]
+resource_name = "MI_LanternMetal"
+cull_mode = 2
+albedo_texture = ExtResource("1_me25e")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_u5w6l")

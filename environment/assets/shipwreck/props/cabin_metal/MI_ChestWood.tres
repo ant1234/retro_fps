@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bomufc8qrjk2r"]
+
+[ext_resource type="Texture2D" uid="uid://chddyiexohoyq" path="res://environment/assets/shipwreck/props/cabin_metal/T_ChestWood_B.PNG" id="1_7iff1"]
+[ext_resource type="Texture2D" uid="uid://wldjltkeqxjs" path="res://environment/assets/shipwreck/props/cabin_metal/T_ChestWood_N.png" id="2_5ykll"]
+
+[resource]
+resource_name = "MI_ChestWood"
+cull_mode = 2
+albedo_texture = ExtResource("1_7iff1")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_5ykll")

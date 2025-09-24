@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dybk6l0uejyul"]
+
+[ext_resource type="Texture2D" uid="uid://cuyjfw2ns70o5" path="res://environment/assets/shipwreck/props/cabin_furniture/T_ChandelierMetal_B.PNG" id="1_yv3yf"]
+[ext_resource type="Texture2D" uid="uid://ulcerjsl6jgg" path="res://environment/assets/shipwreck/props/cabin_furniture/T_ChandelierMetal_N.png" id="2_jvm1u"]
+
+[resource]
+resource_name = "MI_Chandelier"
+cull_mode = 2
+albedo_texture = ExtResource("1_yv3yf")
+metallic = 1.0
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_jvm1u")
