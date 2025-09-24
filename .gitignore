@@ -1,11 +1,22 @@
 # Godot 4+ specific ignores
 # Asset formats
 *.glb
+*.glb.import
 *.fbx
 *.png
 *.png.import
 *.jpg
 *.tga
+*.tga.import
 *.zip
 *.rar
 *.png.zip
+*.jpg.import
+*.PNG
+*.PNG.import
+*.fbx
+*.fbx.import
+*.FBX
+*.FBX.import
+.godot/
+
