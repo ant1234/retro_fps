@@ -2,20 +2,21 @@
 extends Node3D
 class_name WorldChunk
 
-# The real content for this chunk (reef, cave, wreck, etc.)
+# The real content for this chunk (reef, cave, wreck, etc.) is assigned dynamically by SuperChunk
 @export var chunk_scene: PackedScene
 
 # Metadata you can use later (fish rules, lighting tweaks, etc.)
 @export var biome_type: String = "default"
 
-# Size of the chunk cube in world units (X=width, Y=height/depth, Z=length)
-@export var size: Vector3 = Vector3(20, 20, 20) : set = set_size
+# Size of the chunk cube in world units
+@export var size: Vector3 = Vector3(20, 20, 20)
 
 # Optional: grid index so chunks snap perfectly in a 3D grid
-@export var grid_index: Vector3i = Vector3i.ZERO : set = set_grid_index
+@export var grid_index: Vector3i = Vector3i.ZERO
+
 @export var snap_to_grid: bool = true
 
-@onready var _placeholder: MeshInstance3D = get_node_or_null("EditorOnly/Placeholder")
+@onready var _placeholder: MeshInstance3D = get_node("EditorOnly/Placeholder")
 
 func _ready() -> void:
 	_apply_size()
@@ -23,6 +24,7 @@ func _ready() -> void:
 	_apply_snap()
 	add_to_group("world_chunk")
 
+# Manual setters to use in code instead of setget
 func set_size(v: Vector3) -> void:
 	size = v
 	_apply_size()
@@ -35,8 +37,6 @@ func set_grid_index(v: Vector3i) -> void:
 		_apply_snap()
 
 func _apply_size() -> void:
-	if not is_instance_valid(_placeholder):
-		_placeholder = get_node_or_null("EditorOnly/Placeholder")
 	if _placeholder and _placeholder.mesh is BoxMesh:
 		var bm := _placeholder.mesh as BoxMesh
 		bm.size = size
@@ -44,7 +44,6 @@ func _apply_size() -> void:
 
 func _apply_snap() -> void:
 	# Position the chunk so its center sits at index * size.
-	# (i.e., grid-aligned, center-based chunks)
 	global_position = Vector3(
 		grid_index.x * size.x,
 		grid_index.y * size.y,
@@ -52,7 +51,7 @@ func _apply_snap() -> void:
 	)
 
 func _make_placeholder_material() -> void:
-	if not is_instance_valid(_placeholder):
+	if not _placeholder:
 		return
 	if _placeholder.material_override == null:
 		var m := StandardMaterial3D.new()

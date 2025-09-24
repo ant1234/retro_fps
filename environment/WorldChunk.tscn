@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://gssc0gnwvheo"]
+[gd_scene load_steps=4 format=3 uid="uid://gssc0gnwvheo"]
 
 [ext_resource type="Script" path="res://environment/open_world_scripts/world_chunk.gd" id="1_1awvc"]
-[ext_resource type="Script" path="res://environment/open_world_scripts/ChunkPlaceholder.gd" id="2_j3dfp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pngkd"]
 transparency = 1
@@ -12,7 +11,7 @@ disable_receive_shadows = true
 [sub_resource type="BoxMesh" id="BoxMesh_jnwsl"]
 size = Vector3(20, 20, 20)
 
-[node name="Node3D" type="Node3D"]
+[node name="WorldChunk" type="Node3D"]
 script = ExtResource("1_1awvc")
 
 [node name="EditorOnly" type="Node" parent="."]
@@ -21,4 +20,3 @@ script = ExtResource("1_1awvc")
 material_override = SubResource("StandardMaterial3D_pngkd")
 cast_shadow = 0
 mesh = SubResource("BoxMesh_jnwsl")
-script = ExtResource("2_j3dfp")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://cr774sksons2f"]
+[gd_scene load_steps=127 format=3 uid="uid://cr774sksons2f"]
 
 [ext_resource type="PackedScene" uid="uid://dovc0methr37k" path="res://environment/rock_boulder.tscn" id="1_icxn4"]
 [ext_resource type="Script" path="res://environment/open_world_scripts/WorldManager.gd" id="1_sbc6l"]
@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://b5g5bp0frrqif" path="res://pickups/shotgun_pickup.tscn" id="15_5cnxw"]
 [ext_resource type="PackedScene" uid="uid://d1scv8tb06nka" path="res://fish/Auriga_Butterflyfish/auriga_butterflyfish.tscn" id="15_f8ecj"]
 [ext_resource type="PackedScene" uid="uid://ca0wevg1lb4rx" path="res://utils/WaterMaker3D/WaterMaker3D.tscn" id="15_ilq23"]
-[ext_resource type="PackedScene" uid="uid://dri4ei1vkbmh6" path="res://weapons/camera/CameraRoll.tscn" id="15_ylxip"]
 [ext_resource type="PackedScene" uid="uid://sl564i3q31rt" path="res://fish/Bicolor_Angelfish/bicolor_angelfish.tscn" id="16_xqdf5"]
 [ext_resource type="Shader" path="res://utils/WaterMaker3D/FogFade.gdshader" id="17_6lj6w"]
 [ext_resource type="PackedScene" uid="uid://c17aa7smhrgd" path="res://fish/Bluecheek_Butterflyfish/bluecheek_butterflyfish.tscn" id="17_juvaa"]
@@ -86,7 +85,9 @@
 [ext_resource type="PackedScene" uid="uid://clsl5pqrqdjj8" path="res://fish/White_Grunt/White_Grunt.tscn" id="74_4yrqv"]
 [ext_resource type="PackedScene" uid="uid://gfggb7gfxcai" path="res://fish/White_Mullet/White_Mullet.tscn" id="75_5pagh"]
 [ext_resource type="PackedScene" uid="uid://702cki1ldxoj" path="res://fish/Yellowfin_Tuna/Yellowfin_Tuna.tscn" id="76_fouow"]
-[ext_resource type="Script" path="res://environment/open_world_scripts/ChunkPlaceholder.gd" id="88_18jlo"]
+[ext_resource type="Script" path="res://environment/open_world_scripts/SuperChunk.gd" id="86_lhxov"]
+[ext_resource type="PackedScene" uid="uid://gssc0gnwvheo" path="res://environment/WorldChunk.tscn" id="87_ngg33"]
+[ext_resource type="PackedScene" uid="uid://n1lal1vx1vwh" path="res://environment/open_world_scene_chunks/ChunkContent.tscn" id="88_6x0t6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l5qe5"]
 
@@ -1388,26 +1389,11 @@ shape = SubResource("BoxShape3D_68hyx")
 size = Vector3(39.529, 47.2921, 73.384)
 material = SubResource("ShaderMaterial_8w07g")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
+[node name="SuperChunk" type="Node3D" parent="."]
+script = ExtResource("86_lhxov")
+world_chunk_scene = ExtResource("87_ngg33")
+chunk_content_scene = ExtResource("88_6x0t6")
 
-[node name="CameraRoll" parent="CanvasLayer" instance=ExtResource("15_ylxip")]
-
-[node name="ChunkPlaceholder1" type="Node3D" parent="." groups=["world_chunk_placeholder"]]
-script = ExtResource("88_18jlo")
-chunk_scene = ExtResource("1_icxn4")
-
-[node name="ChunkPlaceholder2" type="Node3D" parent="." groups=["world_chunk_placeholder"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
-script = ExtResource("88_18jlo")
-chunk_scene = ExtResource("2_jw0dc")
-
-[node name="ChunkPlaceholder3" type="Node3D" parent="." groups=["world_chunk_placeholder"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
-script = ExtResource("88_18jlo")
-chunk_scene = ExtResource("3_2ngro")
-
-[node name="Chunks" type="Node3D" parent="."]
-visible = false
+[node name="WorldChunks" type="Node3D" parent="."]
 
 [editable path="WaterMaker3D"]

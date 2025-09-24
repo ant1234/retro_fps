@@ -1,7 +1,11 @@
 # Godot 4+ specific ignores
-.godot/
-/android/
+# Asset formats
 *.glb
 *.fbx
 *.png
 *.png.import
+*.jpg
+*.tga
+*.zip
+*.rar
+*.png.zip
