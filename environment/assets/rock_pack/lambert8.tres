@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bej183mku8ibr"]
+
+[ext_resource type="Texture2D" uid="uid://b6xycotg2rlyj" path="res://environment/assets/rock_pack/T_Rock_Surface_Tile_02_BC.tga" id="1_m1tb4"]
+
+[resource]
+resource_name = "lambert8"
+cull_mode = 2
+albedo_texture = ExtResource("1_m1tb4")
+roughness = 0.552786

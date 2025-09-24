@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b1fsl3q5u7e"]
+
+[ext_resource type="Texture2D" uid="uid://tq50tnnd6kgp" path="res://environment/assets/dune_curve.jpg" id="1_4hblo"]
+[ext_resource type="Texture2D" uid="uid://beuy2tquj74s0" path="res://environment/assets/dune_normal.jpg" id="2_fl4i1"]
+
+[resource]
+resource_name = "dune"
+cull_mode = 2
+albedo_texture = ExtResource("1_4hblo")
+roughness = 0.552786
+normal_enabled = true
+normal_texture = ExtResource("2_fl4i1")
